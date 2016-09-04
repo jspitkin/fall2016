@@ -1,0 +1,13 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdftex 2015.5.24)  4 SEP 2016 08:47
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/jsp/Documents/fall_2016/machine_learning/hw1/ml_hw1.tex
+(/Users/jsp/Documents/fall_2016/machine_learning/hw1/ml_hw1.tex)
+! Emergency stop.
+<*> ...s/fall_2016/machine_learning/hw1/ml_hw1.tex
+                                                  
+*** (job aborted, no legal \end found)
+
+!  ==> Fatal error occurred, no output PDF file produced!

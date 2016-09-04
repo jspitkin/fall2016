@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows, quotes, trees}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 6350, \today}
+
+\tikzstyle{block} = [rectangle, draw, fill=white!20,
+    text width=10em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{line} = [draw, very thick, color=black!50, -latex']
+\tikzstyle{leaf} = [draw=none, fill=none,
+    text width=10em, text centered, minimum height=1em]
+
+\begin{document}\raggedright
+
+\newcommand\NAME{Jake Pitkin}
+\newcommand\UID{u0891770}
+\newcommand\HWNUM{1}
+
+\question{1}{Decision tree}
+\part{1} Representing Boolean functions as decision trees.
+
+\qquad \part{a} $(x_1 \lor x_2) \land x_3$
+
+\begin{tikzpicture}[
+box/.style = {rectangle, draw, align=center},
+level distance = 18mm,
+level 1/.style = {sibling distance=66mm},
+level 2/.style = {sibling distance=32mm},
+level 4/.style = {sibling distance=44mm},
+edge from parent/.style = {draw, -latex'},
+edge from parent fork down
+                        ]
+\node [block] {$x_3$}
+    child{ node [leaf] {0} edge from parent node[left] {0} edge from parent node[right] {1}}
+		child{ node [block] {$x_1$} 
+			child{ node [block] {$x_2$}}
+	};
+
+\end{tikzpicture}
+
+\qquad \part{b} $(x_1 \land x_2) \ xor\ (\neg x_1 \lor x_3)$
+
+\qquad \part{c} The 2-of-3 function defined as follows: at least 2 of $\{x_1, x_2, x_3\}$ should be true for the \hspace*{13 mm} output to be true.
+
+\part{2} Pok\'{e}mon Go decision tree to determine whether a Pok\'{e}mon can be caught.
+
+\qquad \part{a}
+
+\qquad \part{b}
+
+\qquad \part{c}
+
+\qquad \part{d}
+
+\qquad \part{e}
+
+\qquad \part{f}
+
+\qquad \part{g}
+
+\part{3} Using the Gini measure with the ID3 algorithm.
+
+\qquad \part{a}
+
+\qquad \part{b}
+
+\question{2}{Linear Classifiers}
+
+\part{1}
+
+\part{2}
+
+\part{3}
+
+\end{document}
