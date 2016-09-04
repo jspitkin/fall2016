@@ -16,10 +16,9 @@
 \rhead{CS 6350, \today}
 
 \tikzstyle{block} = [rectangle, draw, fill=white!20,
-    text width=10em, text centered, rounded corners, minimum height=2em]
+    text width=3em, text centered, rounded corners, minimum height=2em]
 \tikzstyle{line} = [draw, very thick, color=black!50, -latex']
-\tikzstyle{leaf} = [draw=none, fill=none,
-    text width=10em, text centered, minimum height=1em]
+\tikzstyle{leaf} = [circle, draw, fill=none, text width=1em, text centered, minimum height=1em]
 
 \begin{document}\raggedright
 
@@ -27,31 +26,147 @@
 \newcommand\UID{u0891770}
 \newcommand\HWNUM{1}
 
-\question{1}{Decision tree}
+\question{1}{Decision trees}
+
+\emph{Note: Square nodes test for feature values and round leaf nodes specify the class labels.}
+
 \part{1} Representing Boolean functions as decision trees.
 
 \qquad \part{a} $(x_1 \lor x_2) \land x_3$
 
-\begin{tikzpicture}[
+\hspace*{30 mm}\begin{tikzpicture}[
 box/.style = {rectangle, draw, align=center},
 level distance = 18mm,
 level 1/.style = {sibling distance=66mm},
-level 2/.style = {sibling distance=32mm},
-level 4/.style = {sibling distance=44mm},
 edge from parent/.style = {draw, -latex'},
 edge from parent fork down
                         ]
-\node [block] {$x_3$}
-    child{ node [leaf] {0} edge from parent node[left] {0} edge from parent node[right] {1}}
-		child{ node [block] {$x_1$} 
-			child{ node [block] {$x_2$}}
-	};
-
+\node [block] {$x_3$} 
+	child { 
+      node [leaf] {0} 
+      edge from parent node[left] {0}  
+	} 
+    child { 
+      node [block] {$x_1$} 
+        child { 
+          node [block] {$x_2$}
+          child {
+          	node [leaf] {0}
+          	edge from parent node[left] {0}
+          }
+          child {
+          	node [leaf] {1}
+          	edge from parent node[right] {1}
+          } 
+          edge from parent node[left] {0} 
+        }
+        child {
+        	node [leaf] {1}
+        	edge from parent node[right] {1}
+        }
+        edge from parent node[right] {1}  
+    }; 
 \end{tikzpicture}
 
 \qquad \part{b} $(x_1 \land x_2) \ xor\ (\neg x_1 \lor x_3)$
 
+\hspace*{30 mm}\begin{tikzpicture}[
+box/.style = {rectangle, draw, align=center},
+level distance = 18mm,
+level 1/.style = {sibling distance=66mm},
+level 3/.style = {sibling distance = 40mm},
+edge from parent/.style = {draw, -latex'},
+edge from parent fork down
+                        ]
+\node [block] {$x_1$} 
+	child { %level 2
+      node [leaf] {1} 
+      edge from parent node[left] {0}  
+	} 
+    child { %level 2
+      node [block] {$x_2$} 
+        child { %level 3
+          node [block] {$x_3$}
+          child { %level 4
+          	node [leaf] {0}
+          	edge from parent node[left] {0}
+          }
+          child { %level 4
+          	node [leaf] {1}
+          	edge from parent node[right] {1}
+          } 
+          edge from parent node[left] {0} 
+        }
+        child { %level 3
+        	node [block] {$x_3$}
+        	child { %level 4
+        		node [leaf] {1}
+        		edge from parent node[left] {0}
+        	}
+        	child { %level 4
+        		node [leaf] {0}
+        		edge from parent node [right] {1}
+        	}
+        	edge from parent node[right] {1}
+        }
+        edge from parent node[right] {1}  
+    }; 
+\end{tikzpicture}
+
+\newpage
 \qquad \part{c} The 2-of-3 function defined as follows: at least 2 of $\{x_1, x_2, x_3\}$ should be true for the \hspace*{13 mm} output to be true.
+
+\hspace*{30 mm}\begin{tikzpicture}[
+box/.style = {rectangle, draw, align=center},
+level distance = 18mm,
+level 1/.style = {sibling distance=66mm},
+level 2/.style = {sibling distance=40mm},
+level 3/.style = {sibling distance = 10mm},
+edge from parent/.style = {draw, -latex'},
+edge from parent fork down
+                        ]
+\node [block] {$x_1$} 
+	child { %level 2
+      node [block] {$x_2$}
+      child { %level 3
+      	node [leaf] {0}
+      	edge from parent node[left] {0}
+      }
+      child { % level 3
+      	node [block] {$x_3$}
+      	child { %level 4
+      		node[leaf] {0}
+      		edge from parent node[left] {0}
+      	}
+      	child { %level 4
+      		node[leaf] {1}
+      		edge from parent node[right] {1}
+      	}
+      	edge from parent node[right] {1}
+      }
+      edge from parent node[left] {0}  
+	} 
+    child { %level 2
+      node [block] {$x_2$} 
+        child { %level 3
+          node [block] {$x_3$}
+          child { %level 4
+          	node [leaf] {0}
+          	edge from parent node[left] {0}
+          }
+          child { %level 4
+          	node [leaf] {1}
+          	edge from parent node[right] {1}
+          } 
+          edge from parent node[left] {0} 
+        }
+        child { %level 3
+        	node [leaf] {1}
+        	edge from parent node[right] {1}
+        }
+        edge from parent node[right] {1}  
+    }; 
+\end{tikzpicture}
 
 \part{2} Pok\'{e}mon Go decision tree to determine whether a Pok\'{e}mon can be caught.
 
