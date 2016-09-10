@@ -1,0 +1,20 @@
+Failed 2x3 + 3x2:
+	Expected "null"
+	Got "-3 5 4 
+7 7 7 
+"
+Failed 2x2 + 2x3:
+	Expected "null"
+	Got "5 9 
+9 -3 
+"
+Failed 2x3 + 2x2:
+	Expected "null"
+	Got "-3 5 4 
+7 7 7 
+"
+toString:	15/15
+equals:		15/15
+times:		30/30
+plus:		20/30
+Total:		80/90
