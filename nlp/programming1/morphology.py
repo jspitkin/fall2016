@@ -11,8 +11,8 @@ def main():
     testFilePath = sys.argv[3]
 
     analyzer = ma.MorphologicalAnalyzer(dictionaryFilePath, rulesFilePath)
-    
     analyzer.analyze(testFilePath)
+    analyzer.printDefinitions()
 
 # Prints out the usage information for command line use.
 def printUsage():

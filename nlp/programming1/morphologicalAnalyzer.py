@@ -17,48 +17,64 @@ class Rule:
         self.originatingPOS = originatingPOS
         self.newPOS = newPOS
 
+class Definition:
+    'A found definition for a word'
+    def __init__(self, word, pos, root, source):
+        self.word = word
+        self.pos = pos
+        self.root = root
+        self.source = source
+
+    def __eq__(self, other):
+        return self.word == other.word and self.pos == other.pos and self.source == other.source
+
 class MorphologicalAnalyzer:
     'Given a dictionary and a set of rules, performs a morphological analysis on a set of words'
     def __init__(self, dictionaryFilePath, rulesFilePath):
         self.dictionary = self.readDictionaryFile(dictionaryFilePath)
         self.rules = self.readRulesFile(rulesFilePath)
+        self.definitions = []
 
     def morphologicalAnalysis(self, word, originalWord, appliedRules, source):
-        if word in self.dictionary:
-            wordEntry = self.dictionary[word.lower()]
-            pos = wordEntry.pos
-            
-            for rule in reversed(appliedRules):
-                if rule.originatingPOS == pos:
-                    pos = rule.newPOS
+        for entry in self.dictionary:
+            if word == entry.word:
+                pos = entry.pos
+                for rule in reversed(appliedRules):
+                    if rule.originatingPOS == pos:
+                        pos = rule.newPOS
+                    
+                if entry.root is None:
+                    definition = Definition(originalWord, pos, word, source)
+                    if definition not in self.definitions:
+                        self.definitions.append(definition)
                 else:
-                    return
-
-            if wordEntry.root is None:
-                self.printDefinition(originalWord, pos, word, source)
-            else:
-                self.printDefinition(originalWord, pos, wordEntry.root, source)
-            return
+                    definition = Definition(originalWord, pos, entry.root, source)
+                    if definition not in self.definitions:
+                        self.definitions.append(definition)
 
         foundRule = False
         for rule in self.rules:
             if len(rule.affix) <= len(word):
-                # The rule is a suffix, the suffix isn't longer than the word and the word ends in the suffix.
+                # The affix is a suffix.
                 if word[-len(rule.affix):] == rule.affix:
                     wordMinusAffix = word[:-len(rule.affix)]
+                    wordMinusAffix = wordMinusAffix + rule.replaceChar
                     appliedRules.append(rule)
-                    self.morphologicalAnalysis(wordMinusAffix, word, appliedRules, "morphology")
-                    fouldRule = True
-                # The rule is a prefix, the prefix isn't longer than the word and the word begins in the prefix.
+                    self.morphologicalAnalysis(wordMinusAffix, originalWord, appliedRules, "morphology")
+                    foundRule = True
+                # The affix is a prefix.
                 elif word[:len(rule.affix)] == rule.affix:
-                    wordMinuxAffix = word[len(rule.affix):]
+                    wordMinusAffix = word[len(rule.affix):]
+                    wordMinusAffix = rule.replaceChar + wordMinusAffix 
                     appliedRules.append(rule)
-                    self.morphologicalAnalysis(wordMinuxAffix, word, appliedRules, "morphology")
+                    self.morphologicalAnalysis(wordMinusAffix, originalWord, appliedRules, "morphology")
                     foundRule = True
 
-        if foundRule is False:
-            self.printDefinition(originalWord, "noun", originalWord, "default")
+        if foundRule is False and len(appliedRules) == 0:
+            definition = Definition(word, "noun", originalWord, "default")
+            self.definitions.append(definition)
 
+    # Reads in a file of words and prints to standard output their morphological analysis.
     def analyze(self, path):
         with open(path) as file:
             for line in file:
@@ -71,16 +87,16 @@ class MorphologicalAnalyzer:
     # Reads in a dictionary file and creates a dictionary to represent it.
     # Returns - A dictionary of the words and their part of speech.
     def readDictionaryFile(self, path):
-        dictionary = {}
+        dictionary = []
         with open(path) as file:
             for line in file:
                 splitLine = line.split()
                 if len(splitLine) == 2:
                     entry = DictionaryEntry(splitLine[0].lower(), splitLine[1])
-                    dictionary[splitLine[0].lower()] = entry
+                    dictionary.append(entry)
                 elif len(splitLine) == 4:
                     entry = DictionaryEntry(splitLine[0].lower(), splitLine[1], splitLine[3])
-                    dictionary[splitLine[0].lower()] = entry
+                    dictionary.append(entry)
         return dictionary
 
     # Reads in a rules file and creates a list to represent it.
@@ -96,7 +112,13 @@ class MorphologicalAnalyzer:
 
         return rules
 
-    # Prints a single definition of the form:
+    # Prints all the definitions to standard output.
     # <word> <pos> ROOT=<root> SOURCE=<source>
-    def printDefinition(self, word, pos, root, source):
-        print word + " " + pos + " ROOT=" + root + " SOURCE=" + source
+    def printDefinitions(self):
+        previousWord = self.definitions[0].word
+        for d in self.definitions:
+            if d.word == previousWord:
+                print d.word + " " + d.pos + " ROOT=" + d.root + " SOURCE=" + d.source
+            else:
+                print '\n' + d.word + " " + d.pos + " ROOT=" + d.root + " SOURCE=" + d.source
+            previousWord = d.word
