@@ -13,22 +13,29 @@ class Example:
     def updateLabel(self, label):
         self.label = label
 
+class Edge:
+    def __init__(self, featureValue):
+        'An edge of a decision tree. has a featureValue and a child node'
+        self.featureValue = featureValue
+
+    def setChild(self, childNode):
+        self.childNode = childNode
+
+    def getValue(self):
+        return self.featureValue
+
 class Node:
-    def __init__(self, value, edgeInFeatureChoice=None):
+    def __init__(self, value):
         'A node of a decision tree. Knows its children nodes and the label of'
         'the edge between this node and it\'s parent'
         self.value = value
-        self.edgeInFeatureChoice = edgeInFeatureChoice
-        self.children = []
+        self.edges = []
 
-    def addChild(self, childNode):
-        self.children.append(childNode)
+    def addEdge(self, edge):
+        self.edges.append(edge)
 
-    def getChildren(self):
-        return self.children
-
-    def getEdgeInFeatureChoice(self):
-        return self.edgeInFeatureChoice
+    def getEdges(self):
+        return self.edges
 
     def getValue(self):
         return self.value
@@ -107,3 +114,30 @@ class DecisionTree:
                     example.updateLabel(line[-1])
                 examples.append(example)
             return examples
+
+    def ID3(self, examples, attributes, labels):
+        # All examples have the same label
+        if all(label == labels[0] for label in labels):
+            return Node(label)
+        
+        # Find the attribute that best classifes the examples
+        bestAttribute = attributes[0]
+        bestAttributeColumn = 0
+        bestInformationGain = self.informationGain(bestAttribute, labels)
+        for index, attribute in enumerate(attributes[1:]):
+            if self.informationGain(attribute, labels) > bestInformationGain:
+                bestAttribute = attribute
+                bestAttributeColumn = index
+                bestInformationGain = self.informationGain(attribute, labels)
+        # Create a root node with this attribute
+        root = Node(bestAttributeColumn)
+        # Add a new branch for each possible value the best attribute can take
+        possibleFeatureValues = set(bestAttribute)
+        for feature in possibleFeatureValues:
+            newEdge = Edge(feature)
+            root.addEdge(newEdge)
+
+    def constructTree(self, trainingDataFilePath):
+        trainingData = self.readDataFile(trainingDataFilePath)
+        featureVectors, labels = self.getFeatureVectors(trainingData)
+        tree = self.ID3(trainingData, featureVectors, labels)

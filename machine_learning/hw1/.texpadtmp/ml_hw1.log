@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 SEP 2016 17:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 SEP 2016 23:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -463,47 +463,52 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 36.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2]
-Overfull \hbox (0.60832pt too wide) in paragraph at lines 275--275
+] [2] [3]
+Overfull \hbox (0.60832pt too wide) in paragraph at lines 279--279
  [][][][]\OT1/cmr/m/n/10.95 no 
  []
 
 
-Overfull \hbox (3.71082pt too wide) in paragraph at lines 275--275
+Overfull \hbox (3.71082pt too wide) in paragraph at lines 279--279
  [][][][]\OT1/cmr/m/n/10.95 yes 
  []
 
 
-Overfull \hbox (0.60832pt too wide) in paragraph at lines 275--275
+Overfull \hbox (0.60832pt too wide) in paragraph at lines 279--279
  [][][][]\OT1/cmr/m/n/10.95 no 
  []
 
 
-Overfull \hbox (0.60832pt too wide) in paragraph at lines 275--275
+Overfull \hbox (0.60832pt too wide) in paragraph at lines 279--279
  [][][][]\OT1/cmr/m/n/10.95 no 
  []
 
 
-Overfull \hbox (3.71082pt too wide) in paragraph at lines 275--275
+Overfull \hbox (0.60832pt too wide) in paragraph at lines 279--279
+ [][][][]\OT1/cmr/m/n/10.95 no 
+ []
+
+
+Overfull \hbox (3.71082pt too wide) in paragraph at lines 279--279
  [][][][]\OT1/cmr/m/n/10.95 yes 
  []
 
 
-Overfull \hbox (3.71082pt too wide) in paragraph at lines 275--275
+Overfull \hbox (3.71082pt too wide) in paragraph at lines 279--279
  [][][][]\OT1/cmr/m/n/10.95 yes 
  []
 
-[3] [4] [5] [6] (/Users/jsp/Documents/fall_2016/machine_learning/hw1/.texpadtmp/ml_hw1.aux) ) 
+[4] [5] [6] (/Users/jsp/Documents/fall_2016/machine_learning/hw1/.texpadtmp/ml_hw1.aux) ) 
 Here is how much of TeX's memory you used:
- 13777 strings out of 493089
- 275286 string characters out of 6134842
- 320662 words of memory out of 5000000
- 16997 multiletter control sequences out of 15000+600000
+ 13780 strings out of 493089
+ 275369 string characters out of 6134842
+ 319662 words of memory out of 5000000
+ 17000 multiletter control sequences out of 15000+600000
  9563 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,13n,69p,425b,1371s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw1/.texpadtmp/ml_hw1.pdf (6 pages, 125813 bytes).
+Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw1/.texpadtmp/ml_hw1.pdf (6 pages, 126290 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
