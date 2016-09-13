@@ -1,1 +1,1 @@
-python testA1.py pokemonTraining.data pokemonTesting.data
+python settingA.py SettingA/training.data SettingA/training.data mushroomFeatures.data

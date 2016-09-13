@@ -1,5 +1,6 @@
 from __future__ import division
 import math
+from collections import Counter
 
 class Example:
     def __init__(self):
@@ -41,11 +42,7 @@ class Node:
         return self.value
 
 class DecisionTree:
-    def __init__(self):
-        'A decision tree - used for the ID3 algorithm'
-        self.root = None
-        self.nodes = []
-
+    'A decision tree - used for the ID3 algorithm'
     def getFeatureVectors(self, examples):
         'Returns a list of the feature vectors'
         if len(examples) < 1:
@@ -115,29 +112,73 @@ class DecisionTree:
                 examples.append(example)
             return examples
 
-    def ID3(self, examples, attributes, labels):
+    def readPossibleFeatureValues(self, path):
+        'Reads in the possible values for a feature'
+        featureValues = []
+        with open(path) as file:
+            for line in file:
+                line = line.strip().split(',')
+                featureValues.append(line)
+        return featureValues
+
+
+    def ID3(self, examples, attributes, labels, possibleAttributeValues):
         # All examples have the same label
         if all(label == labels[0] for label in labels):
-            return Node(label)
-        
+            return Node(labels[0])
         # Find the attribute that best classifes the examples
         bestAttribute = attributes[0]
         bestAttributeColumn = 0
         bestInformationGain = self.informationGain(bestAttribute, labels)
         for index, attribute in enumerate(attributes[1:]):
-            if self.informationGain(attribute, labels) > bestInformationGain:
+            informationGain = self.informationGain(attribute, labels)
+            if informationGain > bestInformationGain:
                 bestAttribute = attribute
-                bestAttributeColumn = index
-                bestInformationGain = self.informationGain(attribute, labels)
+                bestAttributeColumn = index + 1
+                bestInformationGain = informationGain
         # Create a root node with this attribute
         root = Node(bestAttributeColumn)
+        # Find the most common attribute value for the best attribute
+        mostCommonLabel = Counter(labels).most_common()[0]
         # Add a new branch for each possible value the best attribute can take
-        possibleFeatureValues = set(bestAttribute)
-        for feature in possibleFeatureValues:
-            newEdge = Edge(feature)
+        for attribute in possibleAttributeValues[bestAttributeColumn]:
+            newEdge = Edge(attribute)
             root.addEdge(newEdge)
+            # If there are no examples of this attribute, give it the most common label
+            if attribute not in bestAttribute:
+                newLeaf = Node(mostCommonLabel[0])
+                newEdge.setChild(newLeaf)
+            # Otherwise, branch and add the subtree
+            else:
+                subExamples = []
+                for index, example in enumerate(examples):
+                    if example.features[bestAttributeColumn] == attribute:
+                        subExamples.append(example)
+                subAttributes, subLabels= self.getFeatureVectors(subExamples)                
+                newEdge.setChild(self.ID3(subExamples, subAttributes, subLabels, possibleAttributeValues))
+        return root
 
-    def constructTree(self, trainingDataFilePath):
+    def constructTree(self, trainingDataFilePath, possibleFeatureValuesFilePath):
+        self.possibleAttributeValues = self.readPossibleFeatureValues(possibleFeatureValuesFilePath)
         trainingData = self.readDataFile(trainingDataFilePath)
         featureVectors, labels = self.getFeatureVectors(trainingData)
-        tree = self.ID3(trainingData, featureVectors, labels)
+        self.root = self.ID3(trainingData, featureVectors, labels, self.possibleAttributeValues)
+
+    def reportError(self, examplesFilePath):
+        examples = self.readDataFile(examplesFilePath)
+        featureVectors, labels = self.getFeatureVectors(examples)
+        correctPredictions = 0 
+        for example in examples:
+            currentNode = self.root
+            while len(currentNode.edges) > 0:
+                exampleAttributeValue = example.features[currentNode.value]
+                for edge in currentNode.edges:
+                    if exampleAttributeValue == edge.getValue():
+                        currentNode = edge.childNode
+                        break
+            if currentNode.value == example.label:
+                correctPredictions = correctPredictions + 1
+        return correctPredictions / len(examples)
+
+    def printTree(self, currentNode=None):
+        print "hi" 
