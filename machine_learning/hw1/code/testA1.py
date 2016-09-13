@@ -13,7 +13,12 @@ def main():
     decisionTree = dt.DecisionTree()
     trainingData = decisionTree.readDataFile(trainingDataFilePath)
     testData = decisionTree.readDataFile(testDataFilePath)
-    
+
+    featureVectors, labels = decisionTree.getFeatureVectors(trainingData)
+
+    for vector in featureVectors:
+      print decisionTree.informationGain(vector, labels)
+
 def printUsage():
     print "usage: python testA1.py <training data> <test data>"
 
