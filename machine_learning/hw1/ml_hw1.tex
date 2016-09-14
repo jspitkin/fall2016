@@ -490,7 +490,31 @@ Above are the results for 6-fold cross validation using the \textbf{SettingA/tra
 
 \question{3}{Setting C}
 
+\part{1} I added an additional parameter to the constructor for my decision tree that allows for the user to decide between the three methods of replacement if an unknown value is encountered. \newline\newline
+	\textbf{Method 1:} I use the most common value of that missing attribute in the data. This is done after the data is read in, I then scan over the data looking for missing features and replace them. \newline
+	
+	\textbf{Method 2:} Similar to method two, after reading in the data I scan it for missing features. This time replacing it with the most common value of that attribute given it's label.
+	
+	\textbf{Method 3:} For this method, I simply added "?" as a possible feature value for all the features in the dataset.
 
+\part{2}
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+Method & Cross-validation Accuracy & Standard Deviation\\
+\hline
+1 & 99.17\% & 0.0185\\
+2 & 99.17\% & 0.0185\\
+3 & 99.17\% & 0.0185\\
+\hline
+\end{tabular}
+\caption{Results for 6-fold cross-validation with various replacement methods}
+\end{table}
+I saw no variance between the three methods of replacement. My theory is, based on my findings from my earlier experiments, the decision trees created with the ID3 algorithm are shallow. Meaning they rely on only one or two features to make a classification. Because of this, missing values had very little weight on the classification of examples. It would take many missing feature values of these dominate one or two features to create a statistical difference in the classifications.
 
+\part{2b} I train a decision tree, with a maximum of size 1, on \textbf{SettingC/training.data}. When testing the \textbf{SettingC/test.data} file, I get an error rate of $1.34\%$ with 2654/2690 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $1.34\%$}
 \end{document}
 

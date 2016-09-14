@@ -35,29 +35,26 @@ def main():
     splitFive.remove(splitFiveFilePath)
     splitSix.remove(splitSixFilePath)
 
-    decisionTree = dt.DecisionTree()
-    
-
-    print "Question Two"
-    treeSizes = [1, 2, 3, 4, 5, 10, 15, 20]
+    print "Question Three"
+    replaceMethods = [1, 2, 3]
     error = []
-    for i in range(len(treeSizes)):
-        decisionTree = dt.DecisionTree(treeSizes[i])
+    for i in range(len(replaceMethods)):
+        decisionTree = dt.DecisionTree(99999, replaceMethods[i])
         decisionTree.constructTree(splitOne, possibleFeatureValuesFilePath)
         error.append(decisionTree.reportError([splitOneFilePath])[0])
-        decisionTree = dt.DecisionTree(treeSizes[i])
+        decisionTree = dt.DecisionTree(99999, replaceMethods[i])
         decisionTree.constructTree(splitTwo, possibleFeatureValuesFilePath)
         error.append(decisionTree.reportError([splitTwoFilePath])[0])
-        decisionTree = dt.DecisionTree(treeSizes[i])
+        decisionTree = dt.DecisionTree(9999999,replaceMethods[i])
         decisionTree.constructTree(splitThree, possibleFeatureValuesFilePath)
         error.append(decisionTree.reportError([splitThreeFilePath])[0])
-        decisionTree = dt.DecisionTree(treeSizes[i])
+        decisionTree = dt.DecisionTree(999999, replaceMethods[i])
         decisionTree.constructTree(splitFour, possibleFeatureValuesFilePath)
         error.append(decisionTree.reportError([splitFourFilePath])[0])
-        decisionTree = dt.DecisionTree(treeSizes[i])
+        decisionTree = dt.DecisionTree(999999,replaceMethods[i])
         decisionTree.constructTree(splitFive, possibleFeatureValuesFilePath)
         error.append(decisionTree.reportError([splitFiveFilePath])[0])
-        decisionTree = dt.DecisionTree(treeSizes[i])
+        decisionTree = dt.DecisionTree(999999, replaceMethods[i])
         decisionTree.constructTree(splitSix, possibleFeatureValuesFilePath)
         error.append(decisionTree.reportError([splitSixFilePath])[0])
         a = np.array(error)
@@ -66,11 +63,11 @@ def main():
             errorSum = errorSum + e
         overall = errorSum / 6
         error = []
-        print "Tree Size: " + str(treeSizes[i]) + " Error: " + str(overall) + " St. Dev: " + str(np.std(a))
+        print "Tree Size: " + str(replaceMethods[i]) + " Error: " + str(overall) + " St. Dev: " + str(np.std(a))
 
     decisionTree = dt.DecisionTree(1)
-    decisionTree.constructTree(["SettingB/training.data"], possibleFeatureValuesFilePath)
-    error = decisionTree.reportError(["SettingB/test.data"])
+    decisionTree.constructTree(["SettingC/training.data"], possibleFeatureValuesFilePath)
+    error = decisionTree.reportError(["SettingC/test.data"])
     print "Error of tree with best cross-validation accuracy: " + str(1 - error[0])
     print str(error[2]) + "/" + str(error[4])
         

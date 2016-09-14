@@ -119,8 +119,6 @@ class DecisionTree:
             examples = self.replaceMethodOne(examples)
         elif self.replaceMethod == 2:
             examples = self.replaceMethodTwo(examples)
-        elif self.replaceMethod == 3:
-            examples = self.replaceMethodThree(examples)
         return examples
 
     def readPossibleFeatureValues(self, path):
@@ -129,6 +127,8 @@ class DecisionTree:
         with open(path) as file:
             for line in file:
                 line = line.strip().split(',')
+                if self.replaceMethod == 3:
+                    line.append("?")
                 featureValues.append(line)
         return featureValues
 
@@ -203,10 +203,17 @@ class DecisionTree:
         return ((correctPredictions / len(examples)), maxDepth, correctPredictions, (len(examples) - correctPredictions), len(examples))
 
     def replaceMethodOne(self, data):
+        for example in data:
+            for feature in example.features:
+                if feature == "?":
+                    mostCommonLabel = Counter(feature).most_common()[0]
+                    feature = mostCommonLabel
         return data
 
     def replaceMethodTwo(self, data):
-        return data
-
-    def replaceMethodThree(self, data):
+        for example in data:
+            for feature in example.features:
+                if feature == "?":
+                    mostCommonLabel = Counter(feature).most_common()[0]
+                    feature = mostCommonLabel
         return data
