@@ -278,7 +278,7 @@ edge from parent/.style = {draw, -latex'},
       edge from parent node[right] {Ultra}  
     }; 
 \end{tikzpicture}
- \quad TODO: Justify Ball/Berry/Color/Yellow
+ \quad The label 'no' on Ball[Poke] $\rightarrow$ Berry[yes] $\rightarrow$ Color[yellow] was chosen arbitrarily. The training examples with Ball[Poke] $\rightarrow$ Berry[Yes] have even probability between a 'yes' and 'no' label. The color yellow has no training data so a random choice was made.
 
 \part{f}
 
@@ -393,8 +393,104 @@ $$
 $$
 Looking at the combined dataset, we can see that either $x_1$ or $x_4$ must be set to produce an output of $1$. Otherwise, the output is $-1$.
 
-\question{3}{Experiments}
-Best tree depth of 2 on most experiments
+\question{3}{Setting A}
+
+\part{1a} I implemented my decision tree and the ID3 algorithm in Python. Python felt like the right language choice as it handles manipulating data well. For the representation of the tree, I used a Node and Edge class. I felt like this was the best choice since a node can have more than two children (binary tree won't do) and edges have labels on them. I wrote the file reading and handling with k-folding in mind, allowing multiple files as input data. This meant more development time upfront, but by making the code a little more generic I saved time come experimentation time.
+\newpage
+For questions \textbf{1b}, \textbf{1c}, and \textbf{1d} my decision tree was trained on the \textbf{SettingA/training.data} file.
+
+\part{1b} For the \textbf{SettingA/training.data} file, I had a $0\%$ error rate with 3822/3822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $0\%$}
+
+\part{1c} For the \textbf{SettingA/test.data} file, I had a $0\%$ error rate with 3822/3822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $0\%$}
+
+\part{1d} The maximum depth of my decision tree is three decisions.
+
+\framebox[1.5\width]{Maximum depth = $3$}
+
+\part{2a}
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+Tree Size& Cross-validation Accuracy & Standard Deviation\\
+\hline
+1 & 97.65\% & 0.051\\
+2 & 98.14\% & 0.042\\
+3 & 98.14\% & 0.042\\
+4 & 98.14\% & 0.042\\
+5 & 98.14\% & 0.042\\
+10 & 98.14\% & 0.042\\
+15 & 98.14\% & 0.042\\
+20 & 98.14\% & 0.042\\
+\hline
+\end{tabular}
+\caption{Results for 6-fold cross-validation with various maximum tree sizes}
+\end{table}
+Above are the results for 6-fold cross validation using the \textbf{SettingA/training\_0X.data} files. We can see from the chart that the best accuracy comes from using a tree of size 2 or larger. I would choose a tree of size two, because a more sparse decision tree can help avoid overfitting.
+
+\part{2b} I train a decision tree, with a maximum of size 2, on \textbf{SettingA/training.data}. When testing the \textbf{SettingA/test.data} file, I get an error rate of $0.22\%$ with 1818/1822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $0.22\%$}
+
+\question{3}{Setting B}
+
+For questions \textbf{1a}, \textbf{1b}, \textbf{1c}, \textbf{1d} and \textbf{1e} my decision tree was trained on the \textbf{SettingB/training.data} file.
+
+\part{1a} For the \textbf{SettingB/training.data} file, I had a $0\%$ error rate with 3822/3822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $0\%$}
+
+\part{1b} For the \textbf{SettingB/test.data} file I had a $6.3\%$ error rate with 1707/1822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $6.3\%$}
+
+\part{1c} For the \textbf{SettingA/training.data} file I had a $0.05\%$ error rate with 3820/3822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $0.05\%$} 
+
+\part{1d} For the \textbf{SettingA/test.data} file I had a $0.1\%$ error rate with 1820/1822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $0.1\%$}
+
+\part{1e} The maximum depth of my decision tree is nine decisions.
+
+\framebox[1.5\width]{Maximum depth = $9$}
+
+\part{2a}
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c | c |}
+\hline
+Tree Size& Cross-validation Accuracy & Standard Deviation\\
+\hline
+1 & 92.86\% & 0.0434\\
+2 & 90.21\% & 0.0953\\
+3 & 92.26\% & 0.043\\
+4 & 92.7\% & 0.02\\
+5 & 92.52\% & 0.0239\\
+10 & 92.28\% & 0.0244\\
+15 & 92.28\% & 0.0244\\
+20 & 92.28\% & 0.0244\\
+\hline
+\end{tabular}
+\caption{Results for 6-fold cross-validation with various maximum tree sizes}
+\end{table}
+Above are the results for 6-fold cross validation using the \textbf{SettingA/training\_0X.data} files. We can see from the chart that the best accuracy comes from using a tree of size 1. I would choose a tree of size one, because a more sparse decision tree can help avoid overfitting and it has the best accuracy. Additionally, the standard deviations between the cross-validations errors is lower than a tree of size two, which is another good candidate.
+
+\framebox[1.5\width]{Optimal tree size = 1} 
+
+\part{2b} I train a decision tree, with a maximum of size 1, on \textbf{SettingB/training.data}. When testing the \textbf{SettingB/test.data} file, I get an error rate of $6.42\%$ with 1705/1822 examples correctly classified.
+
+\framebox[1.5\width]{Error rate = $6.42\%$}
+\newpage
+
+\question{3}{Setting C}
+
+
 
 \end{document}
 

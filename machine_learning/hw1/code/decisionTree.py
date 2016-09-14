@@ -43,6 +43,9 @@ class Node:
 
 class DecisionTree:
     'A decision tree - used for the ID3 algorithm'
+    def __init__(self, maxDepth=99999, replaceMethod=4):
+        self.maxDepth = maxDepth
+        self.replaceMethod = replaceMethod
     def getFeatureVectors(self, examples):
         'Returns a list of the feature vectors'
         if len(examples) < 1:
@@ -98,19 +101,27 @@ class DecisionTree:
 
         return self.entropy(labels) - expectedEntropy
 
-    def readDataFile(self, path):
+    def readDataFile(self, paths):
         'Reads in a data file separated by commas and returns a list of Examples'
         examples = []
-        with open(path) as file:
-            for line in file:
-                line = line.strip().split(',')
-                example = Example()
-                for feature in line[:-1]:
-                    example.addFeature(feature)
-                if len(line) >= 1:
-                    example.updateLabel(line[-1])
-                examples.append(example)
-            return examples
+        for path in paths:
+            with open(path) as file:
+                for line in file:
+                    line = line.strip().split(',')
+                    example = Example()
+                    for feature in line[:-1]:
+                        example.addFeature(feature)
+                    if len(line) >= 1:
+                        example.updateLabel(line[-1])
+                    examples.append(example)
+
+        if self.replaceMethod == 1:
+            examples = self.replaceMethodOne(examples)
+        elif self.replaceMethod == 2:
+            examples = self.replaceMethodTwo(examples)
+        elif self.replaceMethod == 3:
+            examples = self.replaceMethodThree(examples)
+        return examples
 
     def readPossibleFeatureValues(self, path):
         'Reads in the possible values for a feature'
@@ -122,7 +133,12 @@ class DecisionTree:
         return featureValues
 
 
-    def ID3(self, examples, attributes, labels, possibleAttributeValues):
+    def ID3(self, examples, attributes, labels, possibleAttributeValues, curDepth):
+        # Check if max depth has been reached, if so take the most common value
+        if curDepth + 1 > self.maxDepth:
+            mostCommonLabel = Counter(labels).most_common()[0]
+            return Node(mostCommonLabel[0])
+         
         # All examples have the same label
         if all(label == labels[0] for label in labels):
             return Node(labels[0])
@@ -154,31 +170,43 @@ class DecisionTree:
                 for index, example in enumerate(examples):
                     if example.features[bestAttributeColumn] == attribute:
                         subExamples.append(example)
-                subAttributes, subLabels= self.getFeatureVectors(subExamples)                
-                newEdge.setChild(self.ID3(subExamples, subAttributes, subLabels, possibleAttributeValues))
+                subAttributes, subLabels= self.getFeatureVectors(subExamples)
+                newEdge.setChild(self.ID3(subExamples, subAttributes, subLabels, possibleAttributeValues, curDepth + 1))
         return root
 
-    def constructTree(self, trainingDataFilePath, possibleFeatureValuesFilePath):
+    def constructTree(self, trainingDataFilePaths, possibleFeatureValuesFilePath):
         self.possibleAttributeValues = self.readPossibleFeatureValues(possibleFeatureValuesFilePath)
-        trainingData = self.readDataFile(trainingDataFilePath)
+        trainingData = self.readDataFile(trainingDataFilePaths)
         featureVectors, labels = self.getFeatureVectors(trainingData)
-        self.root = self.ID3(trainingData, featureVectors, labels, self.possibleAttributeValues)
+        self.root = self.ID3(trainingData, featureVectors, labels, self.possibleAttributeValues, 0)
 
     def reportError(self, examplesFilePath):
         examples = self.readDataFile(examplesFilePath)
         featureVectors, labels = self.getFeatureVectors(examples)
         correctPredictions = 0 
+        maxDepth = 0
         for example in examples:
             currentNode = self.root
+            currentDepth = 0
             while len(currentNode.edges) > 0:
                 exampleAttributeValue = example.features[currentNode.value]
                 for edge in currentNode.edges:
                     if exampleAttributeValue == edge.getValue():
                         currentNode = edge.childNode
-                        break
+                        currentDepth = currentDepth + 1
+                        if currentDepth > maxDepth:
+                            maxDepth = currentDepth
+                            currentDepth = 0
+            currentDepth = 0
             if currentNode.value == example.label:
                 correctPredictions = correctPredictions + 1
-        return correctPredictions / len(examples)
+        return ((correctPredictions / len(examples)), maxDepth, correctPredictions, (len(examples) - correctPredictions), len(examples))
 
-    def printTree(self, currentNode=None):
-        print "hi" 
+    def replaceMethodOne(self, data):
+        return data
+
+    def replaceMethodTwo(self, data):
+        return data
+
+    def replaceMethodThree(self, data):
+        return data
