@@ -1,0 +1,166 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 6150, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{1}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+\question{1}{Recurrences}
+
+\part{a} $T(n) = 4T(n/4) + n$
+
+There will be $k$ levels of recursion where $k = log_4(n)$. The amount of work done at each level $k$ is summed. There is $T(1) * n$ work done by the bottom level.
+$$\sum\limits_{i=1}^k 4^{i-1} * \frac{n}{4^{i-1}} + T(1) * n$$ 
+$$\sum\limits_{i=1}^k n + T(1) * n$$
+$$k * n + T(1) * n$$
+$$log_4(n) * n + c * n$$
+
+\framebox[1.5\width]{$O(n\log n)$}
+
+\part{b} $T(n) = 4T(n/4) + 1$
+
+$$\sum\limits_{i=1}^k 4^{i-1} * \frac{1}{4^{i-1}} + T(1) * n$$ 
+$$\sum\limits_{i=1}^k 1 + T(1) * n$$
+$$k  + T(1) * n$$
+$$log_4(n) + c * n$$
+
+\framebox[1.5\width]{$O(n)$}
+
+\part{c} $T(n) = T(n - 1) + n$
+
+There will be $k$ levels of recursion where $ k = n - 1$.
+
+$$\sum\limits_{i=1}^k n-1 + \sum\limits_{i=1}^k n$$
+$$\sum\limits_{i=1}^{n-1} n - \sum\limits_{i=1}^{n-1} 1 + \sum\limits_{i=1}^{n-1} n$$
+$$\frac{n(n-1)}{2} + (n - 1) + \frac{n(n-1)}{2}$$
+
+Here I use the fact that the sum of the first $n - 1$ numbers is equal to $\frac{n(n-1)}{2}$.
+
+\framebox[1.5\width]{$O(n^2)$}
+
+\part{d} $T(n) = T(n/3) + T(n/2) + \sqrt{n}$
+
+\part{e} $T(n) = T(\sqrt{n}) + 4$
+
+\part{fa} $T(n) = 3T(n/2) + n^2$
+
+\part{fb} $T(n) = 3T(n/2) + n$
+
+\part{fc} $T(n) = 3T(n/2) + n^{log_23}$
+
+\question{2}{Sorting "nearby" numbers} 
+
+\algorith: The sorting algorithm I am going to describe is a modified version of counting sort, that will accommodate negative integers and a range of numbers not beginning at zero. Let C[0...M-1] be an array that will store the counts of the integers in A, all initially starting at 0. 
+
+Iterate $A$ and for each $element_A$ in $A$, index $C[element_A - minA]$ and add one to the count. 
+
+Iterate $C$ and update each count to the first index that an element with a value of $index_C$ from $A$ will be placed in the output array (the index of $C$ represents the value of an element from $A$). This can be done by summing all the counts in $C$ with all counts that precede each count in $C$.
+
+Final iteration of $A$ to create the sorted output array $O[1...n-1]$. We will index $C$ with each element from $A$ to find the index to place the element in $O$, subtracting off the offset of $minA$ that accommodates negative integers. Additionally, we will increase the count in $C$ for the current element. 
+
+We are done and $O[1...n-1]$ will contain the elements of $A[1...n-1]$ in sorted order.
+
+\correctness: 
+
+\runtime: This sorting algorithm performs three iterations. The first iteration  of $A$ scans $n$ elements performing constant work with each one. Next $C$ is scanned and a "rolling sum" is applied to $M$ elements, which is constant work. A final iteration of $A$ is performed over $n$ items to construct the output array. Giving $c*n + c*M + c*n$ work or $O(n + M)$.
+
+\framebox[1.5\width]{$O(n + M)$}
+\newpage
+\question{3}{Selecting in a union}
+
+\begin{algorithm}[H]
+\caption{Union Select}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Procedure{unionSelect(Al, Ah, Bl, Bh, A, B, k)}{}
+\If{Ah $<$ Al}
+\State return B[k - Al]
+\EndIf
+\If{Bh $<$ Bl}
+\State return A[k - Bl]
+\EndIf
+\newline
+\State Am = (Al + Ah)/2 
+\State Bm = (Bl + Bh)/2 
+\newline
+\If{B[Bm] $>=$ A[Am]}
+\If{k $<=$ Am + Bm}
+\State \textbf{return} unionselect(Al, Ah, Bl, Bm - 1, A, B, k)
+\Else
+\State \textbf{return} unionselect(Am + 1, Ah, Bl, Bh, A, B, k)
+\EndIf
+\Else
+\If{k $<=$ Am + Bm}
+\State \textbf{return} unionselect(Al, Am - 1, Bl, Bh, A, B, k)
+\Else 
+\State \textbf{return} unionselect(Al, Ah, Bm + 1, Bh, A, B, k)
+\EndIf
+
+\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The goal of the algorithm is to discard half of either A[0...n-1] or B[0...n-1] each recursion. There are four choices to discard (bottom-half or top-half of either A or B). The arrays are sorted, so looking at the middle value of each array will give us information about the values that preside and follow it.
+
+\textbf{Case 1:} The middle element of B is greater than the middle element of A and $k$ is less than the sum of the two middle indices. Since $B[Bm]$ is greater than $A[Am]$, we know that all the elements before index $Am$ come before the element at index $Bm$ (if all the elements where in one sorted array). Since $k$ is less than $Am + Bm$, we know $k$ is one of these elements or could be in A. This allows us to discard the top half of B.
+
+\textbf{Case 2 - 4:} The other three cases follow the same logic as case 1: determine a half of either A or B that the $kth$ smallest element couldn't exist in and discard it.
+
+The recursion continues until one of the arrays becomes empty. At which point the other array is indexed and the $kth$ smallest element is returned.
+
+\correctness: 
+
+\runtime: In the worst case, both arrays will be divided in half until one array is empty and the other only contains one element. This can be viewed as performing binary search on each array, which has a worst-case complexity of $O(\log n)$. There will be two "binary searches", one on A and one on B giving $O(\log n) + O(\log n)$ which simplified is $O(\log n)$. 
+
+	A recurrence relation can also be used to prove the runtime. Let $N = n + n$. There is one recursion per level, 3/4ths of the remaining N is passed into each call, and there is constant work done at each level.
+	
+	$$T(N) = T(3N/4) + 1$$
+	
+	Which when solved with master theorem gives $O(\log n)$.
+	
+\framebox[1.5\width]{$O(\log n)$}
+
+\question{4}{Closest pair of restaurants in Manhattan}
+
+\question{5}{Linear Time Median}
+
+\end{document}
