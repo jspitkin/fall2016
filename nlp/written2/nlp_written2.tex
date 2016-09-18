@@ -1,0 +1,167 @@
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{float}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 5340, \today}
+\begin{document}\raggedright
+
+\newcommand\NAME{Jake Pitkin}
+\newcommand\UID{u0891770}
+\newcommand\HWNUM{2}
+
+\question{Problem 1}{Laplace Smoothing}
+
+Let $|V| = 5$ where $V$ is the vocabulary and  $N = \sum\limits_{i}^{|V|} freq(w_i) = 1,200$ where $N$ is the number of words in the corpus. Without smoothing, the probabilities of each noun in the corpus are:
+
+\qquad$P(maple) = \frac{freq(maple)}{N} = \frac{600}{1,200} = 0.5$
+
+\qquad$P(oak) = \frac{freq(oak)}{N} = \frac{400}{1,200} = 0.333$
+
+\qquad$P(pine) = \frac{freq(pine)}{N} = \frac{180}{1,200} = 0.15$
+
+\qquad$P(spruce) = \frac{freq(spruce)}{N} = \frac{20}{1,200} = 0.167$
+
+\qquad$P(aspen) = \frac{freq(aspen)}{N} = \frac{0}{1,200} = 0$
+
+Using Laplace smoothing (aka: Add-One Smoothing), the new frequencies for each noun:
+
+\qquad$new\_freq(maple) = (freq(maple) + 1) * \frac{N}{N + V} = (600 + 1) * \frac{1,200}{1,200 + 5} = \frac{721,200}{1,205} = 598.506$
+
+\qquad$new\_freq(oak) = (freq(oak) + 1) * \frac{N}{N + V} = (400 + 1) * \frac{1,200}{1,200 + 5} = \frac{481,200}{1,205} = 399.336$
+
+\qquad$new\_freq(pine) = (freq(pine) + 1) * \frac{N}{N + V} = (180 + 1) * \frac{1,200}{1,200 + 5} = \frac{217,200}{1,205} = 180.249$
+
+\qquad$new\_freq(spruce) = (freq(spruce) + 1) * \frac{N}{N + V} = (20 + 1) * \frac{1,200}{1,200 + 5} = \frac{25,200}{1,205} = 20.913$
+
+\qquad$new\_freq(aspen) = (freq(aspen) + 1) * \frac{N}{N + V} = (0 + 1) * \frac{1,200}{1,200 + 5} = \frac{1,200}{1,205} = 0.966$
+
+Given these new frequencies, the new probabilities are calculated:
+
+\qquad$new\_P(maple) = \frac{new\_freq(maple)}{N} = \frac{598.506}{1,200} = 0.499$
+
+\qquad$new\_P(oak) = \frac{new\_freq(oak)}{N} = \frac{399.336}{1,200} = 0.333$
+
+\qquad$new\_P(pine) = \frac{new\_freq(pine)}{N} = \frac{180.249}{1,200} = 0.15$
+
+\qquad$new\_P(spruce) = \frac{new\_freq(spruce)}{N} = \frac{20.913}{1,200} = 0.017$
+
+\qquad$new\_P(aspen) = \frac{new\_freq(aspen)}{N} = \frac{0.996}{1,200} = 0.001$
+
+Completing the table:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c | c | | c | c |}
+\hline
+\textbf{Noun} & \textbf{Freq.} & \textbf{Unsmoothed Prob.} & \textbf{Smoothed Freq.} & \textbf{Smoothed Prob.}\\
+\hline
+\hline
+maple & 600 & 0.5 & 598.506 & 0.499 \\
+\hline
+oak & 400 & 0.333 & 399.336 & 0.333 \\
+\hline
+pine & 180 & 0.15 & 180.249 & 0.15 \\
+\hline
+spruce & 20 & 0.017 & 20.913 & 0.017 \\
+\hline
+aspen & 0 & 0 & 0.996 & 0.001 \\ 
+\hline
+\end{tabular}
+\caption{Unsmoothed and smoothed probabilities and frequencies.}
+\end{table}
+\newpage
+
+\question{2}{Grammars and Recursive Transition Networks}
+
+\part{a} Grammar A and Grammar B - \textbf{DIFFERENT}
+
+Grammar A requires the NP to begin with an article but Grammar B does not. 
+
+An example POS tag sequence \textbf{accepted by Grammar B} and not by Grammar A is: \textbf{noun}.\newline
+
+\part{b} Grammar A and Grammar C - \textbf{DIFFERENT}
+
+Grammar C requires one or more adjectives after the article but Grammar A requires zero or more adjectives after the article. 
+
+An example POS tag sequence \textbf{accepted by Grammar A} and not by Grammar C is: \textbf{art noun}. \newline
+
+\part{c} Grammar A and RTN-2 - \textbf{DIFFERENT}
+
+Grammar A requires the NP to begin with an article but RTN-2 does not.
+
+An example POS tag sequence \textbf{accepted by RTN-2} and not by Grammar A is: \textbf{noun}.\newline
+
+\part{d} Grammar A and RTN-3 - \textbf{DIFFERENT}
+
+RTN-3 requires one or more adjectives after the article but Grammar A requires zero or more adjectives after the article.
+
+An example POS tag sequence \textbf{accepted by Grammar A} and not by RTN-3 is: \textbf{art noun}.\newline
+
+\part{e} Grammar B and RTN-2 - \textbf{SAME}\newline
+
+\part{f} Grammar C and RTN-1 - \textbf{DIFFERENT}
+
+Grammar C requires the NP to end with one or more nouns but RTN-1 does not.
+
+An example POS tag sequence \textbf{accepted by RTN-1} and not by Grammar C is: \textbf{art adj}.\newline
+
+\part{g} Grammar C and RTN-3 - \textbf{SAME}\newline
+
+\part{h} RTN-1 and RTN-3 - \textbf{DIFFERENT}
+
+RTN-3 requires the NP to end with one or more nouns but RTN-1 does not.
+
+An example POS tag sequence \textbf{accepted by RTN-1} and not by Grammar C is: \textbf{art adj}.
+
+\newpage
+
+\question{3}{N-Gram Probabilities}
+
+Let $|V| = 18$ where $V$ is the vocabulary and  $N = \sum\limits_{i}^{|V|} freq(w_i) = 34$ where $N$ is the number of words in the tiny text corpus.
+
+\part{a} $P(the) =  \frac{5}{34}$
+
+\part{b} $P(VERB) = \frac{6}{34}$
+
+\part{c} $P(young \ | \ girl)$
+
+\part{d} $P(girl \ | \ young)$
+
+\part{e} $P(and \ | \ women)$
+
+\part{f} $P(thanked \ | \ young \ girl)$
+
+\part{g} $P(five \ | \ gave \ her)$
+
+\part{h} $P(the \ | \ ART)$
+
+\part{i} $P(cross \ | \ NOUN)$
+
+\part{j} $P(thanked \ | \ VERB)$
+
+\part{k} $P(NUM \ | \ PRO)$
+
+\part{l} $P(ART \ | \ VERB)$
+
+\end{document}
