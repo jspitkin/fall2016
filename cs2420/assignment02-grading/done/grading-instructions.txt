@@ -1,0 +1,26 @@
+ANALYSIS DOC (20 pts)
+------------------------------------
+1.  [ 2 pt ]  (FYI)
+
+2.  [ 2 pt ]  Accept anything reasonable.  (The question makes them reflect on the process and somewhat checks that they at least know what pair programming is.)
+
+3.  [ 2 pt ]  Accept anything reasonable.  If you think anyone had a serious problem that needs to be addressed, let me know.
+
+4.  [ 10 pt ]  Differences:  natural ordering vs. user-defined ordering and how to call compareTo() vs. how to call compare(). I didn't talk about "natural ordering" too much, so don't be very harsh.
+                Accept any reasonable situation for using each.
+                I don't think that there is a natural ordering for library books, but students are free to disagree ... so long as they back up their opinion. This also illustrates why comparators are useful over comparable, we've defined two different comparators (order by date, and order by isbn), that can be used in the same sorting/searching functions. 
+
+5.  [ 2 pt ]  Accept anything reasonable.
+
+6.  [ 2 pt ]  Let me know what the average is, and if anyone spent way longer than the average.
+
+
+PROGRAM (80 pts)
+-----------------------------
+[ 5 pt ]  Program includes all files the students were directed to modify or create (Book, Library, LibraryBook, LibraryBookGeneric, LibraryGeneric) and compiles.
+
+[ 65 pt ]  Autograder output
+
+[ 5 pt ]  Students provided new (non-trivial) tests, either in LibraryTest/LibraryGenericTest or new classes.
+
+[ 5 pt ]  Coding style. If code is very difficult to read, it should be commented.

@@ -1,0 +1,82 @@
+---All files compile, coments---
+(i.e., zip contains Book, Library, LibraryBook, 
+LibraryBookGeneric, LibraryGeneric, all compile,
+and code includes good comments and formatting
+
+Points received:   /10
+
+===================
+---Original Tests---
+Non-Generic Testing
+TEST FAILED -- small library: lookup(isbn)
+9/10 tests passed.  4/5 Points
+
+Generic Tests
+TEST FAILED: first checkout
+TEST FAILED: second checkout
+TEST FAILED: lookup(holder)
+TEST FAILED: checkin(holder)
+TEST FAILED: first checkout
+TEST FAILED: second checkout
+TEST FAILED: lookup(holder)
+TEST FAILED: checkin(holder)
+0/8 tests passed.  0/5 Points
+
+===================
+---Phase 1 Testing---
+Testing Book.java
+7/7 tests passed.  5/5 Points
+
+Joint testing LibraryBook.java and Library.java
+TEST FAILED: .getHolder() fail.
+TEST FAILED: .getDueDate() fail.
+TEST FAILED: lookup(long isbn) should == null.
+TEST FAILED: lookup(long isbn) should != null.
+TEST FAILED: lookup(String holder) did not find all LibraryBooks.
+7/12 tests passed.  5/10 Points
+
+===================
+---Phase 2 Testing---
+Joint testing LibraryBookGeneric.java and LibraryGeneric.java
+TEST FAILED: .getDueDate() fail.
+TEST GENERATED EXCEPTION: lookup(long isbn) should != null.java.lang.NullPointerException
+TEST FAILED: checkin(long isbn) failed.
+8/11 tests passed.  7/10 Points
+
+Testing LibraryGeneric<Object> methods
+TEST FAILED: Checkout failed on LibraryGeneric<Object>
+TEST FAILED: Checkout failed on LibraryGeneric<Object>
+TEST FAILED: Lookup(holder) failed on LibraryGeneric<Object>
+TEST FAILED: Lookup(isbn) failed on LibraryGeneric<Object>
+TEST FAILED: Checkin failed on LibraryGeneric<Object>
+TEST FAILED: Checkin(holder) failed on LibraryGeneric<Object>
+4/10 tests passed.  4/10 Points
+
+===================
+---Phase 3 Testing---
+Sorting by due date testing
+TEST FAILED: overDueList for PhoneNumber failed.
+TEST FAILED: overDueList for all books failed.
+TEST FAILED: overDueList for one book failed.
+2/5 tests passed.  4/10 Points
+
+Sorting by author and title testing
+TEST FAILED: orderedByAuthor author and title equivalent
+TEST FAILED: orderedByAuthor author and title different
+TEST FAILED: orderedByAuthor author and title tiebreaker
+TEST FAILED: orderedByAuthor author and title tiebreaker 2
+1/5 tests passed.  2/10 Points
+
+===================
+Comments/style:          /10
+Program points:          31/65
+Student-provided tests:  /5
+Analysis Document:       /20
+Total Points:            /100
+
+Note: General rule is 1 point deducted for each failed test 
+(up to total number of points possible for each test).
+In phase 3 testing, two points were deducted per failed test.
+
+===================
+Comments:
