@@ -138,30 +138,58 @@ An example POS tag sequence \textbf{accepted by RTN-1} and not by Grammar C is: 
 
 \question{3}{N-Gram Probabilities}
 
-Let $|V| = 18$ where $V$ is the vocabulary and  $N = \sum\limits_{i}^{|V|} freq(w_i) = 34$ where $N$ is the number of words in the tiny text corpus.
+Let $k$ denote the number of distinct lexical unigrams in the text corpus. \newline
+\part{a} $P(the) = \frac{freq(the)}{\sum\limits_{i}^{k} freq(w_i)} = \ $ \framebox[2\width]{$\cfrac{5}{34}$}
 
-\part{a} $P(the) =  \frac{5}{34}$
+Let $k$ denote the number of distinct POS unigrams in the text corpus. \newline
+\part{b} $P(the) = \frac{freq(VERB)}{\sum\limits_{i}^{k} freq(T_i)} = \ $\framebox[2\width]{$\cfrac{6}{34}$}
 
-\part{b} $P(VERB) = \frac{6}{34}$
+Let $freq(W_{n-m},...,W_{n-1}, W_{n})$ denote the frequency of the phrase $W_{n-m},...,W_{n-1}, W_{n}$ appearing in the text corpus. \newline
+\part{c} $P(young \ | \ girl) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(girl \ young)}{freq(girl)} = \ $\framebox[2\width]{$\cfrac{0}{3}$}
 
-\part{c} $P(young \ | \ girl)$
+\part{d} $P(girl \ | \ young) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(young \ girl)}{freq(young)} = \ $\framebox[2\width]{$\cfrac{2}{3}$}
 
-\part{d} $P(girl \ | \ young)$
+\part{e} $P(and \ | \ women) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(women \ and)}{freq(women)} = \ $\framebox[2\width]{$\cfrac{1}{3}$}
 
-\part{e} $P(and \ | \ women)$
+\part{f} $P(thanked \ | \ young \ girl) = \frac{freq(W_{n-2}, W_{n-1}, W_n)}{freq(W_{n-2}, W_{n-1})} = \frac{freq(young \ girl \ thanked)}{freq(young \ girl)} = \ $\framebox[2\width]{$\cfrac{0}{2}$}
 
-\part{f} $P(thanked \ | \ young \ girl)$
+\part{g} $P(five \ | \ gave \ her) = \frac{freq(W_{n-2}, W_{n-1}, W_n)}{freq(W_{n-2}, W_{n-1})} = \frac{freq(gave \ her \ five)}{freq(gave \ her)} = \ $\framebox[2\width]{$\cfrac{1}{2}$}
 
-\part{g} $P(five \ | \ gave \ her)$
+Let $C(event)$ denote the count of the given event occurring in the text corpus. \newline
+\part{h} $P(the \ | \ ART) = \frac{C(w_i \ with \ tag \ T_i)}{C(any \ word \ with \ tag \ T_i)} = \frac{C(the \ with \ tag \ ART)}{C(any \ word \ with \ tag \ ART)} = \ $\framebox[2\width]{$\cfrac{5}{8}$}
 
-\part{h} $P(the \ | \ ART)$
+\part{i} $P(cross \ | \ NOUN) = \frac{C(w_i \ with \ tag \ T_i)}{C(any \ word \ with \ tag \ T_i)} = \frac{C(cross \ with \ tag \ NOUN)}{C(any \ word \ with \ tag \ NOUN)} = \ $\framebox[2\width]{$\cfrac{0}{9}$}
 
-\part{i} $P(cross \ | \ NOUN)$
+\part{j} $P(thanked \ | \ NOUN) = \frac{C(thanked \ with \ tag \ NOUN)}{C(any \ word \ with \ tag \ T_i)} = \frac{C(thanked \ with \ tag \ NOUN)}{C(any \ word \ with \ tag \ NOUN)} = \ $\framebox[2\width]{$\cfrac{0}{9}$}
 
-\part{j} $P(thanked \ | \ VERB)$
+\part{k} $P(NUM \ | \ PRO) = \frac{C(T_i \ immediately \ follows \ T_{i-1})}{C(any \ tag \ immediately \ follows \ T_{i- 1})} = \frac{C(NUM \ immediately \ follows \ PRO)}{C(any \ tag \ immediately \ follows \ PRO)} = \ $\framebox[2\width]{$\cfrac{1}{2}$}
 
-\part{k} $P(NUM \ | \ PRO)$
+\part{l} $P(ART \ | \ VERB) = \frac{C(T_i \ immediately \ follows \ T_{i-1})}{C(any \ tag \ immediately \ follows \ T_{i- 1})} = \frac{C(ART \ immediately \ follows \ VERB)}{C(any \ tag \ immediately \ follows \ VERB)} = \ $\framebox[2\width]{$\cfrac{4}{6}$}
 
-\part{l} $P(ART \ | \ VERB)$
+\newpage
+
+\question{4}{Viterbi Algorithm}
+
+\part{a} $P(light=VERB) = P(VERB\ | \ \phi) * P(light \ | \ VERB) = 0.25 * 0.5 =$ \framebox[2\width]{$0.125$}
+
+\part{b} $P(light=NOUN) = P(NOUN \ | \ \phi) * P(light \ | \ NOUN) = 0.7 * 0.6 =$ \framebox[2\width]{$0.42$}
+
+\part{c} $P(light=ADJ) = P(ADJ \ | \ \phi) * P(light \ | \ ADJ) = 0.15 * 0.2 =$ \framebox[2\width]{$0.03$}
+
+\part{d} $P(shows=VERB) = P(shows \ | \ V) * MAX[(P(light=V) * P(V \ | \ V)), (P(light=N) * P(V \ | \ N)), (P(light=A) * P(V \ | \ A))]$
+
+$P(shows=VERB) = 0.3 * MAX[(0.125 * 0.4), (0.42 * 0.5), (0.03, 0.1)] = $ \framebox[2\width]{$0.063$} 
+
+\part{e} $P(shows=NOUN) = P(shows \ | \ N) * MAX[(P(light=V) * P(V \ | \ V)), (P(light=N) * P(V \ | \ N)), (P(light=A) * P(VE \ | \ A))]$
+
+$P(shows=NOUN) = 0.4 * MAX[(0.125 * 0.3), (0.42 * 0.8), (0.03, 0.6)] =$ \framebox[2\width]{$0.1344$}
+
+\part{f} $P(shows=ADJ) = P(shows \ | \ A) * MAX[(P(light=V) * P(V \ | \ V)), (P(light=N) * P(V \ | \ N)), (P(light=A) * P(V \ | \ A))]$
+
+$P(shows=ADJ) = 0.1 * MAX[(0.125 * 0.7), (0.42 * 0.2), (0.03, 0.9)] =$ \framebox[2\width]{$0.00875$}
+
+The most likely sequence of POS tags for the sentence \textit{"Light shows"} is Light=NOUN and shows=NOUN.
+
+\framebox[2\width]{light=NOUN and shows=NOUN}
 
 \end{document}

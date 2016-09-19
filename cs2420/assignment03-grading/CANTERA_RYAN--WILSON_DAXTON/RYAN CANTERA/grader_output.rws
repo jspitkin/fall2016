@@ -1,0 +1,533 @@
+           TESTING WITH COMPARABLE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty last
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: Add string 2
+	Contents incorrect after method
+TEST FAILED: Add string 3
+	Contents incorrect after method
+TEST FAILED: Add string 5
+	Contents incorrect after method
+TEST FAILED: Add string 6
+	Contents incorrect after method
+TEST FAILED: Add string 8
+	Contents incorrect after method
+TEST FAILED: Add string 9
+	Contents incorrect after method
+TEST FAILED: Add string 10
+	Contents incorrect after method
+TEST FAILED: Add string 11
+	Contents incorrect after method
+TEST FAILED: non-empty iterate
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: non-empty iterate
+	next() returned wrong element
+TEST FAILED: containsAll on identical Collection
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: containsAll of empty
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 0
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 1
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 2
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 3
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 4
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 5
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 6
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 7
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 8
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 9
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 10
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: removeAll of empty
+	Returned true
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: toArray after addAll
+	Array is null or incorrect length
+TEST FAILED: containsAll on identical Collection
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: removeAll of identical collection
+	Contents incorrect after method
+TEST FAILED: iterate after removeAll
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: iterate after clear
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: last after clear
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: empty containsAll of empty
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: empty removeAll of empty
+	Returned true
+TEST FAILED: Empty remove element 0
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 1
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 2
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 3
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 4
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 5
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 6
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 7
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 8
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 9
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 10
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: remove element 0
+	Contents incorrect after method
+TEST FAILED: remove new element 0
+	Contents incorrect after method
+TEST FAILED: remove last element
+	Contents incorrect after method
+TEST FAILED: add new last element
+	Contents incorrect after method
+TEST FAILED: remove new last element
+	Contents incorrect after method
+TEST FAILED: add middle element
+	Contents incorrect after method
+TEST FAILED: remove middle element
+	Contents incorrect after method
+TEST FAILED: add new middle element
+	Contents incorrect after method
+TEST FAILED: remove new middle element
+	Contents incorrect after method
+TEST FAILED: iterate after remove
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterate after remove
+	next() returned wrong element
+TEST FAILED: removeAll non-intersecting 1
+	Returned true
+TEST FAILED: removeAll non-intersecting 2
+	Returned true
+TEST FAILED: removeAll subset
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Returned false
+TEST FAILED: removeAll subset
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Returned false
+TEST FAILED: iterator remove first element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove last element
+	next() returned wrong element
+TEST FAILED: iterator remove middle element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+TEST FAILED: addAll large number of elements
+	Returned false
+
+  TESTING WITH COMPARATOR ON COMPARABLE TYPE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty last
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: Add string 3
+	Contents incorrect after method
+TEST FAILED: Add string 4
+	Contents incorrect after method
+TEST FAILED: Add string 5
+	Contents incorrect after method
+TEST FAILED: Add string 6
+	Contents incorrect after method
+TEST FAILED: Add string 7
+	Contents incorrect after method
+TEST FAILED: Add string 8
+	Contents incorrect after method
+TEST FAILED: Add string 10
+	Contents incorrect after method
+TEST FAILED: Add string 11
+	Contents incorrect after method
+TEST FAILED: non-empty iterate
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: non-empty iterate
+	next() returned wrong element
+TEST FAILED: containsAll on identical Collection
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: containsAll of empty
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 0
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 1
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 2
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 3
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 4
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 5
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 6
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 7
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 8
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 9
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 10
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: removeAll of empty
+	Returned true
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: toArray after addAll
+	Array is null or incorrect length
+TEST FAILED: containsAll on identical Collection
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: removeAll of identical collection
+	Contents incorrect after method
+TEST FAILED: iterate after removeAll
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: iterate after clear
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: last after clear
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: empty containsAll of empty
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to java.lang.String
+TEST FAILED: empty removeAll of empty
+	Returned true
+TEST FAILED: Empty remove element 0
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 1
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 2
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 3
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 4
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 5
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 6
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 7
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 8
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 9
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 10
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: remove element 0
+	Contents incorrect after method
+TEST FAILED: remove new element 0
+	Contents incorrect after method
+TEST FAILED: remove last element
+	Contents incorrect after method
+TEST FAILED: add new last element
+	Contents incorrect after method
+TEST FAILED: remove new last element
+	Contents incorrect after method
+TEST FAILED: add middle element
+	Contents incorrect after method
+TEST FAILED: remove middle element
+	Contents incorrect after method
+TEST FAILED: add new middle element
+	Contents incorrect after method
+TEST FAILED: remove new middle element
+	Contents incorrect after method
+TEST FAILED: iterate after remove
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterate after remove
+	next() returned wrong element
+TEST FAILED: removeAll non-intersecting 1
+	Returned true
+TEST FAILED: removeAll non-intersecting 2
+	Returned true
+TEST FAILED: removeAll subset
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Returned false
+TEST FAILED: removeAll subset
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Returned false
+TEST FAILED: iterator remove first element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove last element
+	next() returned wrong element
+TEST FAILED: iterator remove middle element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+TEST FAILED: addAll large number of elements
+	Returned false
+
+TESTING WITH COMPARATOR ON NON-COMPARABLE TYPE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty last
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: Add string 3
+	Contents incorrect after method
+TEST FAILED: Add string 4
+	Contents incorrect after method
+TEST FAILED: Add string 5
+	Contents incorrect after method
+TEST FAILED: Add string 6
+	Contents incorrect after method
+TEST FAILED: Add string 7
+	Contents incorrect after method
+TEST FAILED: Add string 8
+	Contents incorrect after method
+TEST FAILED: Add string 10
+	Contents incorrect after method
+TEST FAILED: Add string 11
+	Contents incorrect after method
+TEST FAILED: non-empty iterate
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: non-empty iterate
+	next() returned wrong element
+TEST FAILED: containsAll on identical Collection
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to assignment03.SortedSetGrader$StringWrapper
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: containsAll of empty
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to assignment03.SortedSetGrader$StringWrapper
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 0
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 1
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 2
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 3
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 4
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 5
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 6
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 7
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 8
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 9
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: empty contains element 10
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: removeAll of empty
+	Returned true
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: toArray after addAll
+	Array is null or incorrect length
+TEST FAILED: containsAll on identical Collection
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to assignment03.SortedSetGrader$StringWrapper
+TEST FAILED: removeAll of identical collection
+	Contents incorrect after method
+TEST FAILED: iterate after removeAll
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: iterate after clear
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: last after clear
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: empty containsAll of empty
+	Threw java.lang.ClassCastException: java.util.TreeSet cannot be cast to assignment03.SortedSetGrader$StringWrapper
+TEST FAILED: empty removeAll of empty
+	Returned true
+TEST FAILED: Empty remove element 0
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 1
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 2
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 3
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 4
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 5
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 6
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 7
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 8
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 9
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: Empty remove element 10
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: addAll to empty
+	Returned false
+TEST FAILED: remove element 0
+	Contents incorrect after method
+TEST FAILED: remove new element 0
+	Contents incorrect after method
+TEST FAILED: remove last element
+	Contents incorrect after method
+TEST FAILED: add new last element
+	Contents incorrect after method
+TEST FAILED: remove new last element
+	Contents incorrect after method
+TEST FAILED: add middle element
+	Contents incorrect after method
+TEST FAILED: remove middle element
+	Contents incorrect after method
+TEST FAILED: add new middle element
+	Contents incorrect after method
+TEST FAILED: remove new middle element
+	Contents incorrect after method
+TEST FAILED: iterate after remove
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterate after remove
+	next() returned wrong element
+TEST FAILED: removeAll non-intersecting 1
+	Returned true
+TEST FAILED: removeAll non-intersecting 2
+	Returned true
+TEST FAILED: removeAll subset
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Returned false
+TEST FAILED: removeAll subset
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Returned false
+TEST FAILED: iterator remove first element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove last element
+	next() returned wrong element
+TEST FAILED: iterator remove middle element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+TEST FAILED: addAll large number of elements
+	Returned false
+
+                  SUMMARY
+==============================================
+add:		27/60 tests
+		3.6/8 points
+addAll:		18/39 tests
+		0.92/2 points
+clear:		9/9 tests
+		1/1 points
+comparator:	6/6 tests
+		1/1 points
+contains:	51/84 tests
+		4.25/7 points
+containsAll:	0/15 tests
+		0/2 points
+first:		12/12 tests
+		2/2 points
+isEmpty:	30/30 tests
+		1/1 points
+last:		6/12 tests
+		1/2 points
+remove:		0/51 tests
+		0/5 points
+removeAll:	0/24 tests
+		0/2 points
+size:		57/57 tests
+		1/1 points
+toArray:	0/12 tests
+		0/4 points
+iterator:	0/45 tests
+		0/5 points
+iter. remove:	0/36 tests
+		0/2 points
+Subtotal:	216/492 tests
+		15.77/45 points
+Binary Search:	/10
+Student Tests:	/10
+Code Style:	/5
+Final Score:	/70
+
+Explanation: Testing with Comparable and Comparator are each worth
+half of your points for the automated section.  You receive 10 points
+for using binary search in your methods and 10 points for your testing.
+
+TA Comments: 

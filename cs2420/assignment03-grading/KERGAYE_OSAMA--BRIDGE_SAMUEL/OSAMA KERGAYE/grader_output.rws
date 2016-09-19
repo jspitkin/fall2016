@@ -1,0 +1,131 @@
+           TESTING WITH COMPARABLE
+==============================================
+TEST FAILED: non-empty iterate
+	hasNext() returned false early
+TEST FAILED: containsAll of empty
+	Returned false
+TEST FAILED: removeAll of empty
+	Returned true
+TEST FAILED: addAll from empty
+	Returned true
+TEST FAILED: iterate after clear
+	exception not thrown on iterator.next() when there is no next
+TEST FAILED: empty addAll from empty
+	Returned true
+TEST FAILED: empty containsAll of empty
+	Returned false
+TEST FAILED: empty removeAll of empty
+	Returned true
+TEST FAILED: iterate after remove
+	hasNext() returned false early
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	hasNext() returned false early
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+
+  TESTING WITH COMPARATOR ON COMPARABLE TYPE
+==============================================
+TEST FAILED: non-empty iterate
+	hasNext() returned false early
+TEST FAILED: containsAll of empty
+	Returned false
+TEST FAILED: removeAll of empty
+	Returned true
+TEST FAILED: addAll from empty
+	Returned true
+TEST FAILED: iterate after clear
+	exception not thrown on iterator.next() when there is no next
+TEST FAILED: empty addAll from empty
+	Returned true
+TEST FAILED: empty containsAll of empty
+	Returned false
+TEST FAILED: empty removeAll of empty
+	Returned true
+TEST FAILED: iterate after remove
+	hasNext() returned false early
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	hasNext() returned false early
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+
+TESTING WITH COMPARATOR ON NON-COMPARABLE TYPE
+==============================================
+TEST FAILED: non-empty iterate
+	hasNext() returned false early
+TEST FAILED: containsAll of empty
+	Returned false
+TEST FAILED: removeAll of empty
+	Returned true
+TEST FAILED: addAll from empty
+	Returned true
+TEST FAILED: iterate after clear
+	exception not thrown on iterator.next() when there is no next
+TEST FAILED: empty addAll from empty
+	Returned true
+TEST FAILED: empty containsAll of empty
+	Returned false
+TEST FAILED: empty removeAll of empty
+	Returned true
+TEST FAILED: iterate after remove
+	hasNext() returned false early
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	hasNext() returned false early
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+
+                  SUMMARY
+==============================================
+add:		60/60 tests
+		8/8 points
+addAll:		33/39 tests
+		1.69/2 points
+clear:		9/9 tests
+		1/1 points
+comparator:	6/6 tests
+		1/1 points
+contains:	84/84 tests
+		7/7 points
+containsAll:	9/15 tests
+		1.2/2 points
+first:		12/12 tests
+		2/2 points
+isEmpty:	30/30 tests
+		1/1 points
+last:		12/12 tests
+		2/2 points
+remove:		51/51 tests
+		5/5 points
+removeAll:	18/24 tests
+		1.5/2 points
+size:		57/57 tests
+		1/1 points
+toArray:	12/12 tests
+		4/4 points
+iterator:	30/45 tests
+		3.33/5 points
+iter. remove:	12/36 tests
+		0.67/2 points
+Subtotal:	435/492 tests
+		40.39/45 points
+Binary Search:	/10
+Student Tests:	/10
+Code Style:	/5
+Final Score:	/70
+
+Explanation: Testing with Comparable and Comparator are each worth
+half of your points for the automated section.  You receive 10 points
+for using binary search in your methods and 10 points for your testing.
+
+TA Comments: 

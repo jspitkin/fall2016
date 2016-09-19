@@ -1,0 +1,107 @@
+           TESTING WITH COMPARABLE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: non-empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after removeAll
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after clear
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after remove
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove first element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove last element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove middle element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove several elements
+	Threw java.lang.IndexOutOfBoundsException
+
+  TESTING WITH COMPARATOR ON COMPARABLE TYPE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: non-empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after removeAll
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after clear
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after remove
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove first element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove last element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove middle element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove several elements
+	Threw java.lang.IndexOutOfBoundsException
+
+TESTING WITH COMPARATOR ON NON-COMPARABLE TYPE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: non-empty iterate
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after removeAll
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after clear
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterate after remove
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove first element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove last element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove middle element
+	Threw java.lang.IndexOutOfBoundsException
+TEST FAILED: iterator remove several elements
+	Threw java.lang.IndexOutOfBoundsException
+
+                  SUMMARY
+==============================================
+add:		60/60 tests
+		8/8 points
+addAll:		39/39 tests
+		2/2 points
+clear:		9/9 tests
+		1/1 points
+comparator:	6/6 tests
+		1/1 points
+contains:	84/84 tests
+		7/7 points
+containsAll:	15/15 tests
+		2/2 points
+first:		12/12 tests
+		2/2 points
+isEmpty:	30/30 tests
+		1/1 points
+last:		12/12 tests
+		2/2 points
+remove:		51/51 tests
+		5/5 points
+removeAll:	24/24 tests
+		2/2 points
+size:		57/57 tests
+		1/1 points
+toArray:	12/12 tests
+		4/4 points
+iterator:	30/45 tests
+		3.33/5 points
+iter. remove:	24/36 tests
+		1.33/2 points
+Subtotal:	465/492 tests
+		42.67/45 points
+Binary Search:	/10
+Student Tests:	/10
+Code Style:	/5
+Final Score:	/70
+
+Explanation: Testing with Comparable and Comparator are each worth
+half of your points for the automated section.  You receive 10 points
+for using binary search in your methods and 10 points for your testing.
+
+TA Comments: 

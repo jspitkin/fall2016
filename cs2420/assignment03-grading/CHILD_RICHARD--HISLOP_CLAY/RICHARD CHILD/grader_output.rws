@@ -1,0 +1,239 @@
+           TESTING WITH COMPARABLE
+==============================================
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll to empty
+	Contents incorrect after method
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: Empty remove element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+
+  TESTING WITH COMPARATOR ON COMPARABLE TYPE
+==============================================
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll to empty
+	Contents incorrect after method
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: Empty remove element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+
+TESTING WITH COMPARATOR ON NON-COMPARABLE TYPE
+==============================================
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll to empty
+	Contents incorrect after method
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: Empty remove element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: Empty remove element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+
+                  SUMMARY
+==============================================
+add:		60/60 tests
+		8/8 points
+addAll:		36/39 tests
+		1.85/2 points
+clear:		9/9 tests
+		1/1 points
+comparator:	6/6 tests
+		1/1 points
+contains:	51/84 tests
+		4.25/7 points
+containsAll:	12/15 tests
+		1.6/2 points
+first:		12/12 tests
+		2/2 points
+isEmpty:	30/30 tests
+		1/1 points
+last:		12/12 tests
+		2/2 points
+remove:		18/51 tests
+		1.76/5 points
+removeAll:	21/24 tests
+		1.75/2 points
+size:		57/57 tests
+		1/1 points
+toArray:	3/12 tests
+		1/4 points
+iterator:	54/54 tests
+		5/5 points
+iter. remove:	18/36 tests
+		1/2 points
+Subtotal:	399/501 tests
+		34.21/45 points
+Binary Search:	/10
+Student Tests:	/10
+Code Style:	/5
+Final Score:	/70
+
+Explanation: Testing with Comparable and Comparator are each worth
+half of your points for the automated section.  You receive 10 points
+for using binary search in your methods and 10 points for your testing.
+
+TA Comments: 

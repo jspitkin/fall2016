@@ -1,0 +1,993 @@
+           TESTING WITH COMPARABLE
+==============================================
+TEST FAILED: empty iterate
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: Add string 5
+	Contents incorrect after method
+TEST FAILED: Add string 9
+	Contents incorrect after method
+TEST FAILED: Add string 10
+	Contents incorrect after method
+TEST FAILED: Add string 11
+	Contents incorrect after method
+TEST FAILED: non-empty iterate
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: non-empty iterate
+	hasNext() returned false early
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: toArray after addAll
+	Array is null or incorrect length
+TEST FAILED: iterate after removeAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: toArray after clear
+	Array is null or incorrect length
+TEST FAILED: iterate after clear
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: add middle element
+	Contents incorrect after method
+TEST FAILED: add new middle element
+	Contents incorrect after method
+TEST FAILED: iterate after remove
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterate after remove
+	hasNext() returned false early
+TEST FAILED: addAll after removeAll
+	Contents incorrect after method
+TEST FAILED: addAll after removeAll
+	Contents incorrect after method
+TEST FAILED: iterator remove first element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove first element
+	next() returned wrong element
+TEST FAILED: iterator remove last element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove last element
+	hasNext() returned false early
+TEST FAILED: iterator remove middle element
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove middle element
+	next() returned wrong element
+TEST FAILED: iterator remove several elements
+	exception not thrown on iterator.remove() before iterator.next()
+TEST FAILED: iterator remove several elements
+	next() returned wrong element
+TEST FAILED: addAll large number of elements
+	Contents incorrect after method
+
+  TESTING WITH COMPARATOR ON COMPARABLE TYPE
+==============================================
+TEST FAILED: empty isEmpty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty iterate
+	Threw java.lang.NullPointerException
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty clear
+	Threw java.lang.NullPointerException
+TEST FAILED: Add string 1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 1
+	Returns 0 instead of 1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 2
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 2
+	Returns 0 instead of 2
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 3
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 3
+	Returns 0 instead of 3
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 4
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 4
+	Returns 0 instead of 4
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 5
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 5
+	Returns 0 instead of 5
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 6
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 6
+	Returns 0 instead of 6
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 7
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 7
+	Returns 0 instead of 7
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 8
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 8
+	Returns 0 instead of 8
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 9
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 9
+	Returns 0 instead of 9
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 10
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 10
+	Returns 0 instead of 10
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 11
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains equivalent item 1
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains equivalent item 2
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains equivalent item 3
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty isEmpty
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty iterate
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty first
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty last
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add duplicate string 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add duplicate string 4
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add duplicate string 10
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 0
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 1
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 2
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 3
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 4
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 5
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 6
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 7
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 8
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 9
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 10
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Doesn't contain element 1
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Doesn't contain element 2
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Doesn't contain element 3
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: containsAll on identical Collection
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty isEmpty
+	Threw java.lang.NullPointerException
+TEST FAILED: containsAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: removeAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll from empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: toArray after addAll
+	Array is null or incorrect length
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: containsAll on identical Collection
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll of identical collection
+	Returned false
+TEST FAILED: isEmpty empty
+	Threw java.lang.NullPointerException
+TEST FAILED: iterate after removeAll
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterate after clear
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after retainAll of empty
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after retainAll of empty
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty addAll from empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll of empty
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll of empty
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty containsAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty removeAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add element 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove element 0
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add new element 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove new element 0
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add last element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove last element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add new last element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove new last element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add middle element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove middle element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add new middle element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove new middle element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterate after remove
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: first after remove
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: last after remove
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll subset
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll non-intersecting 1
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll non-intersecting 2
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll subset
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after retainAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after removeAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll subset
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after retainAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after removeAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove first element
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove last element
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove middle element
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove several elements
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after iterator remove
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll large number of elements
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+
+TESTING WITH COMPARATOR ON NON-COMPARABLE TYPE
+==============================================
+TEST FAILED: empty isEmpty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty iterate
+	Threw java.lang.NullPointerException
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty clear
+	Threw java.lang.NullPointerException
+TEST FAILED: Add string 1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 1
+	Returns 0 instead of 1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 2
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 2
+	Returns 0 instead of 2
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 3
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 3
+	Returns 0 instead of 3
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 4
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 4
+	Returns 0 instead of 4
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 5
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 5
+	Returns 0 instead of 5
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 6
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 6
+	Returns 0 instead of 6
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 7
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 7
+	Returns 0 instead of 7
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 8
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 8
+	Returns 0 instead of 8
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 9
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 9
+	Returns 0 instead of 9
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 10
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 10
+	Returns 0 instead of 10
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add string 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Size 11
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains equivalent item 1
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains equivalent item 2
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains equivalent item 3
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty isEmpty
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty iterate
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty first
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: non-empty last
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add duplicate string 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add duplicate string 4
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Add duplicate string 10
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 0
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 1
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 2
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 3
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 4
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 5
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 6
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 7
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 8
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 9
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Contains element 10
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Doesn't contain element 1
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Doesn't contain element 2
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: Doesn't contain element 3
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: containsAll on identical Collection
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty toArray
+	Array is null or incorrect length
+TEST FAILED: empty isEmpty
+	Threw java.lang.NullPointerException
+TEST FAILED: containsAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty containsAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 0
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 1
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 2
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 3
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 4
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 5
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 6
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 7
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 8
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 9
+	Threw java.lang.NullPointerException
+TEST FAILED: empty contains element 10
+	Threw java.lang.NullPointerException
+TEST FAILED: removeAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty removeAll of non-empty
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll from empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: toArray after addAll
+	Array is null or incorrect length
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: containsAll on identical Collection
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll of identical collection
+	Returned false
+TEST FAILED: isEmpty empty
+	Threw java.lang.NullPointerException
+TEST FAILED: iterate after removeAll
+	Threw java.lang.NullPointerException
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterate after clear
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after retainAll of empty
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after retainAll of empty
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty addAll from empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: size after addAll of empty
+	Returns 0 instead of 11
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: isEmpty after addAll of empty
+	Returned true
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty containsAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: empty removeAll of empty
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll to empty
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add element 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove element 0
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add new element 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove new element 0
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add last element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove last element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add new last element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove new last element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add middle element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove middle element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: add new middle element
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: remove new middle element
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterate after remove
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: first after remove
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: last after remove
+	Threw java.util.NoSuchElementException
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll subset
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll non-intersecting 1
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll non-intersecting 2
+	Contents incorrect after method
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll subset
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after retainAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after removeAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: removeAll subset
+	Returned false
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after retainAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after removeAll
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove first element
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove last element
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove middle element
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: iterator remove several elements
+	Threw java.lang.ArrayIndexOutOfBoundsException: -1
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll after iterator remove
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+TEST FAILED: addAll large number of elements
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0
+	Threw java.lang.ArrayIndexOutOfBoundsException: 0 when resetting set
+		Future results may be skewed because the set may have the wrong contents
+
+                  SUMMARY
+==============================================
+add:		14/60 tests
+		2.8/8 points
+addAll:		10/39 tests
+		0.77/2 points
+clear:		7/9 tests
+		0.83/1 points
+comparator:	6/6 tests
+		1/1 points
+contains:	28/84 tests
+		3.5/7 points
+containsAll:	5/15 tests
+		1/2 points
+first:		8/12 tests
+		1.5/2 points
+isEmpty:	12/30 tests
+		0.55/1 points
+last:		8/12 tests
+		1.5/2 points
+remove:		39/51 tests
+		4.12/5 points
+removeAll:	8/24 tests
+		1/2 points
+size:		25/57 tests
+		0.58/1 points
+toArray:	2/12 tests
+		0.5/4 points
+iterator:	0/45 tests
+		0/5 points
+iter. remove:	0/36 tests
+		0/2 points
+Subtotal:	172/492 tests
+		19.65/45 points
+Binary Search:	/10
+Student Tests:	/10
+Code Style:	/5
+Final Score:	/70
+
+Explanation: Testing with Comparable and Comparator are each worth
+half of your points for the automated section.  You receive 10 points
+for using binary search in your methods and 10 points for your testing.
+
+TA Comments: 

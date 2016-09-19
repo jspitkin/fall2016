@@ -1,0 +1,44 @@
+BinarySearchSet.java:17: error: cannot find symbol
+public class BinarySearchSet<E> implements SortedSet<E>, Iterable<E> {
+                                           ^
+  symbol: class SortedSet
+BinarySearchSet.java:57: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:70: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:83: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:100: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:212: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:229: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:242: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:294: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:307: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:333: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:388: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:402: error: method does not override or implement a method from a supertype
+	@Override
+	^
+BinarySearchSet.java:417: error: method does not override or implement a method from a supertype
+	@Override
+	^
+14 errors
