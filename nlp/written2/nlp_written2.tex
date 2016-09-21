@@ -40,7 +40,7 @@ Let $|V| = 5$ where $V$ is the vocabulary and  $N = \sum\limits_{i}^{|V|} freq(w
 
 \qquad$P(pine) = \frac{freq(pine)}{N} = \frac{180}{1,200} = 0.15$
 
-\qquad$P(spruce) = \frac{freq(spruce)}{N} = \frac{20}{1,200} = 0.167$
+\qquad$P(spruce) = \frac{freq(spruce)}{N} = \frac{20}{1,200} = 0.017$
 
 \qquad$P(aspen) = \frac{freq(aspen)}{N} = \frac{0}{1,200} = 0$
 
@@ -72,22 +72,23 @@ Completing the table:
 
 \begin{table}[H]
 \centering
+{\renewcommand{\arraystretch}{1.7}
 \begin{tabular}{| c | c | c | | c | c |}
 \hline
 \textbf{Noun} & \textbf{Freq.} & \textbf{Unsmoothed Prob.} & \textbf{Smoothed Freq.} & \textbf{Smoothed Prob.}\\
 \hline
 \hline
-maple & 600 & 0.5 & 598.506 & 0.499 \\
+maple & 600 & $\frac{600}{1,200} = 0.5$ & $\frac{721,200}{1,205} = 598.506$ & $\frac{598.506}{1,200} = 0.499$ \\
 \hline
-oak & 400 & 0.333 & 399.336 & 0.333 \\
+oak & 400 & $\frac{400}{1,200} = 0.333$ & $\frac{481,200}{1,205} = 399.336$ & $\frac{399.336}{1,200} = 0.333$ \\
 \hline
-pine & 180 & 0.15 & 180.249 & 0.15 \\
+pine & 180 & $\frac{180}{1,200} = 0.15$ & $\frac{217,200}{1,205} = 180.249$ & $\frac{180.249}{1,200} = 0.15$ \\
 \hline
-spruce & 20 & 0.017 & 20.913 & 0.017 \\
+spruce & 20 & $\frac{20}{1,200} = 0.017$ & $\frac{25,200}{1,205} = 20.913$ & $\frac{20.913}{1,200} = 0.017$ \\
 \hline
-aspen & 0 & 0 & 0.996 & 0.001 \\ 
+aspen & 0 & $\frac{0}{1,200} = 0$ & $\frac{1,200}{1,205} = 0.996$ & $\frac{0.996}{1,200} = 0.001$ \\ 
 \hline
-\end{tabular}
+\end{tabular}}
 \caption{Unsmoothed and smoothed probabilities and frequencies.}
 \end{table}
 \newpage
@@ -147,7 +148,7 @@ Let $k$ denote the number of distinct POS unigrams in the text corpus. \newline
 Let $freq(W_{n-m},...,W_{n-1}, W_{n})$ denote the frequency of the phrase $W_{n-m},...,W_{n-1}, W_{n}$ appearing in the text corpus. \newline
 \part{c} $P(young \ | \ girl) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(girl \ young)}{freq(girl)} = \ $\framebox[2\width]{$\cfrac{0}{3}$}
 
-\part{d} $P(girl \ | \ young) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(young \ girl)}{freq(young)} = \ $\framebox[2\width]{$\cfrac{2}{3}$}
+\part{d} $P(girl \ | \ young) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(young \ girl)}{freq(young)} = \ $\framebox[2\width]{$\cfrac{2}{2}$}
 
 \part{e} $P(and \ | \ women) = \frac{freq(W_{n-1}, W_n)}{freq(W_{n-1})} = \frac{freq(women \ and)}{freq(women)} = \ $\framebox[2\width]{$\cfrac{1}{3}$}
 
@@ -160,7 +161,7 @@ Let $C(event)$ denote the count of the given event occurring in the text corpus.
 
 \part{i} $P(cross \ | \ NOUN) = \frac{C(w_i \ with \ tag \ T_i)}{C(any \ word \ with \ tag \ T_i)} = \frac{C(cross \ with \ tag \ NOUN)}{C(any \ word \ with \ tag \ NOUN)} = \ $\framebox[2\width]{$\cfrac{0}{9}$}
 
-\part{j} $P(thanked \ | \ NOUN) = \frac{C(thanked \ with \ tag \ NOUN)}{C(any \ word \ with \ tag \ T_i)} = \frac{C(thanked \ with \ tag \ NOUN)}{C(any \ word \ with \ tag \ NOUN)} = \ $\framebox[2\width]{$\cfrac{0}{9}$}
+\part{j} $P(thanked \ | \ VERB) = \frac{C(thanked \ with \ tag \ VERB)}{C(any \ word \ with \ tag \ T_i)} = \frac{C(thanked \ with \ tag \ VERB)}{C(any \ word \ with \ tag \ VERB)} = \ $\framebox[2\width]{$\cfrac{2}{6}$}
 
 \part{k} $P(NUM \ | \ PRO) = \frac{C(T_i \ immediately \ follows \ T_{i-1})}{C(any \ tag \ immediately \ follows \ T_{i- 1})} = \frac{C(NUM \ immediately \ follows \ PRO)}{C(any \ tag \ immediately \ follows \ PRO)} = \ $\framebox[2\width]{$\cfrac{1}{2}$}
 

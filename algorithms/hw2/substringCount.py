@@ -4,7 +4,7 @@ global L
 
 
 glob = 0
-dictionary = ["a", "aa", "aaa", "aaaa", "aaaaa"]
+dictionary = set(["a", "aa", "aaa", "aaaa", "aaaaa"])
 cache = {}
 L = len(max(dictionary, key=len))
 
@@ -19,12 +19,11 @@ def substring_count(w):
     count = 0
     for index in range(min(len(w), L)+1):
         sub = w[:index]
-        for word in dictionary:
-            if sub == word:
-                count = count + substring_count(w[index:])
+        if sub in dictionary:
+            count = count + substring_count(w[index:])
 
     cache[w] = count
     return count
 
-print substring_count("aaaaaaaaaaaaaaaaaaaaaaa")
+print substring_count("aaaaaa")
 
