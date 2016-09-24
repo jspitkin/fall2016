@@ -94,3 +94,31 @@ for margin in margins:
 print "Best margin: " + str(bestMargin) + "\tUpdates made: " + str(bestMistakes) + "/" + str(perceptron.trainingSpace * 5) + " or " + str(bestPerceptron.getTrainingAccuracy()) + "%"
 print "Best learning rate: " + str(bestRate) + "\tUpdates made: " + str(bestMistakes) + "/" + str(perceptron.trainingSpace * 5) + " or " + str(bestPerceptron.getTrainingAccuracy()) + "%"
 print
+
+print "Determining best margin for Aggressive Perceptron with Margin algorithm with three epochs. . ."
+bestMargin = 0
+bestMistakes = 9999 #6,414 examples in the training data
+for margin in margins:
+    perceptron = pt.Perceptron(0.5, 3)
+    perceptron.margin = margin
+    perceptron.aggressiveMarginTrain('a5a.train')
+    if perceptron.mistakes < bestMistakes:
+        bestMistakes = perceptron.mistakes
+        bestMargin = margin
+        bestPerceptron = perceptron
+print "Best margin: " + str(bestMargin) + "\tUpdates made: " + str(bestMistakes) + "/" + str(perceptron.trainingSpace * 3) + " or " + str(bestPerceptron.getTrainingAccuracy()) + "%"
+print
+
+print "Determining best margin for Aggressive Perceptron with Margin algorithm with five epochs. . ."
+bestMargin = 0
+bestMistakes = 9999 #6,414 examples in the training data
+for margin in margins:
+    perceptron = pt.Perceptron(0.5, 5)
+    perceptron.margin = margin
+    perceptron.aggressiveMarginTrain('a5a.train')
+    if perceptron.mistakes < bestMistakes:
+        bestMistakes = perceptron.mistakes
+        bestMargin = margin
+        bestPerceptron = perceptron
+print "Best margin: " + str(bestMargin) + "\tUpdates made: " + str(bestMistakes) + "/" + str(perceptron.trainingSpace * 5) + " or " + str(bestPerceptron.getTrainingAccuracy()) + "%"
+print

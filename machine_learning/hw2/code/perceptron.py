@@ -18,6 +18,7 @@ class Perceptron:
         self.testSpace = 0
         self.margin = 0
         self.epoch = epoch
+        self.shuffle = True
 
     def readFile(self, path):
         examples = []
@@ -78,6 +79,32 @@ class Perceptron:
                         self.weightVector[index] += self.learningRate * (label * featureVector[index])
             shuffle(examples)
 
+    def getAggressiveLearningRate(self, label, vectorSum, featureVector):
+        learningRate = self.margin - (label * vectorSum)
+        denominator = 1
+        for index in range(self.FEATURE_COUNT):
+            denominator += featureVector[index] * featureVector[index]
+        learningRate = learningRate / denominator
+        return learningRate
+
+    def aggressiveMarginTrain(self, path):
+        self.mistakes = 0
+        examples = self.readFile(path)
+        self.trainingSpace = len(examples)
+        for _ in range(self.epoch):
+            for example in examples:
+                label, featureVector = example
+                vectorSum = self.bias
+                for index in range(self.FEATURE_COUNT):
+                    vectorSum += self.weightVector[index] * featureVector[index]
+                if label * (vectorSum) < self.margin:
+                    self.mistakes += 1
+                    aggressiveLearningRate = self.getAggressiveLearningRate(label, vectorSum, featureVector)
+                    for index in range(self.FEATURE_COUNT):
+                        self.weightVector[index] += aggressiveLearningRate * (label * featureVector[index])
+            if self.shuffle:
+                shuffle(examples)
+   
 
     def classicTrain(self, path):
         self.mistakes = 0
