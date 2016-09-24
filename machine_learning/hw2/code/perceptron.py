@@ -89,7 +89,7 @@ class Perceptron:
                 vectorSum = self.bias
                 for index in range(self.FEATURE_COUNT):
                     vectorSum += self.weightVector[index] * featureVector[index]
-                if self.sign(vectorSum) != label:
+                if (label * vectorSum) <= 0:
                     self.mistakes += 1
                     for index in range(self.FEATURE_COUNT):
                         self.weightVector[index] += self.learningRate * (label * featureVector[index])
