@@ -1,8 +1,9 @@
 from __future__ import division
 from random import randint
+from random import shuffle
 
 class Perceptron:
-    def __init__(self, learningRate, randomInit=True):
+    def __init__(self, learningRate, epoch, randomInit=True):
         self.FEATURE_COUNT = 124
         if randomInit:
             self.bias = randint(-10,10)
@@ -16,6 +17,7 @@ class Perceptron:
         self.trainingSpace = 0
         self.testSpace = 0
         self.margin = 0
+        self.epoch = epoch
 
     def readFile(self, path):
         examples = []
@@ -43,6 +45,11 @@ class Perceptron:
             return 0
         return round(((self.correctClassifications/self.testSpace)*100),2)
 
+    def getTrainingAccuracy(self):
+        if self.trainingSpace == 0:
+            return 0
+        return round(((self.mistakes/(self.trainingSpace * self.epoch))*100),2)
+
     def test(self, path):
         self.correctClassifications = 0
         examples = self.readFile(path)
@@ -59,27 +66,31 @@ class Perceptron:
         self.mistakes = 0
         examples = self.readFile(path)
         self.trainingSpace = len(examples)
-        for example in examples:
-            label, featureVector = example
-            vectorSum = self.bias
-            for index in range(self.FEATURE_COUNT):
-                vectorSum += self.weightVector[index] * featureVector[index]
-            if label * (vectorSum + self.bias) < self.margin:
-                self.mistakes += 1
+        for _ in range(self.epoch):
+            for example in examples:
+                label, featureVector = example
+                vectorSum = self.bias
                 for index in range(self.FEATURE_COUNT):
-                    self.weightVector[index] += self.learningRate * (label * featureVector[index])
+                    vectorSum += self.weightVector[index] * featureVector[index]
+                if label * (vectorSum) < self.margin:
+                    self.mistakes += 1
+                    for index in range(self.FEATURE_COUNT):
+                        self.weightVector[index] += self.learningRate * (label * featureVector[index])
+            shuffle(examples)
 
 
     def classicTrain(self, path):
         self.mistakes = 0
         examples = self.readFile(path)
         self.trainingSpace = len(examples)
-        for example in examples:
-            label, featureVector = example
-            vectorSum = self.bias
-            for index in range(self.FEATURE_COUNT):
-                vectorSum += self.weightVector[index] * featureVector[index]
-            if self.sign(vectorSum) != label:
-                self.mistakes += 1
+        for _ in range(self.epoch):
+            for example in examples:
+                label, featureVector = example
+                vectorSum = self.bias
                 for index in range(self.FEATURE_COUNT):
-                    self.weightVector[index] += self.learningRate * (label * featureVector[index])
+                    vectorSum += self.weightVector[index] * featureVector[index]
+                if self.sign(vectorSum) != label:
+                    self.mistakes += 1
+                    for index in range(self.FEATURE_COUNT):
+                        self.weightVector[index] += self.learningRate * (label * featureVector[index])
+            shuffle(examples)

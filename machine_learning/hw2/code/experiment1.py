@@ -1,8 +1,8 @@
 import perceptron as pt
 
 
-perceptron = pt.Perceptron(0.5, False)
-perceptron.update('table2')
+perceptron = pt.Perceptron(0.5, 1, False)
+perceptron.classicTrain('table2')
 print "# QUESTION ONE #####"
 weightVector = perceptron.weightVector[:5]
 print "weight vector = " + str(weightVector)
