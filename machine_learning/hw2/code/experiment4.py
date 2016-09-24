@@ -1,6 +1,7 @@
 from __future__ import division
 import perceptron as pt
 
+print
 print "# QUESTION FOUR  #####"
 print "Aggresive Perceptron with Margin algorithm ----------------------------------------"
 print "Training on 'a5a.train' with a margin of 0, a epoch of 3, and shuffling"

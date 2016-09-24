@@ -91,7 +91,7 @@ There is an edge case where $x_1^2 + x_2^2 = r^2$. The incorrect labeling is $-1
 
 \part{5c}
 
-\question{3}{The Perceptron Algorithm and Its Variants}
+\question{3.1}{The Perceptron Algorithm and its Variants}
 
 \part{1} Running the simple Perceptron algorithm on the data from $table2$, with a learning rate $r = 0.5$, produces the following weight vector.
 $$\mathbf{w} = \begin{bmatrix}
@@ -102,12 +102,23 @@ $$\mathbf{w} = \begin{bmatrix}
     1\\
 \end{bmatrix}$$
 
-With one pass of the Perceptron algorithm, four mistakes were made on the $table2$ dataset.
+With one pass of the Perceptron algorithm, four mistakes were made on the \texttt{table2} dataset.
 
 \framebox[1.2\width]{Four mistakes made.}
 
+\part{2} Before training a binary classifier with the Perceptron algorithm, I ran some tests to determine the best learning rate $r$. For each learning rate, the examples from the file \texttt{a5a.train} were ran through the Perceptron algorithm once.
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c |}
+\hline
+Learning Rate& Updates Made\\
+\hline
+1 & 92.86\%\\
+\hline
+\end{tabular}
+\caption{Number of updates made during training for various learning rates.}
+\end{table}
 
-\part{2}
 
 \part{3}
 
