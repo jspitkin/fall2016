@@ -1,13 +1,13 @@
 from __future__ import division
-from random import randint
-from random import shuffle
+import random
 
 class Perceptron:
     def __init__(self, learningRate, epoch, randomInit=True):
         self.FEATURE_COUNT = 124
+        random.seed(124)
         if randomInit:
-            self.bias = randint(-10,10)
-            self.weightVector = [randint(-10,10) for x in range(self.FEATURE_COUNT)]
+            self.bias = random.uniform(-1,1)
+            self.weightVector = [random.uniform(-1,1) for x in range(self.FEATURE_COUNT)]
         else:
             self.weightVector = [0 for x in range(self.FEATURE_COUNT)]
             self.bias = 0
@@ -77,7 +77,7 @@ class Perceptron:
                     self.mistakes += 1
                     for index in range(self.FEATURE_COUNT):
                         self.weightVector[index] += self.learningRate * (label * featureVector[index])
-            shuffle(examples)
+            random.shuffle(examples)
 
     def getAggressiveLearningRate(self, label, vectorSum, featureVector):
         learningRate = self.margin - (label * vectorSum)
@@ -103,7 +103,7 @@ class Perceptron:
                     for index in range(self.FEATURE_COUNT):
                         self.weightVector[index] += aggressiveLearningRate * (label * featureVector[index])
             if self.shuffle:
-                shuffle(examples)
+                random.shuffle(examples)
    
 
     def classicTrain(self, path):
@@ -120,4 +120,4 @@ class Perceptron:
                     self.mistakes += 1
                     for index in range(self.FEATURE_COUNT):
                         self.weightVector[index] += self.learningRate * (label * featureVector[index])
-            shuffle(examples)
+            random.shuffle(examples)

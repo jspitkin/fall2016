@@ -4,8 +4,8 @@ import perceptron as pt
 print "# QUESTION TWO #####"
 print "Classic Perceptron algorithm ----------------------------------------"
 
-print "Training on 'a5a.train' with a learning rate of 0.5 and a epoch of 1"
-bestPerceptron = pt.Perceptron(0.5, 1)
+print "Training on 'a5a.train' with a learning rate of 0.25 and a epoch of 1"
+bestPerceptron = pt.Perceptron(0.25, 1)
 bestPerceptron.classicTrain('a5a.train')
 print "Updates made: " + str(bestPerceptron.mistakes) + "/" + str(bestPerceptron.trainingSpace) + " or " + str(bestPerceptron.getTrainingAccuracy()) + "%"
 print
@@ -21,9 +21,9 @@ print "Accuracy: " + str(bestPerceptron.correctClassifications) + "/" + str(best
 print
 
 print "Margin Perceptron algorithm ----------------------------------------"
-print "Training on 'a5a.train' with a learning rate of 0.5, a margin of 0 and a epoch of 1"
-bestPerceptron = pt.Perceptron(0.5, 1)
-bestPerceptron.margin = 0
+print "Training on 'a5a.train' with a learning rate of 0.25, a margin of 0 and a epoch of 1"
+bestPerceptron = pt.Perceptron(0.25, 1)
+bestPerceptron.margin = 4
 bestPerceptron.marginTrain('a5a.train')
 print "Updates made: " + str(bestPerceptron.mistakes) + "/" + str(bestPerceptron.trainingSpace) + " or " + str(bestPerceptron.getTrainingAccuracy()) + "%"
 bestPerceptron.test('a5a.train')
