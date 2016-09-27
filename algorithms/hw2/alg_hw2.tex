@@ -46,6 +46,57 @@
 \question{1}{Probability of $k$ Heads}
 
 \question{2}{Count Number of Parsings}
+\textit{Collaboration with Maks Cegielski-Johnson.}
+
+\algorith Below is an algorithm for counting the number of ways a string can be parsed, given a language of valid words.
+
+\algdef{SE}[VARIABLES]{Variables}{EndVariables}
+   {\algorithmicvariables}
+   {\algorithmicend\ \algorithmicvariables}
+\algnewcommand{\algorithmicvariables}{\textbf{Global Variables}}
+
+\begin{algorithm}[H]
+\caption{Count number of parsings}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Variables
+\State $\mathbf{cache} = $ dictionary of parsings counts for a given word
+\State $\mathbf{language} =$ collection of words in the language
+\State $\mathbf{L} =$ length of the language
+\EndVariables
+\State
+\Procedure{Parsing\_Count(s)}{}
+\If {len(s) == 0}
+	\State \Return 1
+\EndIf
+\State
+\If {s in cache}
+	\State \Return cache[s]
+\EndIf
+\State
+\For {index in range(min(N , L) + 1)}
+	\State \textbf{substring} = the first \textit{index} characters of s
+	\If {substring in language}
+		\State \textbf{remaining} = s with substring removed from the front of s
+		\State count = count + \textbf{parsing\_count}(remaining)
+	\EndIf
+\EndFor
+\State
+\State cache[w] = count
+\State \Return count
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The recursive algorithm will try every possible parse of $s$, using the words in the language. At each call of the recursive algorithm, $s$ is scanned left to right for matches with words in the language. If a match is found, a substring is formed (removing the match from the beginning of $s$) and passed to \textit{parsing\_count} and the process is repeated on the substring. The scan of $s$ is continued to find additional parses. Scanning continues the minimum of N and L. A parse is successful if the string passed to \textit{parsing\_count} is empty. The total count of parses is returned once all possibilities are tested.
+
+\correctness The algorithm will terminate as the input string $s$ gets smaller with each recursive call to \textit{parsing\_count} (moving towards the base case) or no parsing is found and no recursive call is made.
+
+We can observe that we will find every possible parsing as we exhaustively try every possible parsing of $s$ given the language. Thus the algorithm is always correct. 
+
+\runtime There are $2^{N-1}$ possible parsings in the worst-case. This worst-case is when $s$ is a string consisting of all the same letter (ex. aaaaa) and the language is a growing sequence of length N (ex. a, aa, aaa, aaaa, aaaaa).
+
+ We combat this exponential runtime by caching the parse counts of substrings of $s$. There will be N entries in the language, each of which will need to be
 
 \question{3}{The Ill-prepared Burglar}
 

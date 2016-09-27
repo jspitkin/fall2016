@@ -1,10 +1,7 @@
 global dictionary
-global glob
 global L
 
-
-glob = 0
-dictionary = set(["a", "aa", "aaa", "aaaa", "aaaaa"])
+dictionary = set(["a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa"])
 cache = {}
 L = len(max(dictionary, key=len))
 
