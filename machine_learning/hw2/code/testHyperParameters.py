@@ -1,7 +1,7 @@
 from __future__ import division
 import perceptron as pt
 
-learningRates = [1, 0.25,  0.5, 0.75, 0.1, 0.001, 0.0001]
+learningRates = [1, 0.1, 0.25, 0.5, 0.75, 0.001, 0.0001]
 margins = [0, 1, 1.5, 2, 2.5, 3, 4, 5]
 trainFilePaths = ['splits/split1.train', 'splits/split2.train', 'splits/split3.train', 'splits/split4.train', 'splits/split5.train', 'splits/split6.train']
 testFilePaths = ['splits/split1.test', 'splits/split2.test', 'splits/split3.test', 'splits/split4.test', 'splits/split5.test', 'splits/split6.test']
@@ -31,6 +31,7 @@ for index in range(len(learningRates)):
     currentCorrect = 0
     for fileIndex in range(6):
         perceptron = pt.Perceptron(learningRates[index], 1)
+        perceptron.margin = 4
         perceptron.marginTrain(trainFilePaths[fileIndex])
         perceptron.test(testFilePaths[fileIndex])
         currentCorrect += perceptron.correctClassifications

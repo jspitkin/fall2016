@@ -83,13 +83,90 @@ There is an edge case where $x_1^2 + x_2^2 = r^2$. The incorrect labeling is $-1
 
 \framebox[1.2\width]{$y^t = -1: decrease \  r \ by \ one.$}
 
-\part{4}
+\part{4} The mistake-driven algorithm will determine the correct function in 40 mistakes or less.
 
-\part{5a}
+\begin{algorithm}[H]
+\caption{Mistake-Driven Learning}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Procedure{Learn Function(inputs)}{}
+\State current\_radius = 40
+\State not\_all\_inputs\_passed = True
+\While{not\_all\_inputs\_passed}
+\State not\_all\_inputs\_passed = False
+\For{input in inputs}
+\If{$sign(input.x_1^2 + input.x_2^2 - current\_radius^2 - 1) == sign(input.y)$}
+\If{$input.y == -1$}
+\State current\_radius = current\_radius - 1
+\Else{}
+\State current\_radius = current\_radius + 1
+\EndIf
+\State not\_all\_inputs\_passed = True
+\State \textbf{break}
+\EndIf
+\EndFor
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
-\part{5b}
+The algorithm begins by guessing the function is defined by $r = 40$. For $-80 \leq x_1, x_2 \leq 80$ all possible input points are tested on the current hypothesis using the equality defined in part two.
+$$sgn((x_1^t)^2 + (x_2^t)^2 - r^2 - 1) = sgn(y^t)$$
+Once a mistake is detected, the hypothesis function is updated and we break out of looping through all input points. If the mistake occurs on a positive example the radius of the hypothesis function is increased by 1. If the mistake take occurs on a negative example the radius is decreased by 1.
 
-\part{5c}
+This is repeated until all possible input points are tested on the hypothesis function and no mistakes are made. This means we have found the target function. At most there will be 40 mistakes made, which is the case when the target function is defined by $r = 80$. 
+
+We know this mistake bound is correct because the radius of the hypothesis function will either move towards 1 or 80. This is a result of there being no noise in the data so it is separable by the hypothesis class. We are zeroing in on the true function as we drop potential functions and the hypothesis space shrinks.
+
+\framebox[1.2\width]{Maximum number of mistakes is 40.}
+
+\part{5a} The original concept class will be a set of functions defined by $1 \leq r \leq 80$. Each time a mistake is made at least half of the functions in the concept class will be discarded. The remaining functions will be a sequence of integers in ascending order with no gaps (ex. 1, 2, 3, 4). To store this list with only two integers, we can store the bounds of the number sequence (ex. [1, 4]).
+
+\framebox[1.2\width]{Keep track of the bounds of the radiuses that define the remaining functions. }
+
+\part{5b} For each function $f_r \in C_i$ (where $C_i$ is the set of remaining hypothesis functions), make a prediction using $f(x_1^t, x_2^t)$. Take the majority label of the predictions (either +1 or -1) and compare it to $y^t$. If the labels don't match, the functions that made the majority prediction have made a mistake.
+
+\part{5c} The halving algorithm will remove at least half of the remaining hypothesis functions each time it makes a mistake.
+
+\begin{algorithm}[H]
+\caption{The Halving Algorithm}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Procedure{Learn Function(inputs, C)}{}
+
+\While{$|C| > 1$}
+\State positive\_labels = [ ]
+\State negative\_labels = [ ]
+\For{input in inputs}
+\For{function in C}
+\If {$function(x_1, x_2) == 1$}
+\State positive\_labels.append(function)
+\Else
+\State negative\_labels.append(function)
+\EndIf
+\EndFor
+\If {positive\_labels is the majority and $y^t = -1$}
+\State $C_{i+1} = C_i - positive\_labels$
+\EndIf
+\If {negative\_labels is the majority and $y^t = 1$}
+\State $C_{i+1} = C_i - negative\_labels$
+\EndIf
+\EndFor
+\EndWhile
+\State
+\Return C
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+At the beginning of the algorithm, all functions $f_r$ (defined by $1 \leq r \leq 80$) are considered as a hypothesis for the target function. The algorithm is given examples labeled by the target function. For each example, a prediction is made by each function $f_r \in C_i$ where $C_i$ is the set of remaining functions. The majority prediction is compared to $y^t$. If the prediction doesn't agree with $y^t$ then $C_{i+1} = C_{i} - C_{m}$ (where $C_m$ is the set of functions that made the majority prediction). In an actual implementation, the edge case of positive predictions and negative predictions being the same count would need to be considered.
+
+The process continues until $|C| = 1$ which will be the target function. The mistake upper bound is given by:
+$$log_2(|C|) = log_2(80) = ~6.32$$
+
+An intuitive explanation for this bound is the hypothesis class is pruned of at least half of it's functions each time a mistake is made. In the worst case of removing exactly half each mistake, it will take six mistakes to find the target function.
+
+\framebox[1.2\width]{There will be at most 6 mistakes.}
 
 \question{3.1}{The Perceptron Algorithm and its Variants}
 
@@ -102,27 +179,207 @@ $$\mathbf{w} = \begin{bmatrix}
     1\\
 \end{bmatrix}$$
 
-With one pass of the Perceptron algorithm, four mistakes were made on the \texttt{table2} dataset.
+With one pass of the Perceptron algorithm, four mistakes are made on the \texttt{table2} dataset.
 
 \framebox[1.2\width]{Four mistakes made.}
 
-\part{2} Before training a binary classifier with the Perceptron algorithm, I ran some tests to determine the best learning rate $r$. For each learning rate, the examples from the file \texttt{a5a.train} were ran through the Perceptron algorithm once.
+\part{2} Before training a binary classifier using the classic Perceptron algorithm, 6-fold cross validation is ran on \texttt{a5a.train} to determine a good learning rate $r$.
 \begin{table}[H]
 \centering
+{\renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{| c | c |}
 \hline
-Learning Rate& Updates Made\\
+Learning Rate& Accuracy\\
 \hline
-1 & 92.86\%\\
-\hline
-\end{tabular}
-\caption{Number of updates made during training for various learning rates.}
+1 & 77.72\%\\ \hline
+0.1 & 78.94\%\\ \hline
+0.25 & 79.6\%\\ \hline
+0.5 & 78.66\%\\ \hline
+0.75 & 77.53\%\\ \hline
+0.001 & 68.04\%\\ \hline
+0.0001 & 55.44\%\\ \hline
+\end{tabular}}
+\caption{Classification accuracy for various learning rates.}
 \end{table}
 
+From this cross validation, the best choice for the learning rate $r$ is $0.25$. The Perceptron is trained on \texttt{a5a.train} using this best hyperparameter. \newline
 
-\part{3}
+\framebox[1.2\width]{Updates made during training: 1,405/6,414 or 21.91\%}
+\newline
 
-\part{4}
+Using the trained classic Perceptron, I test the classification accuracy of both the \texttt{a5a.train} and \texttt{a5a.test} data sets. 
 
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Algorithm& Data Set &Accuracy\\
+\hline
+classic Perceptron & a5a.train & 5,190/6,414 or 80.92\%\\ \hline
+classic Perceptron & a5a.test & 21,080/26,147 or 80.62\%\\ \hline
+\end{tabular}}
+\caption{Accuracy of classic Perceptron with a learning rate of 0.25.}
+\end{table}
+
+This process is repeated using the margin Perceptron. For the margin Perceptron both a learning rate $r$ and margin $\mu$ are determined with cross validation.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c |}
+\hline
+Margin & Accuracy\\
+\hline
+0 & 78.66\%\\ \hline
+1 & 78.28\%\\ \hline
+1.5 & 79.97\%\\ \hline
+2 & 80.82\%\\ \hline
+2.5 & 81.99\%\\ \hline
+3 & 82.1\%\\ \hline
+4 & 82.43\%\\ \hline
+5 & 82.4\%\\ \hline
+\end{tabular}}
+\caption{Classification accuracy for various margins using a learning rate of 0.5.}
+\end{table}
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c |}
+\hline
+Learning Rate& Accuracy\\
+\hline
+1 & 80.64\%\\ \hline
+0.1 & 83.58\%\\ \hline
+0.25 & 83.02\%\\ \hline
+0.5 & 82.43\%\\ \hline
+0.75 & 80.62\%\\ \hline
+0.001 & 75.6\%\\ \hline
+0.0001 & 66.84\%\\ \hline
+\end{tabular}}
+\caption{Classification accuracy for various learning rates using a margin of 4.}
+\end{table}
+
+From the cross-validation, for the margin Perceptron the best margin is $\mu = 4$ and the best learning rate is $r = 0.1$. The margin Perceptron is trained on \texttt{a5a.train} using these best hyperparameters. \newline
+
+\framebox[1.2\width]{Updates made during training: 2,386/6,414 or 37.2\%} \newline
+
+Using the trained margin Perceptron, I test the classification accuracy of both the \texttt{a5a.train} and \texttt{a5a.test} data sets.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Algorithm& Data Set &Accuracy\\
+\hline
+margin Perceptron & a5a.train & 5,420/6,414 or 84.5\%\\ \hline
+margin Perceptron & a5a.test & 22,037/26,147 or 84.28\%\\ \hline
+\end{tabular}}
+\caption{Accuracy of the margin Perceptron with a learning rate of 0.1 and a margin of 4.}
+\end{table}
+
+\part{3} Using the best learning rate for classical Perceptron from question 2, the Perceptron is trained on \texttt{a5a.train} with an additional hyperparameter: the number of epochs. Two Perceptrons are trained, one with 3 epochs and another with 5 epochs.\newline
+
+\framebox[1.2\width]{Updates made during training with 3 epochs: 4,061/19,242 or 21.11\%}
+
+\framebox[1.2\width]{Updates made during training with 5 epochs: 6,692/32,070 or 20.87\%} \newline
+
+Using the two trained classic Perceptrons, I test the classification accuracy of both the \texttt{a5a.train} and \texttt{a5a.test} data sets.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Algorithm& Data Set & Epoch Count & Accuracy\\
+\hline
+classic Perceptron & a5a.train & 3 & 5,073/6,414 or 79.09\%\\ \hline
+classic Perceptron & a5a.test & 3 & 20,584/26,147 or 78.72\%\\ \hline
+classic Perceptron & a5a.train & 5 & 4,439/6,414 or 69.21\%\\ \hline
+classic Perceptron & a5a.test & 5 & 17,751/26,147 or 67.89\%\\ \hline
+\end{tabular}}
+\caption{Accuracy of the classic Perceptron with a learning rate of 0.25.}
+\end{table}
+
+Using the best learning rate and margin for the margin Perceptron, the margin Perceptron is trained on \texttt{a5a.train} with both an epoch of 3 and 5. \newline
+
+\framebox[1.2\width]{Updates made during training with 3 epochs: 6,681/19,242 or 34.72\%}
+
+\framebox[1.2\width]{Updates made during training with 5 epochs: 10,932/32,070 or 34.09\%} \newline
+
+Using the two trained margin Perceptrons, I test the classification accuracy of both the \texttt{a5a.train} and \texttt{a5a.test} data sets.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Algorithm& Data Set & Epoch Count & Accuracy\\
+\hline
+margin Perceptron & a5a.train & 3 & 5,421/6,414 or 84.52\%\\ \hline
+margin Perceptron & a5a.test & 3 & 22,007/26,147 or 84.17\%\\ \hline
+margin Perceptron & a5a.train & 5 & 5,386/6,414 or 83.97\%\\ \hline
+margin Perceptron & a5a.test & 5 & 21,816/26,147 or 83.44\%\\ \hline
+\end{tabular}}
+\caption{Accuracy of the margin Perceptron with a learning rate of 0.1 and a margin of 4.}
+\end{table}
+
+\part{4} To determine the best margin $\mu$ for the aggressive Perceptron, 6-fold cross validation is ran on \texttt{a5a.train}.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c |}
+\hline
+Margin & Accuracy\\
+\hline
+0 & 71.52\%\\ \hline
+1 & 76.89\%\\ \hline
+1.5 & 77.11\%\\ \hline
+2 & 77.21\%\\ \hline
+2.5 & 77.19\%\\ \hline
+3 & 77.19\%\\ \hline
+4 & 77.22\%\\ \hline
+5 & 77.35\%\\ \hline
+\end{tabular}}
+\caption{Classification accuracy for various margins using a learning rate of 0.5.}
+\end{table}
+
+From the cross-validation, the best margin is $\mu = 5$ for aggressive Perceptron with margin. Four aggressive Perceptrons are trained: each with 3 epochs with shuffling, 3 epochs without shuffling, 5 epochs with shuffling, and 5 epochs without shuffling. \newline
+
+\framebox[1.2\width]{Updates made during training with 3 epochs and shuffling: 8,021/19,242 or 41.68\%}
+
+\framebox[1.2\width]{Updates made during training with 5 epochs and shuffling: 13,273/32,070 or 41.39\%}
+
+\framebox[1.2\width]{Updates made during training with 3 epochs and no shuffling: 8,152/19,242 or 42.37\%}
+
+\framebox[1.2\width]{Updates made during training with 5 epochs and no shuffling: 13,459/32,070 or 41.97\%} \newline
+
+Using the four trained aggressive Perceptrons, I test the classification accuracy of both \texttt{a5a.train} and \texttt{a5a.test} data sets.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+Algorithm& Data Set & Epoch Count & Shuffling & Accuracy\\
+\hline
+aggressive Perceptron & a5a.train & 3 & yes & 5,313/6,414 82.83\%\\ \hline
+aggressive Perceptron & a5a.test & 3 & yes & 21,676/26,147 82.9\%\\ \hline
+aggressive Perceptron & a5a.train & 3 & no & 5,200/6,414 81.07\%\\ \hline
+aggressive Perceptron & a5a.test & 3 & no & 20,969/26,147 80.2\%\\ \hline
+aggressive Perceptron & a5a.train & 5 & yes & 4,592/6,414 71.59\%\\ \hline
+aggressive Perceptron & a5a.test & 5 & yes & 18,376/26,147 70.28\%\\ \hline
+aggressive Perceptron & a5a.train & 5 & no & 5,195/6,414 80.99\%\\ \hline
+aggressive Perceptron & a5a.test & 5 & no & 20,964/26,147 80.18\%\\ \hline
+\end{tabular}}
+\caption{Accuracy of the aggressive Perceptron with a margin of 5.}
+\end{table}
+
+\textit{Notes on experiments:} The weight vector and bias used by all the Perceptrons in the experiments and cross-validations were initialized to a random number in the range [-1, 1]. The random number generator was seeded to get consistent results. The exception being experiment 1, where the weight vector and bias were initialized to 0. 
+
+The cross validation was done with \texttt{testHyperParameters.py} and the four experiments are conducted with \texttt{experiment1.py, experiment2.py, experiment3.py, and experiment4.py}. The shell script \texttt{run.sh} with run all four of the experiments.
 
 \end{document}
