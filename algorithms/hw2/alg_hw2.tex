@@ -48,7 +48,7 @@
 \question{2}{Count Number of Parsings}
 \textit{Collaboration with Maks Cegielski-Johnson.}
 
-\algorith Below is an algorithm for counting the number of ways a string can be parsed, given a language of valid words.
+\algorith The following is an algorithm for counting the number of ways a string can be parsed, given a language of valid words.
 
 \algdef{SE}[VARIABLES]{Variables}{EndVariables}
    {\algorithmicvariables}
@@ -96,15 +96,110 @@ We can observe that we will find every possible parsing as we exhaustively try e
 
 \runtime There are $2^{N-1}$ possible parsings in the worst-case. This worst-case is when $s$ is a string consisting of all the same letter (ex. aaaaa) and the language is a growing sequence of length N (ex. a, aa, aaa, aaaa, aaaaa).
 
- We combat this exponential runtime by caching the parse counts of substrings of $s$. There will be N entries in the language, each of which will need to be
-
+ We combat this exponential runtime by caching the parse counts of the substrings of $s$. In the worst-case, there are N entries in the language that need to be parsed and cached. The recursion tree with have $N$ levels, and there will be $N-k$ lookups on each level where $k$ is the recursion level. 
+ $$\sum_{i=1}^{n} n-i = \frac{n(n-1)}{2}$$
+ 
+ This is making the assumption that the language is stored in a hash set structure that provides constant time lookup.
+ 
+ \framebox[1.2\width]{$O(n^2)$ time complexity}
+ 
 \question{3}{The Ill-prepared Burglar}
+
+\part{a} Consider the scenario where the ill-prepared burglar can carry 10 pounds and the house has the following items.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+Item& Value& Weight\\
+\hline
+T.V. & 8& 9\\ \hline
+Laptop & 5& 5\\ \hline
+Fine Art & 7& 5\\ \hline
+\end{tabular}}
+\end{table}
+
+His strategy of picking the most valuable items first won't be most optimal here. He will end up with the T.V. in his bag with a value of 9. The most optimal strategy would be taking the laptop and fine art, putting his loot value at 12.
+
+\part{b} Again, the ill-prepared burglar can only carry 10 pounds, this time picking the items with the best ratio.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Item& Value& Weight& Ratio\\
+\hline
+Finer Art & 9& 6&1.5 \\ \hline
+iPad & 5& 5&1\\ \hline
+jewelry  & 5& 5&1\\ \hline
+\end{tabular}}
+\end{table}
+
+The burglar's new ratio strategy will lead him to pick the finer art, with no room for anything else and a value of 9. The optimal choice would of been to take the iPad and jewelry for a total value of 10.
+
+\algorith The following is an algorithm for finding the max total value of items that can fit in a bank locker.
+
+\begin{algorithm}[H]
+\caption{Count number of parsings}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Variables
+\State $\mathbf{V} = $ collection of the values for each item
+\State $\mathbf{W} =$ collection of the weights for each item
+\State $\mathbf{cache} =$ the max value of items for a given size
+\EndVariables
+\State
+\Procedure{Max\_Value(weight)}{}
+\For {cur\_weight in range(1, weight + 1)}
+	\For {index in range(len(V))}
+		\If {cur\_weight $\geq$ W[index]}
+			\If {V[index] + cache[cur\_weight - W[index]] $>$ cache[cur\_weight]}
+				\State cache[cur\_weight] = V[index] + cache[cur\_weight - W[index]]
+			\EndIf
+		\EndIf
+	\EndFor
+\EndFor
+\State
+\State \Return cache[weight]
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+TODO: explanation of algorithm
+
+\correctness
+
+\runtime 
+
+\part{d}
 
 \question{4}{Central Node in Trees}
 
 \question{5}{Faster LIS}
 
+\part{a}
+
+\part{b}
+
 \question{6}{Maximizing Happiness}
 
+\part{a} Consider the following setting of children and gifts.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+& gift 1 & gift 2 \\ \hline
+child 1 & 2& 1 \\ \hline
+child 2 & 2,999& 1\\ \hline
+\end{tabular}}
+\end{table}
+
+If Santa is in a hurry and assigns gifts greedily, child 1 will receive present 1 and child 2 will receive present 2. This will result in a total value of 3. The best assignment that could take place is giving child 2 gift 1 and giving child 1 gift 2. This will result in a total value of 3,000. 
+
+\part{b}
 
 \end{document}
