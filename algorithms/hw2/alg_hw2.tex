@@ -44,6 +44,21 @@
 %Section B==============Put your answers to the questions below here=======================
 
 \question{1}{Probability of $k$ Heads}
+Given $n$ different coins, we want to calculate the probability that exactly $k$ of them turn up heads. If we want a polynomial time algorithm, we will have be clever because there are $\frac{n!}{k!(n-k)!}$ possible outcomes. There would potentially be an exponential number of multiplication operations to find the product of the independent probabilities for all the successful events.
+
+\algorith An observation is we have two outcomes for a coin toss: heads and tails. To have precisely $k$ heads on flip $n$, then we need $k-1$ heads on the flip $n-1$ (and flip $n$ is heads) or $k$ heads on flip $n-1$ (and flip $n$ is tails).
+
+	Starting at $cur\_n = 1$, for $0 \leq cur\_k \leq cur\_n$ calculate the probability of getting exactly $cur\_k$ heads with $cur\_n$ coins. Increase $cur\_n$ and repeat for $1 \leq cur\_n \leq n$. The probability is cached and we use previous probabilities to calculate the probability for $cur\_n$ and $cur\_k$. This is repeated until $cur\_n = n$ and $cur\_k = k$ at which point we have the desired probability.
+	
+	$$cache[(n, k)] = p_n * cache[(n-1, k-1)] + (1 - p_n) * cache[(n-1, k)]$$
+	
+	We initialize the cache with \texttt{cache[(0, 0)] = 1}.
+
+\correctness A sequence of coin flips are independent events. To find the joint probability of two independent events, we take their product. In our algorithm, we take the joint probability of the events that can lead to getting exactly $k$ heads on $n$ coin flips. Thus we have correctness.
+
+\runtime We multiply at most $n$ pairs of numbers in interval (0, 1) for $n$ coins. We know $k$ will be at most $n$ due to the nature of the problem. Multiplication happens in O(1) time. Giving $n(n * O(1))$.
+
+\framebox[1.2\width]{$O(n^2)$}
 
 \question{2}{Count Number of Parsings}
 \textit{Collaboration with Maks Cegielski-Johnson.}
@@ -105,7 +120,7 @@ We can observe that we will find every possible parsing as we exhaustively try e
  
 \question{3}{The Ill-prepared Burglar}
 
-\part{a} Consider the scenario where the ill-prepared burglar can carry 10 pounds and the house has the following items.
+\part{a} Consider the scenario where the ill-prepared burglar can carry a weight of 10 and the house has the following items.
 
 \begin{table}[H]
 \centering
@@ -122,7 +137,7 @@ Fine Art & 7& 5\\ \hline
 
 His strategy of picking the most valuable items first won't be most optimal here. He will end up with the T.V. in his bag with a value of 9. The most optimal strategy would be taking the laptop and fine art, putting his loot value at 12.
 
-\part{b} Again, the ill-prepared burglar can only carry 10 pounds, this time picking the items with the best ratio.
+\part{b} Again, the ill-prepared burglar can carry a weight of 10, this time picking the items with the best ratio.
 
 \begin{table}[H]
 \centering
@@ -139,49 +154,69 @@ jewelry  & 5& 5&1\\ \hline
 
 The burglar's new ratio strategy will lead him to pick the finer art, with no room for anything else and a value of 9. The optimal choice would of been to take the iPad and jewelry for a total value of 10.
 
-\algorith The following is an algorithm for finding the max total value of items that can fit in a bank locker.
+\algorith The following is an algorithm for finding the most valuable collection of items that can fit in a bank locker if size $S$.
 
 \begin{algorithm}[H]
-\caption{Count number of parsings}
+\caption{Most Valuable Collection of Items}
 \label{CHalgorithm}
 \begin{algorithmic}[1]
 \Variables
 \State $\mathbf{V} = $ collection of the values for each item
-\State $\mathbf{W} =$ collection of the weights for each item
+\State $\mathbf{S} =$ collection of the weights for each item
 \State $\mathbf{cache} =$ the max value of items for a given size
+\State $\mathbf{cache}[0] = 0$
 \EndVariables
 \State
-\Procedure{Max\_Value(weight)}{}
-\For {cur\_weight in range(1, weight + 1)}
+\Procedure{Max\_Value(S)}{}
+\For {cur\_size in range(1, S+1)}
 	\For {index in range(len(V))}
-		\If {cur\_weight $\geq$ W[index]}
-			\If {V[index] + cache[cur\_weight - W[index]] $>$ cache[cur\_weight]}
-				\State cache[cur\_weight] = V[index] + cache[cur\_weight - W[index]]
+		\If {cur\_size $\geq$ W[index]}
+			\If {V[index] + cache[cur\_size - W[index]] $>$ cache[cur\_size]}
+				\State cache[cur\_size] = V[index] + cache[cur\_size - W[index]]
 			\EndIf
 		\EndIf
 	\EndFor
 \EndFor
 \State
-\State \Return cache[weight]
+\State \Return cache[size]
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-TODO: explanation of algorithm
+The strategy is to calculate the most valuable collection of items for each size of locker $s$ (where $0 \leq s \leq S$) and cache the result. If the best value of each size is calculated in ascending order, the previous results can be used for the next locker until we arrive at a locker of size $S$.
 
-\correctness
+Using the previous sub-problems, we can find the most valuable collection of items for the current size.
+$$cache(s) = MAX\{cache(s - s_i) + v_i\} \ for \ 1 \leq i \leq N$$
 
-\runtime 
+We try each item $v_i$ and add it to an already calculated optimal subproblem. We find the previous optimal subproblem by subtracting the size $s_i$ from the current size. Each item is tried and we take the maximum for a locker of size $s$. This is repeated until a size $S$ is reached, at which point we have found the max total value.
 
-\part{d}
+\correctness We build our final solution using optimal sub-problems. Including item $i$ is the optimal choice for $cache(s)$, if not including item $i$ will still provide an optimal solution to $cache(s - s_i)$. So we know that we should include item $i$ in the optimal solution. This process is continued until $cache(S)$ at which point we have a max total value and a total size $\leq S$.
+
+\runtime For $S$ different sizes, we must consider at most $n$ possible items that will provide the max total value for that size. Simply put, we will do $n$ work, $S$ times.
+
+\framebox[1.2\width]{O(nS)}
+
+\part{d} The algorithm is not polynomial in the input size. The number of bits required to represent $S$ is $log_2(S)$ bits. The length of the input $S$ is proportional to the number of bits required to represent it. So it's not polynomial in the input size.
+
+\framebox[1.2\width]{NO} 
 
 \question{4}{Central Node in Trees}
 
 \question{5}{Faster LIS}
 
-\part{a}
+\part{a} The element at $B[1]$ is the beginning element of the longest increasing subsequence of length $1$. Element $B[1]$ is also the largest element in the array seen so far with an LIS of length $1$. All the elements are distinct. 
+
+We scan the array right to left, so to have an LIS of length $2$, we can see that $B[2]$ must be strictly less than $B[1]$. We know this because if $B[1]$ isn't less than $B[2]$ then we can't "build" an LIS starting with element at $B[2]$.
+
+For $1 \leq j \leq S$ then $B[j] < B[j-1]$ will also be satisfied, where $S$ is the best longest increasing subsequence.
 
 \part{b}
+
+\algorith
+
+\correctness
+
+\runtime
 
 \question{6}{Maximizing Happiness}
 

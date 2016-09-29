@@ -1,0 +1,67 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1#2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{Project Proposal}}
+\rhead{CS 6350, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{2}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+For my team name I will be using my last name: Pitkin (creative I know).
+
+\question{}{Type of Project - Competitive Project}
+
+I will be participating in the competitive project option. I think friendly competition will be a fun motivator to tune and produce a quality final project.
+
+\question{}{Algorithms - Linear Classifiers and Naive Bayes}
+
+I enjoyed homework 2 and working with linear classifiers. Currently, for the final project I would like to work with one of the more advanced variants of the Perceptron algorithm.
+
+I also enjoy statistics in particular Bayesian statistics. Using Naive Bayes for classification is another idea I have for the final project.
+
+As we get more details about the competitive project and as we learn more algorithms, my vision for my final project will grow stronger.
+
+\question{}{Experiments - Hyperparameters and Algorithm Variants}
+
+We have seen that k-fold cross validation can be a powerful tool for choosing hyperparameters. I will be implementing this for my final project as this is a strong tool in the art of choosing strong hyperparameters.
+
+In addition, we saw in homework 2 that general algorithms like Perceptron has many variants. These variants perform differently depending on the the data set being classified. For the final project, I will be experimenting with different variants in an attempt to maximize my classification accuracy.
+
+
+\end{document}
