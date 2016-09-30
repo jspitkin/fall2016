@@ -44,22 +44,22 @@
 %Section B==============Put your answers to the questions below here=======================
 
 \question{1}{Probability of $k$ Heads}
-Given $n$ different coins, we want to calculate the probability that exactly $k$ of them turn up heads. If we want a polynomial time algorithm, we will have be clever because there are $\frac{n!}{k!(n-k)!}$ possible outcomes. There would potentially be an exponential number of multiplication operations to find the product of the independent probabilities for all the successful events.
+Given $n$ different coins, we want to calculate the probability that exactly $k$ of them turn up heads. If we want a polynomial time algorithm, we will have be clever because there are $\frac{n!}{k!(n-k)!}$ possible outcomes. There would potentially be an exponential number of operations to find the sum of the independent probabilities for all the successful events.
 
 \algorith An observation is we have two outcomes for a coin toss: heads and tails. To have precisely $k$ heads on flip $n$, then we need $k-1$ heads on the flip $n-1$ (and flip $n$ is heads) or $k$ heads on flip $n-1$ (and flip $n$ is tails).
 
-	Starting at $cur\_n = 1$, for $0 \leq cur\_k \leq cur\_n$ calculate the probability of getting exactly $cur\_k$ heads with $cur\_n$ coins. Increase $cur\_n$ and repeat for $1 \leq cur\_n \leq n$. The probability is cached and we use previous probabilities to calculate the probability for $cur\_n$ and $cur\_k$. This is repeated until $cur\_n = n$ and $cur\_k = k$ at which point we have the desired probability.
+	Starting at $cur\_n = 1$, for $0 \leq cur\_k \leq cur\_n$ we calculate the probability of getting exactly $cur\_k$ heads with $cur\_n$ coins. Increase $cur\_n$ and repeat for $1 \leq cur\_n \leq n$. The probability is cached and we use previous probabilities to calculate the probability for $cur\_n$ and $cur\_k$. This is repeated until $cur\_n = n$ and $cur\_k = k$ at which point we have the desired probability.
 	
 	$$cache[(n, k)] = p_n * cache[(n-1, k-1)] + (1 - p_n) * cache[(n-1, k)]$$
 	
 	We initialize the cache with \texttt{cache[(0, 0)] = 1}.
 
-\correctness A sequence of coin flips are independent events. To find the joint probability of two independent events, we take their product. In our algorithm, we take the joint probability of the events that can lead to getting exactly $k$ heads on $n$ coin flips. Thus we have correctness.
+\correctness A sequence of coin flips are independent events. To find the joint probability of two independent events, we take their sum. In our algorithm, we take the joint probability of the events that can lead to getting exactly $k$ heads on $n$ coin flips. Thus we have correctness.
 
 \runtime We multiply at most $n$ pairs of numbers in interval (0, 1) for $n$ coins. We know $k$ will be at most $n$ due to the nature of the problem. Multiplication happens in O(1) time. Giving $n(n * O(1))$.
 
 \framebox[1.2\width]{$O(n^2)$}
-
+\newpage
 \question{2}{Count Number of Parsings}
 \textit{Collaboration with Maks Cegielski-Johnson.}
 
@@ -201,6 +201,56 @@ We try each item $v_i$ and add it to an already calculated optimal subproblem. W
 \framebox[1.2\width]{NO} 
 
 \question{4}{Central Node in Trees}
+\textit{Collaboration with Maks Cegielski-Johnson and Dietrich Geisler.}
+
+\algorith
+
+\begin{algorithm}[H]
+\caption{Central nodes in trees}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Procedure{Driver(head, k)}{}
+\For {$0 \geq i \geq k-1 \ find \ the \ min$}
+	\State MAX(cost(head.l, i, 0), cost(head.r, k-i-1, 0))
+\EndFor
+\State \Return found \ minimum
+\EndProcedure
+\State
+\Procedure{Cost(node, k, curCost)}{}
+\If {node.l is null and node.r is null}
+	\If {k $>$ 0}
+		\State \Return $\infty$
+	\Else \ \textbf{if} \ k == 1
+		\State \Return curCost
+	\EndIf
+	\State \Return curCost + 1
+\EndIf
+\State
+\State \Return curCost + \ the \ min \ from \ below \ for \ loop
+\For {$0 \geq i \geq k-1 \ find \ the \ min$}
+	\For {$0 \geq j \geq k-1 \ find \ the \ min$} \# mark \ the \ current \ node
+		\State MAX(cost(node.l, i, 0), cost(node.r, k-i-1, 0))
+	\EndFor
+	\For {$0 \geq k \geq k-1 \ find \ the \ min$} \# don't \ mark \ the \ current \ node
+		\State MAX(cost(node.l, i, curCost + 1), cost(node.r, k-i-1, curCost + 1))
+	\EndFor
+\EndFor
+\EndProcedure
+
+\end{algorithmic}
+\end{algorithm}
+
+In the $driver$ method, we first mark the root node. This node always must be marked or it would be $\infty$. Next, we try all possible combinations of passing the remaining $k$ marks down both the left and right side. Consider the maximum of the left and right option for each distribution of k and take the minimum. 
+
+In $cost$, first we check if the current node is a child node. If it is and we still have $k$ left over, we know we have made a mistake. If we only have one $k$ left we mark the child node. Otherwise if we are out of $k$, we just add 1 to the current cost.
+
+In the return statement, we have to check four possible options: mark the current node and go left, mark the current node and go right, don't mark the current node and go left, and don't mark the current node and go right. The maximum of the two pairs of choices is taken, then a minimum is taken across the two maximum choices.
+
+\correctness We try every possible assignment of marking $k$ of the $n$ vertices. Of all the possible assignments, we take the maximum. Thus by exhaustive search we find the $k$ nodes that minimize the loss and have correctness.
+
+\runtime There are $k$ levels of recursions called from the $Driver$ method. For each of those $k$ calls to $cost$, each also calls $cost$ k times. A total of $n$ nodes is considered in each recursive call to $cost$. Giving $k * n * k * n$.
+
+\framebox[1.2\width]{$O(n^2k^2)$}
 
 \question{5}{Faster LIS}
 
@@ -209,16 +259,59 @@ We try each item $v_i$ and add it to an already calculated optimal subproblem. W
 We scan the array right to left, so to have an LIS of length $2$, we can see that $B[2]$ must be strictly less than $B[1]$. We know this because if $B[1]$ isn't less than $B[2]$ then we can't "build" an LIS starting with element at $B[2]$.
 
 For $1 \leq j \leq S$ then $B[j] < B[j-1]$ will also be satisfied, where $S$ is the best longest increasing subsequence.
-
+\newpage
 \part{b}
 
-\algorith
+\algorith The following is an algorithm for finding the longest increasing subsequence of integers in an array.
 
-\correctness
+\begin{algorithm}[H]
+\caption{Find Longest Increasing Subsequence}
+\label{CHalgorithm}
+\begin{algorithmic}[1]
+\Variables
+\State $\mathbf{L} = $ length of the longest increasing subsequence starting at a given position
+\State $\mathbf{B} =$ jth element is the value of the largest A[i] in array where L[i] $\geq j$
+\State $\mathbf{best}$ = best subsequence found so far
+\State
+\State $\mathbf{L}[|A|-1] = 1$ 
+\State $\mathbf{B}[1] = A[|A| - 1]$
+\State $\mathbf{best}$ = 1
+\EndVariables
+\State
+\Procedure{LIS(A)}{}
+\For {i in range($|A| - 1, 0$)} \# right-to-left
+	\State pos = BinarySearch(B, A[i], 1, best)
+	\If {A[i] $>$ B[pos]}
+		\State B[pos] = A[i]
+		\State L[i] = pos
+	\Else \ \textbf{if} {A[i] $<$ B[best]} \textbf{then}
+		\State best = best + 1
+		\State B[best] = A[i]
+		\State L[i] = best
+	\EndIf
+\EndFor
+\State
+\State \Return best
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
-\runtime
+With the use of an additional array B, we can improve the LIS algorithm from class.
+
+We move through A from right-to-left. For each element, we use binary search to determine where it might belong in B. If A[i] is greater than B[pos], then we replace B[pos] with A[i] and set L[i] to pos. This means we haven't found a better LIS, but we have found a larger entry with the same subsequence length.
+
+ If the value A[i] is less than B[best] (the first element of the current best LIS), then we have found a new LIS. This is because we can prepend the old best LIS with A[i] to form a longer LIS. We update B with A[i] and L[i] with $best$ to track this.
+ 
+ Once all elements in A are considered, $best$ is returned which is the LIS.
+
+\correctness Given $i$ that scans A from right-to-left, LIS[j] is correct for all $j > i$. The base case is the right most element has a LIS of 1. B is used to find the largest entry that begins the current best LIS. If a value smaller than B[best] is found that is to the left of B[best], we know we have found a new best LIS. We are adding one element to an existing optimum LIS.
+
+\runtime A is of length $n$ and is scanned from right-to-left. For each element in A, we perform a binary search over B which is also of size $n$. Binary search is $O(log n)$ in all cases and is performed $n$ times.
+
+\framebox[1.2\width]{$O(n \ log n)$}
 
 \question{6}{Maximizing Happiness}
+\textit{Collaboration with Maks Cegielski-Johnson and Dietrich Geisler.}
 
 \part{a} Consider the following setting of children and gifts.
 
@@ -235,6 +328,61 @@ child 2 & 2,999& 1\\ \hline
 
 If Santa is in a hurry and assigns gifts greedily, child 1 will receive present 1 and child 2 will receive present 2. This will result in a total value of 3. The best assignment that could take place is giving child 2 gift 1 and giving child 1 gift 2. This will result in a total value of 3,000. 
 
-\part{b}
+\part{b} 
+Starting at any given setting $A_{ij}$, we must prove we achieve at least 1/2 the optimum value for the given setting by applying Santa's algorithm. The algorithm sees if swapping the gifts of any pair of children increases the total value. This is repeated until no such swap improves the total value. Call this the $converged \ setting$ and call the total value $C$. Say we are given the $optimum \ setting$ and call the total value $O$. We must prove that $C \geq O/2$.
+
+Let $\pi$ denote the $converged \ setting$ and $\pi^*$ denote the $optimum \ setting$. For any $A_{i, \pi(i)}$ and $A_{j, \pi(j)}$ (two children and their gifts from the $converged \ setting$), we swap the gifts of the children strategically. The goal is to get the value of a child from the  $optimum \ setting$ and the other child will have whatever gift was swapped to them.
+
+	{\large $$\forall i, \ \exists j \ s.t. \ \pi^*(i) = \pi(j) \ and \ A_{i, \pi(i)} + A_{j, \pi(j)} \geq A_{i, \pi^*(i)} + A_{j, \pi(i)}$$}
+	
+	The LHS of the equality ($A_{i, \pi(i)} + A_{j, \pi(j)}$) will always be equal to or greater to the RHS ($A_{i, \pi^*(i)} + A_{j, \pi(i)}$). This is because Santa's algorithm would of already made this swap if the right hand side resulted in a greater total value.
+	
+	We know there are $n$ children and $n$ gifts, so we sum the values.
+	
+	{\large$$\sum_{i=1}^{n} A_{i, \pi(i)} + \sum_{j=1}^{n} A_{j, \pi(j)} \geq \sum_{i=1}^{n} A_{i, \pi^*(i)} + \sum_{i=1}^{n} A_{j_i, \pi(i)}$$}	
+	
+	An observation is after summing, the left hand side has a total value equal to $2C$. This is because we have each kid's value from the $converged \ setting$ twice. The right hand side will sum to O + k. We have each kid's value from the $optimum \ setting$ plus some other positive amount of happiness. Since k is positive, we can say $O + k \geq O$.
+	
+	$$2C \geq O + k \geq O$$
+	$$C \geq O/2 + k/2 \geq O/2$$
+	$$C \geq O/2$$
+	
+	Proving that $C \geq O/2$.
+	
+	\part{Bonus} Now Santa's algorithm picks every triple of children and sees if there is a reassignment of gifts that will make them happy. Using the same notation as part b, I will prove that with this new algorithm we can achieve $C \geq 2O/3$.
+	
+	Given the option of a three way swap, we can make strategic swaps such that on the RHS we have two values of children from the $optimum \ setting$ and another child with the leftover gift.
+	
+	Let $\pi^*(i) = \pi(j) \ and \  \pi^*(j) = \pi(k)$.
+	 
+	{\large $$\forall i, \ \exists j,k \ s.t. \ A_{i, \pi(i)} + A_{j, \pi(j)} + A_{k, \pi(k)} \geq A_{i, \pi^*(i)} + A_{j, \pi^*(j)} + A_{k, \pi(i)}$$}
+	
+	The LHS will always be greater than the RHS for the same reasons outlined in part b.
+	
+	{\large$$\sum_{i=1}^{n} A_{i, \pi(i)} + \sum_{j=1}^{n} A_{j, \pi(j)} + \sum_{k=1}^{n} A_{k, \pi(k)} \geq \sum_{i=1}^{n} A_{i, \pi^*(i)} + \sum_{j=1}^{n} A_{j_i, \pi^*(j)} + \sum_{k=1}^{n} A_{k, \pi(i_k)}$$}
+	
+	After summing,the left hand side has a total value equal to $3C$. This is because we have each kid's value from the $converged \ setting$ three times. The right hand side will sum to 2O + k. We have each kid's value from the $optimum \ setting$ twice plus some other positive amount of happiness. Since k is positive, we can say $2O + k \geq 2O$.
+	
+		$$3C \geq 2O + k \geq 2O$$
+		$$C \geq 2O/3 + k/3 \geq 2O/3$$
+		$$C \geq 2O/3$$
+		
+		Proving that $C \geq 2O/3$.
+	 
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}

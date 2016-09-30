@@ -1,0 +1,23 @@
+Testing AnagramUtil.sort(String s)
+
+
+Points:							10 / 10
+---------------------------------------------------------------
+Testing AnagramUtil.insertionSort(T[] data, Comparator<? super T> comp)
+Using a Comparator<Integer> which sorts in descending order.
+
+
+Points:							10 / 10
+---------------------------------------------------------------
+Testing AnagramUtil.areAnagrams(String a, String b)
+
+
+Points:							10 / 10
+---------------------------------------------------------------
+Testing AnagramUtil.getLargestAnagramGroup(String [] s)
+
+
+Points:							10 / 10
+---------------------------------------------------------------
+Testing AnagramUtil.getLargestAnagramGroup(String filename)
+
