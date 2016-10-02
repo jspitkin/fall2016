@@ -26,18 +26,31 @@ def parse_file(path):
     lines = []
     with open(path) as file:
         for line in file:
-            lines.append(line)
+            lines.append(line.rstrip())
     return lines
 
 def print_parses(parses):
-    """ Prints a collection of parses as specified by the assignment """
-    for parse in parses:
+    """ Input - a dictionary representing a parsed sentence
+                sentence - the sentence that was parsed
+                count    - number of valid parsings
+                chart    - the CKY parsing chart for the sentence
+        Output - None. Prints to std out"""
+    for index, parse in enumerate(parses):
         print("PARSING SENTENCE:", parse['sentence'])
         print("NUMBER OF PARSES FOUND:", parse['count'])
         print("CHART:")
-        for entry in parse['chart']:
-            print("chart[", entry['x'], ',', entry['y'], "]: ", entry['content'], sep='')
-        print()
+        for row in range(0, len(parse['sentence'].split(' '))):
+            for col in range(row, len(parse['sentence'].split(' '))):
+                print("  ", "chart[", row+1, ",", col+1, "]: ",  sep='', end='')
+                constituents = sorted(parse['chart'][row][col])
+                constituent_list = ''
+                if len(constituents) == 0:
+                    constituent_list = "-"
+                for constituent in constituents:
+                    constituent_list = constituent_list + constituent + ' '
+                print(constituent_list.rstrip())
+        if index != len(parses) -1:
+            print()
 
 
 
