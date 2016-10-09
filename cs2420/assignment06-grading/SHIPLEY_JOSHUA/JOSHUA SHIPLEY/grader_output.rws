@@ -1,0 +1,75 @@
+Testing addFirst
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing addLast
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing add
+Tests:				7/7
+Points:				5/5
+--------------------
+Testing getFirst
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing getLast
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing get
+Tests:				5/5
+Points:				5/5
+--------------------
+Testing removeFirst
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing removeLast
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing remove
+Tests:				7/7
+Points:				5/5
+--------------------
+Testing indexOf
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing lastIndexOf
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing size
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing isEmpty
+Tests:				3/3
+Points:				2/2
+--------------------
+Testing clear
+Tests:				5/5
+Points:				3/3
+--------------------
+Testing toArray
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing iterator
+iterator threw java.lang.NullPointerException
+iterator threw java.lang.NullPointerException
+Tests:				0/7
+Points:				0/5
+--------------------
+Final Score
+
+Points from automated tests:	55/60
+Style & Testing:		xx/10
+Analysis Document:		xx/30
+Total:				xx/100
+--------------------
+Comments:
+

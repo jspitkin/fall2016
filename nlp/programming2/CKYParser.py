@@ -31,6 +31,7 @@ class CKYParser:
                 if not rule['is_terminal']:
                     if rule['first_nonterminal'] in chart[row][k-1]:
                         if rule['second_nonterminal'] in chart[k][col]:
+                            print(rule['first_nonterminal'], rule['second_nonterminal'])
                             found_partitions.append(rule['lhs'])
         return found_partitions
 

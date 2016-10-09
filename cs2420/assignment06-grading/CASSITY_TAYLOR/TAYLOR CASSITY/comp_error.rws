@@ -1,0 +1,14 @@
+DoublyLinkedListTiming.java:6: error: package utilities does not exist
+import utilities.OutputPrint;
+                ^
+DoublyLinkedListTiming.java:18: error: cannot find symbol
+		OutputPrint printer = new OutputPrint();
+		^
+  symbol:   class OutputPrint
+  location: class DoublyLinkedListTiming
+DoublyLinkedListTiming.java:18: error: cannot find symbol
+		OutputPrint printer = new OutputPrint();
+		                          ^
+  symbol:   class OutputPrint
+  location: class DoublyLinkedListTiming
+3 errors

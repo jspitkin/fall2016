@@ -1,0 +1,11 @@
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at assignment06.LinkedListGrader$Tester.run(LinkedListGrader.java:32)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+	at assignment06.DoublyLinkedList.add(DoublyLinkedList.java:184)
+	at assignment06.LinkedListGrader$Tester.test_iterator_4(LinkedListGrader.java:1220)
+	... 6 more

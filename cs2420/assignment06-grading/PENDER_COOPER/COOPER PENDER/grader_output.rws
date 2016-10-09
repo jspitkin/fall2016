@@ -1,0 +1,83 @@
+Testing addFirst
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing addLast
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing add
+Tests:				7/7
+Points:				5/5
+--------------------
+Testing getFirst
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing getLast
+Failed to add first to empty list and retrieve it using getLast, Exception: java.lang.NullPointerException
+Tests:				2/3
+Points:				2/3
+--------------------
+Testing get
+Tests:				5/5
+Points:				5/5
+--------------------
+Testing removeFirst
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing removeLast
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing remove
+Tests:				7/7
+Points:				5/5
+--------------------
+Testing indexOf
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing lastIndexOf
+Failed to report correct index of only item in list.
+Failed to report correct index of item occuring at last position in list.
+Tests:				2/4
+Points:				2/4
+--------------------
+Testing size
+Tests:				4/4
+Points:				4/4
+--------------------
+Testing isEmpty
+Tests:				3/3
+Points:				2/2
+--------------------
+Testing clear
+addLast after clearing the list threw: java.lang.NullPointerException
+Tests:				4/5
+Points:				2/3
+--------------------
+Testing toArray
+Tests:				3/3
+Points:				3/3
+--------------------
+Testing iterator
+Tests:				7/7
+Points:				5/5
+--------------------
+Final Score
+
+Points from automated tests:	56/60
+Style & Testing:		xx/10
+Analysis Document:		xx/30
+Total:				xx/100
+--------------------
+Comments:
+
+You missed points on one or more of addFirst, getFirst, getLast, or get.  If
+these methods are broken we cannot accurately test your other methods, and you
+may have mistakenly lost points on other methods as a result.  If mistakes in
+these four methods affected your score in other methods, you can send email to
+the teaching staff explaining exactly what went wrong and how to fix your code
+and you may receive some points back for those other methods.
