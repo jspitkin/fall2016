@@ -91,9 +91,11 @@ $\overline{x_1} \Rightarrow x_2$ can be restated as "if $\overline{x_1}$ is true
 
 \textbf{Reduction}: Let the variables in the 3-SAT problem be $y_1$, $y_2$, $y_3$, ..., $y_n$. There will be identical variables $x_1$, $x_2$, $x_3$, ..., $x_n$ in our LIP problem restricted to the values $\{0, 1\}$ where $0$ represents false and $1$ represents true. Each linear constraint will contain the constants $a_1$, $a_2$, $a_3$, ..., $a_n$ and $b$.
 
-	For each clause in the 3-SAT problem construct a linear constraint. If $y_i$ is present then $a_i$ is set to $-1$ otherwise $a_i$ is set to $0$. The constant $b$ is set to $-1$. If $y_i$ is negated in the clause, then $x_i$ equals $(1 - y_i)$.
+	For each clause in the 3-SAT problem construct a linear constraint. If $y_i$ is present then $a_i$ is set to $-1$ otherwise $a_i$ is set to $0$. The constant $b$ is set to $-1$. If $y_i$ is negated in the clause, then $x_i$ is set to $(1 - y_i)$ otherwise $x_1$ is set to $y_i$.
 	
-\part{b}
+	The formula is satisfiable if there exists integers $x_i$ that satisfy all the linear constraints.
+	
+\part{b} The ILP problem is NP-Complete if it is in NP and is NP-Hard. By reducing a known NP-Complete problem (3-SAT) to ILP we showed ILP is NP-Hard. ILP is in NP because given integers $x_i$ we can verify in polynomial time if they satisfy all the constraints. Thus ILP is NP-Complete.
 
 \part{c}
 
