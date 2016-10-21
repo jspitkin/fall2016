@@ -63,9 +63,52 @@ $x_1$ & $x_2$ & $\overline{x_1}$ & $x_1 \lor x_2$ & $\overline{x_1} \Rightarrow 
 
 $\overline{x_1} \Rightarrow x_2$ can be restated as "if $\overline{x_1}$ is true, then $x_2$ must be true". On the first row of the truth table, we see a contradiction when $\overline{x_1}$ is true but $x_2$ is false. In all other cases the implication holds.
 
-\part{b} 
+\part{b} 2-CNF formula is satisfiable $\iff$ there is no variable $x_i$ for which there is a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$.
 
-\part{c}
+\textbf{Proof LTR:} 2-CNF formula is satisfiable $\Rightarrow$ there is no variable $x_i$ for which there is a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$.
+
+Given a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$ we can view these paths as two conjunctions of implications. 
+
+The path $x_i \rightarrow x_j \rightarrow ... \rightarrow x_k \rightarrow \overline{x_i}$ and the path $\overline{x_i} \rightarrow x_k \rightarrow ... \rightarrow x_j \rightarrow x_i$ can be viewed as the following two conjunctions of implications.
+
+$$(x_i \Rightarrow x_j) \land (x_j \Rightarrow ...) \land (... \Rightarrow x_k) \land (x_k \Rightarrow \overline{x_i})$$
+$$(\overline{x_i} \Rightarrow x_k) \land (x_k \Rightarrow ...) \land (... \Rightarrow x_j) \land (x_j \Rightarrow x_i)$$
+
+Given these two conjunctions of implications, there is no assignment of literals that will satisfy both equations.
+
+Recall that T $\Rightarrow$ F is a false implication. In the final clause of both the above conjunctions, $x_k$ and $x_j$ will be true and either $x_i$ or $\overline{x_i}$ will be false. Given a conjunction, if one clause is false the statement is false.
+
+We have shown that if there exists a variable $x_i$ such that there exists a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$, then the 2-CNF formula is unsatisfiable. Thus by contradiction, a 2-CNF formula is satisfiable only if there is no such variable $x_i$.
+
+\textbf{Proof RTL:} 2-CNF formula is satisfiable $\Leftarrow$ there is no variable $x_i$ for which there is a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$.
+
+In proof LTR we viewed the paths from $x_i$ to $\overline{x_i}$ and $\overline{x_i}$ to $x_i$ as two conjunctions of implications. We showed given any assignment of literals $x_i$ there does not exist a way to satisfy both conjunctions. We know the 2-CNF formula is satisfiable, meaning there does exist an assignment of literals $x_i$ that satisfies all the paths it's graph representation contains.
+
+Therefore, if the 2-CNF formula is satisfiable we know no such variable $x_i$ exists.
+
+\algorith Construct a directed graph with $2n$ vertices corresponding to $x_i$ and $\overline{x_i}$ for $1 \leq i \leq n$. For each clause of the form $l_i \Rightarrow l_j$, place a directed edge from literal $l_i$ to literal $l_j$.
+	
+	For each pair of literals $x_i$ and $\overline{x_i}$, we test if there exists a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$.
+	
+	Starting at $x_i$, run BFS to determine if there exists a path to $\overline{x_i}$. If a path exists, starting at $\overline{x_i}$ run BFS to determine if there exists a path to $x_i$. If both path exists, we are done and report that the 2-CNF formula used to construct the graph is unsatisfiable.
+	
+	If all pairs of literals $x_i$ and $\overline{x_i}$ are tested and the pairs of paths are not found, we report the 2-CNF formula is satisfiable.
+	
+\correctness Using \textbf{Proof LTR} and \textbf{Proof RTL} we proved the statement: 2-CNF formula is satisfiable $\iff$ there is no variable $x_i$ for which there is a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$.
+
+\runtime In the worst-case (the 2-SAT formula is satisfiable and all pairs $x_i$ and $\overline{x_i}$ must be considered) we will perform $2n$ BFS operations where $n$ is the number of literals in the 2-SAT formula. The directed graph G representing the 2-SAT formula will contain $n$ vertices and $m$ edges where $m$ is the number of clauses in the 2-SAT formula.
+
+	BFS has a time complexity of $O(n + m)$ and will be ran at most $2n$ times.
+	
+	\framebox[1.2\width]{$O(n(n + m))$}
+
+\part{c} We can reduce the problem of \textit{2-or-more-SAT} into 2-SAT.
+
+\textbf{Reduction:} \textit{2-or-more-SAT} $\leq$ \textit{2-SAT}
+
+For each 3-CNF clause in $\phi$, we will represent it as a conjunction of 3 2-CNF clauses. The conjunction of these 3 2-CNF clauses will be logically equivalent to "2-or-more-satisfy" of the original 3-CNF clause.
+
+Given a clause $(x_i \lor x_j \lor \overline{x_k})$ we will transform this into the conjunction of clauses $(x_i \lor x_j) \land (x_j \lor \overline{x_k}) \land (\overline{x_k} \lor x_i)$. This conjunction will be true if and only if 2-or-more of $x_i, x_j, \overline{x_k}$ are true. Meaning it is logically equivalent to "2-or-more-satisfy" of the original 3-CNF clause.
 
 \question{2}{Decision vs. Search}
 
@@ -83,7 +126,9 @@ $\overline{x_1} \Rightarrow x_2$ can be restated as "if $\overline{x_1}$ is true
 
 \correctness From step 1, we know initially if $G$ contains an independent subset of size $k$. If a vertex $v$ can be removed from $G$ to form $G^\prime$ and $\mathcal{O}(G^\prime, k)$ returns YES, we know $G$ contains an independent subset of size $k$ and $v$ is not part of that subset. If $\mathcal{O}(G^\prime, k)$ returns NO, $G$ no longer contains an independent subset so we know $v$ is part of a independent subset so $v$ is added to $S$.
 
-\runtime In the worst-case, each $v \in V$ in G must be removed from G (one at a time) and a call to $\mathcal{O}$ is made. Assuming the representation of the graph is an adjacency matrix, a node can be removed or added in $O(|V|)$ time. Giving $O(|V|)$ calls to $\mathcal{O}$ and $O(|V|^2)$ work to remove vertices.
+	We know the algorithm will finish because we only proceed from step 1 if an independent subset of size $k$ exists. If one does, $|S|$ will equal $k$ after at most $|V|$ iterations of the algorithm and $|V|$ is finite.
+
+\runtime In the worst-case, each $v \in V$ in G must be removed from G (one at a time) and a call to $\mathcal{O}$ is made. Assuming the representation of the graph is an adjacency matrix, a node can be removed or added in $O(|V|)$ time. Giving $O(|V|)$ calls to $\mathcal{O}$ and $O(|V|^2)$ work to remove (and potentially add back) vertices.
 
 \question{3}{Reductions, Reductions}
 
@@ -97,23 +142,34 @@ $\overline{x_1} \Rightarrow x_2$ can be restated as "if $\overline{x_1}$ is true
 	
 \part{b} The ILP problem is NP-Complete if it is in NP and is NP-Hard. By reducing a known NP-Complete problem (3-SAT) to ILP we showed ILP is NP-Hard. ILP is in NP because given integers $x_i$ we can verify in polynomial time if they satisfy all the constraints. Thus ILP is NP-Complete.
 
-\part{c}
+\part{c} XOR-SAT is a concerned with determining if a formula containing clauses of XOR statements AND'ed together is satisfiable. LINEQ(mod2) can be reduced to XOR-SAT where each linear equation in LINEQ(mod2) is a clause in XOR-SAT. XOR-SAT can be solved using Gaussian elimination which has a $O(n^3)$ time complexity.
+
+\framebox[1.2\width]{YES}
 
 \part{d}
 
 \question{4}{Graphs - Definitions}
 
-\part{a} 
-
-\part{b} There cannot exist an undirected graph consisting of 10 nodes with degrees 2, 3, 4, 4, 7, 1, 4, 5, 3, 2 respectively.
+\part{a} A connected and undirected graph G has a cycle if all of its vertices have degree $\geq 2$.
 
 \textbf{Proof:} The \textit{degree sum formula} states, given an undirected graph G, the sum of the degrees of all the vertices V in G is equal to twice the number of edges E in G. Where the degree of a vertex is the number of edge incident to the vertex.
 
 $$\sum_{v \in V} deg(v) = 2|E|$$
 
-Each edge in an undirected graph connects exactly two vertices. In the case of a looping edge that connects a vertex to itself, this adds two to the degree of that vertex.
+Given a graph with $n$ vertices.
 
-We consider the sum of the given vertices.
+$$\sum_{v \in V} deg(v) = 2|E| \geq 2n$$
+$$|E| \geq n$$
+
+When all vertices have a degree $\geq 2$, there are at least $n$ edges in the G. 
+
+\textit{Properties of trees}: A tree is defined as a connected acyclic graph. A tree has the maximum number of edges an acyclic graph can contain. Given a tree with $n$ vertices there are exactly $n - 1$ edges in the tree. If any edge is added to a tree, a simple path is formed.
+
+We have shown that G has at least $n$ edges. Using this along with the properties of trees, we have proven that G must have a cycle.
+
+\part{b} There cannot exist an undirected graph consisting of 10 nodes with degrees 2, 3, 4, 4, 7, 1, 4, 5, 3, 2 respectively.
+
+\textbf{Proof:} We consider the sum of the given vertices.
 
 $$\sum_{v \in V} deg(v) = 2|E|$$
 $$35 = 2|E|$$
@@ -123,9 +179,25 @@ The number of edges must be an integer value. Thus we know that the given graph 
 
 \part{c}
 
+\algorith Run breadth-first search on G. Using the colors black and white, we will color the vertex as we traverse G. For each vertex, assign it the opposite color of it's parent's color (if it's parent is white - assign it back and vice-versa). If we arrive at an already colored vertex and it's parent is the same color, we have found a cycle of odd length that contains these two nodes. If the search completes and this situation doesn't arise, G does not contain any negative cycles and we can report such.
+
+	If a cycle of odd length does exist, we can find it by running a second breadth-first search on G, keeping track of the previous vertex for each vertex. Say vertex $v$ is the child of vertex $u$ and they have the same color. Start the second breadth-first search at vertex $v$ and proceed until vertex $u$ is found. The cycle is the path $u \rightarrow v$ (created using the previous references) and the edge(u, v).
+	
+\correctness Using properties of bipartite graphs, we prove if G contains a cycle of odd length.
+
+\framebox[1.2\width]{A graph G is bipartite if and only if it does not contain an odd cycle.}
+
+\framebox[1.656\width]{A graph is bipartite if and only if it is 2-colorable.}
+
+We can see a graph G is non-bipartite if it contains a cycle of odd length. To show G is non-bipartite we show that it is not 2-colorable (a parent and child vertex are assigned the same color). If G is 2-colorable, we know it is bipartite and doesn't contain any cycles of odd length.
+
+\runtime Given a graph G, we run breadth-first search at most two times on G. G contains $|V|$ vertices and $|E|$ edges. In breadth-first search we enqueue and dequeue $O(|V|)$ vertices and these operations have a time complexity of $O(1)$. All edges are explored which is $O(|E|)$. Therefore the total complexity of two breadth-first searches is $O(|V| + |E|)$.
+
+\framebox[1.2\width]{$O(|V| + |E|)$}
+
 \question{5}{Weary Traveler}
 
-\algorith A directed graph G is constructed where airports are represented by vertices and flights are represented by edges. Each vertex contains the name of an airport. Edges contain the arrival time of the flight, departure time of the flight, and a flight id that uniquely identifies the flight (used to construct flight schedule when the shortest travel path is found).
+\algorith A directed graph G is constructed where airports are represented by vertices and flights are represented by edges. Each vertex contains the name of an airport. Edges contain the arrival time of the flight, departure time of the flight, and a flight id that uniquely identifies the flight (used to construct flight schedule when the shortest travel path is found). If there are multiple flights between two airports, the flights are combined into one edge and each flight is checked. G is represented with an adjacency list, where each vertex has a list of it's neighbors. Given a list of flights, this is easy to construct.
 
 	Four dictionaries are used to keep track of the following: the previous vertex in a path, the minimum travel time from the source to a given vertex, what time you will arrive at a given vertex to achieve the minimum travel time to that vertex from the source, and an id of the flight used to arrive at the a given vertex.
 	
@@ -157,7 +229,8 @@ The number of edges must be an integer value. Thus we know that the given graph 
 \If{u == dest}
 \State \Return schedule with smallest total travel time
 \EndIf
-\For{neighbors w in u} \# Consider each vertex with an edge from u
+\For{neighbors w in u} \# Consider each flight in each vertex with an edge from u
+\For{flight in edge(u, w)}
 \State new\_travel\_time = arrival(u, w) - arrival\_time[u] + travel\_time[u]
 \If{arrival\_time[u] + 10 $\leq$ depart(u, w) \&\& new\_dist $<$ travel\_time[w]}
 \State travel\_time[w] = new\_travel\_time
@@ -166,6 +239,7 @@ The number of edges must be an integer value. Thus we know that the given graph 
 \State 
 \State q.update(w) \# Add w to the priority queue or update it's priority
 \EndIf
+\EndFor
 \EndFor
 \State q.pop() \# Remove from the queue the vertex with the highest priority
 \EndWhile
@@ -178,8 +252,29 @@ The algorithm is Dijkstra's algorithm with small modifications. On line 14, if w
 
 A priority queue implemented with a min-heap is used to store the vertices waiting to be processed so we can efficiently get the vertex with the highest priority. The travel time from the source to the vertex is stored in the priority queue with the vertex and is used to determine priority.
 
-\correctness
+\correctness We proved the correctness of Dijkstra's algorithm in class.
 
-\runtime
+\runtime A graph is constructed containing $n$ vertices and $m$ edges. Assuming the reputation of the graph is an adjacency list, the construction will have a time complexity of O(n + m).
+
+	In Dijkstra's algorithm the worst-case is when the destination vertex is the last vertex dequeued and the while loop runs for each $v \in V$. For each iteration of the while loop, $deg(u)$ neighbors are considered. Assuming the queue is a priority queue implemented as a min-heap, update and pop have a $O(\log n)$ time complexity. All other operations (such as calculating arrival times and peeking at the top of the queue) have a time complexity of $O(1)$. Dijkstra's runs in linear time with respect to the size of the graph with $O(\log n)$ queue operations. Thus the overall running time is $O((n + m)\log n)$. This dominates the time complexity of the construction of the graph and is our overall time complexity.
+	
+	\framebox[1.2\width]{$O((m + n)\log n)$}
+	
+\newpage	
+\textbf{\huge Collaboration and Sources}
+\newline
+
+Question 1: collaboration with Maks Cegielski-Johnson
+
+Question 2: collaboration with Maks Cegielski-Johnson
+
+Question 3: collaboration with Maks Cegielski-Johnson
+
+Question 3c: Wikipedia - Boolean satisfiability problem
+
+Question 4a: Wikipedia - Tree (graph theory)
+
+Question 4c: Wikipedia - Bipartite graph
+
 
 \end{document}
