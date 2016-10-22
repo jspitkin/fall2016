@@ -90,7 +90,7 @@ Therefore, if the 2-CNF formula is satisfiable we know no such variable $x_i$ ex
 	
 	For each pair of literals $x_i$ and $\overline{x_i}$, we test if there exists a path from $x_i$ to $\overline{x_i}$ and a path from $\overline{x_i}$ to $x_i$.
 	
-	Starting at $x_i$, run BFS to determine if there exists a path to $\overline{x_i}$. If a path exists, starting at $\overline{x_i}$ run BFS to determine if there exists a path to $x_i$. If both path exists, we are done and report that the 2-CNF formula used to construct the graph is unsatisfiable.
+	Starting at $x_i$, run BFS to determine if there exists a path to $\overline{x_i}$. If a path exists, starting at $\overline{x_i}$ run BFS a second time to determine if there exists a path to $x_i$. If both path exists, we are done and report that the 2-CNF formula used to construct the graph is unsatisfiable.
 	
 	If all pairs of literals $x_i$ and $\overline{x_i}$ are tested and the pairs of paths are not found, we report the 2-CNF formula is satisfiable.
 	
@@ -106,9 +106,13 @@ Therefore, if the 2-CNF formula is satisfiable we know no such variable $x_i$ ex
 
 \textbf{Reduction:} \textit{2-or-more-SAT} $\leq$ \textit{2-SAT}
 
-For each 3-CNF clause in $\phi$, we will represent it as a conjunction of 3 2-CNF clauses. The conjunction of these 3 2-CNF clauses will be logically equivalent to "2-or-more-satisfy" of the original 3-CNF clause.
+For each clause in $\phi$, we will construct a 2-CNF with three clauses that is logically equivalent. The conjunction of all the constructed 2-CNF clauses (to create one 2-CNF formula) will be logically equivalent to "2-or-more-satisfy" of the original 3-CNF clause.
 
-Given a clause $(x_i \lor x_j \lor \overline{x_k})$ we will transform this into the conjunction of clauses $(x_i \lor x_j) \land (x_j \lor \overline{x_k}) \land (\overline{x_k} \lor x_i)$. This conjunction will be true if and only if 2-or-more of $x_i, x_j, \overline{x_k}$ are true. Meaning it is logically equivalent to "2-or-more-satisfy" of the original 3-CNF clause.
+Given a clause $(x_i \lor x_j \lor \overline{x_k})$ we will transform this into the 2-CNF $(x_i \lor x_j) \land (x_j \lor \overline{x_k}) \land (\overline{x_k} \lor x_i)$. This 2-CNF will be true if and only if 2-or-more of $x_i, x_j, \overline{x_k}$ are true. Meaning it is logically equivalent to "2-or-more-satisfy" of the original 3-CNF clause. Taking a conjunction of all of the three clause 2-CNF formulas will give one 2-CNF formula we will call $\phi\prime$.
+
+Thus $\phi$ is \textit{2-or-more 3-SAT} if and only if $\phi\prime$ is \textit{2-SAT}.
+
+By reduction, we have shown that \textit{2-or-more 3-SAT} is as easy or easier than \textit{2-SAT}. In part b we provided a polynomial time algorithm for \textit{2-SAT}.
 
 \question{2}{Decision vs. Search}
 
@@ -146,8 +150,33 @@ Given a clause $(x_i \lor x_j \lor \overline{x_k})$ we will transform this into 
 
 \framebox[1.2\width]{YES}
 
-\part{d}
+\part{d} To prove that QUADEQ(mod 2) is NP-Complete we must show that it is NP-hard and that it is a member of NP. To show that it is NP-Hard we can reduce 3-SAT (a known NP-complete problem) to QUADEQ(mod 2). and we can show that it is in NP by showing it is verifiable in polynomial time.
 
+\textbf{Reduction:} \textit{3-SAT $\leq$ QUADEQ(mod 2)}
+
+Given a 3-CNF formula $\phi$, we can form a series of quadratic equations such that they satisfy QUADEQ(mod 2) if and only if $\phi$ is 3-SAT.
+
+For each clause in $\phi$ we must form a quadratic equation mod 2 that is logically equivalent. A quadratic equation mod 2 can be expressed in algebraic normal form (ANF). An ANF formula is one or more terms ANDed together and each clause is XORed together. For quadratic, each clause must contain exactly two literals.
+
+	We convert each clause in $\phi$ of the form $(x_i \lor x_j \lor x_k)$ to ANF.
+	
+	$$(x_i \land x_j) \ \oplus (x_i \land x_k) \ \oplus (x_j \land x_k) \ \oplus (x_i \land x_j \land x_k) \ \oplus x_i \ \oplus x_j \ \oplus x_k$$
+	
+	Each clause must contain exactly two literals. A clause with one literal is trivial to make two literals, as $x_i$ and $(x_i \land x_i)$ are logically equivalent. With three literals, we must create a new literal of the form $x_{ij}$. To give $x_{ij}$ the same value as $(x_i \land x_j)$ we include the quadratic equation $x_{ij}^2 + x_{i}x_{j} = 0$ in our series of equations. This enforces $x_{ij} = 1$ if and only if $x_ix_j = 1$.
+	
+	$$(x_i \land x_j) \ \oplus (x_i \land x_k) \ \oplus (x_j \land x_k) \ \oplus (x_{ij} \land x_k) \ \oplus (x_i \land x_i) \ \oplus (x_j \land x_j) \ \oplus (x_k \land x_k)$$
+	
+	Each equation has the form $\sum_{i,j} c_{ij}x_ix_j = b$ and there will be an equation for each clause in $\phi$ (plus the equations that enforce the values of the new literals). b is set to 1 for all equations. The relevant to the clause $c_{ij}$ are set to 1 while the rest are set to 0. 
+	
+	The relevant $c_{ij}$ for each equation are the c that contain of the combinations of literals present in the clause the equation is representing. The c relevant to the example clause are: $c_{ij}, \ c_{ik}, \ c_{jk}, \ c_{ijk}, \ c_{ii}, \ c_{jj}, \ and \ c_{kk}$. We are only concerned with the literals that are contained in the clause and c can be seen as a flag to consider only the relevant part of the quadratic equation for the clause. Negated literals such as $\overline{x_i}$ are assigned a value (1 - $x_i$) naturally.
+	
+	The formula $\phi$ is satisfiable by some assignment of variables $x_i$ if the constructed quadratic equations are satisfied by the same assignment of variables $x_i$. Proving we have reduced 3-SAT to QUADEQ(mod 2) showing that QUADEQ(mod 2) is NP-hard.
+	
+	\textbf{Exists in NP:} To show that QUADEQ(mod 2) is in NP, we must show in polynomial time that given a specific assignment of variables $x_i$ QUADEQ(mod 2) is satisfied by them. This is trivial to do as if we have variables $x_i$, we can simply plug in the variables and do arithmetic on a polynomial number of quadratic equations.
+	
+	\textbf{NP-Complete:} We have shown QUADEQ(mod 2) is NP-Hard and is in NP thus it is NP-Complete.
+	
+\newpage	
 \question{4}{Graphs - Definitions}
 
 \part{a} A connected and undirected graph G has a cycle if all of its vertices have degree $\geq 2$.
@@ -156,7 +185,7 @@ Given a clause $(x_i \lor x_j \lor \overline{x_k})$ we will transform this into 
 
 $$\sum_{v \in V} deg(v) = 2|E|$$
 
-Given a graph with $n$ vertices.
+Given a graph with $n$ vertices each with degree $\geq 2$
 
 $$\sum_{v \in V} deg(v) = 2|E| \geq 2n$$
 $$|E| \geq n$$
