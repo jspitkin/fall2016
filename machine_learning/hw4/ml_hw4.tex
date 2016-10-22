@@ -1,0 +1,99 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 6350, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{4}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+\question{1}{PAC Learning}
+
+\textbf{Rule 1:} You are free to combine any of the parts as they are.
+
+\textbf{Rule 2:} You may also cut any of the parts into two distinct pieces before using them.
+
+\part{1a} 
+
+Given $N$ parts, each product that can be made out of these parts is a distinct hypothesis $h$ in the hypothesis space $H$. From \textit{Rule 1}, a worker can choose to include or not include any of the parts in a product. This can be viewed as a monotone conjunction as a product is defined by choosing to include or not include each of the $N$ parts. There exists $2^N$ possible products as there are two choices for each of the $N$ parts.
+	
+	\framebox[1.2\width]{$|H| = 2^N$}
+
+\part{1b}
+
+	The experienced worker now creates a product using \textit{Rule 1} and \textit{Rule 2}. There are now four choices that can be made for each of the parts: don't include it, include it, cut the part and use the first half or cut the part and use the second half. A product is now defined as making four choices for each of the $N$ parts. Thus there are $4^N$ possible products.
+
+	\framebox[1.2\width]{$|H| = 4^N$}
+
+\part{1c}
+
+By applying the principles of Occams's Razor we can make a statement about the number of required examples the robot will have to see to have an error of 0.01 with probability $99\%$ on products with 6 available parts.
+
+Given a hypothesis space $H$, we can say with probability $1 - \delta$, a hypothesis $h \in H$, that is consistent with a training set of size $m$, will have an error $< \epsilon$ on future examples if
+
+$$m > \frac{1}{\epsilon}(ln(|H|) + ln\frac{1}{\delta})$$
+
+We want an error rate of $\epsilon = 0.01$ with probability $1 - \delta = 0.99$ with a $|H| = 4^6 = 4,096$.
+
+$$m > \frac{1}{0.01}(ln(4,096) + ln\frac{1}{0.01})$$
+$$m > 1,864.39$$
+
+The robot will have to see at least $1,865$ examples to guarantee a $0.01$ error with probability $99\%$ if there are 6 available parts. We round up as the number of required examples must be an integer value and rounding down would not satisfy the equality.
+
+\framebox[1.2\width]{at least 1,865 examples}
+\newpage
+\part{2}
+
+\question{2}{VC Dimensions}
+
+\part{1}
+
+\part{2a}
+
+\part{2b}
+
+\part{3}
+
+\part{4}
+
+\part{5}
+
+\question{3}{AdaBoost}
+
+\end{document}
