@@ -35,9 +35,7 @@ def print_parses(parses):
                 count    - number of valid parsings
                 chart    - the CKY parsing chart for the sentence
         Output - None. Prints to std out"""
-    for index, parse in enumerate(parses):
-        print("PARSING SENTENCE:", parse['sentence'])
-        print("NUMBER OF PARSES FOUND:", parse['count'])
+    for index, parse in enumerate(parses):  
         print("CHART:")
         for row in range(0, len(parse['sentence'].split(' '))):
             for col in range(row, len(parse['sentence'].split(' '))):

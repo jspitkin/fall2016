@@ -1,0 +1,20 @@
+LinkedListStack.java:3: error: cannot find symbol
+import assignment07.DoublyLinkedList;
+                   ^
+  symbol:   class DoublyLinkedList
+  location: package assignment07
+LinkedListStack.java:16: error: cannot find symbol
+	private DoublyLinkedList<E> stack;
+	        ^
+  symbol:   class DoublyLinkedList
+  location: class LinkedListStack<E>
+  where E is a type-variable:
+    E extends Object declared in class LinkedListStack
+LinkedListStack.java:19: error: cannot find symbol
+		stack = new DoublyLinkedList<E>();
+		            ^
+  symbol:   class DoublyLinkedList
+  location: class LinkedListStack<E>
+  where E is a type-variable:
+    E extends Object declared in class LinkedListStack
+3 errors

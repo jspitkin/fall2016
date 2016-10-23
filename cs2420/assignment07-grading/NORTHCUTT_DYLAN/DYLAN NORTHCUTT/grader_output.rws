@@ -1,0 +1,74 @@
+---TESTING MY STACK---
+Testing clear
+Failed on isEmpty on empty stack
+Failed on isEmpty on cleared empty stack
+Failed on clearing non-empty stack (isEmpty)
+Failed on clearing stack twice (isEmpty)
+Tests:					4/8
+Points:					2.5/5
+--------------------
+Testing push
+Tests:					0/3
+Points:					0/5
+--------------------
+Testing peek
+Failed to throw NoSuchElementException when peeking empty stack.
+Exception on peek, singleton stack : java.lang.NullPointerException
+Exception on peek, medium stack : java.lang.NullPointerException
+Exception on peek, large stack : java.lang.NullPointerException
+Exception on peek after pop  : java.lang.NullPointerException
+Failed to throw NoSuchElementException when peeking empty stack.
+Tests:					0/6
+Points:					0/5
+--------------------
+Testing pop
+Failed to throw NoSuchElementException when popping empty stack.
+Exception on pop, singleton stack : java.lang.ClassCastException: java.lang.Character cannot be cast to java.lang.Integer
+Exception on pop, medium stack : java.lang.ClassCastException: java.lang.Character cannot be cast to java.lang.Integer
+Exception on pop, large stack : java.lang.ClassCastException: java.lang.Character cannot be cast to java.lang.Integer
+Exception on popping twice  : java.lang.ClassCastException: java.lang.Character cannot be cast to java.lang.Integer
+Failed to throw NoSuchElementException when peeking empty stack.
+Tests:					0/6
+Points:					0/5
+--------------------
+LinkedListStack Subtotal:			2.5/20
+
+---TESTING BALANCED SYMBOL CHECKER---
+Failed on Class1.java
+Failed on Class2.java
+Failed on Class3.java
+Failed on Class4.java
+Failed on Class5.java
+Failed on Class6.java
+Failed on Class7.java
+Failed on Class8.java
+Failed on Class9.java
+Failed on Class10.java
+Failed on Class11.java
+Failed on Class12.java
+Failed on Class13.java
+Failed on Class14.java
+Failed on Class15.java
+Failed on Class16.java
+Failed on Class17.java
+Failed on Class18.java
+Failed on Class22.java
+Failed on Class23.java
+Failed on Class24.java
+Failed on Class25.java
+Failed on Class26.java
+Failed on Class27.java
+Failed on Class28.java
+Failed on Class29.java
+Tests:					4/30
+Points:					7.33/55
+--------------------
+Final Score
+
+Points from automated tests:		9.83/75
+Style/Testing:				x/5
+Analysis Document:			xx/40
+Total:					xx/100
+--------------------
+Comments:
+

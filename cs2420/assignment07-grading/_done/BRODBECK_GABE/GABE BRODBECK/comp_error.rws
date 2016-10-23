@@ -1,0 +1,154 @@
+DoublyLinkedList.java:14: error: cannot find symbol
+	Node<E> head=null;
+	^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:15: error: cannot find symbol
+	Node<E> last=null;
+	^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:27: error: cannot find symbol
+			head=new Node<E>(element);
+			         ^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:33: error: cannot find symbol
+			Node<E>newNode= new Node<E>(element);
+			^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:33: error: cannot find symbol
+			Node<E>newNode= new Node<E>(element);
+			                    ^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:46: error: cannot find symbol
+			head=new Node<E>(o);
+			         ^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:51: error: cannot find symbol
+			Node<E>temp= head;
+			^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:55: error: cannot find symbol
+			Node<E>toAdd= new Node<E>(o);
+			^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:55: error: cannot find symbol
+			Node<E>toAdd= new Node<E>(o);
+			                  ^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:80: error: cannot find symbol
+		Node<E>temp= head;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:85: error: cannot find symbol
+		Node<E>toAdd= new Node<E>(element);
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:85: error: cannot find symbol
+		Node<E>toAdd= new Node<E>(element);
+		                  ^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:119: error: cannot find symbol
+		Node<E> temp= head;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:133: error: cannot find symbol
+		Node<E> temp= head;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:145: error: cannot find symbol
+			Node<E> temp=head;
+			^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:150: error: cannot find symbol
+		Node<E> temp= last;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:172: error: cannot find symbol
+		Node<E> temp= head;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:176: error: cannot find symbol
+		Node<E> toReturn=temp.next;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:191: error: cannot find symbol
+		Node<E>temp= head;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:211: error: cannot find symbol
+		Node<E>temp= last;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:257: error: cannot find symbol
+		Node<E>temp= head;
+		^
+  symbol:   class Node
+  location: class DoublyLinkedList<E>
+  where E is a type-variable:
+    E extends Object declared in class DoublyLinkedList
+DoublyLinkedList.java:273: error: cannot find symbol
+			Node<E> currentSpot=head;
+			^
+  symbol: class Node
+Note: LinkedListStackTimer.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+22 errors

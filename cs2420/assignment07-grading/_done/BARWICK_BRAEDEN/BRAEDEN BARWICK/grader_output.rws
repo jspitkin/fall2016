@@ -1,0 +1,34 @@
+---TESTING MY STACK---
+Testing clear
+Tests:					8/8
+Points:					5/5
+--------------------
+Testing push
+Tests:					3/3
+Points:					5/5
+--------------------
+Testing peek
+Tests:					6/6
+Points:					5/5
+--------------------
+Testing pop
+Tests:					6/6
+Points:					5/5
+--------------------
+LinkedListStack Subtotal:			20/20
+
+---TESTING BALANCED SYMBOL CHECKER---
+Did not throw FileNotFoundException for non-existent file.
+Failed on Class28.java
+Tests:					28/30
+Points:					51.33/55
+--------------------
+Final Score
+
+Points from automated tests:		71.33/75
+Style/Testing:				x/5
+Analysis Document:			xx/40
+Total:					xx/100
+--------------------
+Comments:
+

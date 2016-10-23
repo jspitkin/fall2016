@@ -1,0 +1,66 @@
+---TESTING MY STACK---
+Testing clear
+Tests:					8/8
+Points:					5/5
+--------------------
+Testing push
+Tests:					0/3
+Points:					0/5
+--------------------
+Testing peek
+Exception on peek, singleton stack : java.util.NoSuchElementException
+Exception on peek, medium stack : java.util.NoSuchElementException
+Exception on peek, large stack : java.util.NoSuchElementException
+Exception on peek after pop  : java.util.NoSuchElementException
+Tests:					2/6
+Points:					1.67/5
+--------------------
+Testing pop
+Exception on pop, singleton stack : java.util.NoSuchElementException
+Exception on pop, medium stack : java.util.NoSuchElementException
+Exception on pop, large stack : java.util.NoSuchElementException
+Exception on popping twice  : java.util.NoSuchElementException
+Tests:					2/6
+Points:					1.67/5
+--------------------
+LinkedListStack Subtotal:			8.33/20
+
+---TESTING BALANCED SYMBOL CHECKER---
+Failed on Class1.java
+Failed on Class2.java
+Failed on Class3.java
+Failed on Class4.java
+Failed on Class5.java
+Failed on Class6.java
+Failed on Class7.java
+Failed on Class8.java
+Failed on Class9.java
+Failed on Class10.java
+Failed on Class11.java
+Failed on Class12.java
+Failed on Class13.java
+Failed on Class14.java
+Failed on Class15.java
+Failed on Class16.java
+Failed on Class17.java
+Failed on Class18.java
+Failed on Class22.java
+Failed on Class23.java
+Failed on Class24.java
+Failed on Class25.java
+Failed on Class26.java
+Failed on Class27.java
+Failed on Class28.java
+Failed on Class29.java
+Tests:					4/30
+Points:					7.33/55
+--------------------
+Final Score
+
+Points from automated tests:		15.67/75
+Style/Testing:				x/5
+Analysis Document:			xx/40
+Total:					xx/100
+--------------------
+Comments:
+
