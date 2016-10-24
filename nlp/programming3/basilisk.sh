@@ -1,1 +1,1 @@
-python3 basilisk.py seeds.txt contexts.txt
+python3 basilisk.py human-seeds.txt contexts.txt
