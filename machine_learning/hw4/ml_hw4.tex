@@ -111,20 +111,7 @@ Arriving at the contradiction $d > d$. Thus proving $VC(\mathcal{C}) \leq log_2|
 
 \question{3}{AdaBoost}
 
-\begin{table}[H]
-\centering
-{\renewcommand{\arraystretch}{1.2}%
-\begin{tabular}{| c | c | c | c | c | c |}
-\hline
-$x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
-\hline
-[1,1] & -1 & 1 & 1/4 & -1/4 & \\ \hline
-[1,-1] & 1 & 1 & 1/4 & 1/4 & \\ \hline
-[-1,-1] & -1 & -1 & 1/4 & 1/4 & \\ \hline
-[-1,1] & -1 & -1 & 1/4 & 1/4 & \\ \hline
-\end{tabular}}
-\caption{Choose $h_a(x) = sgn(x_1), \ \epsilon_1 = 1/4, \ \alpha_1 = \frac{ln3}{2}, \ Z_1 = \frac{\sqrt{3}}{2}$}
-\end{table}
+Choose $h_a(x) = sgn(x_1)$.  
 
 \begin{table}[H]
 \centering
@@ -133,12 +120,12 @@ $x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
 \hline
 $x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
 \hline
-[1,1] & -1 &  &  &  & \\ \hline
-[1,-1] & 1 &  &  &  & \\ \hline
-[-1,-1] & -1 &  & &  & \\ \hline
-[-1,1] & -1 &  &  &  & \\ \hline
+[1,1] & -1 & 1 & 1/4 & -1/4 & 1/2\\ \hline
+[1,-1] & 1 & 1 & 1/4 & 1/4 & 1/6\\ \hline
+[-1,-1] & -1 & -1 & 1/4 & 1/4 & 1/6\\ \hline
+[-1,1] & -1 & -1 & 1/4 & 1/4 & 1/6\\ \hline
 \end{tabular}}
-\caption{Choose $h_a(x) = sgn(x_1), \ \epsilon_1 = 1/4, \ \alpha_1 = \frac{ln3}{2}, \ Z_1 = \frac{\sqrt{3}}{2}$}
+\caption{$h_a(x) = sgn(x_1), \ \epsilon_1 = 1/4, \ \alpha_1 = \frac{\ln3}{2}, \ Z_1 = \frac{\sqrt{3}}{2}$}
 \end{table}
 
 \begin{table}[H]
@@ -146,14 +133,14 @@ $x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
 {\renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{| c | c | c | c | c | c |}
 \hline
-$x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
+$x = [x_1, x_2]$& $y_i$ & $h_d(x)$ & $D_2$ & $D_1(i)y_ih_t(x_i)$ & $D_3$\\
 \hline
-[1,1] & -1 &  &  &  & \\ \hline
-[1,-1] & 1 &  &  &  & \\ \hline
-[-1,-1] & -1 &  & &  & \\ \hline
-[-1,1] & -1 &  &  &  & \\ \hline
+[1,1] & -1 & -1 & 1/2 &  1/2& 3/10\\ \hline
+[1,-1] & 1 &  1&  1/6&  1/6& 1/10\\ \hline
+[-1,-1] & -1 & 1 & 1/6&  -1/6& 1/2\\ \hline
+[-1,1] & -1 & -1 &  1/6&  1/6& 1/10\\ \hline
 \end{tabular}}
-\caption{Choose $h_a(x) = sgn(x_1), \ \epsilon_1 = 1/4, \ \alpha_1 = \frac{ln3}{2}, \ Z_1 = \frac{\sqrt{3}}{2}$}
+\caption{$h_d(x) = -sgn(x_2), \ \epsilon_2 = 1/6, \ \alpha_2 = \frac{\ln5}{2}, \ Z_2 = \frac{\sqrt{5}}{3}$}
 \end{table}
 
 \begin{table}[H]
@@ -161,14 +148,34 @@ $x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
 {\renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{| c | c | c | c | c | c |}
 \hline
-$x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
+$x = [x_1, x_2]$& $y_i$ & $h_b(x)$ & $D_3$ & $D_1(i)y_ih_t(x_i)$ & $D_4$\\
 \hline
-[1,1] & -1 &  &  &  & \\ \hline
-[1,-1] & 1 &  &  &  & \\ \hline
-[-1,-1] & -1 &  & &  & \\ \hline
-[-1,1] & -1 &  &  &  & \\ \hline
+[1,1] & -1 & -1&  3/10&  3/10& 1/6\\ \hline
+[1,-1] & 1 &  -1&  1/10&  -1/10& 1/2\\ \hline
+[-1,-1] & -1 & -1 & 5/10&  1/2& 5/18\\ \hline
+[-1,1] & -1 &  -1&  1/10&  1/10& 1/18\\ \hline
 \end{tabular}}
-\caption{Choose $h_a(x) = sgn(x_1), \ \epsilon_1 = 1/4, \ \alpha_1 = \frac{ln3}{2}, \ Z_1 = \frac{\sqrt{3}}{2}$}
+\caption{$h_b(x) = sgn(x_1 - 2), \ \epsilon_1 = 1/10, \ \alpha_1 = \frac{\ln9}{2}, \ Z_3 = \frac{3}{5}$}
+\end{table}
+
+Choose $h_c(x) = -sgn(x_1)$. 
+$$\epsilon_4 = \frac{1}{2} - \frac{1}{2}(\sum_{i=1}^m D_4(i)*y_ih_c(i)) = \frac{5}{6}$$
+
+The weighted classification error $\epsilon_4$ for $h_c(x)$ is not better than chance.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+$x = [x_1, x_2]$& $y_i$ & $h_{final}(x)$\\
+\hline
+[1,1] & -1 & -1\\ \hline
+[1,-1] & 1 & 1\\ \hline
+[-1,-1] & -1 & -1\\ \hline
+[-1,1] & -1 & -1\\ \hline
+\end{tabular}}
+\caption{$h_{final}(x) = sgn(\sum_{t} \alpha_th_t(x)), \ \epsilon_{final} = 0$}
 \end{table}
 
 \end{document}
