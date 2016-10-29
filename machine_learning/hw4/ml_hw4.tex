@@ -110,10 +110,19 @@ Arriving at the contradiction $d > d$. Thus proving $VC(\mathcal{C}) \leq log_2|
 \part{5}
 
 \question{3}{AdaBoost}
+We can calculate $D_2$ given $h_a$, $\alpha_1$, and $D_1$ for each example in the training set.
 
-Choose $h_a(x) = sgn(x_1)$.  
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{D_{t+1}(i) = \frac{D_t(i)}{Z_t} * exp(-\alpha_t * y_ih_i(x_i))}
+\end{equation}
 
-\begin{table}[H]
+$$D_{2}(i) = \frac{D_1(i)}{Z_1} * exp(-\alpha_1 * y_ih_a(x_i))$$
+$$D_2(1) = \frac{1}{2}, \ D_2(2) = \frac{1}{6}, \ D_2(3) = \frac{1}{6}, \ D_2(4) = \frac{1}{6} $$
+
+
+ \begin{table}[H]
 \centering
 {\renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{| c | c | c | c | c | c |}
@@ -127,6 +136,42 @@ $x = [x_1, x_2]$& $y_i$ & $h_a(x)$ & $D_1$ & $D_1(i)y_ih_t(x_i)$ & $D_2$\\
 \end{tabular}}
 \caption{$h_a(x) = sgn(x_1), \ \epsilon_1 = 1/4, \ \alpha_1 = \frac{\ln3}{2}, \ Z_1 = \frac{\sqrt{3}}{2}$}
 \end{table}
+
+\textbf{Choosing} $\mathbf{h_d(x) = -sgn(x_2)}$ \textbf{for iteration 2.} We calculate the weighted classification error to determine if it's better than chance.
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{\epsilon_t = \frac{1}{2} - \frac{1}{2}(\sum_{i=1}^m D_t(i)*y_ih_i(i))}
+\end{equation}
+
+$$\epsilon_2 = \frac{1}{2} - \frac{1}{2}(\sum_{i=1}^m D_2(i)*y_ih_d(i)) = \frac{1}{6}$$
+
+Given $\epsilon_2$, we calculate $\alpha_2$ which is the weight the current hypothesis has on the final hypothesis.
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{\alpha_t = \frac{1}{2}\ln(\frac{1 - \epsilon_t}{\epsilon_t})}
+\end{equation}
+
+$$\alpha_2 = \frac{1}{2}\ln(\frac{1 - \epsilon_2}{\epsilon_2}) = \frac{1}{2}\ln(\frac{1 - \frac{1}{6}}{\frac{1}{6}}) = \frac{\ln5}{2}$$
+
+We calculate $Z_2$ which is a normalization constant to ensure all of the $D_3$ weights add up to 1.
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Z_t = \sum_{i = 1}^m D_t(i) * exp(-\alpha_t * y_ih_i(x_i))}
+\end{equation}
+
+$$Z_2 = \sum_{i = 1}^m D_2(i) * exp(-\alpha_2 * y_ih_d(x_i)) = \frac{\sqrt{5}}{3}$$
+
+Finally we calculate a new weight $D_3$ for each example in the training set.
+
+$$D_{3}(i) = \frac{D_2(i)}{Z_2} * exp(-\alpha_2 * y_ih_d(x_i))$$
+$$D_3(1) = \frac{3}{10}, \ D_3(2) = \frac{1}{10}, \ D_3(3) = \frac{1}{2}, \ D_3(4) = \frac{1}{10} $$
+
+The results for iteration 2 using hypothesis $h_d(x)$ are recorded in the table below.
 
 \begin{table}[H]
 \centering
@@ -143,6 +188,25 @@ $x = [x_1, x_2]$& $y_i$ & $h_d(x)$ & $D_2$ & $D_1(i)y_ih_t(x_i)$ & $D_3$\\
 \caption{$h_d(x) = -sgn(x_2), \ \epsilon_2 = 1/6, \ \alpha_2 = \frac{\ln5}{2}, \ Z_2 = \frac{\sqrt{5}}{3}$}
 \end{table}
 
+\textbf{Choosing} $\mathbf{h_b(x) = sgn(x_1 - 2)}$ \textbf{for iteration 3.} We calculate the weighted classification error to determine if it's better than chance.
+
+$$\epsilon_3 = \frac{1}{2} - \frac{1}{2}(\sum_{i=1}^m D_3(i)*y_ih_b(i)) = \frac{1}{10}$$
+
+Given $\epsilon_3$, we calculate $\alpha_3$ which is the weight the current hypothesis has on the final hypothesis.
+
+$$\alpha_3 = \frac{1}{2}\ln(\frac{1 - \epsilon_3}{\epsilon_3}) = \frac{1}{2}\ln(\frac{1 - \frac{1}{10}}{\frac{1}{10}}) = \frac{\ln9}{2}$$
+
+We calculate $Z_3$ which is a normalization constant to ensure all of the $D_4$ weights add up to 1.
+
+$$Z_3 = \sum_{i = 1}^m D_3(i) * exp(-\alpha_3 * y_ih_b(x_i)) = \frac{3}{5}$$
+
+Finally we calculate a new weight $D_4$ for each example in the training set.
+
+$$D_{4}(i) = \frac{D_3(i)}{Z_3} * exp(-\alpha_3 * y_ih_b(x_i))$$
+$$D_4(1) = \frac{1}{6}, \ D_4(2) = \frac{1}{2}, \ D_4(3) = \frac{5}{18}, \ D_4(4) = \frac{1}{18} $$
+
+The results for iteration 3 using hypothesis $h_b(x)$ are recorded in the table below.
+
 \begin{table}[H]
 \centering
 {\renewcommand{\arraystretch}{1.2}%
@@ -158,24 +222,44 @@ $x = [x_1, x_2]$& $y_i$ & $h_b(x)$ & $D_3$ & $D_1(i)y_ih_t(x_i)$ & $D_4$\\
 \caption{$h_b(x) = sgn(x_1 - 2), \ \epsilon_1 = 1/10, \ \alpha_1 = \frac{\ln9}{2}, \ Z_3 = \frac{3}{5}$}
 \end{table}
 
-Choose $h_c(x) = -sgn(x_1)$. 
-$$\epsilon_4 = \frac{1}{2} - \frac{1}{2}(\sum_{i=1}^m D_4(i)*y_ih_c(i)) = \frac{5}{6}$$
+\textbf{Choosing} $\mathbf{h_c(x) = -sgn(x_1)}$ \textbf{for iteration 4.} We calculate the weighted classification error to determine if it's better than chance.
 
 The weighted classification error $\epsilon_4$ for $h_c(x)$ is not better than chance.
+
+$$\epsilon_4 = \frac{1}{2} - \frac{1}{2}(\sum_{i=1}^m D_4(i)*y_ih_c(i)) = \frac{5}{6}$$
+
+The classification error $\epsilon_4$ is not better than chance. As a result hypothesis $h_c(x)$ is not considered.
+
+Finally, we consider the final hypothesis $H_{final}(x)$ which takes a weighted average of the classification of $h_a(x)$, $h_b(x)$, and $h_d(x)$.
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{H_{final}(x) = sgn(\sum_{t}\alpha_th_t(x))}
+\end{equation}
+
+Using $H_{final}(x)$ we classify each example from the training set.
+
+$$H_{final}(1) = sgn(\frac{\ln3}{2}(1) + \frac{\ln5}{2}(-1) + \frac{\ln9}{2}(-1)) = -1$$
+$$H_{final}(2) = sgn(\frac{\ln3}{2}(1) + \frac{\ln5}{2}(1) + \frac{\ln9}{2}(-1)) = 1$$
+$$H_{final}(3) = sgn(\frac{\ln3}{2}(-1) + \frac{\ln5}{2}(1) + \frac{\ln9}{2}(-1)) = -1$$
+$$H_{final}(4) = sgn(\frac{\ln3}{2}(-1) + \frac{\ln5}{2}(-1) + \frac{\ln9}{2}(-1)) = -1$$
 
 \begin{table}[H]
 \centering
 {\renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{| c | c | c |}
 \hline
-$x = [x_1, x_2]$& $y_i$ & $h_{final}(x)$\\
+$x = [x_1, x_2]$& $y_i$ & $H_{final}(x)$\\
 \hline
 [1,1] & -1 & -1\\ \hline
 [1,-1] & 1 & 1\\ \hline
 [-1,-1] & -1 & -1\\ \hline
 [-1,1] & -1 & -1\\ \hline
 \end{tabular}}
-\caption{$h_{final}(x) = sgn(\sum_{t} \alpha_th_t(x)), \ \epsilon_{final} = 0$}
+\caption{Classification of the training set by $H_{final}(x)$}
 \end{table}
+
+Using $H_{final}(x)$ we have properly classified all the examples in the training set.
 
 \end{document}
