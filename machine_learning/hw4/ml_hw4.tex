@@ -81,33 +81,56 @@ The robot will have to see at least $1,293$ examples to guarantee a $0.01$ error
 \part{2}
 
 \question{2}{VC Dimensions}
+\textbf{Shatter:} A set of examples S is \textit{shattered} by a set of functions H if for every partition of the examples in S into positive and negative examples there is a function in H that gives exactly these labels to the examples.
+
+\textbf{VC Dimension:} The \textit{VC Dimension} of hypothesis space H over instance space X is the size of the largest finite subset of X that is shattered by H.
 
 \part{1} We want to prove that a finite hypothesis space $\mathcal{C}$ has a VC dimension at most $log_2|\mathcal{C}|$. That is, $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
 
 \textbf{Proof by contradiction:} Assume the opposite that $VC(\mathcal{C}) > log_2|C|$ is true.
 
-\textbf{Shatter:} A set of examples S is \textit{shattered} by a set of functions H if for every partition of the examples in S into positive and negative examples there is a function in H that gives exactly these labels to the examples.
+Take a finite instance space X of size d. There exists $2^d$ (the number of possible binary vectors of length $d$) ways to partition X. Thus $|\mathcal{C}| = 2^d$ as we have $2^d$ hypothesis functions.
 
-\textbf{VC Dimension:} The \textit{VC Dimension} of hypothesis space H over instance space X is the size of the largest finite subset of X that is shattered by H.
+Given that X is of size d, it holds that $0 \leq VC(C) \leq d$ as $\mathcal{C}$ can shatter \textbf{at most} d points (the size of the instance space). Visiting the initial assumption:
 
-Take a set of examples S that is the largest finite subset of X that is shattered by a hypothesis space $\mathcal{C}$ and is of size $d$. There exists $2^d$ (the number of possible binary vectors of length $d$) ways to partition S. Thus $|\mathcal{C}| = 2^d$ as we have $2^d$ hypothesis functions.
+$$VC(\mathcal{C}) > \log_2|C|$$
+$$VC(\mathcal{C}) > d$$
 
-$$VC(\mathcal{C}) > log_2|C|$$
-The VC Dimension of $\mathcal{C} = |S| = d$ as S is the largest finite subset of X that is shattered by H. The size of the hypothesis class is $2^d$.
-$$d > log_2(2^d)$$
-$$d > d$$
-
-Arriving at the contradiction $d > d$. Thus proving $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
+Arriving at the contradiction $VC(\mathcal{C}) \leq d$ and $VC(\mathcal{C}) > d$. Thus proving $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
 
 \part{2a}
 
 \part{2b}
 
-\part{3}
+\part{3} The proof for the VC dimension of $\mathcal{H}$ involves two parts. First, we must show that there \textit{exists} any subset of size $d$ that can be shattered (this proves $VC(\mathcal{H}) \geq d$). Second, we must show that \textit{no subset} of size d can be shattered by $\mathcal{H}$ (this proves $VC(\mathcal{H}) < d$). The result of these two bounding inequalities proves $VC(\mathcal{H}) = d$.
+
+\textbf{Proof} (1) To prove $VC(\mathcal{H}) \geq 4$ we must give one example of points $x_1, x_2, x_3, x_4 \in \mathbb{R}$ that can be shattered by $h \in \mathcal{H}$. There are 16 possible labelings of the four the points and we must show there is a $h \in \mathcal{H}$ that satisfies all of them. The figure below expresses all the possible labelings, excluding labelings that are symmetric to provided labelings to avoid an excessiveness of figures.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=0.8\linewidth]{image_2_3_1.png}}
+  \caption{Labeling of four example points and a $h \in \mathcal{H}$ that shatters them.}
+\end{figure}
+
+Proving $VC(\mathcal{H}) \geq 4$. (2) To show $VC(\mathcal{H}) < 5$, we must prove there doesn't exist a set of \textbf{any} five points that can be shattered by $\mathcal{H}$. Given any five unique points $x_i \in \mathbb{R}$, there exists a labeling s.t. $\mathcal{H}$ cannot shatter the set of five points.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=0.5\linewidth]{image_2_3_2.png}}
+  \caption{Labeling of five points that can not be shattered by $\mathcal{H}$}
+\end{figure}
+
+There exists the relationship $x_i < x_j < x_k < x_l < x_m$. That is, choosing any five real numbers, they can be arranged to satisfy the inequality. Starting with $x_i$, label it positive and alternate labelings moving along the five points in ascending order. There is no way to shatter these labeled five points with $\mathcal{H}$. Thus we have proven the $VC(\mathcal{H}) = 4$.
+
+\framebox[1.2\width]{$VC(\mathcal{H}) = 4$}
 
 \part{4}
 
-\part{5}
+\part{5} Let two hypothesis classes $H_1$ and $H_2$ satisfy $H_1 \subseteq H_2$. Prove: $VC(H_1) \leq VC(H_2)$.
+
+\textbf{Proof by contradiction:} Assume the opposite that $VC(H_1) > VC(H_2)$ is true.
+
+Let X be a finite instance space and $VC(H_1) = d$. That is, a set of examples S of size d are shattered by $H_1$. Meaning for every partition of the examples in S into positive and negative examples there is a function  $h \in H_1$ that gives exactly these labels to the examples. More so, S is the largest finite subset of X that is shattered by $H_1$.
+
+We know that $H_1$ and $H_2$ satisfy $H_1 \subseteq H_2$. We know $h$ (the hypothesis that correctly labels all partitions of $d$ points) is also $h \in H_2$. This gives us $VC(H_2)$ is \textbf{at least} $d$ (could be greater than $d$ as $h_2 \in H_2$ could exist that shatters a larger subset of points). Thus we have shown $VC(H_1) > VC(H_2)$ is a contradiction, proving $VC(H_1) \leq VC(H_2)$.
 
 \question{3}{AdaBoost}
 We can calculate $D_2$ given $h_a$, $\alpha_1$, and $D_1$ for each example in the training set.
@@ -219,7 +242,7 @@ $x = [x_1, x_2]$& $y_i$ & $h_b(x)$ & $D_3$ & $D_1(i)y_ih_t(x_i)$ & $D_4$\\
 [-1,-1] & -1 & -1 & 5/10&  1/2& 5/18\\ \hline
 [-1,1] & -1 &  -1&  1/10&  1/10& 1/18\\ \hline
 \end{tabular}}
-\caption{$h_b(x) = sgn(x_1 - 2), \ \epsilon_1 = 1/10, \ \alpha_1 = \frac{\ln9}{2}, \ Z_3 = \frac{3}{5}$}
+\caption{$h_b(x) = sgn(x_1 - 2), \ \epsilon_3 = 1/10, \ \alpha_3 = \frac{\ln9}{2}, \ Z_3 = \frac{3}{5}$}
 \end{table}
 
 \textbf{Choosing} $\mathbf{h_c(x) = -sgn(x_1)}$ \textbf{for iteration 4.} We calculate the weighted classification error to determine if it's better than chance.
