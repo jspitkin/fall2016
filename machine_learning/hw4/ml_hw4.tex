@@ -78,7 +78,15 @@ The robot will have to see at least $1,293$ examples to guarantee a $0.01$ error
 
 \framebox[1.2\width]{at least 1,293 examples}
 \newpage
-\part{2}
+\part{2} The Chernoff bounds govern the probability that $S/m$ will differ from $p$ by some factor $0 \leq \gamma \leq 1$.
+	$$Pr[S/m < (1 - \gamma)p] \leq e^\frac{-mp\gamma^2}{2}$$	
+	
+$\mathbf{error_s(h)}$: the sum S of the independent errors made over $m$ examples by some hypothesis $h$. This is equivalent to $S/m$.
+
+$\mathbf{error_d(h)}$: the true error or generalization error. This is equivalent to the expected value of $S/m$ or $E[S/m] = p$. Since the distribution is i.i.d, we can expect the true error to be
+	
+We want the probability there exists a $h \in H$ with this probability to be less than or equal to $\delta$.
+$$Pr[\exists h;$$
 
 \question{2}{VC Dimensions}
 \textbf{Shatter:} A set of examples S is \textit{shattered} by a set of functions H if for every partition of the examples in S into positive and negative examples there is a function in H that gives exactly these labels to the examples.
@@ -87,7 +95,7 @@ The robot will have to see at least $1,293$ examples to guarantee a $0.01$ error
 
 \part{1} We want to prove that a finite hypothesis space $\mathcal{C}$ has a VC dimension at most $log_2|\mathcal{C}|$. That is, $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
 
-\textbf{Proof by contradiction:} Assume the opposite that $VC(\mathcal{C}) > log_2|C|$ is true.
+\textbf{Proof by contradiction:} Assume that the opposite $VC(\mathcal{C}) > log_2|C|$ is true.
 
 Take a finite instance space X of size d. There exists $2^d$ (the number of possible binary vectors of length $d$) ways to partition X. Thus $|\mathcal{C}| = 2^d$ as we have $2^d$ hypothesis functions.
 
@@ -98,20 +106,30 @@ $$VC(\mathcal{C}) > d$$
 
 Arriving at the contradiction $VC(\mathcal{C}) \leq d$ and $VC(\mathcal{C}) > d$. Thus proving $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
 
-\part{2a}
+\part{2} For part a and b of this question, consider only $k$ such that $|X| > k$ by a considerable amount, as per the announcement by Jie Cao to simplify this question. 
 
-\part{2b}
+\part{2a} The proof for the VC dimension of $\mathcal{H}$ involves two parts. First, we must show that there \textit{exists} any subset of size $d$ that can be shattered (this proves $VC(\mathcal{H}) \geq d$). Second, we must show that \textit{no subset} of size d can be shattered by $\mathcal{H}$ (this proves $VC(\mathcal{H}) < d$). The result of these two bounding inequalities proves $VC(\mathcal{H}) = d$.
 
-\part{3} The proof for the VC dimension of $\mathcal{H}$ involves two parts. First, we must show that there \textit{exists} any subset of size $d$ that can be shattered (this proves $VC(\mathcal{H}) \geq d$). Second, we must show that \textit{no subset} of size d can be shattered by $\mathcal{H}$ (this proves $VC(\mathcal{H}) < d$). The result of these two bounding inequalities proves $VC(\mathcal{H}) = d$.
+\textbf{Proof} (1) To prove $VC(\mathcal{H}) \geq k$ we must give one example of $k$ points in $\mathcal{X}$ that can be shattered by $\mathcal{H}$. We know that every $h \in \mathcal{H}$ is a vector of length $|X|$ containing $k$ 1's and $|X| - k$ 0's. More so, $\mathcal{H}$ contains every permutation of $k$ 1's and $|X| - k$ 0's. Allowing $\mathcal{H}$ to shatter an example of size $k$ as $\mathcal{H}$ contains hypotheses that gives all possible labelings of the $k$ examples.
 
-\textbf{Proof} (1) To prove $VC(\mathcal{H}) \geq 4$ we must give one example of points $x_1, x_2, x_3, x_4 \in \mathbb{R}$ that can be shattered by $h \in \mathcal{H}$. There are 16 possible labelings of the four the points and we must show there is a $h \in \mathcal{H}$ that satisfies all of them. The figure below expresses all the possible labelings, excluding labelings that are symmetric to provided labelings to avoid an excessiveness of figures.
+(2) To prove $VC(\mathcal{H}) < k + 1$ we must show that any set of $k + 1$ points can't be shattered by $\mathcal{H}$. To show this, for any set of $k + 1$ points we assign a positive label to all of them. $\mathcal{H}$ doesn't contain a function to partition these examples properly as all $h \in \mathcal{H}$ are a vector of length $|X|$ containing exactly $k$ 1's. Thus we have proven $VC(\mathcal{H}) = k$.
+
+\framebox[1.2\width]{$VC(\mathcal{H}) = k$}
+
+\part{2b} {Proof} (1) To prove $VC(\mathcal{H}) \geq k$ we must give one example of $k$ points in $\mathcal{X}$ that can be shattered by $\mathcal{H}$. Each $h \in \mathcal{H}$ contains at most $k$ 1's or 0's. $\mathcal{H}$ is composed of every permutation of vectors containing at most $k$ 1's or 0's. Therefore, it will be able to shatter an example of $k$ as for any labeling of the examples, $\mathcal{H}$ can produce a hypothesis that splits them as such.
+
+(2) To prove $VC(\mathcal{H}) < k + 1$ we must show that any set of $k + 1$ points can't be shattered by $\mathcal{H}$. To show this, for any set of $k + 1$ points we assign a positive label to all of them. $\mathcal{H}$ does not contain an $h$ such that $k + 1$ entries are 1's and ($|X| - k - 1$) are 0's. This only holds under the assumption $|X|$ is sufficiently larger than $k$ to ensure $|X| - k - 1 > k$. Thus we have proven $VC(\mathcal{H}) = k$.
+
+\framebox[1.2\width]{$VC(\mathcal{H}) = k$}
+
+\part{3} \textbf{Proof} (1) To prove $VC(\mathcal{H}) \geq 4$ we must give one example of points $x_1, x_2, x_3, x_4 \in \mathbb{R}$ that can be shattered by $\mathcal{H}$. Take the points $x_1 = 1$, $x_2 = 2$, $x_3 = 3$, and $x_4 = 4$. There are 16 possible labelings of the four points and we must show there is a $h \in \mathcal{H}$ that satisfies each labeling. The figure below expresses all the possible labelings, excluding labelings that are symmetric to provided labelings to avoid an excessiveness of figures.
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=0.8\linewidth]{image_2_3_1.png}}
-  \caption{Labeling of four example points and a $h \in \mathcal{H}$ that shatters them.}
+  \centerline{\includegraphics[width=0.5\linewidth]{image_2_3_1.png}}
+  \caption{Labeling of four example points and a $h \in \mathcal{H}$ that shatters each of them.}
 \end{figure}
 
-Proving $VC(\mathcal{H}) \geq 4$. (2) To show $VC(\mathcal{H}) < 5$, we must prove there doesn't exist a set of \textbf{any} five points that can be shattered by $\mathcal{H}$. Given any five unique points $x_i \in \mathbb{R}$, there exists a labeling s.t. $\mathcal{H}$ cannot shatter the set of five points.
+This proves $VC(\mathcal{H}) \geq 4$. (2) To prove $VC(\mathcal{H}) < 5$, we must prove there doesn't exist a set of \textbf{any} five points that can be shattered by $\mathcal{H}$. Given \textbf{any} five unique points $x_i \in \mathbb{R}$, there exists a labeling s.t. $\mathcal{H}$ cannot shatter the set of five points.
 
 \begin{figure}[H]
   \centerline{\includegraphics[width=0.5\linewidth]{image_2_3_2.png}}
@@ -122,15 +140,61 @@ There exists the relationship $x_i < x_j < x_k < x_l < x_m$. That is, choosing a
 
 \framebox[1.2\width]{$VC(\mathcal{H}) = 4$}
 
-\part{4}
+\part{4} \textbf{Proof} (1) To prove $VC(H) \geq 2$ we must give one example of two points $\mathbf{x_1}, \mathbf{x_2} \in \mathbb{R}^2$ that can be shattered by $H$. Take the points $\mathbf{x_1} = \{-1, 1\}$ and $\mathbf{x_2} = \{1, 1\}$. There are four possible labelings of the two points and we must show there is a $h \in H$ that satisfies each labeling.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=0.5\linewidth]{image_2_4_1.png}}
+  \caption{Labeling of two example points and a $h \in \mathcal{H}$ that shatters each of them.}
+\end{figure}
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+$\mathbf{x_1} \ label$& $\mathbf{x_2} \ label$ & $a$ & $b$\\
+\hline
++ & + & -4 & 4\\ \hline
+- & - & 4 & -4\\ \hline
++ & - & 0& -2 \\ \hline
+- & + & 2 & 0\\ \hline
+\end{tabular}}
+\caption{a and b values that define a $h \in H$ that shatter each labeling.}
+\end{table}
+
+This proves $VC(H) \geq 2$. (2) To prove $VC(H) < 3$, we must prove there doesn't exist a set of three points that can be shattered by H. Given \textbf{any} three unique points $\mathbf{x} \in \mathbb{R}^2$, there exists a labeling s.t. $H$ cannot shatter the set of three points.
+
+When selecting three points in $\mathbb{R}^2$ we can choose the points to be in a vertical line, a horizontal line, or form the corners of a triangle.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=0.5\linewidth]{image_2_4_2.png}}
+  \caption{Collinear labelings that can't be shattered by $H$.}
+\end{figure}
+
+We can clearly see that $H$ cannot shatter these points.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=0.8\linewidth]{image_2_4_3.png}}
+  \caption{Triangular assignments that can't be shattered by $H$.}
+\end{figure}
+
+The first two examples are the same set of points with two different labelings. There exists a $h \in H$ that can split the first labelings, but not the second labelings. This example is symmetrical: we can shift one point far from the other two to satisfy one labeling but in the process makes another labeling impossible to split with H.
+
+The third example shows that the option of raising the middle point above the other two points also can't be separated.
+
+Thus, there is no set of three points that can be shattered by $H$, proving $VC(H) < 3$.
+
+We now know $VC(H) \geq 2$ and $VC(H) < 3$, proving $VC(H) = 2$.
+
+\framebox[1.2\width]{$VC(H) = 2$} 
 
 \part{5} Let two hypothesis classes $H_1$ and $H_2$ satisfy $H_1 \subseteq H_2$. Prove: $VC(H_1) \leq VC(H_2)$.
 
-\textbf{Proof by contradiction:} Assume the opposite that $VC(H_1) > VC(H_2)$ is true.
+\textbf{Proof by contradiction:} Assume that the opposite $VC(H_1) > VC(H_2)$ is true.
 
 Let X be a finite instance space and $VC(H_1) = d$. That is, a set of examples S of size d are shattered by $H_1$. Meaning for every partition of the examples in S into positive and negative examples there is a function  $h \in H_1$ that gives exactly these labels to the examples. More so, S is the largest finite subset of X that is shattered by $H_1$.
 
-We know that $H_1$ and $H_2$ satisfy $H_1 \subseteq H_2$. We know $h$ (the hypothesis that correctly labels all partitions of $d$ points) is also $h \in H_2$. This gives us $VC(H_2)$ is \textbf{at least} $d$ (could be greater than $d$ as $h_2 \in H_2$ could exist that shatters a larger subset of points). Thus we have shown $VC(H_1) > VC(H_2)$ is a contradiction, proving $VC(H_1) \leq VC(H_2)$.
+We know that $H_1$ and $H_2$ satisfy $H_1 \subseteq H_2$. From this we know each $h$ (the hypotheses that correctly labels each partition of $d$ points) is also $h \in H_2$ as $H_1$ is a subset of $H_2$. This gives us $VC(H_2)$ is \textbf{at least} $d$ (could be greater than $d$ as $H_2$ could contain hypotheses that shatter a larger subset of points). Thus we have shown $VC(H_1) > VC(H_2)$ is a contradiction, proving $VC(H_1) \leq VC(H_2)$.
 
 \question{3}{AdaBoost}
 We can calculate $D_2$ given $h_a$, $\alpha_1$, and $D_1$ for each example in the training set.
