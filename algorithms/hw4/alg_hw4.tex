@@ -1,0 +1,87 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 6150, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{3}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+\question{1}{Unique Minimum Spanning Trees}
+
+\part{a}
+Proof by contradiction: assume there are two minimum spanning trees T1 and T2.
+
+take the smallest edge that exists in T1 or T2 and add it to T2 or T1. This forms a cycle.
+
+Cycle property: the largest weighted edge in the cycle doesn't belong in the MST.
+
+We won't remove e1, as it's the smallest weighted edge that exists. Therefore T2 wasn't a minimum spanning tree as we will remove an edge from T2 to form the new MST.
+
+\part{b}
+
+Wikipedia: If the minimum cost edge e of a graph is unique, then this edge is included in any MST.
+
+
+
+\question{2}{Max Flow Basics}
+
+\part{a}
+
+\part{b}
+
+\part{c}
+
+\question{3}{More Reductions to Flow}
+
+\part{a}
+
+\part{b}
+
+\part{c}
+
+\part{d}
+
+\question{4}{Unexpected Reductions to Flow/Matchings}
+
+\part{a}
+
+\part{b}
+
+\end{document}

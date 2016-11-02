@@ -49,21 +49,15 @@
 
 \textbf{Rule 2:} You may also cut any of the parts into two distinct pieces before using them.
 
-\part{1a} 
-
-Given $N$ parts, each product that can be made out of these parts is a distinct hypothesis $h$ in the hypothesis space $H$. From \textit{Rule 1}, a worker can choose to include or not include any of the parts in a product. This can be viewed as a monotone conjunction as a product is defined by choosing to include or not include each of the $N$ parts. There exists $2^N$ possible products as there are two choices for each of the $N$ parts. We will not consider the product constructed by using none of the parts.
+\part{1a} Given $N$ parts, each product that can be made out of these parts is a distinct hypothesis $h$ in the hypothesis space $H$. From \textit{Rule 1}, a worker can choose to include or not include any of the parts in a product. This can be viewed as a monotone conjunction as a product is defined by choosing to include or not include each of the $N$ parts. There exists $2^N$ possible products as there are two choices for each of the $N$ parts. We will not consider the product constructed by using none of the parts.
 	
 	\framebox[1.2\width]{$|H| = 2^N - 1$}
 
-\part{1b}
-
-	The experienced worker now creates a product using \textit{Rule 1} and \textit{Rule 2}. There are now four choices that can be made for each of the parts: don't include it, include it, cut the part and use the first half or cut the part and use the second half. A product is now defined as making four choices for each of the $N$ parts. Thus there are $4^N$ possible products. We will not consider the product constructed by using none of the parts.
+\part{1b} The experienced worker now creates a product using \textit{Rule 1} and \textit{Rule 2}. There are now four choices that can be made for each of the parts: don't include it, include it, cut the part and use the first half or cut the part and use the second half. A product is now defined as making four choices for each of the $N$ parts. Thus there are $4^N$ possible products. We will not consider the product constructed by using none of the parts.
 
 	\framebox[1.2\width]{$|H| = 4^N - 1$}
 
-\part{1c}
-
-By applying the principles of Occams's Razor we can make a statement about the number of required examples the robot will have to see to have an error of 0.01 with probability $99\%$ on products with 6 available parts.
+\part{1c} By applying the principles of Occams's Razor we can make a statement about the number of required examples the robot will have to see to have an error of 0.01 with probability $99\%$ on products with 6 available parts.
 
 Given a hypothesis space $H$, we can say with probability $1 - \delta$, a hypothesis $h \in H$, that is consistent with a training set of size $m$, will have an error $< \epsilon$ on future examples if
 
@@ -74,19 +68,58 @@ We want an error rate of $\epsilon = 0.01$ with probability $1 - \delta = 0.99$ 
 $$m > \frac{1}{0.01}(ln(4,095) + ln\frac{1}{0.01})$$
 $$m > 1,292.27$$
 
-The robot will have to see at least $1,293$ examples to guarantee a $0.01$ error with probability $99\%$ if there are 6 available parts. We round up as the number of required examples must be an integer value and rounding down would not satisfy the equality.
+The robot will have to see at least $1,293$ examples to guarantee a $0.01$ error with probability $99\%$ if there are 6 available parts. We round up as the number of required examples must be an integer value and rounding down would not satisfy the equality. We can use this inequality as we know the true function is contained inside the hypothesis space.
 
 \framebox[1.2\width]{at least 1,293 examples}
 \newpage
 \part{2} The Chernoff bounds govern the probability that $S/m$ will differ from $p$ by some factor $0 \leq \gamma \leq 1$.
+	$$Pr[S/m > (1 + \gamma)p] \leq e^\frac{-mp\gamma^2}{3}$$	
 	$$Pr[S/m < (1 - \gamma)p] \leq e^\frac{-mp\gamma^2}{2}$$	
 	
-$\mathbf{error_s(h)}$: the sum S of the independent errors made over $m$ examples by some hypothesis $h$. This is equivalent to $S/m$.
+$\mathbf{error_s(h)}$: the sum S of the independent errors made over $m$ examples by some hypothesis $h$. This is the observed error of $h$ and is equivalent to $S/m$.
 
-$\mathbf{error_d(h)}$: the true error or generalization error. This is equivalent to the expected value of $S/m$ or $E[S/m] = p$. Since the distribution is i.i.d, we can expect the true error to be
+$\mathbf{error_d(h)}$: the true error or generalization error. This is equivalent to the expected value of $S/m$ or $E[S/m] = p$. Since the distribution is i.i.d, if we see a sufficient number of consistent examples the true error will be no worst than the observed error plus some $\epsilon$ with probability $1 - \delta$. Where $0 \leq \epsilon, \delta \leq 1$.
 	
-We want the probability there exists a $h \in H$ with this probability to be less than or equal to $\delta$.
-$$Pr[\exists h;$$
+We want the probability there exists a $h \in H$ whose $error_s(h)$ differs from $error_d(h)$ by at most $\epsilon$.
+$$Pr[\exists h; S/m > (1 + \gamma)p] \leq |H|e^\frac{-mp\gamma^2}{3}$$
+This probability must be bounded above by a $\delta$ value. I choose the Chernoff bound I did as it will give a tighter bound than the other choice.
+$$Pr[\exists h; S/m > (1 + \gamma)p] \leq |H|e^\frac{-mp\gamma^2}{3} \leq \delta$$
+We want to isolate $m$ on one side of inequality to analyze the minimum number of required consistent examples needed.
+$$|H|e^\frac{-mp\gamma^2}{3} \leq \delta$$
+$$\frac{|H|}{e^{\frac{mp\gamma^2}{3}}} \leq \delta$$
+$$|H| \leq \delta *e^{\frac{mp\gamma^2}{3}}$$
+$$\frac{|H|}{\delta} \leq e^{\frac{mp\gamma^2}{3}}$$
+$$ln(\frac{|H|}{\delta}) \leq ln(e^{\frac{mp\gamma^2}{3}})$$
+$$ln(|H|) - ln(\delta) \leq \frac{mp\gamma^2}{3}$$
+$$\frac{3}{p\gamma^2}[ln(|H|) - ln(\delta)] \leq m$$
+
+\framebox[1.2\width]{$ m \geq \frac{3}{p\gamma^2}[ln(|H|) + ln(\frac{1}{\delta})]$}
+
+We want to bound the number of required examples needed in terms of $\epsilon$ and not $\gamma$. To resolve this we will find a relationship between $\epsilon$ and $\gamma$. 
+
+Recall we want to ensure every hypothesis will have true error no worse than $(1 + \epsilon)error_s(h)$ with a probability less than $\delta$. We showed true error or $error_d(h)$ is $p$ and $error_x(h)$ is $\frac{S}{m}$.
+
+$$Pr[p  > (1 + \epsilon) \frac{S}{m}] \leq \delta$$
+
+Comparing this to one of the provided Chernoff bounds, we can find a relationship between $\epsilon$ and $\gamma$.
+
+$$Pr[\frac{S}{m} < (1 - \gamma)p] \leq e^{\frac{-mp\gamma^2}{2}} \leq \delta$$
+$$Pr[p > \frac{1}{(1 - \gamma)}\frac{S}{m}] \leq \delta$$
+
+We can see that $(1 + \epsilon)$ and $1 \backslash (1 - \gamma)$ are equal by rearranging terms and comparing the two probabilities. We want to replace $\gamma$ with an expression containing $\epsilon$, so we isolate $\gamma$.
+
+$$\gamma = 1 - \frac{1}{(1 + \epsilon)}$$
+
+We want $0 \leq \epsilon \leq 1$, to achieve this we bound $\gamma$ as $0 \leq \gamma \leq 0.5$. Finally, we replace $\gamma$ in the inequality from above with the equivalent expression containing $\epsilon$.
+
+$$ m \geq \frac{3}{p\gamma^2}[ln(|H|) + ln(\frac{1}{\delta})]$$
+$$ m \geq \frac{3}{p(1 - \frac{1}{1 + \epsilon})^2}[ln(|H|) + ln(\frac{1}{\delta})]$$
+$$ m \geq \frac{3}{\frac{p\epsilon^2}{(\epsilon + 1)^2}}[ln(|H|) + ln(\frac{1}{\delta})]$$
+$$ m \geq \frac{3(\epsilon + 1)^2}{p \epsilon^2}[ln(|H|) + ln(\frac{1}{\delta})]$$
+
+This concludes the derivation of the number of training examples sufficient to make $\epsilon$ and $\gamma$ guarantees for a given $|H|$.
+
+\framebox[1.2\width]{$ m \geq \frac{3(\epsilon + 1)^2}{p \epsilon^2}[ln(|H|) + ln(\frac{1}{\delta})]$}
 
 \question{2}{VC Dimensions}
 \textbf{Shatter:} A set of examples S is \textit{shattered} by a set of functions H if for every partition of the examples in S into positive and negative examples there is a function in H that gives exactly these labels to the examples.
@@ -97,14 +130,14 @@ $$Pr[\exists h;$$
 
 \textbf{Proof by contradiction:} Assume that the opposite $VC(\mathcal{C}) > log_2|C|$ is true.
 
-Take a finite instance space X of size d. There exists $2^d$ (the number of possible binary vectors of length $d$) ways to partition X. Thus $|\mathcal{C}| = 2^d$ as we have $2^d$ hypothesis functions.
+Take a finite instance space X of size d. There exists $2^d$ (the number of possible binary vectors of length $d$) ways to partition X. Thus the  $\mathcal{|C|} = 2^d$.
 
 Given that X is of size d, it holds that $0 \leq VC(C) \leq d$ as $\mathcal{C}$ can shatter \textbf{at most} d points (the size of the instance space). Visiting the initial assumption:
 
 $$VC(\mathcal{C}) > \log_2|C|$$
 $$VC(\mathcal{C}) > d$$
 
-Arriving at the contradiction $VC(\mathcal{C}) \leq d$ and $VC(\mathcal{C}) > d$. Thus proving $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
+Arriving at the contradiction $0 \leq VC(\mathcal{C}) \leq d$ and $VC(\mathcal{C}) > d$. Thus proving $VC(\mathcal{C}) \leq log_2|\mathcal{C}|$.
 
 \part{2} For part a and b of this question, consider only $k$ such that $|X| > k$ by a considerable amount, as per the announcement by Jie Cao to simplify this question. 
 
@@ -112,15 +145,19 @@ Arriving at the contradiction $VC(\mathcal{C}) \leq d$ and $VC(\mathcal{C}) > d$
 
 \textbf{Proof} (1) To prove $VC(\mathcal{H}) \geq k$ we must give one example of $k$ points in $\mathcal{X}$ that can be shattered by $\mathcal{H}$. We know that every $h \in \mathcal{H}$ is a vector of length $|X|$ containing $k$ 1's and $|X| - k$ 0's. More so, $\mathcal{H}$ contains every permutation of $k$ 1's and $|X| - k$ 0's. Allowing $\mathcal{H}$ to shatter an example of size $k$ as $\mathcal{H}$ contains hypotheses that gives all possible labelings of the $k$ examples.
 
+	The typical labelings are as such. Labeling all examples as + can be accomplished as we have all permutations of k 1's. Assuming k is must smaller than $|X|$ we also have all permutations of at least k 0's. All other labelings follow similar logic: the desired hypothesis will satisfy exactly k 1's.
+
 (2) To prove $VC(\mathcal{H}) < k + 1$ we must show that any set of $k + 1$ points can't be shattered by $\mathcal{H}$. To show this, for any set of $k + 1$ points we assign a positive label to all of them. $\mathcal{H}$ doesn't contain a function to partition these examples properly as all $h \in \mathcal{H}$ are a vector of length $|X|$ containing exactly $k$ 1's. Thus we have proven $VC(\mathcal{H}) = k$.
 
 \framebox[1.2\width]{$VC(\mathcal{H}) = k$}
 
-\part{2b} {Proof} (1) To prove $VC(\mathcal{H}) \geq k$ we must give one example of $k$ points in $\mathcal{X}$ that can be shattered by $\mathcal{H}$. Each $h \in \mathcal{H}$ contains at most $k$ 1's or 0's. $\mathcal{H}$ is composed of every permutation of vectors containing at most $k$ 1's or 0's. Therefore, it will be able to shatter an example of $k$ as for any labeling of the examples, $\mathcal{H}$ can produce a hypothesis that splits them as such.
+\part{2b} {Proof} (1) To prove $VC(\mathcal{H}) \geq 2k + 1$ we must give one example of $2k + 1$ points in $\mathcal{X}$ that can be shattered by $\mathcal{H}$. Each $h \in \mathcal{H}$ contains at most $k$ 1's or $k$ 0's. $\mathcal{H}$ is composed of every permutation of vectors containing at most $k$ 1's or $k$ 0's. Therefore, it will be able to shatter an example of $2k + 1$ as for any labeling of the examples, $\mathcal{H}$ can produce a hypothesis that splits them as such. 
 
-(2) To prove $VC(\mathcal{H}) < k + 1$ we must show that any set of $k + 1$ points can't be shattered by $\mathcal{H}$. To show this, for any set of $k + 1$ points we assign a positive label to all of them. $\mathcal{H}$ does not contain an $h$ such that $k + 1$ entries are 1's and ($|X| - k - 1$) are 0's. This only holds under the assumption $|X|$ is sufficiently larger than $k$ to ensure $|X| - k - 1 > k$. Thus we have proven $VC(\mathcal{H}) = k$.
+	The typical labelings are as such. Labeling all examples + can be accomplish with zero 0's and the rest 1's, similarly all examples can be labeled - with zero 1's and the rest 0's. The hardest labeling is k 1's and k + 1 0's, or vice versa. This can be accomplish though as at least one of the constraints is met. All other labelings following similar logic: at least one constraint can be made true.
 
-\framebox[1.2\width]{$VC(\mathcal{H}) = k$}
+(2) To prove $VC(\mathcal{H}) < 2k + 2$ we must show that any set of $2k + 2$ points can't be shattered by $\mathcal{H}$. To show this, for any set of $2k + 2$ points we assign a positive label to $k + 1$ and a negative label to the other $k + 1$. $\mathcal{H}$ does not contain an $h$ such that $k + 1$ entries are 1's and $k + 1$ are 0's as this doesn't satisfy either constraint. Thus we have proven $VC(\mathcal{H}) = 2k + 1$.
+
+\framebox[1.2\width]{$VC(\mathcal{H}) = 2k + 1$}
 
 \part{3} \textbf{Proof} (1) To prove $VC(\mathcal{H}) \geq 4$ we must give one example of points $x_1, x_2, x_3, x_4 \in \mathbb{R}$ that can be shattered by $\mathcal{H}$. Take the points $x_1 = 1$, $x_2 = 2$, $x_3 = 3$, and $x_4 = 4$. There are 16 possible labelings of the four points and we must show there is a $h \in \mathcal{H}$ that satisfies each labeling. The figure below expresses all the possible labelings, excluding labelings that are symmetric to provided labelings to avoid an excessiveness of figures.
 
@@ -204,10 +241,6 @@ We can calculate $D_2$ given $h_a$, $\alpha_1$, and $D_1$ for each example in th
 \setlength\fboxrule{0.4pt}
 \boxed{D_{t+1}(i) = \frac{D_t(i)}{Z_t} * exp(-\alpha_t * y_ih_i(x_i))}
 \end{equation}
-
-$$D_{2}(i) = \frac{D_1(i)}{Z_1} * exp(-\alpha_1 * y_ih_a(x_i))$$
-$$D_2(1) = \frac{1}{2}, \ D_2(2) = \frac{1}{6}, \ D_2(3) = \frac{1}{6}, \ D_2(4) = \frac{1}{6} $$
-
 
  \begin{table}[H]
 \centering
