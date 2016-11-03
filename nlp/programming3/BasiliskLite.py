@@ -51,7 +51,7 @@ class BasiliskLite:
         if len(sorted_r_log_f_score) != 0:
             previous_score = sorted_r_log_f_score[0][1]
         for score in sorted_r_log_f_score:
-            if score[1] == 0 or len(pattern_pool) >= 10 and score[1] != previous_score:
+            if score[1] == 0 or (len(pattern_pool) >= 10 and score[1] != previous_score):
                 break
             if score[1] == previous_score:
                 ties_to_sort.append(score)
@@ -62,6 +62,11 @@ class BasiliskLite:
                 ties_to_sort = []
                 ties_to_sort.append(score)
             previous_score = score[1]
+        if len(ties_to_sort) != 0 and len(pattern_pool) < 10:
+            ties_to_sort = sorted(ties_to_sort, key=lambda x: x[0])
+            for tie in ties_to_sort:
+                pattern_pool.append(tie)
+
         return pattern_pool
 
     def get_candidate_list(self, pattern_pool):
@@ -128,6 +133,10 @@ class BasiliskLite:
                 ties_to_sort = []
                 ties_to_sort.append(score)
             previous_score = score[1]
+        if len(ties_to_sort) != 0 and len(new_words) < 5:
+            ties_to_sort = sorted(ties_to_sort, key=lambda x: x[0])
+            for tie in ties_to_sort:
+                new_words.append(tie)
         # Add the new to the lexicon
         for new_word in new_words:
             self.lexicon.append(new_word[0])
