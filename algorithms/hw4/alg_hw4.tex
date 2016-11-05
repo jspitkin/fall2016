@@ -58,9 +58,7 @@
 	
 	Proving there is a unique minimum spanning tree if all edge weights are distinct.
 	
-\part{b} 
-
-\algorith Recall that Kruskal's algorithm starts with each vertex in G being a disjoint tree and all of the edges are sorted by weight. The lightest edge is removed and if it joins two disjoint trees into one tree it is added, otherwise it's discarded.
+\part{b} \algorith Recall that Kruskal's algorithm starts with each vertex in G being a disjoint tree and all of the edges are sorted by weight. The lightest edge is removed and if it joins two disjoint trees into one tree it is added, otherwise it's discarded.
 
 Run Kruskal's algorithm on $G$ to find a minimum spanning tree. As each edge is added to the MST, mark this edge as visited in the original graph $G$.
 
@@ -80,9 +78,49 @@ Run Kruskal's algorithm on G a second time with a slight modification. Each time
 
 \question{2}{Max Flow Basics}
 
-\part{a} 
+\part{a} \textbf{Proof by induction}
 
-\part{b}
+\textit{Basis:} Before the first iteration of the Ford-Fulkerson algorithm, no augmenting paths have been found from $s$ to $t$. It follows then that the flow from $s$ to $t$ is initially 0 which is an integer.
+
+\textit{Inductive step:} Assume the $kth$ iteration of the Ford-Fulkerson algorithm resulted in an integral flow. Given this, all residual capacities for all edges must be integral as adding or subtracting integers results in an integer.
+
+	On iteration $k + 1$ of the Ford-Fulkerson algorithm the found augmenting path from $s$ to $t$ will contain a bottleneck edge with a integral capacity. Given a flow with an integral capacity as a bottleneck, the flow will be integral.
+	
+	Thus maintaining an integral flow on every edge. Proving that for any $s,t$ there exists a maximum flow between $s,t$ in which every edge has an integral flow on it.
+
+\part{b} \algorith
+
+\textbf{Increase one edge's capacity by 1}
+
+When the capacity of one edge is increased 1, the max $s-t$ flow \textbf{might} increase. This is because there might now exist a new augmenting path from $s$ to $t$. To update the max $s-t$ flow, one iteration of the Ford-Fulkerson algorithm is ran. That is, a depth first search is ran in the residual graph in an attempt to find a new augmenting path.
+
+We know that Ford-Fulkerson will increase the $s-t$ flow by at least one, if possible, each iteration. As only 1 edge gained 1 capacity, the most the max $s-t$ flow can increase by is 1. Therefore, one iteration of the Ford-Fulkerson algorithm is sufficient. 
+
+\textbf{Decrease one edge's capacity by 1}
+
+There are two cases when decreasing the capacity of an edge by 1.
+
+\textit{case 1:} The edge has a capacity greater than 0 before reducing it by 1. If this is the case, none of the flows between edges change, no other capacities of edges change and no back edges change. Since the flow of none of the augmenting paths from $s$ to $t$ change, max $s-t$ flow doesn't change. Therefore nothing has to be done other than reducing the capacity of the given edge by 1.
+
+\textit{case 2:} The edge has a remaining capacity 0 before reducing it by 1. If this is the case, this edge is the, or one of, the bottle neck edges of each augmenting path it belongs to. We must find \textbf{one} of the augmenting paths it is the bottleneck of and reduce the flow of each edge in this augmenting path by 1 (and update the capacities and back edges). This is only required for one augmenting path as the updated edge at most reduced the max $s-t$ flow by 1.
+
+We have reduced a flow from $s$ to $t$ by 1, overall reducing the max $s-t$ flow by 1. But, there might be a new route for the reduced augmenting path that doesn't need the edge that lost 1 capacity. To determine this, one iteration of Ford-Fulkerson is ran. This will update the max $s-t$ flow by at least one and will properly update the new max $s-t$ flow.
+
+\correctness 
+
+\textbf{Increase one edge's capacity by 1}
+
+Given 1 extra capacity in an edge, the max $s-t$ flow can be greater. This is a result of the edge could be the only bottle neck in an augmenting path from $s$ to $t$ or create a new augmenting path from $s$ to $t$. Ford-Fulkerson is guaranteed to increase the max $s-t$ flow by at least one each iteration if possible. Therefore we know the change will be found.
+
+\textbf{Decrease one edge's capacity by 1}
+
+\textit{case 1:} Once the max $s-t$ is found, there can exist remaining capacities of edges in the residual graph that are not used. Decreasing one these remaining capacities by 1 won't change any of the augmenting paths from $s$ to $t$ thus the max $s-t$ flow will not change.
+
+\textit{case 2:} A remaining capacity of 0 of an edge in the residual graph indicates that a set of augmenting paths from $s$ to $t$ contain this edge. Therefore, decreasing the capacity by 1 means one of these augmenting paths will lose 1 flow. Ford-Fulkerson is guaranteed to increase the max $s-t$ flow by at least one each iteration if possible. Thus we know the lost flow can be recovered if a different augmenting path from $s$ to $t$ exists.
+
+\runtime One iteration of the Ford-Fulkerson algorithm consists of running a search of the graph. This can be done with time complexity $O(|V| + |E|)$. In the case of reducing the capacity by 1 when the remaining capacity is already 0, we must search for an augmenting path. This requires traversing some $O(|E|)$ back edges. Thus in all this algorithm has a $O(|V| + |E|)$ time complexity.
+
+\framebox[1.2\width]{$O(|V| + |E|)$}	
 
 \part{c}
 
@@ -169,18 +207,46 @@ Consider the graph $G$ which is a perfect matching bipartite graph. That is, the
 Bob wins this game as he goes second. In the worst case, Bob can simply respond with the matching actor from $M$ until Alice and Bob have named every eligible actress and actor. At which point it's Alice's turn and she has no actress to name and loses the game.
 
 \part{d bonus} \textbf{Proof}
-Now let's consider a graph G in which there is not a perfect matching. In this scenario, Alice has a winning strategy that will never fail.
+Now let's consider a graph $G$ s.t. there is not a perfect matching. Recall a perfect matching $M$ is a set of edges from $G$ s.t. no two edges share a common vertex and it matches every vertex in $G$ is incident to exactly one edge in $M$.
 
-\textit{Alice's winning strategy:} There are three cases Alice must consider to win the game.
+ If a bipartite graph doesn't have a perfect matching it must contain a set of connected vertices that is preventing a perfect matching. That is, there is a set of vertices on the right hand side of the bipartite graph (the actor side) that are only neighbors with a set of vertices on the left hand side of the bipartite graph (the actress side). Additionally, the left hand side set contains more vertices than the right hand side set, or vice versa. We know they aren't equal as an unequal pair of sets must exist since there doesn't exist a perfect matching.
+ 
+ 	Put in terms of this question, if $G$ doesn't have a perfect matching there will be pairs of set(s) of actors and actresses of this form. Where for each pair, one of the two sets is bigger than the other.
 
-\textbf{case 1:} It's possible Alice has in her list of actresses an actress that has not co-appeared with any of the actors in Bob's list. In this case, all Alice has to do is name that actress and she wins the game as Bob has no valid responses.
+\textit{Alice's winning strategy:} There are three cases that can occur as a result and Alice can leverage both of them to win the game.
 
-\textbf{case 2:} In Alice's list of actresses there exists a subset of this list that has co-appeared
+\textit{case 1:} $G$ only contains pairs of sets s.t. the actor set is larger than the actress set. If this is the case, there will exist an actress s.t. there is no actor she has co-appeared with. Alice can simply pick this actress, Bob will have no response and Alice wins.
+
+\textit{case 2:} Otherwise $G$ contains a pair of sets s.t. the actress set is larger than the actor set. In this case, Alice continues to pick valid actresses from this set depending on Bob's response. Since Alice's set is larger, Bob will run out of responses before Alice and Alice will win.
+
+\textit{case 3:} No pairs of sets could exist in $G$. Again, this would lead to Alice having an actress not connected to any actors and gives her an easy win.
+
+Thus if G doesn't contain a perfect matching, Alice will always have a winning move and will win the game.
 
 \question{4}{Unexpected Reductions to Flow/Matchings}
 
 \part{a}
 
-\part{b}
+\part{b} \algorith We know there exists an algorithm that solves a weighted version of the maximum bipartite matching problem in polynomial time. We will construct a weighted bipartite graph and use the algorithm to maximize the amount of floor space saved thus minimizing the amount of total floor space used.
+
+\textbf{Constructing the weighted bipartite graph}
+
+\textit{step 1:} For each of the tiles, create a vertex $u_i$ and a vertex $v_i$.
+
+\textit{step 2:} Compare each of the tiles to every other tile. Each tile has the dimensions $a_i$ x $b_i$. If either $(a_j \leq a_i \ and \ b_j \leq b_i)$ or $(a_j \leq b_i \ and \ b_j \leq a_i)$ is true then tile $j$ can be placed on top of tile $i$. For each case where tile $j$ can be placed on top of tile $i$, place a directed edge from $u_j$ to $v_i$. The weight of this edge is the area of tile $j$, that is $a_j * b_j$.
+
+\textbf{Finding the optimal stacking}
+
+Once the weighted bipartite graph G is constructed, we run it through the weighted maximum bipartite matching algorithm. Let's assume a matching $M$ is produced, which is a set of edges that constitute the maximum matching.
+
+To produce the optimal stacking we consider each edge in $M$. An edge($u_i$, $v_j$) signifies that panel $i$ is placed on panel $j$ in the optimal stacking. For each edge in $M$ perform the stacking following this method and we produce the optimal stacking.
+
+\correctness We construct a bipartite graph representing all possible panels that can be stacked on top of another panel where the weight of the edge connecting these two panels is the amount of floor space saved by stacking them.
+
+We give this graph to the maximum bipartite matching algorithm and are given a matching $M$. We know that in a matching, no two edges share a common vertex. This enforces each panel may only have one directly stacked on top of it and the algorithm will choose the panel that saves the maximum amount of floor space. Therefore, this set of stackings is valid and will minimize the amount of total floor space used.
+
+\runtime When constructing the graph G, we just consider $n^2$ stackings of two tiles where $n$ is the number of tiles when creating edges. There will $2n$ vertices in G. Giving a polynomial size graph that takes $O(n^2)$ time to create.
+
+	The maximum bipartite matching algorithm runs in some unknown polynomial time. Thus the runtime of the total algorithm is whichever is more complex: the creation of the graph or the bipartite matching algorithm.
 
 \end{document}
