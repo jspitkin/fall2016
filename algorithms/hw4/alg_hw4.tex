@@ -88,49 +88,94 @@ Run Kruskal's algorithm on G a second time with a slight modification. Each time
 
 \question{3}{More Reductions to Flow}
 
-\part{a} \textbf{Constructing the graph:} starting with a source $s$, create an edge with capacity $\frac{m}{3}$ to each of three vertices representing the ranks \textit{assistant}, \textit{associate}, and \textit{full} professors. 
+\part{a} \textbf{Constructing the graph} 
 
-Create $m$ vertices to represent each of the faculty members. Create an edge of capacity 1 from their rank to their vertex.
+\textit{step 1:} Starting with a source $s$, create an edge with capacity $\frac{m}{3}$ to each of three vertices representing the ranks \textit{assistant}, \textit{associate}, and \textit{full} professors. 
 
-Create $n$ vertices to represent each of the departments. Create an edge of capacity 1 from each faculty member to \textbf{each} department they work for.
+\textit{step 2:} Create $m$ vertices to represent each of the faculty members. Create an edge of capacity 1 from their rank to the vertex that represents them.
 
-Finally, create a sink $t$ and add an edge of capacity 1 from each department to the sink.
+\textit{step 3:} Create $n$ vertices to represent each of the departments. Create an edge of capacity 1 from each faculty member to \textbf{each} department they work for.
 
-\textbf{Determine if a committee exists:} Run the Ford-Fulkerson algorithm to find the max flow of the constructed graph. If the max flow is equal to $n$ (the number of departments) we can conclude a committee is possible. Otherwise we can conclude it is impossible to find such a committee. Note that a committee with equal representation from all ranks of facility isn't possible if the number departments isn't a multiple of 3.
+\textit{step 4:} Finally, create a sink $t$ and add an edge of capacity 1 from each department to the sink.
 
-\textbf{Find the committee:} finding the committee if it exists is simple. Consider each flow from a rank vertex to a faculty member vertex. If the flow is equal to one, that faculty member belongs on the committee.
+\textbf{Determining if a committee exists}
+
+ Run the Ford-Fulkerson algorithm to find the max flow of the constructed graph. If the max flow is equal to $n$ (the number of departments) we can conclude a committee is possible. Otherwise we can conclude it is impossible to find such a committee. Note that a committee with equal representation from all ranks of facility isn't possible if the number departments isn't a multiple of 3.
+
+\textbf{Finding the committee} 
+
+Finding the committee if it exists is simple. Consider each flow from a rank vertex to a faculty member vertex. If the flow is equal to one, that faculty member belongs on the committee.
 
 \correctness We know that the Ford-Fulkerson algorithm will find the maximum flow. We limit the flow from $s$ by $\frac{m}{3}$ for each of the ranks, upholding the restriction of equal representation for the committee. Additionally, we will have at most $n$ flow as there is $n$ possible flow into the sink $t$. Finally, each faculty member can only represent one department as they only have at most 1 flow flowing through their vertex.
 
-\runtime Constructing the graph with be linear with respect to the number of departments and faculty with time complexity $O(n + m)$. Ford-Fulkerson is bounded by $O(E * M)$ where $E$ is the number of edges and $M$ is the maximum flow. The maximum flow will be $n$ and size of $E$ will be of the order $O(n + m)$. Finally, we will traverse the flow into faculty  Thus the total runtime will be $O((n + m)n)$.
+\runtime Constructing the graph with be linear with respect to the number of departments and faculty with time complexity $O(n + m)$. The edges of the flow graph have an integer capacity so Ford-Fulkerson is bounded by $O(E * M)$ where $E$ is the number of edges and $M$ is the maximum flow. The maximum flow will be $n$ and size of $E$ will be of the order $O(n + m)$. Thus the total runtime will be $O((n + m)n)$.
 
-\part{b} \textbf{Constructing the graph:} starting with a source $s$, create an edge with capacity 1 to each vertex representing a black square that exists on the checkerboard. Store the location of the square in the vertex.
+\framebox[1.2\width]{$O((n + m)n)$}
 
-Create a vertex representing each white square that exists and create an edge with capacity 1 from each white vertex to a sink $t$. Store the location of the square in the vertex.
+\part{b} \textbf{Constructing the graph} 
 
-Finally, for each adjacent neighbor a black square has (up, down, left, and right of the square - the neighbors will always be white squares) add an edge of capacity 1 from that black square to each of it's neighbors.
+\textit{step 1:} Create a vertex representing each black square that exists on the checkerboard and create an edge with capacity 1 from a source $s$ to each black vertex.
 
-\textbf{Determine if board can be tiled:} Run the Ford-Fulkerson algorithm to find the max flow of the constructed graph. If the max flow is equal to the number of squares on the checkerboard, there exists a way to tile the board. Otherwise, it's impossible.
+\textit{step 2:} Create a vertex representing each white square that exists on the checkerboard and create an edge with capacity 1 from each white vertex to a sink $t$.
 
-\textbf{Find the tiling:} Each augmenting path from $s-t$ that compose the max flow will pass through a white square and a black square. This pair represents a domino that will be placed. Look at the location of the two squares (stored in the vertex) and place a domino in that location.
+\textit{step 3:} Finally, for each adjacent neighbor a black square has (up, down, left, and right of the square - the neighbors will always be white squares) add an edge of capacity 1 from the black vertex that represents that square to it's white vertex neighbor.
 
-\correctness
+\textbf{Determining if the board can be tiled} 
 
-\runtime
+Run the Ford-Fulkerson algorithm to find the max flow of the constructed graph. If the max flow is equal to half the number of squares on the checkerboard, the board can be tiled. Any max flow that is odd or less than half the number of squares indicates tiling the board is impossible.
 
-\part{c} \textbf{Constructing the graph:} create two vertices for each vertex in G, calling one set \textit{from} and the other \textit{to}.
+\correctness We know each domino must occupy exactly two adjacent squares of the checkerboard (a pair of adjacent squares will always be one white and one black square). Additionally, each square may only be occupied once.
 
-Create a source $s$ and add an edge with capacity 1 from the source to each vertex in the \textit{from} set. Create a sink $t$ and add an edge with capacity 1 from the sink to each vertex in the \textit{to} set.
+	In the constructed flow graph, an augmenting path from $s-t$ represents placing a domino on two squares and contributes 1 to the total flow from $s-t$. These squares may not be used in any other augmenting paths as the edges have capacity 1. If the checkerboard has $s$ squares, we know we have a solution when exactly $s/2$ dominos have been placed. This is identical to having a max-flow of $n/2$.
 
-For each directed edge(u, v) in $G$, add an edge to the flow graph with capacity 1 between $from_u$ and $to_v$.
+\runtime Constructing the graph will be linear with respect to the number of squares on the checkerboard with time complexity $O(s)$ where $s$ is the number of squares. The edges of the flow graph have integer capacities so Ford-Fulkerson is bounded by $O(E * M)$ where $E$ is the number of edges and $M$ is the maximum flow. The maximum flow will be $s/2$ and size of $E$ will be of the order $O(s)$. Thus the total runtime will be $O(s^2)$.
 
-\textbf{Determine if a cycle cover exists:} Run the Ford-Fulkerson algorithm to find the max flow of the constructed graph. If the max flow is equal to $|V|$, a cycle cover exists. Otherwise, it's impossible.
+\framebox[1.2\width]{$O(s^2)$}
 
-\correctness
+\part{c} \textbf{Constructing the graph} 
 
-\runtime 
+\textit{step 1:} For each vertex $v_i \in V$, create two vertices in the flow graph: $from_i$ and $to_i$.
 
-\part{d} \textbf{Proof:} Consider the graph $G$ which is a perfect matching bipartite graph. That is, for ever
+\textit{step 2:} Create a source $s$ and add an edge with capacity 1 from $s$ to each vertex $from_i$. 
+
+\textit{step 3:} For each directed edge(u, v) in $G$, add an edge to the flow graph with capacity 1 between $from_u$ and $to_v$.
+
+\textit{step 4: } Create a sink $t$ and add an edge with capacity 1 from each vertex $from_i$ to $t$.
+
+\textbf{Determine if a cycle cover exists} 
+
+Run the Ford-Fulkerson algorithm to find the max flow of the constructed graph. If the max flow is equal to $|V|$, a cycle cover exists. Otherwise, it's impossible.
+
+\textbf{Find the cycle cover}
+
+If the max flow of the constructed flow graph is equal to $|V|$, a cycle cover exists. Each augmenting path from $s-t$ in the residual network of the flow graph pass through two vertices that represent an edge in the original graph $G$. For example, vertices $from_1$ and $to_2$ represents a directed edge from vertex 1 to vertex 2. 
+
+The collection of augmenting paths from $s-t$ in the residual network that constitute the flow represent the edges that form a \textit{cycle cover} of $G$. This collection of edges forms a set of vertex-disjoint cycles in the graph G that covers all the vertices.
+
+\correctness A \textit{cycle cover} of a directed graph G is a set of vertex-disjoint cycles in the graph that covers all the vertices. Each vertex may only be visited once and all vertices must be visited. 
+
+In our constructed flow graph, we applied the constraint each vertex can only contribute a flow of 1 to the total from from $s-t$ by giving the edges out of $s$ and the edges into $t$ a capacity of 1. Therefore, the only way to achieve a max flow of $|V|$ is if every vertex is visited. 
+
+\runtime Constructing the graph will be linear with respect to the number of vertices in G with time complexity $O(m + n)$ where $m$ is the number of vertices in G and $n$ is the number of edges in G. The edges of the flow graph have integer capacities so Ford-Fulkerson is bounded by $O(E * M)$ where $E$ is the number of edges and $M$ is the maximum flow. The maximum flow will be $m$ and the size of $E$ will be of order $O(m + n)$. Thus the total runtime will be $O((m + n)m)$.
+
+\framebox[1.2\width]{$O((m + n)m)$}
+
+\part{d} \textbf{Proof} 
+
+Consider the graph $G$ which is a perfect matching bipartite graph. That is, there exists a matching $M$ where $M$ is a set of edges from $G$ s.t. no two edges share a common vertex. $M$ is a perfect matching meaning it matches every vertex in $G$ such that every vertex in $G$ is incident to exactly one edge in $M$.
+
+\textit{Bob's winning strategy:} In this game Alice goes first and names an actress. For Bob to guarantee victory, Bob must answer with the actor matched with Alice's actress in the perfect matching. That is a $m \in M$ is an edge that connects an actress with an actor. It is a perfect matching so we know that for every actress Alice can name, there exists a matching actor that hasn't been named yet.
+
+Bob wins this game as he goes second. In the worst case, Bob can simply respond with the matching actor from $M$ until Alice and Bob have named every eligible actress and actor. At which point it's Alice's turn and she has no actress to name and loses the game.
+
+\part{d bonus} \textbf{Proof}
+Now let's consider a graph G in which there is not a perfect matching. In this scenario, Alice has a winning strategy that will never fail.
+
+\textit{Alice's winning strategy:} There are three cases Alice must consider to win the game.
+
+\textbf{case 1:} It's possible Alice has in her list of actresses an actress that has not co-appeared with any of the actors in Bob's list. In this case, all Alice has to do is name that actress and she wins the game as Bob has no valid responses.
+
+\textbf{case 2:} In Alice's list of actresses there exists a subset of this list that has co-appeared
 
 \question{4}{Unexpected Reductions to Flow/Matchings}
 
