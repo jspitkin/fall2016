@@ -122,7 +122,19 @@ Given 1 extra capacity in an edge, the max $s-t$ flow can be greater. This is a 
 
 \framebox[1.2\width]{$O(|V| + |E|)$}	
 
-\part{c}
+\part{c} 
+
+\textbf{Proof} \textit{there exists $k$ edge disjoint paths from $s-t$ $\Rightarrow$ there exists $k$ edge disjoint paths from $t-s$.}
+
+We know all edges have capacity 1. There exists $k$ edge disjoint paths from $t-s$ iff the max $t-s$ flow is $k$. That is, there are $k$ augmenting paths from $t$ to $s$, each with a flow of 1.
+
+The \textit{in-degree} of every vertex is equal to its \textit{out-degree}. Therefore, for every augmenting path from $t-s$ there is an augmenting path from $s-t$. We know that there are $k$ augmenting paths from $t - s$ so it follows there are $k$ augmenting paths from $s - t$.
+
+Therefore, if there exists $k$ edge disjoint paths from $t-s$, there also exists $k$ edge disjoint paths from $s-t$.
+
+\textbf{Proof} \textit{there exists $k$ edge disjoint paths from $t-s$ $\Rightarrow$ there exists $k$ edge disjoint paths from $s-t$.}
+
+Proving the iff statement from right-to-left follows the exact logic from proving the iff statement from left-to-right.
 
 \question{3}{More Reductions to Flow}
 
@@ -225,7 +237,7 @@ Thus if G doesn't contain a perfect matching, Alice will always have a winning m
 
 \question{4}{Unexpected Reductions to Flow/Matchings}
 
-\part{a}
+\part{a} \textbf{No Answer}
 
 \part{b} \algorith We know there exists an algorithm that solves a weighted version of the maximum bipartite matching problem in polynomial time. We will construct a weighted bipartite graph and use the algorithm to maximize the amount of floor space saved thus minimizing the amount of total floor space used.
 
