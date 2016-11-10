@@ -1,0 +1,79 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{\HWNUM}}
+\rhead{CS 6350, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{Intermediate Report}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+\question{1}{Overview}
+
+For my final project I am competing in the Kaggle competitive project. I currently have a $\mathbf{0.63699}$ classification accuracy on Kaggle. I have multiple strategies I will use to improve this score, as there isn't a huge margin between my score and the baseline. The baseline for this competition seems to be right around 0.5. To discover this I made a submission that labels everything as positive and received about a 0.5 classification accuracy.
+
+\question{2}{Approach 1}
+
+My first approach was to train the classic perceptron algorithm with the training examples and use it to classify the test examples. This was done with no pre-processing of the data. I performed cross-validation on the testing set to determine the best \textit{epoch} and \textit{learning rate} to use with the perceptron algorithm.
+
+I found an epoch of 5 and a learning rate of 0.1 to be performing slightly better than other choices, but not my much. This approach gave me a classification accuracy on Kaggle of about \textbf{0.55}.
+
+\question{3}{Exploring the Data}
+
+After my first approach coming up with undesirable results, I began to explore the data. 
+
+Each example is defined by \textit{360} possible features. But I discovered only \textit{130} of these features appear in the training examples. Of these \textit{130} there are a great deal of them that appear in nearly every training example and four features that appear in every training example. The \textit{65} features with the highest frequency appear in at least half of the training examples.
+
+Another discovery was the values a feature can hold vary greatly. I collected the minimum value, maximum value, range, and average value each feature can hold. 
+
+Additionally, the value ranges of each feature, when compared to the other features, showed a large variety. I decided to discretize the feature values into buckets for my second approach.
+
+\question{4}{Approach 2}
+
+With the values of each feature put into buckets, I decided to try out training a decision tree using the ID3 algorithm. This lead to an undesirable classification accuracy on the Kaggle test examples though.
+
+I decided to return to using a linear classifier. Running trails using the classic perceptron, margin perceptron, and the aggressive margin perceptron. I saw the best results with the margin perceptron so decided to move forward with it.
+
+The margin perceptron is what I used to accomplish my current Kaggle classification accuracy of \textbf{0.63699}. I performed cross-validation to decide an \textit{epoch} of 7, a \textit{learning rate} of 0.1, and feature values discretized into one of 20 bins.
+
+\question{3}{Future Plans}
+
+As I complete homework assignment five my next approach will be to use a support vector machine (SVM). I saw decent results with the margin perceptron and am optimistic about using an SVM the more I learn about them. As will all my attempted approaches thus far, I will be performing cross-validation to determine the best hyper parameters. 
+
+I didn't experience good results by training a single decision tree. That said, I will experiment with using an ensemble of small decision trees. I am in the process of implementing this for homework five and will test it for this project once I finish the implementation.
+\end{document}

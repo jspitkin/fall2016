@@ -16,8 +16,8 @@ def get_feature_count(path):
 
 def read_svm_file(path):
     """ Input  - path: source of data file in lib-SVM format.
-        Output - a list of examples where each example is a tuple
-                 of the form (label, feature vector). """
+        Output - a list of examples where each example is a list
+                 of size two containing a label and a feature vector. """
     examples = []
     feature_count = get_feature_count(path)
     with open(path) as file:
@@ -30,19 +30,27 @@ def read_svm_file(path):
                     feature = feature.split(':')
                     if len(feature) == 2:
                         feature_vector[int(feature[0])-1] = int(feature[1])
-            examples.append((label, feature_vector))
+                example = [label, feature_vector]
+                examples.append(example)
     return examples
-
-def write_csv_file(path, labels, data):
+def write_csv_file(path, labels, ids, classifications):
     """ Input - path: write destination for csv file.
                 labels: a list of the labels for each column of data.
-                data: a list of rows of data.
+                ids: the ids of each classification.
+                classifications: a list of classifications.
         Writes a CSV file to 'path'. """
     with open(path, 'w') as file:
         labels = ",".join(labels)
         file.write(labels + '\n')
-        for row in data[:-1]:
-            row = ",".join(row)
-            file.write(row + '\n')
-        row = ",".join(data[-1])
-        file.write(row)
+        for index in range(len(ids)-1):
+            file.write(str(ids[index]) + ',' + str(classifications[index]) + '\n')
+        file.write(str(ids[-1]) + ',' + str(classifications[-1]))
+
+def read_id_file(path):
+    """ Input  - path: source of id file.
+        Output - a list of the ids in the file. """
+    ids = []
+    with open(path) as file:
+        for line in file:
+            ids.append(int(line.strip()))
+    return ids
