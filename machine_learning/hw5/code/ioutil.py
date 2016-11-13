@@ -30,3 +30,13 @@ def read_data_and_split(features_path, labels_path, split_count):
             splits[line_number % split_count][example_index]['label'] = int(line) 
             line_number += 1
     return splits
+
+def read_possible_feature_values(path, feature_count):
+    feature_values = [set() for x in range(feature_count)]
+    with open(path) as file:
+        for line in file:
+            features = line.split()
+            for index, feature in enumerate(features):
+                feature_values[index].add(feature)
+    return feature_values
+            
