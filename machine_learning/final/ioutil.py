@@ -26,11 +26,32 @@ def read_svm_file(path):
             line = line.split()
             if len(line) > 0:
                 label = int(line[0])
+                if label == 0:
+                    label = -1
                 for feature in line[1:]:
                     feature = feature.split(':')
                     if len(feature) == 2:
                         feature_vector[int(feature[0])-1] = int(feature[1])
-                example = [label, feature_vector]
+                example = {'feature_vector' : feature_vector, 'label' : label}
+                examples.append(example)
+    return examples
+
+def read_svm_file_binary(path):
+    examples = []
+    feature_count = get_feature_count(path)
+    with open(path) as file:
+        for line in file:
+            feature_vector = [0 for x in range(feature_count)]
+            line = line.split()
+            if len(line) > 0:
+                label = int(line[0])
+                if label == 0:
+                    label = -1
+                for feature in line[1:]:
+                    feature = feature.split(':')
+                    if len(feature) == 2 and int(feature[1]) > 0:
+                        feature_vector[int(feature[0])-1] = 1
+                example = {'feature_vector' : feature_vector, 'label' : label}
                 examples.append(example)
     return examples
 def write_csv_file(path, labels, ids, classifications):

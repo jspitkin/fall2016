@@ -8,7 +8,7 @@ class SVM:
         self.initial_learning_rate = initial_learning_rate
         self.learning_rate = initial_learning_rate
         self.C = C
-        self.epoch = 1
+        self.epoch = epoch
 
     def train(self, training_examples):
         example_count = len(training_examples) * self.epoch

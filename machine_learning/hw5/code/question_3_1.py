@@ -3,8 +3,8 @@ import ioutil
 import SVM
 
 def main():
-    training_data = ioutil.read_semelion_data('handwriting/train.data', 'handwriting/train.labels')
-    test_data = ioutil.read_semelion_data('handwriting/test.data', 'handwriting/test.labels')
+    training_data = ioutil.read_data('handwriting/train.data', 'handwriting/train.labels')
+    test_data = ioutil.read_data('handwriting/test.data', 'handwriting/test.labels')
 
     initial_learning_rate = 0.01
     C = 1
