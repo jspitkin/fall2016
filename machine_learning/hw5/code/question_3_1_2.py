@@ -6,7 +6,7 @@ def main():
     data_splits = ioutil.read_data_and_split('madelon/madelon_train.data', 'madelon/madelon_train.labels', 5)
     C_values = [2, 0.5, 0.25, 0.125, 0.0625, 0.03125]
     initial_learning_rates = [0.01, 0.1, 0.001]
-    epoch = 20
+    epoch = 1
     
     best_accuracy = 0
     best_C = 0

@@ -91,4 +91,5 @@ class SVM:
         results['precision'] = self.get_precision(true_positives, false_positives)
         results['recall'] = self.get_recall(true_positives, false_negatives)
         results['F1_score'] = self.get_F1_score(results['precision'], results['recall'])
+        print("TP:", true_positives, "FP:", false_positives, "FN:", false_negatives, sep='\t')
         return results

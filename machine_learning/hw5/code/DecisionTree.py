@@ -1,5 +1,6 @@
 # Jake Pitkin November 13 2016
 import math
+import ioutil
 from collections import Counter
 
 class Edge:
@@ -27,16 +28,17 @@ class Node:
         return self.value
 
 class DecisionTree:
-    def __init__(self, feature_count):
+    def __init__(self, feature_count, relevant_features):
         self.feature_count = feature_count
+        self.relevant_features = relevant_features
 
-    def get_feature_columns(self, examples):
+    def get_feature_columns(self, examples, feature_count):
         if len(examples) < 1:
             return []
         feature_columns = [[] for i in range(feature_count)]
         labels = []
         for example in examples:
-            for index, feature in enumerate(example['feature_vector'])
+            for index, feature in enumerate(example['feature_vector']):
                 feature_columns[index].append(feature)
             labels.append(example['label'])
         columns = {'feature_columns' : feature_columns, 'labels_column' : labels}
@@ -50,7 +52,7 @@ class DecisionTree:
             else:
                 value_counts[value] = 1
         entropy = 0
-        for label, count in value_counts.iteritems():
+        for label, count in value_counts.items():
             probability = count / len(vector)
             entropy = entropy - (probability * math.log(probability, 2))
         return entropy
@@ -70,7 +72,7 @@ class DecisionTree:
             feature_values_info[feature_value]['label_count'][label_value] += 1
 
         expected_entropy = 0
-        for feature_value, feature_value_info in feature_values_info.iteritems():
+        for feature_value, feature_value_info in feature_values_info.items():
             current_entropy = 0
             for count in feature_value_info['label_count'].values():
                 if count != 0 and feature_value_info['count'] != 0:
@@ -87,7 +89,7 @@ class DecisionTree:
         best_attribute = attributes[0]
         best_attribute_column = 0
         best_information_gain = self.information_gain(best_attribute, labels)
-        for index, attribute in enumerate(attribute[1:]):
+        for index, attribute in enumerate(attributes[1:]):
             information_gain = self.information_gain(attribute, labels)
             if information_gain > best_information_gain:
                 best_attribute = attribute
@@ -111,6 +113,43 @@ class DecisionTree:
                 for index, example in enumerate(examples):
                     if example['feature_vector'][best_attribute_column] == attribute:
                         sub_examples.append(example)
-                sub_columns = self.get_feature_columns(sub_examples)
-                new_edge.set_child(self.ID3(sub_examples, sub_attributes, sub_labels, possible_attribute_values)
+                print(len(sub_examples))
+                sub_columns = self.get_feature_columns(sub_examples, len(self.relevant_features))
+                new_edge.set_child(self.ID3(sub_examples, sub_columns['feature_columns'], sub_columns['labels_column'], possible_attribute_values))
         return root
+
+    def get_relevant_features(self, examples):
+        relevant_examples = []
+        for example in examples:
+            relevant_example = {'feature_vector' : []}
+            for index in self.relevant_features:
+                relevant_example['feature_vector'].append(example['feature_vector'][index])
+            relevant_example['label'] = example['label']
+            relevant_examples.append(relevant_example)
+        return relevant_examples
+
+    def construct_tree(self, training_data_path, training_labels_path, test_data_path):
+        possible_attribute_values = [set([1.0, 0.0]) for x in range(self.feature_count)]
+        training_data = ioutil.split_data(training_data_path, training_labels_path, self.feature_count)
+        training_data = self.get_relevant_features(training_data)
+        feature_columns = self.get_feature_columns(training_data, len(self.relevant_features))
+        self.root = self.ID3(training_data, feature_columns['feature_columns'], feature_columns['labels_column'], possible_attribute_values)
+
+    def test(self, test_file_path, test_label_file_path):
+        examples = ioutil.split_data(test_file_path, test_label_file_path, self.feature_count)
+        examples = self.get_relevant_features(examples)
+        feature_columns = self.get_feature_columns(examples, len(self.relevant_features))
+        correct_predictions = 0
+        levels = 0
+        for example in examples:
+            current_node = self.root
+            while len(current_node.edges) > 0:
+                example_attribute_value = example['feature_vector'][current_node.value]
+                for edge in current_node.edges:
+                    if example_attribute_value == edge.get_value():
+                        current_node = edge.child_node
+                        levels += 1
+            if current_node.value == example['label']:
+                correct_predictions += 1
+            levels = 0
+        return {'correct_predictions' : correct_predictions, 'example_count' : len(examples), 'accuracy' : round(correct_predictions/len(examples), 3)}
