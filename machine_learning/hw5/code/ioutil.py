@@ -1,3 +1,5 @@
+from random import randint
+
 def read_data(features_path, labels_path, add_bias=True):
     examples = []
     with open(features_path) as file:
@@ -32,20 +34,6 @@ def read_data_and_split(features_path, labels_path, split_count):
             line_number += 1
     return splits
 
-def read_possible_feature_values(train_path, test_path, feature_count):
-    feature_values = [set() for x in range(feature_count)]
-    with open(train_path) as file:
-        for line in file:
-            features = line.split()
-            for index, feature in enumerate(features):
-                feature_values[index].add(float(feature))
-    with open(test_path) as file:
-        for line in file:
-            features = line.split()
-            for index, feature in enumerate(features):
-                feature_values[index].add(float(feature))
-    return feature_values
-
 def split_data(feature_path, label_path, feature_count):
     feature_values = [[] for x in range(feature_count)]
     labels = []
@@ -74,3 +62,10 @@ def split_data(feature_path, label_path, feature_count):
             else:
                 example['feature_vector'][index] = 1
     return examples
+
+def get_m_random_examples(examples, m):
+    m_examples = []
+    for index in range(m):
+        random_index = randint(0, len(examples)-1)
+        m_examples.append(examples[random_index])
+    return m_examples

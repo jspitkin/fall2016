@@ -1,26 +1,42 @@
-import RandomForest as rf
-import SVM
+# Jake Pitkin November 14 2016
 import ioutil
+import SVM
+import RandomForest as rf
 
 def main():
-    m = 5000
-    N = 5
-    feature_count = 256
-    train_data_path = 'handwriting/train.data'
-    train_label_path = 'handwriting/train.labels'
-    test_data_path = 'handwriting/test.data'
-    test_label_path = 'handwriting/test.labels'
+    m = 500
+    N_choices = [10, 30, 100]
+    feature_count = 500
+    train_data_path = 'madelon/madelon_train.data'
+    train_label_path = 'madelon/madelon_train.labels'
+    test_data_path = 'madelon/madelon_test.data'
+    test_label_path = 'madelon/madelon_test.labels'
 
-    random_forest = rf.RandomForest(m, N, feature_count)
-    random_forest.set_data_paths(train_data_path, train_label_path, test_data_path, test_label_path)
-    results = random_forest.create_trees()
-    transformed_examples = random_forest.get_transformed_examples(results, test_label_path)
+    best_N = 10
+    best_accuracy = 0
 
+    for N in N_choices:
+        random_forest = rf.RandomForest(m, N, feature_count)
+        random_forest.set_data_paths(train_data_path, train_label_path, test_data_path, test_label_path)
+        results = random_forest.create_trees()
+        transformed_examples = random_forest.get_transformed_examples(results, test_label_path)
+
+        average_accuracy = 0
+        for result in results:
+            average_accuracy += result['accuracy']
+        average_accuracy = average_accuracy / N
+        print(average_accuracy)
+        if average_accuracy > best_accuracy:
+            best_aaccuracy = average_accuracy
+            best_N = N
+
+    print(best_N)
+    random_forest = rf.RandomForest(m, best_N, feature_count)
     test_data = ioutil.read_data(test_data_path, test_label_path)
     training_data = ioutil.read_data(train_data_path, train_label_path)
     initial_rate = 0.01
     C = 0.5
-    epoch = 1
+    epoch = 10
 
     svm = SVM.SVM(initial_rate, C, epoch, N+1)
     svm.train(transformed_examples)

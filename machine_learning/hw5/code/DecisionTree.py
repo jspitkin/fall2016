@@ -28,9 +28,10 @@ class Node:
         return self.value
 
 class DecisionTree:
-    def __init__(self, feature_count, relevant_features):
+    def __init__(self, feature_count, relevant_features, m):
         self.feature_count = feature_count
         self.relevant_features = relevant_features
+        self.m = m
 
     def get_feature_columns(self, examples, feature_count):
         if len(examples) < 1:
@@ -81,7 +82,7 @@ class DecisionTree:
             expected_entropy += (feature_value_info['count'] / len(feature_vector)) * current_entropy
         return self.entropy(labels) - expected_entropy
 
-    def ID3(self, examples, attributes, labels, possible_attribute_values):
+    def ID3(self, examples, attributes, labels, possible_attribute_values, depth):
         # All examples have the same label - base case
         if all(label == labels[0] for label in labels):
             return Node(labels[0])
@@ -104,7 +105,7 @@ class DecisionTree:
             new_edge = Edge(attribute)
             root.add_edge(new_edge)
             # If there are no examples of this attribute - common label
-            if attribute not in best_attribute:
+            if attribute not in best_attribute or best_information_gain == 0.0:
                 new_leaf = Node(most_common_label[0])
                 new_edge.set_child(new_leaf)
             # Otherwise, branch and add the subtree
@@ -113,9 +114,8 @@ class DecisionTree:
                 for index, example in enumerate(examples):
                     if example['feature_vector'][best_attribute_column] == attribute:
                         sub_examples.append(example)
-                print(len(sub_examples))
                 sub_columns = self.get_feature_columns(sub_examples, len(self.relevant_features))
-                new_edge.set_child(self.ID3(sub_examples, sub_columns['feature_columns'], sub_columns['labels_column'], possible_attribute_values))
+                new_edge.set_child(self.ID3(sub_examples, sub_columns['feature_columns'], sub_columns['labels_column'], possible_attribute_values, depth+1))
         return root
 
     def get_relevant_features(self, examples):
@@ -128,19 +128,20 @@ class DecisionTree:
             relevant_examples.append(relevant_example)
         return relevant_examples
 
-    def construct_tree(self, training_data_path, training_labels_path, test_data_path):
+    def construct_tree(self, training_data_path, training_labels_path):
         possible_attribute_values = [set([1.0, 0.0]) for x in range(self.feature_count)]
         training_data = ioutil.split_data(training_data_path, training_labels_path, self.feature_count)
+        training_data = ioutil.get_m_random_examples(training_data, self.m)
         training_data = self.get_relevant_features(training_data)
         feature_columns = self.get_feature_columns(training_data, len(self.relevant_features))
-        self.root = self.ID3(training_data, feature_columns['feature_columns'], feature_columns['labels_column'], possible_attribute_values)
+        self.root = self.ID3(training_data, feature_columns['feature_columns'], feature_columns['labels_column'], possible_attribute_values, 0)
 
     def test(self, test_file_path, test_label_file_path):
         examples = ioutil.split_data(test_file_path, test_label_file_path, self.feature_count)
         examples = self.get_relevant_features(examples)
         feature_columns = self.get_feature_columns(examples, len(self.relevant_features))
         correct_predictions = 0
-        levels = 0
+        predictions = []
         for example in examples:
             current_node = self.root
             while len(current_node.edges) > 0:
@@ -148,8 +149,7 @@ class DecisionTree:
                 for edge in current_node.edges:
                     if example_attribute_value == edge.get_value():
                         current_node = edge.child_node
-                        levels += 1
+            predictions.append(current_node.value)
             if current_node.value == example['label']:
                 correct_predictions += 1
-            levels = 0
-        return {'correct_predictions' : correct_predictions, 'example_count' : len(examples), 'accuracy' : round(correct_predictions/len(examples), 3)}
+        return {'correct_predictions' : correct_predictions, 'example_count' : len(examples), 'accuracy' : round(correct_predictions/len(examples), 3), 'predictions' : predictions}
