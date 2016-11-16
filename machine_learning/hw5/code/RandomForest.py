@@ -8,6 +8,7 @@ class RandomForest:
         self.N = N
         self.feature_count = feature_count
         self.k = int(math.log(self.feature_count, 2))
+        self.k = 11
 
     def set_data_paths(self, train_data, train_labels, test_data, test_labels):
         self.train_data = train_data

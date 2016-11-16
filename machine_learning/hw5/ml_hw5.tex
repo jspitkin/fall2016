@@ -235,9 +235,7 @@ madelon testing & 0.586 & 0.59 & 0.588\\ \hline
 \question{4}{Ensemble of Decision Trees}
 \textit{Note: In my submitted source code there is a 'traces' directory. This contains traces of all of the experiments I ran to collect the following data.}
 
-\part{1} \textbf{Splits for continuous features:} The {\tt madelon} dataset has continuous features. I decided to make the features binary features. To determine their value, I took the mean value a feature had across all training examples. Then, depending on which side of the mean each feature value landed, the feature value was replaced by 0 for less than and 1 for greater than or equal to the mean.
-
-	\textbf{Hyperparameters:} I ran cross validation on the {\tt madelon} training set to determine good hyperparameters for this experiment. The hyperparameter to determine for the ensemble of decision trees is \textit{m} or the number of random samples used when training each decision tree. N and \textit{k} are fixed for this experiment.
+\part{1} \textbf{Hyperparameters:} I ran cross validation on the {\tt handwriting} training set to determine good hyperparameters for this experiment. The hyperparameter to determine for the ensemble of decision trees is \textit{m} or the number of random samples used when training each decision tree. N and \textit{k} are fixed for this experiment.
 	
 	For the meta-SVM classifier, I determined the best $\gamma_0$, C and epoch to be used on features produced by the ensemble of decision trees.
 	
@@ -268,8 +266,76 @@ handwriting test & 127 & 593 & 0.786 & 0.884 & 0.673 & 0.764\\ \hline
 \caption{Results of meta-SVM classifier on the {\tt handwriting} dataset.}
 \end{table}
 
-\part{2a}
+\part{2a} \textbf{Splits for continuous features:} The {\tt madelon} dataset has continuous features. I decided to make the features binary features. To determine their value, I took the mean value a feature had across all training examples. Then, depending on which side of the mean each feature value landed, the feature value was replaced by 0 for less than and 1 for greater than or equal to the mean.
 
-\part{2b}
+\textbf{Hyperparameters:} I ran cross validation on the {\tt madelon} training set to determine good hyperparameters.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+\textit{m} & k & $\gamma_0$ & C & epoch\\
+\hline
+500 & 11 & 0.1 & 4 & 5\\ \hline
+\end{tabular}}
+\caption{Hyperparameters for the ensemble and meta-SVM classifiers}
+\end{table}
+
+Using these hyperparameters, I varied N through the values $10$, $30$, and $100$ to train the classifier. For each choice I evaluated the classifiers performance using the \textit{training} and \textit{test} {\tt madelon} dataset.
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+\hline
+Data Set & N & Mistakes & Examples Count & Accuracy & Precision & Recall & $F_1$ Score\\
+\hline
+madelon training & 10 & 999 & 2,000 & 0.5 & 0.5 & 0.996 & 0.666\\ \hline
+madelon test & 10 & 301 & 600 & 0.498 & 0499 & 0.993 & 0.664\\ \hline
+madelon training & 30 & 998 & 2,000 & 0.501 & 0.501 & 0.611 & 0.551\\ \hline
+madelon test & 30 & 293 & 600 & 0.512 & 0.51 & 0.617 & 0.558\\ \hline
+madelon training & 100 & 980 & 2,000 & 0.51 & 0.507 & 0.678 & 0.58\\ \hline
+madelon test & 100 & 280 & 600 & 0.533 & 0.525 & 0.7 & 0.6\\ \hline
+\end{tabular}}
+\caption{Results of meta-SVM classifier on the {\tt madelon} dataset.}
+\end{table}
+
+I determined the best choice for N is $100$ out of the given choices. The classifier using $N = 10$ achieved a better $F_1$ score but it predicted true on every label. When N was small on this dataset, I found the classifier always predicted true. I found pretty poor performance on the {\tt madelon} dataset using an ensemble of decision trees and a meta-SVM classifier. I am experiencing baseline performance.
+
+\part{2b} \textbf{Additional values of N:} I found that $N = 100$ had the best performance in part a. I tried the additional values 5, 15, and 60 to see how they perform. Other than N, I used the same hyperparameters as used in part a.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+\textit{m} & k & $\gamma_0$ & C & epoch\\
+\hline
+500 & 11 & 0.1 & 4 & 5\\ \hline
+\end{tabular}}
+\caption{Hyperparameters for the ensemble and meta-SVM classifiers}
+\end{table}
+
+As in part a, I trained the classifier and evaluated it's performance on the \textit{training} and \textit{test} {\tt madelon} datasets.
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+\hline
+Data Set & N & Mistakes & Examples Count & Accuracy & Precision & Recall & $F_1$ Score\\
+\hline
+madelon training & 5 & 1,031 & 2,000 & 0.485 & 0.487 & 0.57 & 0.525\\ \hline
+madelon test & 5 & 304 & 600 & 0.493 & 0494 & 0.597 & 0.541\\ \hline
+madelon training & 15 & 1,021 & 2,000 & 0.49 & 0.473 & 0.187 & 0.268\\ \hline
+madelon test & 15 & 297 & 600 & 0.505 & 0.513 & 0.2 & 0.288\\ \hline
+madelon training & 60 & 994 & 2,000 & 0.503 & 0.512 & 0.123 & 0.198\\ \hline
+madelon test & 60 & 313 & 600 & 0.478 & 0.409 & 0.093 & 0.151\\ \hline
+\end{tabular}}
+\caption{Results of meta-SVM classifier on the {\tt madelon} dataset.}
+\end{table}
+
+Experimenting with 6 different values of N, I determined N = $100$ is the best choice for the {\tt madelon} dataset.
 
 \end{document}

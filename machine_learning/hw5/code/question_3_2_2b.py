@@ -6,7 +6,7 @@ import RandomForest as rf
 def main():
     m = 500
     feature_count = 501
-    N = 10
+    N = 5
     train_data_path = 'madelon/madelon_train.data'
     train_label_path = 'madelon/madelon_train.labels'
     test_data_path = 'madelon/madelon_test.data'
@@ -25,7 +25,7 @@ def main():
     test_data = ioutil.split_data(test_data_path, test_label_path, 501)
     training_data = ioutil.split_data(train_data_path, train_label_path, 501)
     initial_rate = 0.1
-    C = 4 
+    C = 4
     epoch = 5
 
     svm = SVM.SVM(initial_rate, C, epoch, N+1)
@@ -51,7 +51,7 @@ def main():
     print("Recall: ", test_accuracy['recall'], sep='\t')
     print("F1 Score:", test_accuracy['F1_score'], sep='\t')
 
-    N = 30
+    N = 15
     random_forest = rf.RandomForest(m, N, feature_count)
     random_forest.set_data_paths(train_data_path, train_label_path, test_data_path, test_label_path)
     results = random_forest.create_trees()
@@ -88,7 +88,7 @@ def main():
     print("Recall: ", test_accuracy['recall'], sep='\t')
     print("F1 Score:", test_accuracy['F1_score'], sep='\t')
 
-    N = 100
+    N = 60
     random_forest = rf.RandomForest(m, N, feature_count)
     random_forest.set_data_paths(train_data_path, train_label_path, test_data_path, test_label_path)
     results = random_forest.create_trees()
