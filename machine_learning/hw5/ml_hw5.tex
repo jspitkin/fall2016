@@ -125,15 +125,17 @@ $$PMB(\gamma, R) = PMB(\frac{1}{2\sqrt{2}}, 1.5) = (\frac{R}{\gamma})^2 = 18$$
 
 \textbf{$D_2$ -} We found $\gamma = 0.25$. The furthest point from the origin is point $x_8$ with a distance of $\frac{\sqrt{5}}{2}$.
 
-$$PMB(\gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma})^2 = 20$$
+$$PMB(\gamma, R) = PMB(0.25, \frac{\sqrt{5}}{2}) = (\frac{R}{\gamma})^2 = 20$$
 
 \framebox[1.2\width]{Mistake bound of $20$}
 
 \textbf{$D_3$ - } We found $\gamma = \frac{1}{2\sqrt{5}}$. The furthest point from the origin is the point $x_7$ with a distance of $1.5$.
 
-$$PMB(\gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma})^2 = 20$$
+$$PMB(\gamma, R) = PMB(\frac{1}{2\sqrt{5}}, 1.5) = (\frac{R}{\gamma})^2 = 45$$
 
-\part{2c}
+\framebox[1.2\width]{Mistake bound of $45$}
+
+\part{2c}!!!!!!!!!!!!!!!!!!!!! TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \question{2}{Kernels}
 
@@ -146,16 +148,125 @@ $$PMB(\gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma})^2 = 20$$
 \part{3}
 
 \question{3}{Support Vector Machines}
+\textit{Note: In my submitted source code there is a 'traces' directory. This contains traces of all of the experiments I ran to collect the following data.}
 
-\part{1}
+\part{1} A SVM using Stochastic sub-gradient descent was trained on the {\tt handwriting} dataset. The hyperparameters $C = 1$, $\gamma_0 = 0.01$, and $epoch = 10$ were used.
 
-\part{2}
+The classifier was evaluated using the \textit{training} and \textit{test} {\tt handwriting} datasets with the following results:
 
-\part{3}
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Data Set & Mistakes & Example Count & Accuracy\\
+\hline
+handwriting training & 1 & 1,000 & 0.999\\ \hline
+handwriting testing & 8 & 593 & 0.987\\ \hline
+\end{tabular}}
+\caption{Classification accuracy on the training and test set.}
+\end{table}
+
+\part{2} \textbf{Splits for continuous features:} The {\tt madelon} dataset has continuous features. I decided to make the features binary features. To determine their value, I took the mean value a feature had across all training examples. Then, depending on which side of the mean each feature value landed, the feature value was replaced by 0 for less than and 1 for greater than or equal to the mean.
+
+\textbf{Cross-validation:} To determine the best hyperparameters $C$ and $\gamma_0$ I ran 5-fold cross validation on various combinations of $C$ and $\gamma_0$. For all the cross validations trials an epoch of $20$ was used.
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+C & Initial Learning Rate & Accuracy\\
+\hline
+2 & 0.5 & 0.527\\ \hline
+2 & 0.01 & 0.539\\ \hline
+2 & 0.001 & 0.532\\ \hline
+0.5 & 0.5 & 0.536\\ \hline
+0.5 & 0.01 & 0.533\\ \hline
+0.5 & 0.001 & 0.522\\ \hline
+0.25 & 0.5 & 0.538\\ \hline
+0.25 & 0.01 & 0.53\\ \hline
+0.25 & 0.001 & 0.519\\ \hline
+0.125 & 0.5 & 0.537\\ \hline
+0.125 & 0.01 & 0.542\\ \hline
+0.125 & 0.001 & 0.527\\ \hline
+0.0625 & 0.5 & 0.526\\ \hline
+0.0625 & 0.01 & 0.514\\ \hline
+0.0625 & 0.001 & 0.545\\ \hline
+0.03125 & 0.5 & 0.516\\ \hline
+0.03125 & 0.01 & 0.521\\ \hline
+0.03125 & 0.001 & 0.548\\ \hline
+\end{tabular}}
+\caption{Results of 5-fold cross-validation.}
+\end{table}
+
+The results of the cross-validation produced a best $C$ of $0.03125$ and a $\gamma_0$ of 0.001 using an epoch of 10. These hyperparameters were used to train the SVM classifier and it was evaluated on both the \textit{training} and \textit{test} set.
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Data Set & Mistakes & Example Count & Accuracy\\
+\hline
+madelon training & 641 & 2,000 & 0.679\\ \hline
+madelon testing & 248 & 600 & 0.587\\ \hline
+\end{tabular}}
+\caption{Classification accuracy on the training and test set.}
+\end{table}
+
+\part{3} In addition to the accuracy of of the two classifiers from part \textit{a} and part \textit{b}, I calculated the precision, recall and $F_1$ score on each dataset.
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+Data Set & Precision & Recall & $F_1$ Score\\
+\hline
+handwriting training & 1.0 & 0.998 & 0.999\\ \hline
+handwriting testing & 1.0 & 0.974 & 0.987\\ \hline
+madelon training & 0.679 & 0.68 & 0.679\\ \hline
+madelon testing & 0.586 & 0.59 & 0.588\\ \hline
+\end{tabular}}
+\caption{Precision, recall and $F_1$ score of previous classifiers.}
+\end{table}
 
 \question{4}{Ensemble of Decision Trees}
+\textit{Note: In my submitted source code there is a 'traces' directory. This contains traces of all of the experiments I ran to collect the following data.}
 
-\part{1}
+\part{1} \textbf{Splits for continuous features:} The {\tt madelon} dataset has continuous features. I decided to make the features binary features. To determine their value, I took the mean value a feature had across all training examples. Then, depending on which side of the mean each feature value landed, the feature value was replaced by 0 for less than and 1 for greater than or equal to the mean.
+
+	\textbf{Hyperparameters:} I ran cross validation on the {\tt madelon} training set to determine good hyperparameters for this experiment. The hyperparameter to determine for the ensemble of decision trees is \textit{m} or the number of random samples used when training each decision tree. N and \textit{k} are fixed for this experiment.
+	
+	For the meta-SVM classifier, I determined the best $\gamma_0$, C and epoch to be used on features produced by the ensemble of decision trees.
+	
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c | c |}
+\hline
+\textit{m} & N & k & $\gamma_0$ & C & epoch\\
+\hline
+2,000 & 5 & 8 & 0.1 & 4 & 15\\ \hline
+\end{tabular}}
+\caption{Hyperparameters for the ensemble and meta-SVM classifiers}
+\end{table}
+
+Using these chosen hyperparameters, 5 decision trees were trained on $\textit{k}$ random features each. The results of these trees were used to train as the training examples for a meta-SVM classifier. This trained meta-SVM classifier was evaluated on both the \textit{training} and \textit{test} {\tt handwriting} datasets.
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c | c | c |}
+\hline
+Data Set & Mistakes & Examples Count & Accuracy & Precision & Recall & $F_1$ Score\\
+\hline
+handwriting training & 257 & 1,000 & 0.743 & 0.844 & 0.651 & 0.735\\ \hline
+handwriting test & 127 & 593 & 0.786 & 0.884 & 0.673 & 0.764\\ \hline
+\end{tabular}}
+\caption{Results of meta-SVM classifier on the {\tt handwriting} dataset.}
+\end{table}
 
 \part{2a}
 

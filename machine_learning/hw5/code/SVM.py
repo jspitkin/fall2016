@@ -17,13 +17,13 @@ class SVM:
         for _ in range(self.epoch):
             shuffle(training_examples)
             for example in training_examples:
-                prediction = self.weight_vector[0]
+                prediction = 0
                 self.update_learning_rate(example_number)
                 example_number += 1
                 for index in range(self.FEATURE_COUNT):
                     prediction += self.weight_vector[index] * example['feature_vector'][index] 
                 prediction = example['label'] * prediction
-                if prediction <= 1:
+                if prediction <= 0:
                     self.update_weight_vector_misclassification(example)
                     mistakes += 1
                 else:
@@ -91,5 +91,4 @@ class SVM:
         results['precision'] = self.get_precision(true_positives, false_positives)
         results['recall'] = self.get_recall(true_positives, false_negatives)
         results['F1_score'] = self.get_F1_score(results['precision'], results['recall'])
-        print('TP:', true_positives, 'FP:', false_positives, 'FN:', false_negatives, sep='\t')
         return results

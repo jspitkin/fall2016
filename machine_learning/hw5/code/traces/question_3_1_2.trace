@@ -1,0 +1,36 @@
+Epoch:	10	C:	2	Learning Rate:	0.5	Accuracy:	0.527
+Epoch:	10	C:	2	Learning Rate:	0.01	Accuracy:	0.539
+Epoch:	10	C:	2	Learning Rate:	0.001	Accuracy:	0.532
+Epoch:	10	C:	0.5	Learning Rate:	0.5	Accuracy:	0.536
+Epoch:	10	C:	0.5	Learning Rate:	0.01	Accuracy:	0.533
+Epoch:	10	C:	0.5	Learning Rate:	0.001	Accuracy:	0.522
+Epoch:	10	C:	0.25	Learning Rate:	0.5	Accuracy:	0.538
+Epoch:	10	C:	0.25	Learning Rate:	0.01	Accuracy:	0.53
+Epoch:	10	C:	0.25	Learning Rate:	0.001	Accuracy:	0.519
+Epoch:	10	C:	0.125	Learning Rate:	0.5	Accuracy:	0.537
+Epoch:	10	C:	0.125	Learning Rate:	0.01	Accuracy:	0.542
+Epoch:	10	C:	0.125	Learning Rate:	0.001	Accuracy:	0.527
+Epoch:	10	C:	0.0625	Learning Rate:	0.5	Accuracy:	0.526
+Epoch:	10	C:	0.0625	Learning Rate:	0.01	Accuracy:	0.514
+Epoch:	10	C:	0.0625	Learning Rate:	0.001	Accuracy:	0.545
+Epoch:	10	C:	0.03125	Learning Rate:	0.5	Accuracy:	0.516
+Epoch:	10	C:	0.03125	Learning Rate:	0.01	Accuracy:	0.521
+Epoch:	10	C:	0.03125	Learning Rate:	0.001	Accuracy:	0.548
+
+Best C:	0.03125	Best rate:	0.001
+
+Training Accuracy:
+Mistakes:	641
+Example Count:	2000
+Accuracy:	0.679
+Precision:	0.679
+Recall: 	0.68
+F1 Score:	0.679
+
+Test Accuracy:
+Mistakes:	248
+Example Count:	600
+Accuracy:	0.587
+Precision:	0.586
+Recall: 	0.59
+F1 Score:	0.588

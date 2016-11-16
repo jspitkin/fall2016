@@ -3,10 +3,11 @@ import ioutil
 import SVM
 
 def main():
-    data_splits = ioutil.read_data_and_split('madelon/madelon_train.data', 'madelon/madelon_train.labels', 5)
+    bucket_data = ioutil.split_data('madelon/madelon_train.data', 'madelon/madelon_train.labels', 501)
+    data_splits = ioutil.read_data_and_split(bucket_data, 5)
     C_values = [2, 0.5, 0.25, 0.125, 0.0625, 0.03125]
-    initial_learning_rates = [0.01, 0.1, 0.001]
-    epoch = 1
+    initial_learning_rates = [0.5, 0.01,  0.001]
+    epoch = 10
     
     best_accuracy = 0
     best_C = 0
@@ -33,12 +34,12 @@ def main():
                 best_accuracy = average_accuracy
                 best_initial_learning_rate = initial_learning_rate
 
-    training_data = ioutil.read_data('madelon/madelon_train.data', 'madelon/madelon_train.labels')
-    test_data = ioutil.read_data('madelon/madelon_test.data', 'madelon/madelon_test.labels')
+    training_data = ioutil.split_data('madelon/madelon_train.data', 'madelon/madelon_train.labels', 501)
+    test_data = ioutil.split_data('madelon/madelon_test.data', 'madelon/madelon_test.labels', 501)
     svm = SVM.SVM(best_initial_learning_rate, best_C, epoch, 501)
     svm.train(training_data)
     training_accuracy = svm.test(training_data)
-    testing_accuracy = svm.test(test_data)
+    test_accuracy = svm.test(test_data)
     print()
     print('Best C:', best_C, 'Best rate:', best_initial_learning_rate, sep='\t')
     print()

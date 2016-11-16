@@ -8,7 +8,7 @@ def main():
 
     initial_learning_rate = 0.01
     C = 1
-    epoch = 1
+    epoch = 10
 
     svm = SVM.SVM(initial_learning_rate, C, epoch, 257)
     svm.train(training_data)

@@ -1,0 +1,15 @@
+Training Accuracy:
+Mistakes:	1
+Example Count:	1000
+Accuracy:	0.999
+Precision:	1.0
+Recall: 	0.998
+F1 Score:	0.999
+
+Test Accuracy:
+Mistakes:	8
+Example Count:	593
+Accuracy:	0.987
+Precision:	1.0
+Recall: 	0.974
+F1 Score:	0.987

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 NOV 2016 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 NOV 2016 18:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -308,174 +308,20 @@ Package pdftex.def Info: 1_2.png used on input line 77.
 (pdftex.def)             Requested size: 375.80544pt x 98.0537pt.
  [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- <./1_1.png>] [2 <./1_2.png>]
-./ml_hw5.tex:128: Display math should end with $$.
-<to be read again> 
-                   \protect 
-l.128 $$PMB(\gamma, R) = PMB(0.25, $\frac
-                                         {\sqrt{5}}{2}$) = (\frac{R}{\gamma}...
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-./ml_hw5.tex:128: Missing $ inserted.
-<inserted text> 
-                $
-l.128 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:128: Missing $ inserted.
-<inserted text> 
-                $
-l.128 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./ml_hw5.tex:128: Missing $ inserted.
-<inserted text> 
-                $
-l.128 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:128: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.128 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./ml_hw5.tex:128: Missing $ inserted.
-<inserted text> 
-                $
-l.128 ...$\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma}
-                                                  )^2 = 20$$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:128: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.128 ...$\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma}
-                                                  )^2 = 20$$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./ml_hw5.tex:129: Missing $ inserted.
-<inserted text> 
-                $
-l.129 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:134: Display math should end with $$.
-<to be read again> 
-                   \protect 
-l.134 $$PMB(\gamma, R) = PMB(0.25, $\frac
-                                         {\sqrt{5}}{2}$) = (\frac{R}{\gamma}...
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-./ml_hw5.tex:134: Missing $ inserted.
-<inserted text> 
-                $
-l.134 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:134: Missing $ inserted.
-<inserted text> 
-                $
-l.134 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-./ml_hw5.tex:134: Missing $ inserted.
-<inserted text> 
-                $
-l.134 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:134: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.134 ...gamma, R) = PMB(0.25, $\frac{\sqrt{5}}{2}
-                                                  $) = (\frac{R}{\gamma})^2 ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./ml_hw5.tex:134: Missing $ inserted.
-<inserted text> 
-                $
-l.134 ...$\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma}
-                                                  )^2 = 20$$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./ml_hw5.tex:134: Extra }, or forgotten $.
-\frac  #1#2->{\begingroup #1\endgroup \@@over #2}
-                                                 
-l.134 ...$\frac{\sqrt{5}}{2}$) = (\frac{R}{\gamma}
-                                                  )^2 = 20$$
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./ml_hw5.tex:135: Missing $ inserted.
-<inserted text> 
-                $
-l.135 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-[3] [4] (/Users/jsp/Documents/fall_2016/machine_learning/hw5/.texpadtmp/ml_hw5.aux) )
-(\end occurred inside a group at level 4)
-
-### simple group (level 4) entered at line 134 ({)
-### simple group (level 3) entered at line 134 ({)
-### simple group (level 2) entered at line 128 ({)
-### simple group (level 1) entered at line 128 ({)
-### bottom level 
+ <./1_1.png>] [2 <./1_2.png>] [3] [4] [5] [6] (/Users/jsp/Documents/fall_2016/machine_learning/hw5/.texpadtmp/ml_hw5.aux) ) 
 Here is how much of TeX's memory you used:
- 3697 strings out of 493089
- 50532 string characters out of 6134842
- 122332 words of memory out of 5000000
- 7109 multiletter control sequences out of 15000+600000
- 9632 words of font info for 36 fonts, out of 8000000 for 9000
+ 3703 strings out of 493089
+ 50594 string characters out of 6134842
+ 124332 words of memory out of 5000000
+ 7112 multiletter control sequences out of 15000+600000
+ 10501 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,43p,538b,242s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw5/.texpadtmp/ml_hw5.pdf (4 pages, 171654 bytes).
+ 38i,11n,43p,538b,224s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw5/.texpadtmp/ml_hw5.pdf (6 pages, 183208 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 60 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
