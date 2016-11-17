@@ -135,17 +135,51 @@ $$PMB(\gamma, R) = PMB(\frac{1}{2\sqrt{5}}, 1.5) = (\frac{R}{\gamma})^2 = 45$$
 
 \framebox[1.2\width]{Mistake bound of $45$}
 
-\part{2c}!!!!!!!!!!!!!!!!!!!!! TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\part{2c} I rank the ease of learning of the datasets: $D_1$, $D_2$, $D_3$ based off their mistake bound. The smaller the mistake bound, the smaller the number of mistakes that will be made on the training set. Thus making it easier to learn the true hypothesis $h$ that splits the training set. 
 
 \question{2}{Kernels}
 
-\part{1a}
+\part{1a} Given two kernels $K_1$ and $K_2$ we will prove the product of these two kernels is itself a kernel.
 
-\part{1b}
+$$K(\mathbf{x},\mathbf{z}) = K_1(\mathbf{x, z})K_2(\mathbf{x,z})$$
 
-\part{2}
+A kernel is defined as a dot product in high dimensional space.
 
-\part{3}
+$$K_1(\mathbf{x, z}) = \phi(\mathbf{x})^T\phi(\mathbf{z}) \ and \ K_2(\mathbf{x, z}) = \phi(\mathbf{x})^T\phi(\mathbf{z})$$
+
+Bringing this all together with the original K we are proving to be a kernel.
+
+$$K(\mathbf{x},\mathbf{z}) = K_1(\mathbf{x, z})K_2(\mathbf{x,z})$$
+$$K(\mathbf{x},\mathbf{z}) = (\phi(\mathbf{x})^T\phi(\mathbf{z}))(\phi(\mathbf{x})^T\phi(\mathbf{z}))$$
+$$K(\mathbf{x},\mathbf{z}) = (\sum_i f_i(x)f_i(z))(\sum_j g_j(x)g_j(z))$$
+
+Rearranging terms to form a single dot product in a high dimensional space.
+
+$$K(\mathbf{x},\mathbf{z}) = \sum_{i,j} f_i(x)g_j(x) f_i(z)g_j(z)$$
+$$K(\mathbf{x}, \mathbf{z}) = \sum_{i,j} h_{ij}(x) h_{ij}(z)$$
+$$K(\mathbf{x}, \mathbf{z}) = \phi(\mathbf{x})^T\phi(\mathbf{z})$$
+
+Thus proving that K, the product of two kernels $K_1$ and $K_2$ is itself a kernel.
+
+\part{1b} To start, we will prove that $K(\mathbf{x, z}) = \alpha K_1(\mathbf{x, z}) + \beta K_2(\mathbf{x, y})$.
+
+We know that a kernel is a dot product in a high dimensional space. As such, if we want to scale the dot product by a scalar, we scale each blown-up vector by the square root of that scalar. That is, if we want to scale a product then we simply scale the factors by the square root of that scalar.
+
+$$K(\mathbf{x, z}) = (\sqrt{\alpha}\phi(x)\sqrt{\alpha}\phi(z)) + (\sqrt{\beta}\phi(x)\sqrt{\beta}\phi(z))$$
+
+Rearrange terms to form a single dot product.
+
+$$K(\mathbf{x, z}) = (\sqrt{\alpha}\phi(x)\sqrt{\beta}\phi(x))(\sqrt{\beta}\phi(z)\sqrt{\alpha}\phi(z))$$
+
+Thus we have proven that the sum of two scaled kernels is also a kernel.
+
+Returning to the original objective - proving $K(\mathbf{x, z}) = P(K_1(\mathbf{x, z}))$. We know that a polynomial of kernels will be composed of: the sum of scaled kernels and the product of kernels. In part \textbf{(1a)}, we proved that the product of two kernels is a kernel. And we just proved that the sum of two scaled kernels is also a kernel.
+
+Therefore we have proven that $K(\mathbf{x, z}) = P(K_1(\mathbf{x, z}))$.
+
+\part{2} \textbf{Incomplete - ran out of time.}
+
+\part{3} \textbf{Incomplete - ran out of time.}
 
 \question{3}{Support Vector Machines}
 \textit{Note: In my submitted source code there is a 'traces' directory. This contains traces of all of the experiments I ran to collect the following data.}

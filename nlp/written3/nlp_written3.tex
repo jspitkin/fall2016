@@ -1,0 +1,230 @@
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{float}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 5340, \today}
+\begin{document}\raggedright
+
+\newcommand\NAME{Jake Pitkin}
+\newcommand\UID{u0891770}
+\newcommand\HWNUM{3}
+
+\question{Problem 1}{Thematic Role}
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+\textbf{Question} & \textbf{Noun Phrase} & \textbf{Thematic Role}\\
+\hline
+a & John & agent\\ \hline
+a & the sidewalk & theme\\ \hline
+a & snow shovel & instrument\\ \hline
+b & A raffle & theme\\ \hline
+b & the local charity & beneficiary\\ \hline
+c & Joe & agent\\ \hline
+c & Susan & co-agent\\ \hline
+c & ski & theme\\ \hline
+d & Tom & recipient\\ \hline
+d & a bike & theme\\ \hline
+e & The dress & theme\\ \hline
+e & Lisa & agent\\ \hline
+e & matching shoes & co-theme\\ \hline
+f & Julie & agent\\ \hline
+f & grandmother & recipient\\ \hline
+f & a letter & theme\\ \hline
+g & George & experiencer\\ \hline
+g & car & theme\\ \hline
+h & The image & theme\\ \hline
+h & Adobe Photoshop & instrument\\ \hline
+h & cartoonist & agent\\ \hline
+\end{tabular}}
+\end{table}
+
+\question{Problem 2}{Similarities Between Vectors}
+
+\part{a}
+$$ManhattanDistance(x, y) = \sum_{i = 1}^N |x_i - y_i| = 3 + 5 + 4 + 5 = 17$$
+
+\framebox[1.2\width]{Manhattan Distance of 17}
+
+\part{b}
+$$ManhattanDistance(x, y) = \sum_{i = 1}^N |x_i - y_i| = 5 + 4 + 5 + 3 = 17$$
+
+\framebox[1.2\width]{Manhattan Distance of 17}
+
+\part{c}
+$$Jaccard(x, y) = \frac{\sum_{i = 1}^N min(x_i, y_i)}{\sum_{i = 1}^N max(x_i, y_i)} = \frac{6 + 2 + 4 + 0}{9 + 7 + 8 + 5} = \frac{12}{29}$$
+
+\framebox[1.2\width]{Jaccard Similarity of $\frac{12}{29}$}
+
+\part{d}
+$$Jaccard(x, y) = \frac{\sum_{i = 1}^N min(x_i, y_i)}{\sum_{i = 1}^N max(x_i, y_i)} = \frac{1 + 3 + 4 + 2}{6 + 7 + 9 + 5} = \frac{10}{27}$$
+
+\framebox[1.2\width]{Jaccard Similarity of $\frac{10}{27}$}
+
+\part{e}
+$$Cosine(x, y) = \frac{\sum_{i = 1}^N (x_i * y_i)}{\sqrt{\sum_{i = 1}^N x_i^2}\sqrt{\sum_{i = i}^N y_i^2}} = \frac{54 + 14 + 32 + 0}{\sqrt{81 + 4 + 64 + 0}*\sqrt{36 + 49 + 16 + 25}} = 0.73$$
+
+\framebox[1.2\width]{Cosine Similarity of 0.73}
+
+\part{f}
+$$Cosine(x, y) = \frac{\sum_{i = 1}^N (x_i * y_i)}{\sqrt{\sum_{i = 1}^N x_i^2}\sqrt{\sum_{i = i}^N y_i^2}} = \frac{6 + 21 + 36 + 10}{\sqrt{36 + 49 + 16 + 25}*\sqrt{1 + 9 + 81 + 4}} = 0.67$$
+
+\framebox[1.2\width]{Cosine Similarity of 0.67}
+
+\question{Problem 3}{Collins \& Singer}
+
+\part{a}
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.4}%
+\begin{tabular}{| c | c |}
+\hline
+\textbf{Rule} & \textbf{Probability}\\
+\hline
+\textbf{If Contains(}apple\textbf{)} $\rightarrow$ {\tt PRODUCT} & 1/3\\ \hline
+\textbf{If Contains(}apple\textbf{)} $\rightarrow$ {\tt COMPANY} & 2/3\\ \hline
+\textbf{If Contains(}tablet\textbf{)} $\rightarrow$ {\tt PRODUCT} & 3/4\\ \hline
+\textbf{If Contains(}tablet\textbf{)} $\rightarrow$ {\tt COMPANY} & 1/4\\ \hline
+\textbf{If Contains(}microsoft\textbf{)} $\rightarrow$ {\tt PRODUCT} & 1/3\\ \hline
+\textbf{If Contains(}microsoft\textbf{)} $\rightarrow$ {\tt COMPANY} & 2/3\\ \hline
+\textbf{If Contains(}british\textbf{)} $\rightarrow$ {\tt PRODUCT} & 1/2\\ \hline
+\textbf{If Contains(}british\textbf{)} $\rightarrow$ {\tt COMPANY} & 1/2\\ \hline
+\textbf{If Contains(}corporation\textbf{)} $\rightarrow$ {\tt COMPANY} & 3/3\\ \hline
+\end{tabular}}
+\end{table}
+
+\part{b}
+
+ \begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.4}%
+\begin{tabular}{| c | c |}
+\hline
+\textbf{Rule} & \textbf{Probability}\\
+\hline
+\textbf{If Contains(}mobile\textbf{)} $\rightarrow$ {\tt PRODUCT} & 2/3\\ \hline
+\textbf{If Contains(}mobile\textbf{)} $\rightarrow$ {\tt COMPANY} & 1/3\\ \hline
+\textbf{If Contains(}computer\textbf{)} $\rightarrow$ {\tt PRODUCT} & 3/4\\ \hline
+\textbf{If Contains(}computer\textbf{)} $\rightarrow$ {\tt COMPANY} & 1/4\\ \hline
+\textbf{If Contains(}tech\textbf{)} $\rightarrow$ {\tt PRODUCT} & 1/4\\ \hline
+\textbf{If Contains(}tech\textbf{)} $\rightarrow$ {\tt COMPANY} & 3/4\\ \hline
+\textbf{If Contains(}giant\textbf{)} $\rightarrow$ {\tt COMPANY} & 3/3\\ \hline
+\textbf{If Contains(}leader\textbf{)} $\rightarrow$ {\tt COMPANY} & 2/2\\ \hline
+\end{tabular}}
+\end{table}
+
+\question{Problem 4}{Salience Values}
+There are four sentences with a {\tt FISH} context: \textbf{S1, S5, S6,} and \textbf{S7.}
+
+There are five sentences with a {\tt MUSIC} context: \textbf{S2, S3, S4, S5,} and \textbf{S6.}
+
+Note that \textbf{S5} and \textbf{S6} have both a {\tt FISH} and {\tt MUSIC} context.
+
+\part{a} \textit{Utah} appears in three sentences with a {\tt FISH} context: \textbf{S1, S6,} and \textbf{S7}. \textit{Utah} appears 4 times in the corpus.
+
+$$salience(Utah, FISH) = \frac{P(Utah | FISH)}{P(Utah)} = \frac{3/4}{4/60} = 11.25$$
+
+\framebox[1.2\width]{Salience value of 11.25.}
+
+\part{b} \textit{Electric} appears in two sentences with a {\tt FISH} context: \textbf{S5} and \textbf{S6}. \textit{Electric} appears 3 times in the corpus.
+
+$$salience(electric, FISH) = \frac{P(electric | FISH)}{P(electric)} = \frac{2/4}{3/60} = 10$$
+
+\framebox[1.2\width]{Salience value of 10.}
+
+\part{c} \textit{Bass} appears in two sentences with a {\tt FISH} context: \textbf{S5} and \textbf{S6}. \textit{Bass} appears 5 times in the corpus.
+
+$$salience(bass, FISH) = \frac{P(bass | FISH)}{P(bass)} = \frac{2/4}{5/60} = 6$$
+
+\framebox[1.2\width]{Salience value of 6.}
+
+\part{d} \textit{Utah} appears in two sentences with a {\tt MUSIC} context: \textbf{S2} and \textbf{S6}. \textit{Utah} appears 4 times in the corpus.
+
+$$salience(Utah, MUSIC) = \frac{P(Utah | MUSIC)}{P(Utah)} = \frac{2/5}{4/60} = 6$$
+
+\framebox[1.2\width]{Salience value of 6.}
+
+\part{e} \textit{Electric} appears in three sentences with a {\tt MUSIC} context: \textbf{S3, S5} and \textbf{S6}. \textit{Electric} appears 3 times in the corpus.
+
+$$salience(electric, MUSIC) = \frac{P(electric | MUSIC)}{P(electric)} = \frac{3/5}{3/60} = 12$$
+
+\framebox[1.2\width]{Salience value of 12.}
+
+\part{f} \textit{Bass} appears in five sentences with a {\tt MUSIC} context: \textbf{S2, S3, S4, S5} and \textbf{S6}. \textit{Bass} appears 5 times in the corpus.
+
+$$salience(bass, MUSIC) = \frac{P(bass | MUSIC)}{P(bass)} = \frac{5/5}{5/60} = 12$$
+
+\framebox[1.2\width]{Salience value of 12.}
+
+\question{Problem 5}{Antecedents and Pronouns}
+
+\part{a}
+\begin{itemize}
+  \item John Smith
+  \item John
+  \item his
+  \item him
+\end{itemize}
+
+\part{b}
+\begin{itemize}
+  \item 10 oranges
+  \item groceries
+\end{itemize}
+
+\part{c}
+\begin{itemize}
+  \item 10 oranges
+  \item groceries	
+\end{itemize}
+
+\part{d}
+\begin{itemize}
+  \item himself 	
+\end{itemize}
+
+\part{e}
+\begin{itemize}
+  \item his
+  \item his
+  \item their
+  \item her 	
+\end{itemize}
+
+\part{f}
+\begin{itemize}
+  \item It, it 	
+\end{itemize}
+
+\part{g}
+\begin{itemize}
+  \item his neighbor
+  \item George 	
+\end{itemize}
+
+\end{document}

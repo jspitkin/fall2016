@@ -29,7 +29,13 @@ def main():
 
     svm = SVM.SVM(initial_rate, C, epoch, N+1)
     svm.train(transformed_examples)
-    training_accuracy = svm.test(training_data)
+
+    random_forest = rf.RandomForest(m, N, feature_count)
+    random_forest.set_data_paths(train_data_path, train_label_path, test_data_path, test_label_path)
+    results = random_forest.create_trees()
+    transformed_examples = random_forest.get_transformed_examples(results, test_label_path)
+
+    training_accuracy = svm.test(transformed_examples)
     test_accuracy = svm.test(test_data)
 
     print()
