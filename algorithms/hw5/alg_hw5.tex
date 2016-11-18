@@ -152,8 +152,56 @@ $$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 
 $$exp(\frac{-n\epsilon^2}{2M^2}) \leq \frac{\delta}{2}$$
 $$\frac{-n\epsilon^2}{2M^2} \leq ln(\frac{\delta}{2})$$
 $$\frac{n\epsilon^2}{M^2} \geq ln(\frac{4}{\delta^2})$$
+$$n \geq ln(\frac{4}{\delta^2}) * \frac{M^2}{\epsilon^2}$$
 
-\part{d}
+Given a $\delta$, $\epsilon$, and a $M$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
+
+\part{d} From the problem, we know that for any distinct indices $j_1, j_2,...,j_k$, we have
+
+$$\mathbf{Inequality \ One: \ }Pr[X_{j1} = 1 | X_{j2} = X_{j3} = ... = X_{jk} = 1] \leq Pr[X_{j1} = 1]$$
+
+From Baye's Rule we have:
+
+$$Pr[A = 1 \ \& \ B = 1] = Pr[A | B] * P[B]$$
+
+We want to prove that the probability that $90\%$ of the bins are empty is at most $(0.9)^n$.
+
+As a first step, we will first use the given inequality and Baye's rule to prove:
+
+$$\mathbf{Inequality \ Two: \ } Pr[X_{j1} = X_{j2} = X_{j3} = ... = X_{jk} = 1] \leq e^{-k}$$
+
+That is, the probability that a given $k$ bins are all empty is $\leq e^{-k}$.
+
+First, we will use Baye's Rule. Assigning two new random variables $A$ and $B$. Where A is $X_{j1} = 1$ and $B$ is $X_{j2} = X_{j3} = ... = X_{jk}$. The goal is to transform the LHS of \textit{Inequality Two} to be identical to the LHS of \textit{Inequality One}.
+
+$$Baye's \ Rule: \ Pr[A = 1 \ \& \ B = 1] = Pr[A|B] * P[B]$$
+$$What \ we \ start \ with: \ Pr[X_{j1} = X_{j2} = X_{j3} = ... = X_{jk} = 1]$$
+$$Applying \ Baye's \ Rule: \ Pr[X_{j1} = 1 | X_{j2} = .. = X_{jk}] * Pr[X_{j2} = ... = X_{jk}]$$
+
+Now Baye's Rule is applied again to $Pr[X_{j2} = ... = X_{jk}]$ where A is $X_{j2} = 1$ and B is $X_{j3} = ... = X_{jk} = 1$:
+
+$$What \ we \ start \ with: \ Pr[X_{j2} = X_{j3} = X_{j4} = ... = X_{jk} = 1]$$
+$$Applying \ Baye's \ Rule: \ Pr[X_{j2} = 1 | X_{j3} = .. = X_{jk}] * Pr[X_{j2} = ... = X_{jk}]$$
+
+This pattern of applying Baye's rule to the $P[B]$ portion is repeated $k$ times. This produces a product of the form:
+
+$$\prod_{i = 1}^k Pr[X_{ji} = 1 | X_{j(i + 1)} = ... = X_{ji} = 1]$$
+
+This is identical in form of the LHS of \textit{Inequality One} if we take a product over both sides of \textit{Inequality One}:
+
+$$\prod_{i = 1}^k Pr[X_{ji} = 1 | X_{j(i + 1)} = ... = X_{ji} = 1] \leq \prod_{i = 1}^k Pr[X_{ji}]$$
+
+Thus, we need to analyze the RHS of the above inequality to prove the bounds for \textit{Inequality Two}. We saw in class that the probability that bin $j$ is empty is $(1 - \frac{1}{n})^n \leq \frac{1}{e}$ where $n$ is the number of balls. Using this, we can take the product of $\frac{1}{e}$ $k$ times.
+
+$$\prod_{i = 1}^k Pr[X_{ji}] \leq \prod_{i = 1}^k \frac{1}{e} = e^{-k}$$
+
+Thus proving \textit{Inequality Two}.
+
+Using \textit{Inequality Two}, we can get a bound on the probability that $90\%$ of the bins are empty. Let $k = 0.9n$.
+
+$$Pr[X_{j1} = X_{j2} = ... = X_{jk} = 1] \leq e^{-0.9n}$$
+
+Returning to the original proof, we want to prove the probability that $90\%$ of the bins are empty is bounded by $0.9^n$. We have proven the bound $e^{-0.9n}$. We know that $n$ is a positive integer as it's the number of bins. For all positive integers $e^{-0.9n } \leq 0.9^n$ holds. Thus we have proven a tighter bound and in the process proven the original bound.
 
 \question{3}{Quick-sort with Optimal Comparisons}
 
