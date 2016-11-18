@@ -1,0 +1,135 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 6150, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{5}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+\question{1}{Balls and Bins}
+\framebox[1.2\width]{\textit{Markov's Inequality:} $Pr(X \geq a) \leq \frac{E[x]}{a}$}
+
+\part{a} Given $n$ bins and $4 n \log n$ balls, we want to prove that the probability that there exists an empty bin is $< 1/n$.
+
+\textbf{Proof} We will prove this using Markov's Inequality. Let $X$ be a random variable representing the number of empty bins. We will show that the probability that at least one bin is empty is $< 1/n$.
+
+$$Pr(X \geq 1) \leq E[X]$$
+
+From class, we saw the expectation of X is equivalent to the summation of each of the bins. Let $y_i$ represent each bin where a 1 represent an empty bin and a 0 otherwise.
+
+$$Pr(X \geq 1) \leq E[X] = E[\sum_{i = 1}^n y_i]$$
+
+The probability a bin is empty is given by $(1 - 1/n)^m$ where $m$ is the number of balls. That is, there are $1 - 1/n$ other bins each ball can be placed in. 
+
+$$Pr(X \geq 1) \leq n * (1 - \frac{1}{n})^{4 n log n}$$
+
+From Bernoulli's inequality we know that $1 + y \leq e^y$ for all for all $y$. Letting $y = \frac{-1}{n}$ will allow us to substitute $1 + y$ for $e^y$. This is valid as $1 + y \leq e^y$ so Markov's Inequality still holds.
+
+$$Pr(X \geq 1) \leq n * (1 + y)^{4 n log n}$$
+$$Pr(X \geq 1) \leq n * (e^{y})^{4 n log n}$$
+$$Pr(X \geq 1) \leq n * (e^{-1/n})^{4 n log n}$$
+
+Applying exponent and natural log identities.
+
+$$Pr(X \geq 1) \leq n * e^{-4 log n}$$
+$$Pr(X \geq 1) \leq \frac{1}{n^3} < \frac{1}{n}$$
+
+Thus proving the probability that at least one bin is empty is $< 1/n$.
+
+\part{b.a} When $m = \frac{1}{2} n log n$, the logic follows as in part a.
+
+$$Pr(X \geq 1) \leq E[X] = E[\sum_{i = 1}^n y_i] = n * (1 - \frac{1}{n})^{\frac{1}{2} n log n}$$
+
+Where $y_i$ is a bin and 1 represents an empty bin and 0 otherwise. Making the similar substitution and applying similar identities as part a.
+
+$$Pr(X \geq 1) \leq n * (e^{-1/n})^{\frac{1}{2} n log n}$$
+$$Pr(X \geq 1) \leq n * \frac{1}{\sqrt{n}}$$
+$$Pr(X \geq 1) \leq \sqrt{n}$$
+
+Given $\frac{1}{2} n log n$ balls, we can say that the probability that at least one bin is empty is $\leq \sqrt{n}$.
+
+\framebox[1.2\width]{$Pr(X \geq 1) \leq \sqrt{n}$}
+
+\part{b.b} When $m = 100 n log n$, a similar logic follows.
+
+$$Pr(X \geq 1) \leq E[X] = E[\sum_{i = 1}^n y_i] = n * (1 - \frac{1}{n})^{100 n log n}$$
+$$Pr(X \geq 1) \leq n * (e^{-1/n})^{100 n log n}$$
+$$Pr(X \geq 1) \leq n * \frac{1}{n^{100}}$$
+$$Pr(X \geq 1) \leq \frac{1}{n^{99}}$$
+
+Given $100 n log n$ balls, we can say that the probability that at least one bin is empty is $\leq \frac{1}{n^{99}}$.
+
+\framebox[1.2\width]{$Pr(X \geq 1) \leq \frac{1}{n^{99}}$}
+
+\part{c}
+
+\part{d}
+
+\question{2}{Estimating the Mean and Median}
+
+\part{a}
+
+\part{b}
+
+\part{c}
+
+\part{d}
+
+\question{3}{Quick-sort with Optimal Comparisons}
+
+\part{a}
+
+\part{b}
+
+\part{c}
+
+\question{4}{Randomized Min-Cut}
+
+\part{a}
+
+\part{b}
+
+\part{c}
+
+\part{d}
+
+\question{5}{Valiant-Vazirani Lemma}
+\end{document}
