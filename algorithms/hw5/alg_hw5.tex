@@ -119,43 +119,6 @@ Given n balls and n bins, we can say that the probability that $90\%$ of the bin
 
 \framebox[1.2\width]{$Pr(X \geq 0.9n) \leq \frac{1}{0.9e}$}
 
-\part{d}
-
-\question{2}{Estimating the Mean and Median}
-
-As by the suggestion of the TA Michael Matteny I will be using Hoeffding's Inequality to provide bounds for the following questions rather than the suggested Chernoff bounds. They are related and provide similar strength in bounds as they both provide bounds for \textbf{independent} random variables. This Hoeffding's Inequality stronger than Markov's or Chebyshev's inequalities.
-
-\begin{equation}
-\setlength\fboxsep{0.25cm}
-\setlength\fboxrule{0.4pt}
-\boxed{Hoeffding's \ Inequality: \ P(|X - E[X]| \geq t) \leq 2 exp(\frac{-2n^2t^2}{\sum_{i = 1}^n (b_i - a_i)^2})}
-\end{equation}
-
-\part{a} This variation of Hoeffding's Inequality is used when we know that $X_i$'s are strictly in the intervals $[a_i, b_i]$. For our purposes $a_i$ is -1 and $b_i$ is 1. Let X be the sample mean after $j$ random indices are sampled or $\hat\mu$. The expected value of X is the true mean or $\mu$. 
-
-Hoeffding's Inequality tells us the probability that the difference between $X$ and $E[X]$ will be $\geq t$ is less than the RHS of the inequality. That is, if $t$ is $\epsilon$ we want the RHS to be $\leq \delta$. This will give us the number of required samples to ensure that $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$, where $n$ is the number of samples.
-
-$$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 1}^n (1 + 1)^2}) \leq \delta$$
-$$exp(\frac{-2n^2\epsilon^2}{4n}) \leq \frac{\delta}{2}$$
-$$\frac{-n\epsilon^2}{2} \leq \ln(\frac{\delta}{2})$$
-$$n\epsilon^2 \geq ln(\frac{4}{\delta^2})$$
-$$n \geq ln(\frac{4}{\delta^2}) * \frac{1}{\epsilon^2}$$
-
-Given a $\delta$ and $\epsilon$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
-
-\part{b} No. If we were to sample without replacement, the sampled $a_j$'s are no longer independent events. They become \textbf{dependent} on what has already been sampled as the sample space is changing with each sample. Hoeffding's Inequality is only applicable for \textbf{independent} random variables.
-
-\part{c} Given the value of each $a_i$ has the constraint $a_i \in [-M, M]$, we can still use Hoeffding's Inequality to derive the require number of samples. The setup will be similar to part a, with the exception that now $a = -M$ and $b = M$. Recall that the generalization of Hoeffding's Inequality is used when we know that $X_i$'s are strictly bounded by the intervals $[a_i, b_i]$.
-
-$$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 1}^n (M + M)^2}) \leq \delta$$
-
-$$exp(\frac{-n\epsilon^2}{2M^2}) \leq \frac{\delta}{2}$$
-$$\frac{-n\epsilon^2}{2M^2} \leq ln(\frac{\delta}{2})$$
-$$\frac{n\epsilon^2}{M^2} \geq ln(\frac{4}{\delta^2})$$
-$$n \geq ln(\frac{4}{\delta^2}) * \frac{M^2}{\epsilon^2}$$
-
-Given a $\delta$, $\epsilon$, and a $M$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
-
 \part{d} From the problem, we know that for any distinct indices $j_1, j_2,...,j_k$, we have
 
 $$\mathbf{Inequality \ One: \ }Pr[X_{j1} = 1 | X_{j2} = X_{j3} = ... = X_{jk} = 1] \leq Pr[X_{j1} = 1]$$
@@ -203,9 +166,57 @@ $$Pr[X_{j1} = X_{j2} = ... = X_{jk} = 1] \leq e^{-0.9n}$$
 
 Returning to the original proof, we want to prove the probability that $90\%$ of the bins are empty is bounded by $0.9^n$. We have proven the bound $e^{-0.9n}$. We know that $n$ is a positive integer as it's the number of bins. For all positive integers $e^{-0.9n } \leq 0.9^n$ holds. Thus we have proven a tighter bound and in the process proven the original bound.
 
+\question{2}{Estimating the Mean and Median}
+
+As by the suggestion of the TA Michael Matteny I will be using Hoeffding's Inequality to provide bounds for the following questions rather than the suggested Chernoff bounds. They are related and provide similar strength in bounds as they both provide bounds for \textbf{independent} random variables. This Hoeffding's Inequality stronger than Markov's or Chebyshev's inequalities.
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Hoeffding's \ Inequality: \ P(|X - E[X]| \geq t) \leq 2 exp(\frac{-2n^2t^2}{\sum_{i = 1}^n (b_i - a_i)^2})}
+\end{equation}
+
+\part{a} This variation of Hoeffding's Inequality is used when we know that $X_i$'s are strictly in the intervals $[a_i, b_i]$. For our purposes $a_i$ is -1 and $b_i$ is 1. Let X be the sample mean after $j$ random indices are sampled or $\hat\mu$. The expected value of X is the true mean or $\mu$. 
+
+Hoeffding's Inequality tells us the probability that the difference between $X$ and $E[X]$ will be $\geq t$ is less than the RHS of the inequality. That is, if $t$ is $\epsilon$ we want the RHS to be $\leq \delta$. This will give us the number of required samples to ensure that $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$, where $n$ is the number of samples.
+
+$$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 1}^n (1 + 1)^2}) \leq \delta$$
+$$exp(\frac{-2n^2\epsilon^2}{4n}) \leq \frac{\delta}{2}$$
+$$\frac{-n\epsilon^2}{2} \leq \ln(\frac{\delta}{2})$$
+$$n\epsilon^2 \geq ln(\frac{4}{\delta^2})$$
+$$n \geq ln(\frac{4}{\delta^2}) * \frac{1}{\epsilon^2}$$
+
+Given a $\delta$ and $\epsilon$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
+
+\part{b} No. If we were to sample without replacement, the sampled $a_j$'s are no longer independent events. They become \textbf{dependent} on what has already been sampled as the sample space is changing with each sample. Hoeffding's Inequality is only applicable for \textbf{independent} random variables.
+
+\part{c} Given the value of each $a_i$ has the constraint $a_i \in [-M, M]$, we can still use Hoeffding's Inequality to derive the require number of samples. The setup will be similar to part a, with the exception that now $a = -M$ and $b = M$. Recall that the generalization of Hoeffding's Inequality is used when we know that $X_i$'s are strictly bounded by the intervals $[a_i, b_i]$.
+
+$$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 1}^n (M + M)^2}) \leq \delta$$
+
+$$exp(\frac{-n\epsilon^2}{2M^2}) \leq \frac{\delta}{2}$$
+$$\frac{-n\epsilon^2}{2M^2} \leq ln(\frac{\delta}{2})$$
+$$\frac{n\epsilon^2}{M^2} \geq ln(\frac{4}{\delta^2})$$
+$$n \geq ln(\frac{4}{\delta^2}) * \frac{M^2}{\epsilon^2}$$
+
+Given a $\delta$, $\epsilon$, and a $M$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
+
+\part{d} \textbf{Proof by Counter-Example:} 
+
 \question{3}{Quick-sort with Optimal Comparisons}
 
-\part{a}
+\part{a} The goal is to prove the following statement about the probability the $k$'th smallest element in A is chosen as the pivot.
+
+$$p_k = \frac{{k-1 \choose m} {n-k \choose m}}{{n \choose 2m+1}}$$ 
+
+We sample M random elements from A (without replacement), and pick the median of these entries as a pivot, where $M = 2m + 1$ for an integer $m \geq 1$. Meaning, in our sample there will be m numbers less than or equal to the chosen pivot and m numbers greater than or equal to the pivot. 
+
+For the chosen pivot to be the $k$'th smallest element in A, there are $k - 1$ possible numbers to pick from that are smaller than $k$ and $n - k$ numbers to pick that are larger than $k$. That is, $m$ numbers in the range $k - 1$ and $m$ numbers in the range $n - k$ must be chosen. This can be interpreted as $k - 1$ choose $m$ and $n - k$ choose $m$. When both these events happen, the $k$'th smallest element has been chosen as the pivot (so we take their product). 
+
+The space of all possible choices is $n$ choose $2m + 1$. We have $n$ items in A[] and we are selecting $2m + 1$ items. Thus we have proven the equation.
+
+
+$$p_k = \frac{{k-1 \choose m} {n-k \choose m}}{{n \choose 2m+1}}$$ 
 
 \part{b}
 
@@ -213,7 +224,9 @@ Returning to the original proof, we want to prove the probability that $90\%$ of
 
 \question{4}{Randomized Min-Cut}
 
-\part{a}
+\part{a} The min-cut of an undirected graph $G = (V, E)$ is a partition of the nodes into two disjoint sets $V_1$ and $V_2$ s.t. the number of edges between $V_1$ and $V_2$ is minimized.
+
+Let $E^\prime$ be the set of edges that separate $V_1$ and $V_2$. Say we collapse an edge that is not in $E^\prime$, meaning we connect it's end points
 
 \part{b}
 
@@ -222,4 +235,5 @@ Returning to the original proof, we want to prove the probability that $90\%$ of
 \part{d}
 
 \question{5}{Valiant-Vazirani Lemma}
+
 \end{document}
