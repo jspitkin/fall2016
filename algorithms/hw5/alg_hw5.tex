@@ -184,7 +184,12 @@ $$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 
 $$exp(\frac{-2n^2\epsilon^2}{4n}) \leq \frac{\delta}{2}$$
 $$\frac{-n\epsilon^2}{2} \leq \ln(\frac{\delta}{2})$$
 $$n\epsilon^2 \geq ln(\frac{4}{\delta^2})$$
-$$n \geq ln(\frac{4}{\delta^2}) * \frac{1}{\epsilon^2}$$
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{n \geq ln(\frac{4}{\delta^2}) * \frac{1}{\epsilon^2}}
+\end{equation}
 
 Given a $\delta$ and $\epsilon$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
 
@@ -197,7 +202,12 @@ $$P(|\hat \mu - \mu| \geq \epsilon) \leq 2 exp(\frac{-2n^2\epsilon^2}{\sum_{i = 
 $$exp(\frac{-n\epsilon^2}{2M^2}) \leq \frac{\delta}{2}$$
 $$\frac{-n\epsilon^2}{2M^2} \leq ln(\frac{\delta}{2})$$
 $$\frac{n\epsilon^2}{M^2} \geq ln(\frac{4}{\delta^2})$$
-$$n \geq ln(\frac{4}{\delta^2}) * \frac{M^2}{\epsilon^2}$$
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{n \geq ln(\frac{4}{\delta^2}) * \frac{M^2}{\epsilon^2}}
+\end{equation}
 
 Given a $\delta$, $\epsilon$, and a $M$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
 
@@ -218,17 +228,28 @@ The space of all possible choices is $n$ choose $2m + 1$. We have $n$ items in A
 
 $$p_k = \frac{{k-1 \choose m} {n-k \choose m}}{{n \choose 2m+1}}$$ 
 
-\part{b}
+\part{b} Let X be a random variable for the number of comparisons for a given array size. Using the $p_k$ from part \textit{a} we can construct a recursive formula for the expected number of comparisons on an array of size \textit{n}.
 
-\part{c}
+$$E[X] = \sum_{i = 1}^n p_i * x_i$$
+$$E[X_n] = \sum_{k = 1}^n p_k(E[X_{k-1}] + E[X_{n-k}])$$
+
+The expected number of comparisons on an array of size $n$ is recursively dependent on the expected number of comparisons required on the two sub-arrays created when we split on the pivot in the quick-sort algorithm.
 
 \question{4}{Randomized Min-Cut}
 
 \part{a} The min-cut of an undirected graph $G = (V, E)$ is a partition of the nodes into two disjoint sets $V_1$ and $V_2$ s.t. the number of edges between $V_1$ and $V_2$ is minimized.
 
-Let $E^\prime$ be the set of edges that separate $V_1$ and $V_2$. Say we collapse an edge that is not in $E^\prime$, meaning we connect it's end points
+Let $E^\prime$ be the set of edges that separate $V_1$ and $V_2$. Say we collapse an edge that is not in $E^\prime$, meaning we connect it's end points into a supernode which gives a new graph with one less vertex. Let $G$ after this collapse be $G^\prime$.
 
-\part{b}
+As a result of this collapse, the degree of all $v \in V$ either increase or stay the same. This is because we connect the removed edges endpoints with parallel edges.
+
+As a result of the degree of all $v \in V$ in $G^\prime$ not decreasing, the min-cut of $G'$ will be equal to that in $G$. The only way to find a smaller min-cut than $E^\prime$ is if the degree of a vertex reduced as a result of the collapse.
+
+\part{b} We know that the total degree of all the vertices in $G$ is $2|E|$ from the degree sum formula.
+
+$$\sum_{v \in V} deg(v) = 2|E|$$
+
+Let $n = |V|$. We can make a statement about the average degree of a vertex in $G$. 
 
 \part{c}
 
