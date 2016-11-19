@@ -249,12 +249,71 @@ As a result of the degree of all $v \in V$ in $G^\prime$ not decreasing, the min
 
 $$\sum_{v \in V} deg(v) = 2|E|$$
 
-Let $n = |V|$. We can make a statement about the average degree of a vertex in $G$. 
+Given that we have n vertices and we know the sum of the degree of these vertices, we can give the expected degree of any given vertex.
+
+$$E[deg(X)] = \sum_{v \in V} P(X = v) * deg(v) = \frac{1}{n}\sum_{v \in V}deg(v) = \frac{2|E|}{n}$$
+
+Additionally, we can say something about $|E^\prime|$. We know the cut around the $v \in V$ with the smallest degree is $\geq |E^\prime|$. We know this because this cut around the smallest degree vertex is a valid cut so the min-cut must be less than or equal to this cut.
+
+The degree of the vertex with the smallest degree is less than or equal to the average degree of all $v \in V$. This follows as it's the vertex with the smallest degree.
+
+Let u be the vertex with the smallest degree and E be the cut around this vertex. We know that $|E| = deg(u)$. Combining the above two statements:
+
+$$|E^\prime| \leq |E| = deg(u) \leq \frac{2|E|}{n}$$
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{|E^\prime| \leq \frac{2|E|}{n}}
+\end{equation}
+
+Thus proving that if $E^\prime$ is one of the min cuts in the graph, then $|E^\prime| \leq \frac{2|E|}{n}$ holds.
 
 \part{c}
 
-\part{d}
+\part{d} From part c we saw that 
 
-\question{5}{Valiant-Vazirani Lemma}
+\question{5}{Valiant-Vazirani Lemma} 
+
+Let $a_1, a_2, ... , a_m$ be random integers chosen independently from the interval [1, N]. We want to prove that the probability that the "argmin" of the $a_i$ is unique with probability at least $(1 - \frac{1}{N})^{m-1}$.
+
+\textbf{Proof by induction}
+
+\textit{Base Case:} Let m = 1 where m is the number of randomly chosen integers. This is clearly unique as we only have one integer. Let X be a random variable that the argmin is unique at the $i$'th sampling.
+
+$$P(X_1) \geq (1 - \frac{1}{N})^0 $$
+$$1 \geq 1$$
+
+Thus the base case of $m = 1$ is satisfied.
+
+\textit{Inductive Hypothesis:} Assume the following holds for $m - 1$:
+
+$$P(X_{m-1}) \geq (1 - \frac{1}{N})^{m - 2}$$
+
+\textit{Inductive Step:} Assuming the above holds for $m - 1$, we will prove it holds for $m$.
+
+$$P(X_{m}) = P(X_{m-1})(1 - \frac{1}{N}) + P(not \ unique)P(becomes \ unique)$$
+
+The probability the argmin will be unique on the m'th step is the probability it will stay unique in addition to the probability it isn't unique and will become unique. 
+
+$P(X_{m-1})P(1 - \frac{1}{N})$ is the probability the argmin was already unique and the m'th selection is not the same as the unique. $P(not \ unique)P(becomes \ unique)$ is the probability the (m-1)'th step did not have a unique argmin but it becomes unique on the m'th step. This value is not important, all that is important is the fact its value in the range $0 \leq P(not \ unique)P(becomes \ unique) \leq 1$. Which it always will be as it's a product of two probabilities.
+
+$$P(X_{m}) = P(X_{m-1})(1 - \frac{1}{N}) + P(not \ unique)P(becomes \ unique)$$
+
+Because of this equality we know the following inequality is true:
+
+$$P(X_{m}) \geq P(X_{m-1})(1 - \frac{1}{N})$$
+
+Replace $P(X_{m-1})$ with $(1 - \frac{1}{N})^{m-2}$ from the inductive hypothesis.
+
+$$P(X_{m}) \geq (1 - \frac{1}{N})^{m-2}(1 - \frac{1}{N})$$
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{P(X_{m}) \geq (1 - \frac{1}{N})^{m-1}}
+\end{equation}
+
+\textit{Conclusion:} We have proven that for m random integers chosen in the interval $[1, N]$ that the argmin will be unique with probability $\geq (1 - \frac{1}{N})^{m-1}$.
 
 \end{document}
