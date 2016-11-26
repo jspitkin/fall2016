@@ -36,6 +36,29 @@ def read_svm_file(path):
                 examples.append(example)
     return examples
 
+def read_svm_file_buckets(path):
+    examples = read_svm_file(path)
+    averages = [0 for x in range(len(examples[0]['feature_vector']))]
+    feature_count = [0 for x in range(len(examples[0]['feature_vector']))]
+    for example in examples:
+        for index in range(len(example['feature_vector'])):
+            if example['feature_vector'][index] != 0:
+                feature_count[index] += 1
+                averages[index] += example['feature_vector'][index]
+    for index, count in enumerate(feature_count):
+        if count == 0:
+            continue
+        averages[index] = averages[index] / count
+    for example in examples:
+        for index in range(len(example['feature_vector'])):
+            if feature_count[index] == 0:
+                continue
+            if example['feature_vector'][index] <= averages[index]:
+                example['feature_vector'][index] = 0
+            else:
+                example['feature_vector'][index] = 1
+    return examples
+
 def read_svm_file_binary(path):
     examples = []
     feature_count = get_feature_count(path)

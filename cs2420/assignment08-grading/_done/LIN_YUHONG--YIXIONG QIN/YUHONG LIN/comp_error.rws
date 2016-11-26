@@ -1,0 +1,501 @@
+A:\Documents\workspace\autograder\graders\BSTGrader.java:958: error: cannot find symbol
+	private static SpellChecker buildSpellChecker(String fileName) {
+	               ^
+  symbol:   class SpellChecker
+  location: class BSTGrader
+A:\Documents\workspace\autograder\graders\BSTGrader.java:154: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:154: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:161: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:161: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:168: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:168: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:175: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:175: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:182: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:182: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:189: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:189: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:196: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:196: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:203: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:203: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:216: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:216: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:229: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:229: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:236: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:236: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:244: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:244: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:252: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:252: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:260: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:260: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:268: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:268: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:277: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:277: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:286: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:286: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:293: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:293: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:302: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:302: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:311: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:311: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:320: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:320: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:329: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:329: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:339: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:339: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:348: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:348: error: cannot find symbol
+			SortedSet<String> bst = new BinarySearchTree<String>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:357: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:357: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:365: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:365: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:374: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:374: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:383: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:383: error: cannot find symbol
+			SortedSet<Double> bst = new BinarySearchTree<Double>();
+			                            ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:393: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:393: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:402: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:402: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:414: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:414: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:428: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:428: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:441: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:441: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:454: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:454: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:467: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:467: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:480: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:480: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:495: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:495: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:509: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:509: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:522: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:522: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:538: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:538: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:555: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:555: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:574: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:574: error: cannot find symbol
+			SortedSet<CharWrapper> bst = new BinarySearchTree<CharWrapper>();
+			                                 ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:590: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:590: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:602: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:602: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:615: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:615: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:633: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:633: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:646: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:646: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:659: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:659: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:672: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:672: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			                             ^
+  symbol:   class BinarySearchTree
+  location: class Tester
+A:\Documents\workspace\autograder\graders\BSTGrader.java:684: error: cannot find symbol
+			SortedSet<Integer> bst = new BinarySearchTree<Integer>();
+			^
+  symbol:   class SortedSet
+  location: class Tester
+100 errors

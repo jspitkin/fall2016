@@ -1,0 +1,35 @@
+---Testing BadHashFunctor---
+
+---Testing MediocreHashFunctor---
+
+---Testing GoodHashFunctor---
+GoodHashFunctor threw java.lang.StringIndexOutOfBoundsException: String index out of range: 0 for input ""
+
+---Testing QuadProbeHashTable---
+TEST FAILED : containsAll on small table (false)
+TEST FAILED : containsAll(empty) on small table
+TEST FAILED : containsAll on large table (false)
+
+---Testing ChainingHashTable---
+TEST FAILED : containsAll on small table (false)
+TEST FAILED : containsAll(empty) on small table
+TEST FAILED : containsAll on large table (false)
+
+---Scoring---
+Compiles and runs with students' tests: 	/5
+BadHashFunctor:					5/5
+MediocreHashFunctor:				5/5
+GoodHashFunctor:				4/5
+TA spot check of quadratic probing:		/5
+TA spot check of separate chaining:		/5
+QuadProbeHashTable:				13/15
+SeparateChainingHashTable:			13/15
+Quailty of tests and coding style:		/10
+
+Subtotal:					/70
+Analysis document:				/30
+Total:						/100
+
+------------------------------
+
+TA Comments:

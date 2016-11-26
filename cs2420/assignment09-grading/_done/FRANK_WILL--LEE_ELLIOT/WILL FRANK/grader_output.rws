@@ -1,0 +1,29 @@
+===PathFinder Grader Output===
+Failed demoMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed straight2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed long: output maze does not match input maze
+Failed tinyMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed long2: output maze does not match input maze
+Failed tinyMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed unsolvable: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed mediumMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed unsolvable2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed classic: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed mediumMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed spiral: output maze does not match input maze
+Failed classic2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed open: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed spiral2: output maze does not match input maze
+Failed demoMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed open2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed straight: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+
+Passed 14/32 tests
+Test maze score:                       35/80
+Quality of student's code and style:   /5
+Students tests:                        /5
+Analysis document:                     /10
+Total:                                 /100
+
+---------------
+TA coments:

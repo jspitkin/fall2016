@@ -1,0 +1,6 @@
+TimingTest.java:12: error: package assignment03 does not exist
+import assignment03.BinarySearchSet;
+                   ^
+Note: QuadProbeHashTableTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 error

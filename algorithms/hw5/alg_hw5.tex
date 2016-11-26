@@ -144,7 +144,7 @@ $$Applying \ Baye's \ Rule: \ Pr[X_{j1} = 1 | X_{j2} = .. = X_{jk}] * Pr[X_{j2} 
 Now Baye's Rule is applied again to $Pr[X_{j2} = ... = X_{jk}]$ where A is $X_{j2} = 1$ and B is $X_{j3} = ... = X_{jk} = 1$:
 
 $$What \ we \ start \ with: \ Pr[X_{j2} = X_{j3} = X_{j4} = ... = X_{jk} = 1]$$
-$$Applying \ Baye's \ Rule: \ Pr[X_{j2} = 1 | X_{j3} = .. = X_{jk}] * Pr[X_{j2} = ... = X_{jk}]$$
+$$Applying \ Baye's \ Rule: \ Pr[X_{j2} = 1 | X_{j3} = .. = X_{jk}] * Pr[X_{j3} = ... = X_{jk}]$$
 
 This pattern of applying Baye's rule to the $P[B]$ portion is repeated $k$ times. This produces a product of the form:
 
@@ -211,8 +211,6 @@ $$\frac{n\epsilon^2}{M^2} \geq ln(\frac{4}{\delta^2})$$
 
 Given a $\delta$, $\epsilon$, and a $M$, the derived equation produces the $n$ number of indices we must sample to satisfy $|\hat \mu - \mu| \leq \epsilon$ with probability $1 - \delta$.
 
-\part{d} \textbf{Proof by Counter-Example:} 
-
 \question{3}{Quick-sort with Optimal Comparisons}
 
 \part{a} The goal is to prove the following statement about the probability the $k$'th smallest element in A is chosen as the pivot.
@@ -269,9 +267,39 @@ $$|E^\prime| \leq |E| = deg(u) \leq \frac{2|E|}{n}$$
 
 Thus proving that if $E^\prime$ is one of the min cuts in the graph, then $|E^\prime| \leq \frac{2|E|}{n}$ holds.
 
-\part{c}
+\part{c} From part b we showed that $|E^\prime| \leq \frac{2|E|}{n}$. This tells us at most $\frac{2|E|}{n}$ edges are in the min-cut.
 
-\part{d} From part c we saw that 
+At each step of Karger's algorithm we randomly select an edge from E. Given we have $|E|$ possible selections, the probability that that edge lies in the min-cut is $\frac{2}{n}$.
+
+We want to prove that the probability the min-cut is maintained after one step is $\leq (1 - \frac{2}{n})$. This means that the randomly selected edge does not exist in the min-cut. We showed the probability it does exist in the min-cut is $\frac{2}{n}$ so we simply take the inverse.
+
+$$(1 - \frac{2}{n})$$
+
+Therefore proving the probability the min-cut is maintained after one step is $\leq (1 - \frac{2}{n})$.
+
+\part{d} We want to prove the number of min cuts in an unweighted graph with n vertices is $\leq n^2/2$.
+
+ \textbf{Proof:} From part c we saw that the overall probability that we find a min-cut is roughly $\frac{2}{n^2}$. That is a single min-cut $E^\prime$.
+ 
+ Suppose we have min-cuts $E_1^\prime, E_2^\prime,...,E_r^\prime$ from an unweighted graph G. We can find the probability that these $r$ min-cuts exist in G by taking a sum of the probability each $E_i^\prime$ exists in G.
+ 
+ $$\sum_{i = 1}^r \frac{2}{n^2} = \frac{2r}{n^2}$$
+ 
+ This value is a probability so we know it is bounded as such:
+ 
+ $$0 \leq \frac{2r}{n^2} \leq 1$$
+ 
+ Moving values around:
+ 
+ $$\frac{2r}{n^2} \leq 1$$
+ \begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{r \leq \frac{n^2}{2}}
+\end{equation}
+ 
+ Recall that $r$ is the number of min cuts in G. Thus we have proven that the number of min-cuts in a graph is $\leq n^2/2$.
+
 
 \question{5}{Valiant-Vazirani Lemma} 
 
@@ -315,5 +343,21 @@ $$P(X_{m}) \geq (1 - \frac{1}{N})^{m-2}(1 - \frac{1}{N})$$
 \end{equation}
 
 \textit{Conclusion:} We have proven that for m random integers chosen in the interval $[1, N]$ that the argmin will be unique with probability $\geq (1 - \frac{1}{N})^{m-1}$.
+
+\question{}{Peer Collaboration}
+
+A list of students I worked with on this assignment. All my answers were finalized and typed by me.
+
+Alessandro Ferrero
+
+Ally Warner
+
+Jacob Kelly
+
+Tejas Hirekatur Sreedhar
+
+Aaron Dayley
+
+Sierra Allred 
 
 \end{document}

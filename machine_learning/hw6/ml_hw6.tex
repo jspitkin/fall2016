@@ -1,0 +1,94 @@
+% HW Template for CS 6150, taken from https://www.cs.cmu.edu/~ckingsf/class/02-714/hw-template.tex
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorith{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\UID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{CS 6350, \today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Jake Pitkin}  % your name
+\newcommand\UID{u0891770}     % your utah UID
+\newcommand\HWNUM{6}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+\question{1}{Probabilities}
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Independent \ Events- \ P(A \ \cap \ B) = P(A)P(B)}
+\end{equation} 
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Rule \ of \ Multiplication- \ P(A \ \cap \ B) = P(A)P(B | A)}
+\end{equation} 
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Binomial \ Distribution-  {n \choose k}p^k(1-p)^{n-k}}
+\end{equation} 
+
+\part{1} Given $P(A_1) = P(A_2) = P(A_1 | A_2) = \frac{1}{2}$, we want to prove that $A_1$ and $A_2$ are independent events.
+
+Events $A_1$ and $A_2$ are independent if and only if Eq. (1) is satisfied.
+$$P(A_2 \cap A_1) = P(A_2)P(A_1)$$
+ We can use Eq. (2) to restate the LHS of Eq. (1) in terms of probabilities we are given.
+$$P(A_2)P(A_1 | A_2) = P(A_2)P(A_1)$$
+$$\frac{1}{2} * \frac{1}{2} = \frac{1}{2} * \frac{1}{2}$$
+
+By showing Eq. (1) is satisfied, we have proven $A_1$ and $A_2$ are independent events.
+
+\part{2}
+
+\part{3} Let $X$ be a random variable representing the top of the six-sided die toss. The dice is a fair dice so we know $P(X=1) = P(X=2) = P(X=3) = P(X=4) = P(X=5) = P(X=6) = \frac{1}{6}$. There are six possible events and the total probability of exactly two heads after $n$ coin tosses is the sum of the probability of each of the six events happening. 
+
+$$\sum_{i = 1}^6 P(X=i) * B(n = i, k = 2, p = 0.5)$$
+
+Where $B(n, k, p)$ represents the binomial distribution from Eq. (3). This is the probability that given $n$ trials, there are exactly $k$ successes if the probability of success is $p$ where $O \leq p \leq 1$ and $k \leq n$. Let $Y$ be a random variable representing the exact number of heads after $n$ coin tosses. Note that the probability of getting exactly two heads when only tossing one coin is 0.
+
+$$P(Y = 2) = \sum_{i = 1}^6 P(X=i) * B(n = i, k = 2, p = 0.5)$$
+$$P(Y = 2) = \frac{1}{6}\sum_{i = 1}^6 B(n = i, k = 2, p = 0.5)$$
+$$P(Y = 2) = \frac{1}{6}(0 + \frac{1}{4} + \frac{3}{8} + \frac{6}{16} + \frac{10}{32} + \frac{15}{64})$$
+$$P(Y = 2) = \frac{33}{128} = 0.2578$$
+
+Thus this is the probability of getting exactly 2 heads after $n$ coin flips, where $n$ is the result of a fair six-sided die toss.
+
+\framebox[1.2\width]{$P(heads = 2) = \frac{33}{128} = 0.2578$}
+
+
+\end{document}

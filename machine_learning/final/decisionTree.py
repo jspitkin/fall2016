@@ -1,211 +1,161 @@
-from __future__ import division
+# Jake Pitkin November 13 2016
 import math
+import ioutil
 from collections import Counter
 
-class Example:
-    def __init__(self):
-        'An example - including it\'s features and label'
-        self.features = []
-        self.label = ""
-
-    def addFeature(self, feature):
-        self.features.append(feature)
-
-    def updateLabel(self, label):
-        self.label = label
-
 class Edge:
-    def __init__(self, featureValue):
-        'An edge of a decision tree. has a featureValue and a child node'
-        self.featureValue = featureValue
+    def __init__(self, feature_value):
+        self.feature_value = feature_value
 
-    def setChild(self, childNode):
-        self.childNode = childNode
+    def set_child(self, child_node):
+        self.child_node = child_node
 
-    def getValue(self):
-        return self.featureValue
+    def get_value(self):
+        return self.feature_value
 
 class Node:
     def __init__(self, value):
-        'A node of a decision tree. Knows its children nodes and the label of'
-        'the edge between this node and it\'s parent'
         self.value = value
         self.edges = []
 
-    def addEdge(self, edge):
+    def add_edge(self, edge):
         self.edges.append(edge)
 
-    def getEdges(self):
+    def get_edges(self):
         return self.edges
 
-    def getValue(self):
+    def get_value(self):
         return self.value
 
 class DecisionTree:
-    'A decision tree - used for the ID3 algorithm'
-    def __init__(self, maxDepth=99999, replaceMethod=4):
-        self.maxDepth = maxDepth
-        self.replaceMethod = replaceMethod
-    def getFeatureVectors(self, examples):
-        'Returns a list of the feature vectors'
+    def __init__(self, feature_count, relevant_features, m):
+        self.feature_count = feature_count
+        self.relevant_features = relevant_features
+        self.m = m
+        self.classifications = []
+
+    def get_feature_columns(self, examples, feature_count):
         if len(examples) < 1:
             return []
-
-        featureVectors= [[] for i in range(len(examples[0].features))]
+        feature_columns = [[] for i in range(feature_count)]
         labels = []
         for example in examples:
-            for index, feature in enumerate(example.features):
-                featureVectors[index].append(feature)
-            labels.append(example.label)
-        return (featureVectors, labels)
+            for index, feature in enumerate(example['feature_vector']):
+                print(index)
+                feature_columns[index].append(feature)
+            labels.append(example['label'])
+        columns = {'feature_columns' : feature_columns, 'labels_column' : labels}
+        return columns
 
     def entropy(self, vector):
-        'Returns the entropy of a vector'
-        valueCounts = {}
+        value_counts = {}
         for value in vector:
-            if value in valueCounts:
-                valueCounts[value] += 1
+            if value in value_counts:
+                value_counts[value] += 1
             else:
-                valueCounts[value] = 1
+                value_counts[value] = 1
         entropy = 0
-        for label, count in valueCounts.iteritems():
+        for label, count in value_counts.items():
             probability = count / len(vector)
             entropy = entropy - (probability * math.log(probability, 2))
         return entropy
 
-
-    def informationGain(self, featureVector, labels):
-        'Returns the informationGain of a feature vector'
-        'Dictionary of lists. Key: featureValue. Value: [0] count of feature value [1] dictionary of label count'
-        featureValuesInfo = {}
-        for index, featureValue in enumerate(featureVector):
-            if featureValue in featureValuesInfo:
-                featureValuesInfo[featureValue][0] += 1
+    def information_gain(self, feature_vector, labels):
+        feature_values_info = {}
+        for index, feature_value in enumerate(feature_vector):
+            if feature_value in feature_values_info:
+                feature_values_info[feature_value]['count'] += 1
             else:
-                featureValuesInfo[featureValue] = []
-                featureValuesInfo[featureValue].append(1)
-                featureValuesInfo[featureValue].append({})
+                feature_values_info[feature_value] = {}
+                feature_values_info[feature_value]['count'] = 1
+                feature_values_info[feature_value]['label_count'] = {}
                 for label in labels:
-                    featureValuesInfo[featureValue][1][label] = 0
-            labelValue = labels[index] 
-            featureValuesInfo[featureValue][1][labelValue] += 1 
+                    feature_values_info[feature_value]['label_count'][label] = 0
+            label_value = labels[index]
+            feature_values_info[feature_value]['label_count'][label_value] += 1
 
-        expectedEntropy = 0
-        for featureValue, featureValueInfo in featureValuesInfo.iteritems():
-            currentEntropy = 0
-            for count in featureValueInfo[1].values():
-                if count != 0 and featureValueInfo[0] != 0:
-                    probability = count / featureValueInfo[0]
-                    currentEntropy = currentEntropy - (probability * math.log(probability, 2))
-            expectedEntropy += (featureValueInfo[0]/len(featureVector)) * currentEntropy
+        expected_entropy = 0
+        for feature_value, feature_value_info in feature_values_info.items():
+            current_entropy = 0
+            for count in feature_value_info['label_count'].values():
+                if count != 0 and feature_value_info['count'] != 0:
+                    probability = count / feature_value_info['count']
+                    current_entropy = current_entropy - (probability * math.log(probability, 2))
+            expected_entropy += (feature_value_info['count'] / len(feature_vector)) * current_entropy
+        return self.entropy(labels) - expected_entropy
 
-        return self.entropy(labels) - expectedEntropy
-
-    def readDataFile(self, paths):
-        'Reads in a data file separated by commas and returns a list of Examples'
-        examples = []
-        for path in paths:
-            with open(path) as file:
-                for line in file:
-                    line = line.strip().split(',')
-                    example = Example()
-                    for feature in line[:-1]:
-                        example.addFeature(feature)
-                    if len(line) >= 1:
-                        example.updateLabel(line[-1])
-                    examples.append(example)
-
-        return examples
-
-    def readPossibleFeatureValues(self, path):
-        'Reads in the possible values for a feature'
-        featureValues = []
-        for i in range(0, 37):
-            featureValues.append(i)
-        return featureValues
-
-
-    def ID3(self, examples, attributes, labels, possibleAttributeValues, curDepth):
-        # Check if max depth has been reached, if so take the most common value
-        if curDepth + 1 > self.maxDepth:
-            mostCommonLabel = Counter(labels).most_common()[0]
-            return Node(mostCommonLabel[0])
-         
-        # All examples have the same label
+    def ID3(self, examples, attributes, labels, possible_attribute_values, depth):
+        # All examples have the same label - base case
         if all(label == labels[0] for label in labels):
             return Node(labels[0])
-        # Find the attribute that best classifes the examples
-        bestAttribute = attributes[0]
-        bestAttributeColumn = 0
-        bestInformationGain = self.informationGain(bestAttribute, labels)
+        # Find the attribute that best classifies the examples
+        best_attribute = attributes[0]
+        best_attribute_column = 0
+        best_information_gain = self.information_gain(best_attribute, labels)
         for index, attribute in enumerate(attributes[1:]):
-            informationGain = self.informationGain(attribute, labels)
-            if informationGain > bestInformationGain:
-                bestAttribute = attribute
-                bestAttributeColumn = index + 1
-                bestInformationGain = informationGain
+            information_gain = self.information_gain(attribute, labels)
+            if information_gain > best_information_gain:
+                best_attribute = attribute
+                best_attribute_column = index + 1
+                best_information_gain = information_gain
         # Create a root node with this attribute
-        root = Node(bestAttributeColumn)
+        root = Node(best_attribute_column)
         # Find the most common attribute value for the best attribute
-        mostCommonLabel = Counter(labels).most_common()[0]
+        most_common_label = Counter(labels).most_common()[0]
         # Add a new branch for each possible value the best attribute can take
-        for attribute in possibleAttributeValues[bestAttributeColumn]:
-            newEdge = Edge(attribute)
-            root.addEdge(newEdge)
-            # If there are no examples of this attribute, give it the most common label
-            if attribute not in bestAttribute:
-                newLeaf = Node(mostCommonLabel[0])
-                newEdge.setChild(newLeaf)
+        for attribute in possible_attribute_values[best_attribute_column]:
+            new_edge = Edge(attribute)
+            root.add_edge(new_edge)
+            # If there are no examples of this attribute - common label
+            if attribute not in best_attribute or best_information_gain == 0.0:
+                new_leaf = Node(most_common_label[0])
+                new_edge.set_child(new_leaf)
             # Otherwise, branch and add the subtree
             else:
-                subExamples = []
+                sub_examples = []
                 for index, example in enumerate(examples):
-                    if example.features[bestAttributeColumn] == attribute:
-                        subExamples.append(example)
-                subAttributes, subLabels= self.getFeatureVectors(subExamples)
-                newEdge.setChild(self.ID3(subExamples, subAttributes, subLabels, possibleAttributeValues, curDepth + 1))
+                    if example['feature_vector'][best_attribute_column] == attribute:
+                        sub_examples.append(example)
+                sub_columns = self.get_feature_columns(sub_examples, len(self.relevant_features))
+                new_edge.set_child(self.ID3(sub_examples, sub_columns['feature_columns'], sub_columns['labels_column'], possible_attribute_values, depth+1))
         return root
 
-    def constructTree(self, trainingDataFilePaths, possibleFeatureValuesFilePath):
-        self.possibleAttributeValues = self.readPossibleFeatureValues(possibleFeatureValuesFilePath)
-        trainingData = self.readDataFile(trainingDataFilePaths)
-        featureVectors, labels = self.getFeatureVectors(trainingData)
-        self.root = self.ID3(trainingData, featureVectors, labels, self.possibleAttributeValues, 0)
-
-    def reportError(self, examplesFilePath):
-        examples = self.readDataFile(examplesFilePath)
-        featureVectors, labels = self.getFeatureVectors(examples)
-        correctPredictions = 0 
-        maxDepth = 0
+    def get_relevant_features(self, examples):
+        relevant_examples = []
         for example in examples:
-            currentNode = self.root
-            currentDepth = 0
-            while len(currentNode.edges) > 0:
-                exampleAttributeValue = example.features[currentNode.value]
-                for edge in currentNode.edges:
-                    if exampleAttributeValue == edge.getValue():
-                        currentNode = edge.childNode
-                        currentDepth = currentDepth + 1
-                        if currentDepth > maxDepth:
-                            maxDepth = currentDepth
-                            currentDepth = 0
-            currentDepth = 0
-            if currentNode.value == example.label:
-                correctPredictions = correctPredictions + 1
-        return ((correctPredictions / len(examples)), maxDepth, correctPredictions, (len(examples) - correctPredictions), len(examples))
+            relevant_example = {'feature_vector' : []}
+            for index in self.relevant_features:
+                relevant_example['feature_vector'].append(example['feature_vector'][index])
+            relevant_example['label'] = example['label']
+            relevant_examples.append(relevant_example)
+        return relevant_examples
 
-    def replaceMethodOne(self, data):
-        for example in data:
-            for feature in example.features:
-                if feature == "?":
-                    mostCommonLabel = Counter(feature).most_common()[0]
-                    feature = mostCommonLabel
-        return data
+    def construct_tree(self, training_data):
+        possible_attribute_values = [set([1, 0]) for x in range(self.feature_count)]
+        #training_data = ioutil.split_data(training_data_path, training_labels_path, self.feature_count)
+        #training_data = ioutil.get_m_random_examples(training_data, self.m)
+        #training_data = self.get_relevant_features(training_data)
+        feature_columns = self.get_feature_columns(training_data, len(self.relevant_features))
+        self.root = self.ID3(training_data, feature_columns['feature_columns'], feature_columns['labels_column'], possible_attribute_values, 0)
 
-    def replaceMethodTwo(self, data):
-        for example in data:
-            for feature in example.features:
-                if feature == "?":
-                    mostCommonLabel = Counter(feature).most_common()[0]
-                    feature = mostCommonLabel
-        return data
+    def test(self, examples):
+        #examples = ioutil.split_data(test_file_path, test_label_file_path, self.feature_count)
+        #examples = self.get_relevant_features(examples)
+        feature_columns = self.get_feature_columns(examples, len(self.relevant_features))
+        correct_predictions = 0
+        predictions = []
+        for example in examples:
+            current_node = self.root
+            while len(current_node.edges) > 0:
+                example_attribute_value = example['feature_vector'][current_node.value]
+                for edge in current_node.edges:
+                    if example_attribute_value == edge.get_value():
+                        current_node = edge.child_node
+            predictions.append(current_node.value)
+            if current_node.value == example['label']:
+                correct_predictions += 1
+            if current_node.value == 1:
+                self.classifications.append(1)
+            else:
+                self.classifications.append(0)
+        return {'correct_predictions' : correct_predictions, 'example_count' : len(examples), 'accuracy' : round(correct_predictions/len(examples), 3)}

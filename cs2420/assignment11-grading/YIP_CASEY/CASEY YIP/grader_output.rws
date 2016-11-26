@@ -1,0 +1,26 @@
+TEST FAILED: deleteMin() for one-item String heap caused exception (java.lang.ArrayIndexOutOfBoundsException)
+TEST FAILED: deleteMin() for three-item String heap caused exception (java.lang.NullPointerException)
+TEST FAILED: deleteMin() for thirteen-item String w/ Comparator is running infinitely
+TEST FAILED: deleteMin() for thirteen-item String w/ Comparator heap caused exception (java.lang.ThreadDeath)
+TEST FAILED: deleteMin() for 1000-item random Integer w/ Comparator is running infinitely
+
+
+---- Scoring ----------------
+add() tests passed:		10/10
+add() points:			30/30
+
+findMin() tests passed:		10/10
+findMin() points:		10/10
+
+deleteMin() tests passed:	6/10
+TEST FAILED: deleteMin() for 1000-item random Integer w/ Comparator heap caused exception (java.lang.ThreadDeath)
+deleteMin() points:		21/35
+
+Subtotal:			61/75
+Testing and style:		  /5
+Analysis document:		  /20
+Total: 				  /100
+
+--------------------------------------
+
+TA Comments:

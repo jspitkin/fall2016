@@ -1,0 +1,71 @@
+---Testing BadHashFunctor---
+
+---Testing MediocreHashFunctor---
+
+---Testing GoodHashFunctor---
+
+---Testing QuadProbeHashTable---
+TEST FAILED : contains on empty table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : containsAll on empty table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : add to empty table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : addAll to empty table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on singleton table (true) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on singleton table (false) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on singleton table (same hash) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : clear on singleton table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : add item with same hash threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on small table (1) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on small table (2) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on small table (3) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : containsAll on small table (true) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : containsAll on small table (false) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : containsAll(empty) on small table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : addAll on large table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on large table (true) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : contains on large table (false) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : containsAll on large table (true) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : containsAll on large table (false) threw java.lang.ArithmeticException: / by zero
+TEST FAILED : clear on large table threw java.lang.ArithmeticException: / by zero
+TEST FAILED : stress test 2
+
+---Testing ChainingHashTable---
+TEST FAILED : contains on empty table threw java.lang.NullPointerException
+TEST FAILED : containsAll on empty table threw java.lang.NullPointerException
+TEST FAILED : add to empty table threw java.lang.NullPointerException
+TEST FAILED : addAll to empty table threw java.lang.NullPointerException
+TEST FAILED : contains on singleton table (true) threw java.lang.NullPointerException
+TEST FAILED : contains on singleton table (false) threw java.lang.NullPointerException
+TEST FAILED : contains on singleton table (same hash) threw java.lang.NullPointerException
+TEST FAILED : clear on singleton table threw java.lang.NullPointerException
+TEST FAILED : add item with same hash threw java.lang.NullPointerException
+TEST FAILED : contains on small table (1) threw java.lang.NullPointerException
+TEST FAILED : contains on small table (2) threw java.lang.NullPointerException
+TEST FAILED : contains on small table (3) threw java.lang.NullPointerException
+TEST FAILED : containsAll on small table (true) threw java.lang.NullPointerException
+TEST FAILED : containsAll on small table (false) threw java.lang.NullPointerException
+TEST FAILED : containsAll(empty) on small table threw java.lang.NullPointerException
+TEST FAILED : addAll on large table threw java.lang.NullPointerException
+TEST FAILED : contains on large table (true) threw java.lang.NullPointerException
+TEST FAILED : contains on large table (false) threw java.lang.NullPointerException
+TEST FAILED : containsAll on large table (true) threw java.lang.NullPointerException
+TEST FAILED : containsAll on large table (false) threw java.lang.NullPointerException
+TEST FAILED : clear on large table threw java.lang.NullPointerException
+
+---Scoring---
+Compiles and runs with students' tests: 	/5
+BadHashFunctor:					5/5
+MediocreHashFunctor:				5/5
+GoodHashFunctor:				5/5
+TA spot check of quadratic probing:		/5
+TA spot check of separate chaining:		/5
+QuadProbeHashTable:				2/15
+SeparateChainingHashTable:			3/15
+Quailty of tests and coding style:		/10
+
+Subtotal:					/70
+Analysis document:				/30
+Total:						/100
+
+------------------------------
+
+TA Comments:

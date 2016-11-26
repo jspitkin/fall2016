@@ -1,0 +1,5 @@
+Exception in thread "main" java.lang.UnsupportedOperationException
+	at java.lang.Thread.stop(Unknown Source)
+	at assignment08.BSTGrader.runTest(BSTGrader.java:901)
+	at assignment08.BSTGrader.main(BSTGrader.java:917)
+JOHNSON_HYRUM took too long to grade.

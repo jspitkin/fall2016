@@ -1,0 +1,152 @@
+BadHashFunctor.java:3: error: cannot find symbol
+public class BadHashFunctor implements HashFunctor {
+                                       ^
+  symbol: class HashFunctor
+ChainingHashTable.java:7: error: cannot find symbol
+public class ChainingHashTable implements Set<String> {
+                                          ^
+  symbol: class Set
+ChainingHashTable.java:10: error: cannot find symbol
+	private HashFunctor hasher;
+	        ^
+  symbol:   class HashFunctor
+  location: class ChainingHashTable
+ChainingHashTable.java:19: error: cannot find symbol
+	public ChainingHashTable(int capacity, HashFunctor functor) {
+	                                       ^
+  symbol:   class HashFunctor
+  location: class ChainingHashTable
+FunctorCollisionsExperiment.java:9: error: cannot find symbol
+	private static HashFunctor goodHash = new GoodHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class FunctorCollisionsExperiment
+FunctorCollisionsExperiment.java:10: error: cannot find symbol
+	private static HashFunctor mediocreHash = new MediocreHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class FunctorCollisionsExperiment
+FunctorCollisionsExperiment.java:11: error: cannot find symbol
+	private static HashFunctor badHash = new BadHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class FunctorCollisionsExperiment
+FunctorTiming.java:9: error: cannot find symbol
+	private static HashFunctor goodHash = new GoodHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class FunctorTiming
+FunctorTiming.java:10: error: cannot find symbol
+	private static HashFunctor mediocreHash = new MediocreHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class FunctorTiming
+FunctorTiming.java:11: error: cannot find symbol
+	private static HashFunctor badHash = new BadHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class FunctorTiming
+GoodHashFunctor.java:3: error: cannot find symbol
+public class GoodHashFunctor implements HashFunctor {
+                                        ^
+  symbol: class HashFunctor
+HashTableTesting.java:13: error: cannot find symbol
+	public HashFunctor hasher;
+	       ^
+  symbol:   class HashFunctor
+  location: class HashTableTesting
+QuadProbeHashTable.java:6: error: cannot find symbol
+public class QuadProbeHashTable implements Set<String> {
+                                           ^
+  symbol: class Set
+QuadProbeHashTable.java:9: error: cannot find symbol
+	private HashFunctor hasher;
+	        ^
+  symbol:   class HashFunctor
+  location: class QuadProbeHashTable
+QuadProbeHashTable.java:16: error: cannot find symbol
+	public QuadProbeHashTable(int capacity, HashFunctor functor) {
+	                                        ^
+  symbol:   class HashFunctor
+  location: class QuadProbeHashTable
+HashTableTiming.java:9: error: cannot find symbol
+	private static HashFunctor goodHash = new GoodHashFunctor();
+	               ^
+  symbol:   class HashFunctor
+  location: class HashTableTiming
+MediocreHashFunctor.java:3: error: cannot find symbol
+public class MediocreHashFunctor implements HashFunctor {
+                                            ^
+  symbol: class HashFunctor
+A:\Documents\workspace\autograder\graders\TAHashTableGrader.java:94: error: cannot find symbol
+	public static class TAHashFunctor implements HashFunctor {
+	                                             ^
+  symbol:   class HashFunctor
+  location: class TAHashTableGrader
+A:\Documents\workspace\autograder\graders\TAHashTableGrader.java:103: error: cannot find symbol
+	public static class JavaHashFunctor implements HashFunctor {
+	                                               ^
+  symbol:   class HashFunctor
+  location: class TAHashTableGrader
+BadHashFunctor.java:5: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:26: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:55: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:65: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:75: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:85: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:94: error: method does not override or implement a method from a supertype
+	@Override
+	^
+ChainingHashTable.java:99: error: method does not override or implement a method from a supertype
+	@Override
+	^
+GoodHashFunctor.java:5: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:21: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:88: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:98: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:105: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:117: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:126: error: method does not override or implement a method from a supertype
+	@Override
+	^
+QuadProbeHashTable.java:131: error: method does not override or implement a method from a supertype
+	@Override
+	^
+MediocreHashFunctor.java:5: error: method does not override or implement a method from a supertype
+	@Override
+	^
+A:\Documents\workspace\autograder\graders\TAHashTableGrader.java:42: error: cannot find symbol
+			HashFunctor hf;
+			^
+  symbol:   class HashFunctor
+  location: class HashFunctorTester
+A:\Documents\workspace\autograder\graders\TAHashTableGrader.java:151: error: cannot find symbol
+			Set<String> table;
+			^
+  symbol:   class Set
+  location: class HashTableTester
+38 errors

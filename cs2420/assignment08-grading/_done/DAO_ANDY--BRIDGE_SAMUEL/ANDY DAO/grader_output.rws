@@ -1,0 +1,25 @@
+--------------------------------------
+--TA Assignment 8 Test Output--
+--------------------------------------
+--Testing BST--
+TEST FAILED: contains() on empty tree caused exception (java.lang.NullPointerException)
+TEST FAILED: clear() on one-node tree caused exception (java.lang.NullPointerException)
+TEST FAILED: remove(3.14) on three-node tree
+TEST FAILED: remove(114) on small tree caused exception (java.lang.StackOverflowError)
+
+--------------------------------------
+--Testing Spell Checker--
+TEST FAILED: spell check "hello_world.txt" against "dictionary.txt" - "hello"
+
+--------------------------------------
+
+--Scoring--
+Successful BST:					  38/40
+Successful Spell Checker:			  20/25
+Quality of student tests and overall style:	    /10
+
+Total: 						    /75
+
+--------------------------------------
+
+TA Comments:

@@ -1,0 +1,150 @@
+===PathFinder Grader Output===
+37 37
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X       X X X           X   X     X X
+X XXXXXXX X XXX X XXX XXX XXXXXXX X X
+X       X       X X     X     X X   X
+XXXXX XXXXX XXX X X X XXX XXXXX X XXX
+X   X X X X   X X X X   X X   X X   X
+X XXX X X X XXX XXXXX XXX X XXX XXX X
+X       X     X   X   X     X X X   X
+XXX XXXXXXXXX XXXXXXX XXX XXX X X X X
+X             X       X X   X     X X
+X X XXXXX X XXX X X XXX X XXX XXX X X
+X X X     X X X X X     X   X X X X X
+X X X XXXXXXX X XXXXXXXXX XXX X XXX X
+X X X X     X   X     X     X   X   X
+XXX XXX X XXXXX XXXXX XXX XXX XXXXX X
+X     X X X     X X     X X   X X X X
+X X X X X XXX XXX XXX XXX X X X X X X
+X X X X X                 X X X     X
+XXX XXXXXXX X X XXXXX XXX X XXX XXXXX
+X       X X X X     X   X     X X   X
+XXXXX X X XXXXXXXXX XXXXXXXXXXX X XXX
+X   X X           X X     X   X X   X
+X XXX XXXXX XXXXXXXXX XXXXX X X XXX X
+X X   X      X        X     X       X
+X X X XXXXX XXX X X X X XXXXXXXXXXXXX
+X X X   X     X X X X       X   X X X
+X X XXX XXX X X X XXXXXXXXX XXX X X X
+X X   X X   X X X   X X   X X X     X
+X XXX XXX XXXXX XXX X X XXXXX X XXXXX
+X       X   X     X X     X   X X   X
+XXX X XXXXX XXXXX XXX XXX X XXX X XXX
+X X X X X X X X     X X   X X   X X X
+X X XXX X X X X XXXXXXXXX X X X X X X
+X   X   X   X                 X     X
+X X X X XXX XXX XXXXXXX XXX XXX XXX X
+XGX X X       X   X       X   X X  SX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+solved
+209
+209
+Failed bigMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+ 
+XXXXXXXXXXXXXXXXXXX
+X       G         X
+X                 X
+X                 X
+XX X       X      X
+X X XXX      X    X
+X S    XX         X
+X                 X
+X                 X
+XXXXXXXXXXXXXXXXXXX
+solved
+14
+14
+Failed demoMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+ 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X                     X                     X                                                      X
+X                                                                                                  X
+X                                                                                                  X
+X                                                                                                  X
+X                                                                              X   X               X
+X                                                                                                  X
+X                                 X                                                       X        X
+X                                                                                                  X
+X X                                                                                                X
+X                                                  X                                              XX
+X                                              X                                                   X
+X                                                                                       X          X
+X                                                                   X                              X
+X                            X                                                                  X  X
+X                                                                                                  X
+X                               X                                          X                       X
+X                                     X                                                            X
+X  X                                                                   X               X          XX
+X                                                                                                  X
+X                                                                     X                            X
+X                                                                                     X            X
+X                                              X               X            X                      X
+X                                                                                                  X
+X                                             X                                                    X
+X                                                                                               X  X
+X                                                                                          X       X
+X                                                                                                  X
+X                                                                                                  X
+X                                     X                                                            X
+X                  X                                                                               X
+X                    X                                            X                                X
+X                        X                                                                         X
+X                X                         X                                                       X
+X                                                                                                  X
+X                                               X                                                  X
+X                                                                  X                  X            X
+X                                                                                    X         X   X
+X                                                                                                  X
+X                                                                                                  X
+X                                                                                                  X
+X                        X                                                                         X
+X                                                                                                  X
+X                                                                            X                     X
+X                           X                                                                      X
+X                                                                                                  X
+X                        X                                    X                                    X
+X                                                                                       X          X
+X                                                                                                  X
+X                  X                                                                               X
+X              X                                          X         X                              X
+Failed openRand: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed straight2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed turn: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed bigMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed long: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed openRand2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed tinyMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed turn2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed bigOpen: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed long2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed randomMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed tinyMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed unsolvable: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed bigOpen2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed mediumMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed randomMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed tinyOpen: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed unsolvable2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed classic: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed mediumMaze2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed spiral: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed tinyOpen2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed classic2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed open: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed spiral2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed trapped: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed demoMaze: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed open2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed straight: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+Failed trapped2: grader was not able to generate a graph from output maze file : ArrayIndexOutOfBoundsException
+
+Passed 0/32 tests
+Test maze score:                       0/80
+Quality of student's code and style:   /5
+Students tests:                        /5
+Analysis document:                     /10
+Total:                                 /100
+
+---------------
+TA coments:

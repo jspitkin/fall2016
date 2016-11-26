@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 NOV 2016 20:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 NOV 2016 22:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -309,9 +309,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 220.
+(amsmath)                 on input line 218.
 
-[5] [6] [7] [8] (/Users/jsp/Documents/fall_2016/algorithms/hw5/.texpadtmp/alg_hw5.aux) ) 
+[5] [6] [7] [8] [9] (/Users/jsp/Documents/fall_2016/algorithms/hw5/.texpadtmp/alg_hw5.aux) ) 
 Here is how much of TeX's memory you used:
  3736 strings out of 493089
  51069 string characters out of 6134842
@@ -319,12 +319,12 @@ Here is how much of TeX's memory you used:
  7145 multiletter control sequences out of 15000+600000
  10253 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,43p,502b,222s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,43p,492b,222s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/jsp/Documents/fall_2016/algorithms/hw5/.texpadtmp/alg_hw5.pdf (8 pages, 159658 bytes).
+Output written on /Users/jsp/Documents/fall_2016/algorithms/hw5/.texpadtmp/alg_hw5.pdf (9 pages, 162685 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

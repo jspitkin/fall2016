@@ -43,7 +43,7 @@ def get_ranges_and_averages(examples):
                 continue
             if data[index] is None:
                 example_stats = ExampleStats()
-                example_stats.feature_number = index + 1
+                example_stats.feature_number = index
                 example_stats.average_value = feature
                 example_stats.count += 1
                 if example['label'] == 1:
@@ -90,18 +90,15 @@ def print_data(data):
     for index in range(10):
         print(newData[index])
 
-def silly_classify(examples):
-    correct = 0
-    correct = 0
+def generate_csv(examples):
+    f = open('positive_examples.txt','w')
     for example in examples:
-        if example['feature_vector'][73] < 712468 and example['label'] == -1:
-            correct += 1
-        if example['feature_vector'][73] >= 712468 and example['label'] == 1:
-            correct += 1
-    print(correct)
-    print(len(examples))
-    
+        for index in range(len(example['feature_vector'])):
+            if index == 73 and example['label'] == -1:
+                f.write(str(example['feature_vector'][index]) + '\n')
+
+   
 examples = ioutil.read_svm_file('data-splits/data.train')
+generate_csv(examples)
 data = get_ranges_and_averages(examples)
 print_data(data)
-silly_classify(examples)
