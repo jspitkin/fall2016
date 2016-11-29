@@ -28,20 +28,17 @@ class Node:
         return self.value
 
 class DecisionTree:
-    def __init__(self, feature_count, relevant_features, m):
+    def __init__(self, feature_count):
         self.feature_count = feature_count
-        self.relevant_features = relevant_features
-        self.m = m
         self.classifications = []
 
-    def get_feature_columns(self, examples, feature_count):
+    def get_feature_columns(self, examples):
         if len(examples) < 1:
             return []
-        feature_columns = [[] for i in range(feature_count)]
+        feature_columns = [[] for i in range(self.feature_count)]
         labels = []
         for example in examples:
             for index, feature in enumerate(example['feature_vector']):
-                print(index)
                 feature_columns[index].append(feature)
             labels.append(example['label'])
         columns = {'feature_columns' : feature_columns, 'labels_column' : labels}
@@ -116,7 +113,7 @@ class DecisionTree:
                 for index, example in enumerate(examples):
                     if example['feature_vector'][best_attribute_column] == attribute:
                         sub_examples.append(example)
-                sub_columns = self.get_feature_columns(sub_examples, len(self.relevant_features))
+                sub_columns = self.get_feature_columns(sub_examples)
                 new_edge.set_child(self.ID3(sub_examples, sub_columns['feature_columns'], sub_columns['labels_column'], possible_attribute_values, depth+1))
         return root
 
@@ -132,16 +129,11 @@ class DecisionTree:
 
     def construct_tree(self, training_data):
         possible_attribute_values = [set([1, 0]) for x in range(self.feature_count)]
-        #training_data = ioutil.split_data(training_data_path, training_labels_path, self.feature_count)
-        #training_data = ioutil.get_m_random_examples(training_data, self.m)
-        #training_data = self.get_relevant_features(training_data)
-        feature_columns = self.get_feature_columns(training_data, len(self.relevant_features))
+        feature_columns = self.get_feature_columns(training_data)
         self.root = self.ID3(training_data, feature_columns['feature_columns'], feature_columns['labels_column'], possible_attribute_values, 0)
 
     def test(self, examples):
-        #examples = ioutil.split_data(test_file_path, test_label_file_path, self.feature_count)
-        #examples = self.get_relevant_features(examples)
-        feature_columns = self.get_feature_columns(examples, len(self.relevant_features))
+        feature_columns = self.get_feature_columns(examples)
         correct_predictions = 0
         predictions = []
         for example in examples:

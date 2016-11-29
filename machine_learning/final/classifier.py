@@ -13,13 +13,11 @@ def main():
     test_data_path = sys.argv[2]
     id_path = sys.argv[3]
     #svm = SVM.SVM(1, 20, 1, 130)
-    relevant_features = []
-    for index in range(360):
-        relevant_features.append(index)
-    tree = dt.DecisionTree(360, relevant_features, 500)
-    #training_examples = ioutil.read_svm_file_binary(training_data_path)
     training_examples = ioutil.read_svm_file_buckets(training_data_path)
     test_examples = ioutil.read_svm_file_buckets(test_data_path)
+    feature_count = len(training_examples[0]['feature_vector'])
+    tree = dt.DecisionTree(feature_count)
+    #training_examples = ioutil.read_svm_file_binary(training_data_path)
     #test_examples = ioutil.read_svm_file_binary(test_data_path)
     #train_accuracy = svm.train(training_examples)
     tree.construct_tree(training_examples)
