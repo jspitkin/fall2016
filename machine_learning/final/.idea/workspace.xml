@@ -2,82 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e39ba517-e11f-47db-a284-2f9039302b26" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigMaze.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigMaze2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigMaze2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigMazeRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigOpen.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigOpen2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigOpen2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/bigOpenRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/classic.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/classic2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/classic2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/classicRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/demoMaze.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/demoMaze2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/demoMaze2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/demoMazeRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/long.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/long2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/long2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/longRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/mediumMaze.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/mediumMaze2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/mediumMaze2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/mediumMazeRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/open.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/open2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/open2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/openRand.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/openRand2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/openRand2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/openRandRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/openRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/randomMaze.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/randomMaze2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/randomMaze2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/randomMazeRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/spiral.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/spiral2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/spiral2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/spiralRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/straight.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/straight2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/straight2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/straightRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyMaze.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyMaze2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyMaze2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyMazeRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyOpen.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyOpen2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyOpen2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/tinyOpenRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/trapped.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/trapped2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/trapped2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/trappedRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/turn.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/turn2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/turn2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/turnRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/unsolvable.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/unsolvable2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/unsolvable2RefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../cs2420/assignment10-grading/assignment9_files/unsolvableRefSol.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.DecisionTree.py.swp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.classifer_two.py.swp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classifer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classifer_two.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../hw5/code/.question_3_2_2.py.swp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hw6/.texpadtmp/ml_hw6.synctex.gz" afterPath="$PROJECT_DIR$/../hw6/.texpadtmp/ml_hw6.synctex.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hw6/ml_hw6.pdf" afterPath="$PROJECT_DIR$/../hw6/ml_hw6.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/decisionTree.py" afterPath="$PROJECT_DIR$/decisionTree.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classifier.py" afterPath="$PROJECT_DIR$/classifier.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ioutil.py" afterPath="$PROJECT_DIR$/ioutil.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kaggle.sh" afterPath="$PROJECT_DIR$/kaggle.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kaggle_submission.csv" afterPath="$PROJECT_DIR$/kaggle_submission.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing.sh" afterPath="$PROJECT_DIR$/testing.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hw6/.texpadtmp/ml_hw6.log" afterPath="$PROJECT_DIR$/../hw6/.texpadtmp/ml_hw6.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hw6/ml_hw6.tex" afterPath="$PROJECT_DIR$/../hw6/ml_hw6.tex" />
     </list>
@@ -123,8 +53,8 @@
       <file leaf-file-name="ioutil.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ioutil.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+            <state relative-caret-position="357">
+              <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -143,11 +73,21 @@
       <file leaf-file-name="classifier.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SVM.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SVM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -160,8 +100,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/classifier.py" />
         <option value="$PROJECT_DIR$/DecisionTree.py" />
+        <option value="$PROJECT_DIR$/classifier.py" />
         <option value="$PROJECT_DIR$/ioutil.py" />
       </list>
     </option>
@@ -251,9 +191,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17609046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17851374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -291,6 +231,42 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/data_explore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ioutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DecisionTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2142">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_explore.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -429,14 +405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ioutil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTree.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
@@ -445,13 +413,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ioutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

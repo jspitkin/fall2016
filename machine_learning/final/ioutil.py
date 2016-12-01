@@ -71,7 +71,7 @@ def read_svm_file_buckets(path):
             else:
                 example['feature_vector'][index] = 1
 
-    frequency = 0.2
+    frequency = 0.1
     new_examples = []
     for example in examples:
         new_examples.append({'label': example['label'], 'feature_vector': []})

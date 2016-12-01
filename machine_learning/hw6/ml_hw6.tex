@@ -57,18 +57,6 @@
 \boxed{Rule \ of \ Multiplication- \ P(A \ \cap \ B) = P(A)P(B | A)}
 \end{equation} 
 
-\begin{equation}
-\setlength\fboxsep{0.25cm}
-\setlength\fboxrule{0.4pt}
-\boxed{Rule \ of \ Addition- \ P(A \ \cup \ B) = P(A) + P(B) - P(A)P(B|A)}
-\end{equation} 
-
-\begin{equation}
-\setlength\fboxsep{0.25cm}
-\setlength\fboxrule{0.4pt}
-\boxed{Binomial \ Distribution-  {n \choose k}p^k(1-p)^{n-k}}
-\end{equation} 
-
 \part{1} Given $P(A_1) = P(A_2) = P(A_1 | A_2) = \frac{1}{2}$, we want to prove that $A_1$ and $A_2$ are independent events.
 
 Events $A_1$ and $A_2$ are independent if and only if Eq. (1) is satisfied.
@@ -79,26 +67,44 @@ $$\frac{1}{2} * \frac{1}{2} = \frac{1}{2} * \frac{1}{2}$$
 
 By showing Eq. (1) is satisfied, we have proven $A_1$ and $A_2$ are independent events.
 
-\part{2}
+\part{2} From lecture, we saw the Theorem of Total probability pertaining to mutually exclusive events $A_1, A_2, ... , A_n$ where $\sum_{i}P(A_i) = 1$. When this condition is met, we know the following is true:
+
+$$P(B) = \sum_{i = 1}^n P(B \cap A) = \sum_{i = 1}^n P(B | A_i)P(A_i)$$
+
+We have mutually exclusive events $A_1, A_2,$ and $A_3$ where the sum of their probabilities is 1. The condition is met, so we can use the Theorem of Total probability. All the needed probabilities to calculate $P(A_4)$ are provided in the problem.
+
+$$P(A_4) = \sum_{i = 1}^3 P(A_4 | A_i)P(A_i)$$
+$$P(A_4) = \frac{1}{3} * (\frac{1}{6} + \frac{1}{3} + \frac{1}{2})$$
+\framebox[1.2\width]{$P(A_4) = \frac{1}{3}$}
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Binomial \ Distribution-  {n \choose k}p^k(1-p)^{n-k}}
+\end{equation} 
 
 \part{3} Let $X$ be a random variable representing the top of the six-sided die toss. The dice is a fair dice so we know $P(X=1) = P(X=2) = P(X=3) = P(X=4) = P(X=5) = P(X=6) = \frac{1}{6}$. There are six possible events and the total probability of exactly two heads after $n$ coin tosses is the sum of the probability of each of the six events happening. 
 
 $$\sum_{i = 1}^6 P(X=i) * B(n = i, k = 2, p = 0.5)$$
 
-Where $B(n, k, p)$ represents the binomial distribution from Eq. (4). This is the probability that given $n$ trials, there are exactly $k$ successes if the probability of success is $p$ where $O \leq p \leq 1$ and $k \leq n$. Let $Y$ be a random variable representing the exact number of heads after $n$ coin tosses. Note that the probability of getting exactly two heads when only tossing one coin is 0.
+Where $B(n, k, p)$ represents the binomial distribution from Eq. (3). This is the probability that given $n$ trials, there are exactly $k$ successes if the probability of success is $p$ where $O \leq p \leq 1$ and $k \leq n$. Let $Y$ be a random variable representing the exact number of heads after $n$ coin tosses. Note that the probability of getting exactly two heads when only tossing one coin is 0.
 
 $$P(Y = 2) = \sum_{i = 1}^6 P(X=i) * B(n = i, k = 2, p = 0.5)$$
 $$P(Y = 2) = \frac{1}{6}\sum_{i = 1}^6 B(n = i, k = 2, p = 0.5)$$
 $$P(Y = 2) = \frac{1}{6}(0 + \frac{1}{4} + \frac{3}{8} + \frac{6}{16} + \frac{10}{32} + \frac{15}{64})$$
-$$P(Y = 2) = \frac{33}{128} = 0.2578$$
+\framebox[1.2\width]{$P(Y = 2) = \frac{33}{128} = 0.2578$}
 
 Thus this is the probability of getting exactly 2 heads after $n$ coin flips, where $n$ is the result of a fair six-sided die toss.
 
-\framebox[1.2\width]{$P(heads = 2) = \frac{33}{128} = 0.2578$}
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Rule \ of \ Addition- \ P(A \ \cup \ B) = P(A) + P(B) - P(A)P(B|A)}
+\end{equation} 
 
 \part{4} We want to prove that if $P(A_1) = a_1$ and $P(A_2) = a_2$ then $P(A_1|A_2) \geq \frac{a_1 + a_2 -1}{a_2}$.
 
-\textit{Proof:} we begin with Eq. (3) which is the rule for union of two events.
+\textit{Proof:} we begin with Eq. (4) which is the rule for union of two events.
 
 $$P(A_2 \cup A_1) = P(A_2) + P(A_1) - P(A_2)P(A_1 | A_2)$$
 
@@ -114,14 +120,60 @@ $$\frac{P(A_1) + P(A_2) - 1}{P(A_2)} \leq P(A_1 | A_2)$$
 
 Replacing $P(A_1) = a_1$ and $P(A_2) = a_2$ on the LHS of the inequality.
 
-\begin{equation}
-\setlength\fboxsep{0.25cm}
-\setlength\fboxrule{0.4pt}
-\boxed{P(A_1 | A_2) \geq \frac{a_1 + a_2 - 1}{a_2}}
-\end{equation} 
+$$P(A_1 | A_2) \geq \frac{a_1 + a_2 - 1}{a_2}$$
 
 Thus arriving at the original inequality and proving it's correctness.
 
-\part{5a}
+\part{5a} Given two independent random variables $A_1$ and $A_2$, we want to prove that $E[A_1 + A_2] = E[A_1] + E[A_2]$ is true. We will assume $A_1$ and $A_2$ are discrete for this proof. The equality also holds for continuous random variables with a slightly different proof.
+
+Given a discrete random variable X that can take values $x_1, \ x_2, \ ..., \ x_k$, with respective probabilities $p_1, \ p_2, \ ..., \ p_k$, then the expected value of X is defined as:
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Expectation- \ E[X] = \sum_{i = 1}^k x_i * P(X = x_i)}
+\end{equation} 
+
+\textit{Proof:} Starting with the LHS of the equality we want to prove, we will use the definition of expectation to arrive at the RHS.
+
+$$E[A_1 + A_2] = \sum_{i = 1}^k \sum_{j = 1}^k (a_{1i} + a_{2k}) * P(A_1 = a_{1i}, A_2 = a_{2k})$$
+
+Multiply and split RHS into two sets of summations.
+$$E[A_1 + A_2] = \sum_{i = 1}^k \sum_{j = 1}^k a_{1i} * P(A_1 = a_{1i}, A_2 = a_{2k})  + \sum_{i = 1}^k \sum_{j = 1}^k a_{2k} * P(A_1 = a_{1i}, A_2 = a_{2k})$$
+$$E[A_1 + A_2] = \sum_{i = 1}^k a_{1i} * P(A_1 = a_{1i})  + \sum_{j = 1}^k a_{2k} * P(A_2 = a_{2k})$$
+
+The RHS is the definition of expectation for $A_1$ summed with the expectation of $A_2$.
+
+$$E[A_1 + A_2] = E[A_1] + E[A_2]$$
+
+\part{5b} Given two independent random variables $A_1$ and $A_2$, we want to prove that $var[A_1 + A_2] = var[A_1] + var[A_2]$ is true.
+
+\textit{Proof:} Variance is defined as:
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{Variance - \ var[X] = E[(X - E[X])^2}
+\end{equation} 
+
+Replacing $X$ with $A_1 + A_2$ and using algebra, this can be rewritten as:
+
+$$var[A_1 + A_2] = E[(A_1 + A_2)^2] - E[A_1 + A_2]^2$$
+
+Expanding out the polynomials gives us:
+
+$$var[A_1 + A_2] = E[A_1^2 + 2A_1A_2 + A_2^2] - E[A_1]^2 - 2E[A_1]E[A_2] - E[A_2]^2$$
+
+Using the proof of linearity of expectation from part \textit{a}, we can rewrite the first expectation:
+
+$$var[A_1 + A_2] = E[A_1^2] + 2E[A_1A_2] + E[A_2^2] - E[A_1]^2 - 2E[A_1]E[A_2] - E[A_2]^2$$ 
+
+When the covariance of two random variables is zero, the expected value operator is multiplicative. That is, $E[XY] = E[X]E[Y]$. We know the covariance of $A_1$ and $A_2$ is 0 as they are independent of each other. Using this:
+
+$$var[A_1 + A_2] = E[A_1^2] + 2E[A_1]E[A_2] + E[A_2^2] - E[A_1]^2 - 2E[A_1]E[A_2] - E[A_2^2]$$
+$$var[A_1 + A_2] = E[A_1^2] - E[A_1]^2 + E[A_2^2] - E[A_2^2]$$
+$$var[A_1 + A_2] = var[A_1] + var[A_2]$$
+
+\question{2}{Na\"{i}ve Bayes}
 
 \end{document}
