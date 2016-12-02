@@ -136,11 +136,11 @@ Given a discrete random variable X that can take values $x_1, \ x_2, \ ..., \ x_
 
 \textit{Proof:} Starting with the LHS of the equality we want to prove, we will use the definition of expectation to arrive at the RHS.
 
-$$E[A_1 + A_2] = \sum_{i = 1}^k \sum_{j = 1}^k (a_{1i} + a_{2k}) * P(A_1 = a_{1i}, A_2 = a_{2k})$$
+$$E[A_1 + A_2] = \sum_{i = 1}^k \sum_{j = 1}^k (a_{1i} + a_{2j}) * P(A_1 = a_{1i}, A_2 = a_{2j})$$
 
 Multiply and split RHS into two sets of summations.
-$$E[A_1 + A_2] = \sum_{i = 1}^k \sum_{j = 1}^k a_{1i} * P(A_1 = a_{1i}, A_2 = a_{2k})  + \sum_{i = 1}^k \sum_{j = 1}^k a_{2k} * P(A_1 = a_{1i}, A_2 = a_{2k})$$
-$$E[A_1 + A_2] = \sum_{i = 1}^k a_{1i} * P(A_1 = a_{1i})  + \sum_{j = 1}^k a_{2k} * P(A_2 = a_{2k})$$
+$$E[A_1 + A_2] = \sum_{i = 1}^k \sum_{j = 1}^k a_{1i} * P(A_1 = a_{1i}, A_2 = a_{2j})  + \sum_{i = 1}^k \sum_{j = 1}^k a_{2j} * P(A_1 = a_{1i}, A_2 = a_{2j})$$
+$$E[A_1 + A_2] = \sum_{i = 1}^k a_{1i} * P(A_1 = a_{1i})  + \sum_{j = 1}^k a_{2j} * P(A_2 = a_{2j})$$
 
 The RHS is the definition of expectation for $A_1$ summed with the expectation of $A_2$.
 
@@ -168,12 +168,96 @@ Using the proof of linearity of expectation from part \textit{a}, we can rewrite
 
 $$var[A_1 + A_2] = E[A_1^2] + 2E[A_1A_2] + E[A_2^2] - E[A_1]^2 - 2E[A_1]E[A_2] - E[A_2]^2$$ 
 
-When the covariance of two random variables is zero, the expected value operator is multiplicative. That is, $E[XY] = E[X]E[Y]$. We know the covariance of $A_1$ and $A_2$ is 0 as they are independent of each other. Using this:
+When the covariance of two random variables is zero, the expected value operator is multiplicative. That is, $E[XY] = E[X]E[Y]$. We know the covariance of $A_1$ and $A_2$ is 0 as they are independent of each other.
 
 $$var[A_1 + A_2] = E[A_1^2] + 2E[A_1]E[A_2] + E[A_2^2] - E[A_1]^2 - 2E[A_1]E[A_2] - E[A_2^2]$$
 $$var[A_1 + A_2] = E[A_1^2] - E[A_1]^2 + E[A_2^2] - E[A_2^2]$$
 $$var[A_1 + A_2] = var[A_1] + var[A_2]$$
 
 \question{2}{Na\"{i}ve Bayes}
+
+\part{1a} Given infinite data drawn from this distribution, the learned probabilities $\hat P$ will be identical to the true probabilities $P$. This is a result of the law of large numbers.
+
+$$\hat P(y = -1) = 0.1 \ and \ \hat P(y = 1) = 0.9$$
+$$\hat P(x_1 = -1 | y = -1) = 0.8 \ and \  \hat P(x_1 = 1 | y = -1) = 0.2$$
+$$\hat P(x_1 = -1 | y = 1) = 0.1  \ and \ \hat P(x_1 = 1 | y = 1) = 0.9$$ 
+
+\part{1b} Using the conditional independence assumption the naive Bayes model makes, we can calculate the generative distribution of the data using $\hat P(x_1, y) = \hat P(y) \hat P(x_1 | y)$. A prediction $y^\prime$ is determined by taking the maximum of the $\hat P(x_1, y)$ for a given value of $x_1$.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+\textbf{Input} $x_1$ & $\hat P(x_1, y = -1)$ & $\hat P(x_1, y = 1)$ & \textbf{Prediction:} $y^\prime = argmax_y \hat P(x_1, y)$\\
+\hline
+-1 & (0.1)(0.8) = 0.08 & (0.9)(0.1) = 0.09 & 1\\ \hline
+1 & (0.1)(0.2) = 0.02 & (0.9)(0.9) = 0.81 & 1\\ \hline
+\end{tabular}}
+\end{table}
+
+\part{1c} To determine the error of the classifier, we calculate the probability of $P(y^\prime \neq y)$ being true. To calculate this we can use the fact that $P(y^\prime \neq y) = P(y^\prime \neq y, x_1 = -1) + P(y^\prime \neq y, x_1 = 1)$ and the values from the table in part b.
+
+$$P(y^\prime \neq y) = P(y = -1 | x_1 = -1) + P(y = -1 | x_1 = 1)$$
+$$P(y^\prime \neq y) = (0.1)(0.8) + (0.1)(0.2) = 0.1$$
+
+If we trained a classifier on the given data, it would have an error rate of $0.1$.
+
+\part{2a} The two features $x_1$ and $x_2$ are not conditionally independent given $y$.
+
+\textit{Proof:} From lecture we saw the definition of conditional independence of three random variables.
+
+$$P(X, Y|Z) = P(X|Z)P(Y|Z)$$
+$$P(x_1, x_2|y) = P(x_1|y)P(x_2|y)$$
+
+The probability of $x_1$ and $x_2$ occurring can be rewritten using the rule of multiplication.
+
+$$P(x_1, x_2) = P(x_1)P(x_2|x_1)$$
+
+We know that $x_1$ and $x_2$ have an identical distribution, meaning $Px$
+
+
+\question{3}{Na\"{i}ve Bayes and Linear Classifiers}
+
+\question{4}{Experiment}
+
+\part{1} 
+$$g(W) = log(1 + exp(-y_i\mathbf{w^Tx_i}))$$
+
+We want to calculate $\frac{dg}{dw}$, or the derivative of the function $g$ in terms of $\mathbf{w}$. We can use the chain rule where $a = 1 + exp(-y_i\mathbf{w^Tx_i})$ and $b = -y_i\mathbf{w^Tx_i}$.
+
+$$\frac{d}{da} \ log(a) = \frac{1}{a}$$
+$$\frac{d}{db} \ 1 + exp(b)= exp(b)$$
+$$\frac{d}{dw} \ -y_i\mathbf{w^Tx_i} = -y_i\mathbf{x_i}$$
+Computing the derivative of the composition of the three functions using the chain rule:
+$$\frac{dg}{dw} = \frac{dg}{da} * \frac{da}{db} * \frac{db}{dw}$$
+$$\frac{dg}{dw} = \frac{1}{a} * e^b * -y_i\mathbf{x_i}$$
+$$\frac{dg}{dw} = \frac{1}{1 + exp(-y_i\mathbf{w^Tx_i})} * exp(-y_i\mathbf{w^Tx_i}) * -y_i\mathbf{x_i}$$
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{\frac{dg}{dw} = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i})}}
+\end{equation} 
+
+\part{2} When the entire dataset is composed of a single example, the objective can be express as:
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{objective:\ J(w) = log(1 + exp(-y_i\mathbf{w^tx_i})) + \frac{1}{\sigma^2}\mathbf{w^Tw}}
+\end{equation}
+
+This is equivalent to the original optimization problem as finding the min of a summation is redundant when taking only one example.
+
+The gradient of this objective can be found using the derivative found in part $1$ plus the derivative of $\frac{1}{\sigma^2}\mathbf{w^Tw}$. We use the fact that $w^Tw = w^2$ to make the derivative simple.
+
+\begin{equation}
+\setlength\fboxsep{0.25cm}
+\setlength\fboxrule{0.4pt}
+\boxed{\nabla J(w) = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i}} + \frac{2w}{\sigma^2}}
+\end{equation}
+
+\part{3}
 
 \end{document}
