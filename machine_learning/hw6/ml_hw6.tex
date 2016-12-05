@@ -201,7 +201,7 @@ $x_1$ & $\hat P(x_1, y = -1)$ & $\hat P(x_1, y = 1)$ & \textbf{Prediction:} $y^\
 $$P(y^\prime \neq y) = P(y = -1 | x_1 = -1) + P(y = -1 | x_1 = 1)$$
 $$P(y^\prime \neq y) = (0.1)(0.8) + (0.1)(0.2) = 0.1$$
 
-If we trained a classifier on the given data, it would have an error rate of $0.1$.
+If we trained a classifier on the given data, it would have an error rate of $\mathbf{0.1}$.
 
 \part{2a} The two features $x_1$ and $x_2$ are not conditionally independent given $y$.
 
@@ -238,7 +238,7 @@ $x_1$ & $x_2$ & $\hat P(x_1, x_2, y = -1)$ & $\hat P(x_1, x_2, y = 1)$ & \textbf
 
 $$P(y^\prime \neq y) = 0.009 + 0.016 + 0.016 + 0.004 = 0.045$$
 
-If we trained a classifier on the given data, it would have an error rate of 0.045.
+If we trained a classifier on the given data, it would have an error rate of \textbf{0.045}.
 
 \question{3}{Na\"{i}ve Bayes and Linear Classifiers}
 
@@ -263,7 +263,7 @@ $$\frac{dg}{dw} = \frac{1}{1 + exp(-y_i\mathbf{w^Tx_i})} * exp(-y_i\mathbf{w^Tx_
 \boxed{\frac{dg}{dw} = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i})}}
 \end{equation} 
 
-\part{2} When the entire dataset is composed of a single example, the objective can be express as:
+\part{2} When the entire dataset is composed of a single example, the objective is expressed as:
 
 \begin{equation}
 \setlength\fboxsep{0.25cm}
@@ -273,14 +273,26 @@ $$\frac{dg}{dw} = \frac{1}{1 + exp(-y_i\mathbf{w^Tx_i})} * exp(-y_i\mathbf{w^Tx_
 
 This is equivalent to the original optimization problem as finding the min of a summation is redundant when taking only one example.
 
-The gradient of this objective can be found using the derivative found in part $1$ plus the derivative of $\frac{1}{\sigma^2}\mathbf{w^Tw}$. We use the fact that $w^Tw = w^2$ to make the derivative simple.
+The gradient of this objective can be found using the derivative found in part $1$ plus the derivative of $\frac{1}{\sigma^2}\mathbf{w^Tw}$. We use the fact that $w^Tw = w^2$.
 
 \begin{equation}
 \setlength\fboxsep{0.25cm}
 \setlength\fboxrule{0.4pt}
-\boxed{\nabla J(w) = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i}} + \frac{2w}{\sigma^2}}
+\boxed{\nabla J(w) = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i})} + \frac{2w}{\sigma^2}}
 \end{equation}
 
-\part{3}
+\part{3} Using the objective $J(w)$ (Eq. 8) and the gradient $\nabla J(w)$ (Eq. 9) from the previous part, we can write pseudo code for a stochastic gradient descent algorithm. Recall in stochastic gradient descent we treat a random example as the full dataset.
+\vspace{2mm} \break
+{\Large \textbf{Stochastic gradient descent for logistic regression classifier}} \vspace{2mm} \break
+{\large Given a training set S = \{($\mathbf{x_i}, y_i$)\}, $\mathbf{x} \in \Re^n$, $y \in \{-1, 1\}$:} \vspace{2mm} \break
+{\large 1. \hspace{5mm} Initialize $\mathbf{w}^0 = 0 \in \Re^n$} \vspace{2mm} \break
+{\large 2. \hspace{5mm} For epoch = 1 ... T:} \vspace{2mm} \break
+{\large \hspace*{20mm} 1. Take a random example ($\mathbf{x_i}$, y) from training set S} \vspace{2mm} \break
+{\large \hspace*{20mm} 2. Take the derivative of $J(w)$, where the random example represents the entire}
+{\large \hspace*{25mm} dataset, at the current $\mathbf{w^{t-1}}$ to be $\nabla J^t(\mathbf{w^{t-1})}$} \vspace{2mm} \break
+{\large \hspace*{20mm} 3. Update: $\mathbf{w^t} = \mathbf{w^{t-1}} - \nabla J^t(\mathbf{w^{t-1}})$} \vspace{2mm} \break
+{\large 3. Training is done, return the weight vector $\mathbf{w}$}
+
+\part{4}
 
 \end{document}
