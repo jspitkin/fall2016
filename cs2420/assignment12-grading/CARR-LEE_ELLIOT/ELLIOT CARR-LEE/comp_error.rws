@@ -1,0 +1,7 @@
+HuffmanCompressionTiming.java:12: error: package assignment11 does not exist
+import assignment11.PriorityQueue;
+                   ^
+HuffmanTreeTest.java:14: error: package assignment09 does not exist
+import assignment09.PathFinder;
+                   ^
+2 errors

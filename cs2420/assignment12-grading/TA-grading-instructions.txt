@@ -1,0 +1,14 @@
+ANALYSIS DOC (20 pts)
+------------------------------------
+1.  [ 8 pt ]  Look for a good effort and well-labeled plots that the students attempt to explain.  See the expected running times below.
+
+2.  [ 6 pt ]  Expect constant for find min, constant or log for add, log for delete.  It is okay if the results do not match this, so long as they aren't that far off and the student attempts to explain why they do not match. Logarithmic growths can be very hard to see, so they may all look constant.
+
+3.  [ 3 pt ]  Accept anything valid.  PQ apps from class include Dijkstra's shortest-path alg.
+
+4.  [ 3 pt ]  If anyone spent > 10 hours, that's a red flag.  We should investigate why they struggled so much.
+
+
+PROGRAM (80 pts)
+-----------------------------
+(see autograder)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 DEC 2016 13:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 DEC 2016 09:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -304,7 +304,12 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 
 [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] [4] [5] [6] (/Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.aux) ) 
+] [2] [3] [4]
+Overfull \hbox (23.06067pt too wide) in paragraph at lines 226--235
+ [][] 
+ []
+
+[5] [6] (/Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.aux) ) 
 Here is how much of TeX's memory you used:
  3686 strings out of 493089
  50416 string characters out of 6134842
@@ -314,7 +319,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  38i,11n,43p,417b,215s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.pdf (6 pages, 137721 bytes).
+Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.pdf (6 pages, 139257 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  47 compressed objects within 1 object stream

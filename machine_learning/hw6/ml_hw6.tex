@@ -189,14 +189,14 @@ $$\hat P(x_1 = -1 | y = 1) = 0.1  \ and \ \hat P(x_1 = 1 | y = 1) = 0.9$$
 {\renewcommand{\arraystretch}{1.2}%
 \begin{tabular}{| c | c | c | c |}
 \hline
-\textbf{Input} $x_1$ & $\hat P(x_1, y = -1)$ & $\hat P(x_1, y = 1)$ & \textbf{Prediction:} $y^\prime = argmax_y \hat P(x_1, y)$\\
+$x_1$ & $\hat P(x_1, y = -1)$ & $\hat P(x_1, y = 1)$ & \textbf{Prediction:} $y^\prime = argmax_y \hat P(x_1, y)$\\
 \hline
--1 & (0.1)(0.8) = 0.08 & (0.9)(0.1) = 0.09 & 1\\ \hline
-1 & (0.1)(0.2) = 0.02 & (0.9)(0.9) = 0.81 & 1\\ \hline
+-1 & (0.1)(0.8) = \textbf{0.08} & (0.9)(0.1) = \textbf{0.09} & 1\\ \hline
+1 & (0.1)(0.2) = \textbf{0.02} & (0.9)(0.9) = \textbf{0.81} & 1\\ \hline
 \end{tabular}}
 \end{table}
 
-\part{1c} To determine the error of the classifier, we calculate the probability of $P(y^\prime \neq y)$ being true. To calculate this we can use the fact that $P(y^\prime \neq y) = P(y^\prime \neq y, x_1 = -1) + P(y^\prime \neq y, x_1 = 1)$ and the values from the table in part b.
+\part{1c} To determine the error of the classifier, we calculate the probability of $P(y^\prime \neq y)$ being true. To calculate this we can use the fact that $P(y^\prime \neq y) = P(y^\prime \neq y, x_1 = -1) + P(y^\prime \neq y, x_1 = 1)$, using the values from the table in part b.
 
 $$P(y^\prime \neq y) = P(y = -1 | x_1 = -1) + P(y = -1 | x_1 = 1)$$
 $$P(y^\prime \neq y) = (0.1)(0.8) + (0.1)(0.2) = 0.1$$
@@ -205,17 +205,40 @@ If we trained a classifier on the given data, it would have an error rate of $0.
 
 \part{2a} The two features $x_1$ and $x_2$ are not conditionally independent given $y$.
 
-\textit{Proof:} From lecture we saw the definition of conditional independence of three random variables.
+\textit{Proof:} From lecture we saw the definition of conditional independence of three random variables. The random variables are independent if and only if the equality is satisfied.
 
 $$P(X, Y|Z) = P(X|Z)P(Y|Z)$$
 $$P(x_1, x_2|y) = P(x_1|y)P(x_2|y)$$
 
-The probability of $x_1$ and $x_2$ occurring can be rewritten using the rule of multiplication.
+As $x_1$ and $x_2$ are identical, $P(x_1, x_2 | y)$ is the same as $P(x_1 |y)$ as $x_1$ and $x_2$ always happen or don't happen together. Replacing $P(x_1, x_2 |y)$ with $P(x_1 | y)$ in the conditional independence formula.
 
-$$P(x_1, x_2) = P(x_1)P(x_2|x_1)$$
+$$P(x_1 | y) = P(x_1 | y)P(x_2 | y)$$
 
-We know that $x_1$ and $x_2$ have an identical distribution, meaning $Px$
+We know our given probabilities are non-zero, thus the above equality does not hold. Proving $x_1$ and $x_2$ are not conditionally independent.
 
+\part{2b} As in part 1, using the conditional independence assumption the naive Bayes model makes, we can use $\hat P(x_1 | y)$, $\hat P(x_2 | y)$, and $\hat P(y)$ to calculate the generative distribution of the data.
+
+$$\hat P(x_1, x_2, y) = \hat P(y) \hat P(x_1 | y) \hat P(x_2 | y)$$
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+$x_1$ & $x_2$ & $\hat P(x_1, x_2, y = -1)$ & $\hat P(x_1, x_2, y = 1)$ & \textbf{Prediction:} $y^\prime = argmax_y \hat P(x_1, x_2, y)$\\
+\hline
+-1 & -1 & (0.1)(0.8)(0.8) = \textbf{0.064} & (0.9)(0.1)(0.1) = \textbf{0.009} & -1\\ \hline
+-1 & 1 & (0.1)(0.8)(0.2) = \textbf{0.016} & (0.9)(0.1)(0.9) = \textbf{0.081} & 1\\ \hline
+1 & -1 & (0.1)(0.2)(0.8) = \textbf{0.016} & (0.9)(0.9)(0.1) = \textbf{0.081} & 1\\ \hline
+1 & 1 & (0.1)(0.2)(0.2) = \textbf{0.004} & (0.9)(0.9)(0.9) = \textbf{0.729} & 1\\ \hline
+\end{tabular}}
+\end{table}
+
+\part{2c} To determine the error of the classifier, we calculate the probability of $P(y^\prime \neq y)$ being true. To calculate this we can use the fact that $P(y^\prime \neq y) = P(y^\prime \neq y, x_1 = -1, x_2 = -1) + P(y^\prime \neq y, x_1 = -1, x_2 = 1) + P(y^\prime \neq y, x_1 = 1, x_2 = -1) + P(y^\prime \neq y, x_1 = 1, x_2 = 1)$, using the values from the table in part b.
+
+$$P(y^\prime \neq y) = 0.009 + 0.016 + 0.016 + 0.004 = 0.045$$
+
+If we trained a classifier on the given data, it would have an error rate of 0.045.
 
 \question{3}{Na\"{i}ve Bayes and Linear Classifiers}
 

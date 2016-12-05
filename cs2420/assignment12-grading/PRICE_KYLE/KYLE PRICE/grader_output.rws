@@ -1,0 +1,44 @@
+-------------------------------
+-----Small File Compression----
+PASSED: "inClass1.txt" compression resulted in large file.
+PASSED: "inClass1.txt" successfully decompressed
+PASSED: "helloWorld.txt" compression resulted in large file.
+PASSED: "helloWorld.txt" successfully decompressed
+PASSED: "tie_1.txt" compression resulted in large file.
+PASSED: "tie_1.txt" successfully decompressed
+PASSED: "abcs.txt" compression resulted in large file.
+PASSED: "abcs.txt" successfully decompressed
+PASSED: "tie_2.txt" compression resulted in large file.
+PASSED: "tie_2.txt" successfully decompressed
+PASSED: "tie_3.txt" compression resulted in large file.
+PASSED: "tie_3.txt" successfully decompressed
+
+
+-------------------------------
+----Medium File Compression----
+PASSED: "modernMajor.txt" compression resulted in smaller file.
+PASSED: "modernMajor.txt" successfully decompressed
+PASSED: "shakespeare.txt" compression resulted in smaller file.
+PASSED: "shakespeare.txt" successfully decompressed
+
+
+-------------------------------
+----Large File Compression----
+PASSED: "guliversTravels.txt" compression resulted in smaller file.
+PASSED: "guliversTravels.txt" successfully decompressed
+PASSED: "senseAndSensi.txt" compression resulted in smaller file.
+PASSED: "senseAndSensi.txt" successfully decompressed
+
+
+-------------------------------
+--------Scoring Results--------
+
+/15  TA spot check.
+50.0/50  Compression/decompression tests.
+/10  Quality of tests and style.
+
+/75  Total points.
+
+
+-------------------------------
+----------TA Comments----------
