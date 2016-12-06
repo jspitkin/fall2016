@@ -5,6 +5,7 @@ def read_file(path, feature_count):
         for line in file:
             line = line.strip().split(' ')
             feature_vector = [0 for x in range(feature_count)]
+            feature_vector[0] = 1
             label = int(line[0])
             for feature in line[1:]:
                 colon_index = feature.index(':')
@@ -12,5 +13,13 @@ def read_file(path, feature_count):
                 value = int(feature[colon_index + 1:])
                 feature_vector[index] = value
             examples.append({'label' : label, 'feature_vector' : feature_vector})
-    print(examples)
     return examples
+
+def write_csv(path, likelihoods):
+    file = open(path, 'w')
+    index = 1
+    for likelihood in likelihoods:
+        entry = str(index) + ',' + likelihood + '\n'
+        file.write(entry)
+        index += 1
+    file.close()

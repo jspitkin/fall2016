@@ -278,7 +278,7 @@ The gradient of this objective can be found using the derivative found in part $
 \begin{equation}
 \setlength\fboxsep{0.25cm}
 \setlength\fboxrule{0.4pt}
-\boxed{\nabla J(w) = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i})} + \frac{2w}{\sigma^2}}
+\boxed{\nabla J(w) = \frac{-y_i\mathbf{x_i}}{1 + exp(y_i\mathbf{w^Tx_i})} + \frac{2\mathbf{w}}{\sigma^2}}
 \end{equation}
 
 \part{3} Using the objective $J(w)$ (Eq. 8) and the gradient $\nabla J(w)$ (Eq. 9) from the previous part, we can write pseudo code for a stochastic gradient descent algorithm. Recall in stochastic gradient descent we treat a random example as the full dataset.
@@ -287,12 +287,12 @@ The gradient of this objective can be found using the derivative found in part $
 {\large Given a training set S = \{($\mathbf{x_i}, y_i$)\}, $\mathbf{x} \in \Re^n$, $y \in \{-1, 1\}$:} \vspace{2mm} \break
 {\large 1. \hspace{5mm} Initialize $\mathbf{w}^0 = 0 \in \Re^n$} \vspace{2mm} \break
 {\large 2. \hspace{5mm} For epoch = 1 ... T:} \vspace{2mm} \break
-{\large \hspace*{20mm} 1. Take a random example ($\mathbf{x_i}$, y) from training set S} \vspace{2mm} \break
-{\large \hspace*{20mm} 2. Take the derivative of $J(w)$, where the random example represents the entire}
+{\large \hspace*{20mm} 1. For each training example ($\mathbf{x_i}$, $y_i) \in S$:} \vspace{2mm} \break
+{\large \hspace*{20mm} 2. Take the derivative of $J(w)$, where the current example represents the entire}
 {\large \hspace*{25mm} dataset, at the current $\mathbf{w^{t-1}}$ to be $\nabla J^t(\mathbf{w^{t-1})}$} \vspace{2mm} \break
-{\large \hspace*{20mm} 3. Update: $\mathbf{w^t} = \mathbf{w^{t-1}} - \nabla J^t(\mathbf{w^{t-1}})$} \vspace{2mm} \break
+{\large \hspace*{20mm} 3. Update: $\mathbf{w^t} = \mathbf{w^{t-1}} - \gamma \nabla J^t(\mathbf{w^{t-1}})$} \vspace{2mm} \break
 {\large 3. Training is done, return the weight vector $\mathbf{w}$}
 
-\part{4}
+\part{4} Plot the entire objective (including the normalizer) at the end of each epoch. Shuffle the dataset and pass through the entire dataset each epoch.
 
 \end{document}
