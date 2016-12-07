@@ -31,12 +31,12 @@ def main():
     results = sgd.test(training_examples)
     print("Training Set:")
     print("Epoch:", EPOCH, "Gamma:", 0.01, "Sigma:", 50)
-    print("Accuracy:", result['accuracy'])
+    print("Accuracy:", results['accuracy'])
     print()
     results = sgd.test(test_examples)
     print("Test Set:")
     print("Epoch:", EPOCH, "Gamma:", 0.01, "Sigma:", 50)
-    print("Accuracy:", result['accuracy'])
+    print("Accuracy:", results['accuracy'])
 
 def cross_validation(split_examples, feature_count, epoch, sigma_values, gamma_values):
     for sigma in sigma_values:

@@ -172,6 +172,9 @@ When the covariance of two random variables is zero, the expected value operator
 
 $$var[A_1 + A_2] = E[A_1^2] + 2E[A_1]E[A_2] + E[A_2^2] - E[A_1]^2 - 2E[A_1]E[A_2] - E[A_2^2]$$
 $$var[A_1 + A_2] = E[A_1^2] - E[A_1]^2 + E[A_2^2] - E[A_2^2]$$
+
+Arriving at the definition of variance after it is expanded out with algebra:
+
 $$var[A_1 + A_2] = var[A_1] + var[A_2]$$
 
 \question{2}{Na\"{i}ve Bayes}
@@ -240,7 +243,7 @@ $$P(y^\prime \neq y) = 0.009 + 0.016 + 0.016 + 0.004 = 0.045$$
 
 If we trained a classifier on the given data, it would have an error rate of \textbf{0.045}.
 
-\part{2d} Both na\"ive Bayes (generative) and logistic regression (discriminative) compute the same posterior distribution over the outputs. But, discriminative models doesn't characterize the distribution of the inputs as a generative model does.
+\part{2d} Both na\"ive Bayes (generative) and logistic regression (discriminative) compute the same posterior distribution over the outputs. But, discriminative models don't characterize the distribution of the inputs where a generative model does.
 
 So no, I don't expected the duplication of a variable to have the same results in logistic regression as we saw in na\"ive Bayes.
 
@@ -268,13 +271,13 @@ Suppose each $Pr(x_j|y)$ is defined using a Gaussian/Normal probability density 
 \frac{p}{p-1} * \prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}e^{\frac{-(x_j-\mu_{j,1})^2}{2\sigma^2}}}{\frac{1}{\sqrt{2\sigma^2\pi}}e^{\frac{-(x_j-\mu_{j,0})^2}{2\sigma^2}}} \geq 1
 \end{equation}
 
-Our goal is to get Eq. (10) in the form of a familiar linear model. First, we group all the constant terms that don't rely on a $x_i$ term.
+Our goal is to get Eq. (10) in the form of a familiar linear model. First, we group all the constant terms that don't rely on a $x_j$ term.
 
 \begin{equation}
 \Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \prod_{i = 0}^d \frac{e^{\frac{-(x_j-\mu_{j,1})^2}{2\sigma^2}}}{e^{\frac{-(x_j-\mu_{j,0})^2}{2\sigma^2}}} \geq 1
 \end{equation}
 
-Apply the log rule $e^{-x}/e^{-y} = e^{x-y}$:
+Apply the log rule $e^{-x}/e^{-y} = e^{y-x}$:
 
 \begin{equation}
 \Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \prod_{i = 0}^d e^{\frac{(x_j-\mu_{j,0})^2}{2\sigma^2} - \frac{(x_j-\mu_{j,1})^2}{2\sigma^2}} \geq 1
@@ -282,19 +285,23 @@ Apply the log rule $e^{-x}/e^{-y} = e^{x-y}$:
 
 Then we will take the natural log of both sides of the equation:
 
-%\begin{equation}
-%\log \Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) + \sum_{i = 0}^d \frac{\frac{-(x_j-\mu_{j,1})^2}{2\sigma^2}}{\frac{-(x_j-\mu_{j,0})^2}{2\sigma^2}} \geq 0
-%\end{equation}
-
 \begin{equation}
-\Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \sum_{i = 0}^d \frac{(x_j-\mu_{j,0})^2}{2\sigma^2} - \frac{(x_j-\mu_{j,1})^2}{2\sigma^2} \geq 0
+log \Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \sum_{i = 0}^d \frac{(x_j-\mu_{j,0})^2}{2\sigma^2} - \frac{(x_j-\mu_{j,1})^2}{2\sigma^2} \geq 0
 \end{equation}
 
-Let denote the grouped constant terms as $b$ and simplify the second term in the sum:
+Expanding the squares, canceling like terms and factoring $x_j$ out:
 
 \begin{equation}
-b + \sum_{i = 0}^d \frac{x_j - \mu_{j,1}}{x_j - \mu_{j,0}} \geq 0
+log \Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \sum_{i = 0}^d x_j * \frac{2\mu_{j,1} - 2\mu_{j,0}}{2\sigma^2} \geq 0
 \end{equation}
+
+Let us denote the grouped constant terms outside the summation by $b$ and let us denote $\frac{2\mu_{j,1} - 2\mu_{j,0}}{2\sigma^2}$ by $w_j$:
+
+\begin{equation}
+b + \sum_{i = 0}^d x_jw_j \geq 0
+\end{equation}
+
+Recall if the original Eq. (7) was true we should predict a label of 1. Thus, we have shown Eq. (7) is a linear classifier.
 
 \question{4}{Experiment}
 
@@ -341,7 +348,7 @@ The gradient of this objective can be found using the derivative found in part $
 {\large Given a training set S = \{($\mathbf{x_i}, y_i$)\}, $\mathbf{x} \in \Re^n$, $y \in \{-1, 1\}$:} \vspace{2mm} \break
 {\large 1. \hspace{5mm} Initialize $\mathbf{w}^0 = 0 \in \Re^n$} \vspace{2mm} \break
 {\large 2. \hspace{5mm} For epoch = 1 ... T:} \vspace{2mm} \break
-{\large \hspace*{20mm} 1. For each training example ($\mathbf{x_i}$, $y_i) \in S$:} \vspace{2mm} \break
+{\large \hspace*{20mm} 1. For each shuffled training example ($\mathbf{x_i}$, $y_i) \in S$:} \vspace{2mm} \break
 {\large \hspace*{20mm} 2. Take the derivative of $J(w)$, where the current example represents the entire}
 {\large \hspace*{25mm} dataset, at the current $\mathbf{w^{t-1}}$ to be $\nabla J^t(\mathbf{w^{t-1})}$} \vspace{2mm} \break
 {\large \hspace*{20mm} 3. Update: $\mathbf{w^t} = \mathbf{w^{t-1}} - \gamma \nabla J^t(\mathbf{w^{t-1}})$} \vspace{2mm} \break
