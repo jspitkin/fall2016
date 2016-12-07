@@ -240,11 +240,61 @@ $$P(y^\prime \neq y) = 0.009 + 0.016 + 0.016 + 0.004 = 0.045$$
 
 If we trained a classifier on the given data, it would have an error rate of \textbf{0.045}.
 
-\part{2d} Both na\"ive Bayes (generative) and logistic regression (discriminative) compute the same posterior distribution over the outputs. But, discriminative models doesn't characterize the distribution of the inputs as a generative model does. 
+\part{2d} Both na\"ive Bayes (generative) and logistic regression (discriminative) compute the same posterior distribution over the outputs. But, discriminative models doesn't characterize the distribution of the inputs as a generative model does.
 
 So no, I don't expected the duplication of a variable to have the same results in logistic regression as we saw in na\"ive Bayes.
 
-\question{3}{Na\"{i}ve Bayes and Linear Classifiers}
+\question{3}{Na\"{i}ve Bayes and Linear Classifiers} Our classifier will predict a label of 1 if the following is true:
+
+\begin{equation}
+\frac{Pr(x|y = 1)Pr(y=1)}{Pr(x|y = 0)Pr(y = 0)} \geq 1
+\end{equation}
+
+We saw in class that the na\"ive Bayes classifier makes the assumption that all features $x_j$ are independent of each other. This allows for a simplified calculation for a conditional probability:
+
+\begin{equation}
+Pr(\mathbf{x}|y) = \prod_{j=0}^d Pr(x_j|y)
+\end{equation}
+
+This allows us to rewrite the condition for predicting a label of 1 from Eq. (7):
+
+\begin{equation}
+\frac{Pr(y=1)}{Pr(y=0)} * \prod_{i = 0}^d \frac{Pr(x_j | y = 1)}{Pr(x_j | y = 0)} \geq 1
+\end{equation}
+
+Suppose each $Pr(x_j|y)$ is defined using a Gaussian/Normal probability density function, one for each value of $y$ and $j$. Each Gaussian distribution has mean $\mu_{j,y}$ and variance $\sigma^2$. We can rewrite the $Pr(x_j|y)$ in Eq. (9) in terms of their Gaussian functions. Additionally we will replace $Pr(y = 1)$ with $p$ and $Pr(y = 0)$ with $p - 1$.
+
+\begin{equation}
+\frac{p}{p-1} * \prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}e^{\frac{-(x_j-\mu_{j,1})^2}{2\sigma^2}}}{\frac{1}{\sqrt{2\sigma^2\pi}}e^{\frac{-(x_j-\mu_{j,0})^2}{2\sigma^2}}} \geq 1
+\end{equation}
+
+Our goal is to get Eq. (10) in the form of a familiar linear model. First, we group all the constant terms that don't rely on a $x_i$ term.
+
+\begin{equation}
+\Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \prod_{i = 0}^d \frac{e^{\frac{-(x_j-\mu_{j,1})^2}{2\sigma^2}}}{e^{\frac{-(x_j-\mu_{j,0})^2}{2\sigma^2}}} \geq 1
+\end{equation}
+
+Apply the log rule $e^{-x}/e^{-y} = e^{x-y}$:
+
+\begin{equation}
+\Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \prod_{i = 0}^d e^{\frac{(x_j-\mu_{j,0})^2}{2\sigma^2} - \frac{(x_j-\mu_{j,1})^2}{2\sigma^2}} \geq 1
+\end{equation}
+
+Then we will take the natural log of both sides of the equation:
+
+%\begin{equation}
+%\log \Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) + \sum_{i = 0}^d \frac{\frac{-(x_j-\mu_{j,1})^2}{2\sigma^2}}{\frac{-(x_j-\mu_{j,0})^2}{2\sigma^2}} \geq 0
+%\end{equation}
+
+\begin{equation}
+\Bigg( \frac{p}{p-1}\prod_{i = 0}^d \frac{\frac{1}{\sqrt{2\sigma^2\pi}}}{\frac{1}{\sqrt{2\sigma^2\pi}}} \Bigg) * \sum_{i = 0}^d \frac{(x_j-\mu_{j,0})^2}{2\sigma^2} - \frac{(x_j-\mu_{j,1})^2}{2\sigma^2} \geq 0
+\end{equation}
+
+Let denote the grouped constant terms as $b$ and simplify the second term in the sum:
+
+\begin{equation}
+b + \sum_{i = 0}^d \frac{x_j - \mu_{j,1}}{x_j - \mu_{j,0}} \geq 0
+\end{equation}
 
 \question{4}{Experiment}
 

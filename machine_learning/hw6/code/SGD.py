@@ -13,16 +13,14 @@ class SGD():
         random.seed(7)
 
     def train(self, training_examples):
-        current_epoch = 1
         for epoch in range(self.EPOCH):
             random.shuffle(training_examples)
             for example in training_examples:
                 gradient = self.calculate_gradient(example)
                 self.update_weight_vector(gradient)
-            self.update_log_likelihood(training_examples)
-            print(current_epoch)
-            current_epoch += 1
-        ioutil.write_csv('likelihoods.csv', self.likelihoods)
+            # Uncomment to write a plot of the objective to file
+            #self.update_log_likelihood(training_examples)
+        #ioutil.write_csv('likelihoods.csv', self.likelihoods)
 
     def test(self, test_examples):
         correct = 0
