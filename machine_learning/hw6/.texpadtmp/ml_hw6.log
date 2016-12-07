@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2016 09:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2016 18:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -310,26 +310,31 @@ Overfull \hbox (23.06067pt too wide) in paragraph at lines 226--235
  []
 
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 287.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 291.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 287.
- [6] [7] (/Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 291.
+ [6] <objective.png, id=32, 602.25pt x 372.39125pt>
+File: objective.png Graphic file (type png)
+ <use objective.png>
+Package pdftex.def Info: objective.png used on input line 338.
+(pdftex.def)             Requested size: 469.75502pt x 290.47536pt.
+ [7] [8 <./objective.png>] (/Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.aux) ) 
 Here is how much of TeX's memory you used:
- 3716 strings out of 493089
- 50887 string characters out of 6134842
- 123332 words of memory out of 5000000
- 7123 multiletter control sequences out of 15000+600000
+ 3725 strings out of 493089
+ 51005 string characters out of 6134842
+ 124332 words of memory out of 5000000
+ 7130 multiletter control sequences out of 15000+600000
  12710 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,43p,417b,215s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,43p,592b,224s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.pdf (7 pages, 176980 bytes).
+Output written on /Users/jsp/Documents/fall_2016/machine_learning/hw6/.texpadtmp/ml_hw6.pdf (8 pages, 220671 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

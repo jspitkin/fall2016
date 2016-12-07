@@ -1,56 +1,45 @@
 import random
 import math
+import ioutil
 
 class SGD():
-    def __init__(self, feature_count, epoch, sigma, initial_gamma):
+    def __init__(self, feature_count, epoch, sigma, gamma):
         self.FEATURE_COUNT = feature_count
         self.EPOCH = epoch
         self.SIGMA = sigma
-        self.initial_gamma = initial_gamma
-        self.gamma = initial_gamma
+        self.GAMMA = gamma
         self.weight_vector = [0 for x in range(self.FEATURE_COUNT)]
         self.likelihoods = []
         random.seed(7)
 
     def train(self, training_examples):
+        current_epoch = 1
         for epoch in range(self.EPOCH):
             random.shuffle(training_examples)
             for example in training_examples:
                 gradient = self.calculate_gradient(example)
                 self.update_weight_vector(gradient)
-                self.update_log_likelihood(training_examples)
+            self.update_log_likelihood(training_examples)
+            print(current_epoch)
+            current_epoch += 1
         ioutil.write_csv('likelihoods.csv', self.likelihoods)
 
     def test(self, test_examples):
         correct = 0
         mistakes = 0
         total_examples = 0
-        false_positives = 0
-        false_negatives = 0
-        positive_predictions = 0
-        negative_predictions = 0
         for example in test_examples:
             prediction = 0
             for index in range(self.FEATURE_COUNT):
                 prediction += self.weight_vector[index] * example['feature_vector'][index]
             prediction = self.sign(prediction)
-            if prediction == 1:
-                positive_predictions += 1
-            else:
-                negative_predictions += 1
             if prediction == example['label']: 
                 correct += 1
-            elif prediction == -1 and example['label'] == 1:
-                false_negatives += 1
-                mistakes += 1
-            elif prediction == 1 and example['label'] == -1:
-                false_positives +=1
+            else:
                 mistakes +=1
             total_examples += 1
         accuracy = round(correct/total_examples, 3)
-        #print('FP:' , false_positives, 'FN:', false_negatives, "+:", positive_predictions, "-:", negative_predictions, sep='\t')
         return {'correct' : correct, 'mistakes' : mistakes, 'examples' : total_examples, 'accuracy' : accuracy}
-
 
     def sign(self, value):
         if value >= 0:
@@ -70,11 +59,20 @@ class SGD():
 
     def update_weight_vector(self, gradient):
         for index in range(self.FEATURE_COUNT):
-            self.weight_vector[index] = self.weight_vector[index] - (self.gamma * gradient[index])
+            self.weight_vector[index] = self.weight_vector[index] - (self.GAMMA * gradient[index])
 
     def update_log_likelihood(self, training_examples):
         likelihood = 0
         w_transpose = 0
-        w_x = 0
-            
-            
+        for index in range(self.FEATURE_COUNT):
+            w_transpose = self.weight_vector[index] * self.weight_vector[index]
+        w_transpose = w_transpose / (self.SIGMA * self.SIGMA)
+        for example in training_examples:
+            w_x = 0
+            for index in range(self.FEATURE_COUNT):
+                w_x += self.weight_vector[index] + example['feature_vector'][index]
+            w_x = -1 * example['label'] * w_x
+            w_x = math.log((1 + math.exp(w_x)))
+            likelihood += w_x
+        likelihood +=  w_transpose
+        self.likelihoods.append(likelihood)

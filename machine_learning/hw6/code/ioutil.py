@@ -19,7 +19,7 @@ def write_csv(path, likelihoods):
     file = open(path, 'w')
     index = 1
     for likelihood in likelihoods:
-        entry = str(index) + ',' + likelihood + '\n'
+        entry = str(index) + ',' + str(likelihood) + '\n'
         file.write(entry)
         index += 1
     file.close()

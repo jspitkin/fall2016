@@ -240,6 +240,10 @@ $$P(y^\prime \neq y) = 0.009 + 0.016 + 0.016 + 0.004 = 0.045$$
 
 If we trained a classifier on the given data, it would have an error rate of \textbf{0.045}.
 
+\part{2d} Both na\"ive Bayes (generative) and logistic regression (discriminative) compute the same posterior distribution over the outputs. But, discriminative models doesn't characterize the distribution of the inputs as a generative model does. 
+
+So no, I don't expected the duplication of a variable to have the same results in logistic regression as we saw in na\"ive Bayes.
+
 \question{3}{Na\"{i}ve Bayes and Linear Classifiers}
 
 \question{4}{Experiment}
@@ -293,6 +297,45 @@ The gradient of this objective can be found using the derivative found in part $
 {\large \hspace*{20mm} 3. Update: $\mathbf{w^t} = \mathbf{w^{t-1}} - \gamma \nabla J^t(\mathbf{w^{t-1}})$} \vspace{2mm} \break
 {\large 3. Training is done, return the weight vector $\mathbf{w}$}
 
-\part{4} Plot the entire objective (including the normalizer) at the end of each epoch. Shuffle the dataset and pass through the entire dataset each epoch.
+\part{4} \textit{Cross validation:} I performed cross validation to determine the best learning rate $\gamma$ and $\sigma^2$ for the Adult data set. For each combination of $\gamma \in \{1, \ 0.5, \ 0.1, \ 0.05, \ 0.01, \ 0.001\}$ and $\sigma \in \{10, \ 20, \ 25, \ 50, \ 100, \ 1,000\}$ 6-cross validation was performed. Below is a table of interesting results including the best and worst performing hyper-parameters.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c |}
+\hline
+$\gamma$ & $\sigma$ & Epoch & Accuracy\\
+\hline
+1 & 25 & 1 & 0.594\\ \hline
+0.01 & 10 & 1 & 0.835\\ \hline
+0.01 & 50 & 1 & 0.845\\ \hline
+0.01 & 1,000 & 1 & 0.844\\ \hline
+0.0001 & 25 & 1 & 0.756\\ \hline
+\end{tabular}}
+\caption{Interesting results from 6-fold cross validation.}
+\end{table}
+
+I found $\sigma$ to have little to no weight on the accuracy of the classifier. This can be seen in the middle three results from the table, regardless of the $\sigma$ chosen the accuracy remains the same. I found the choice of $\gamma$ to be the determiner in the accuracy of the classifier. A large $\gamma$ such as 1 or a smaller $\gamma$ such as 0.0001 caused poor results. It should be noted that 0.76 is a baseline for this dataset as predicting all -1 gives this accuracy. \textbf{I found the best $\gamma$ to be 0.01 when paired with a $\sigma$ of 50}.
+
+\textit{Experiment:} With the found best $\gamma$ of 0.01 and $\sigma$ of 50, I trained stochastic gradient descent algorithm on the Adult training data. Once trained, I evaluated it's performance on the Adult training and Adult test data.
+
+\begin{table}[H]
+\centering
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+Data Set & $\gamma$ & $\sigma$ & Epoch & Accuracy\\
+\hline
+Adult training & 0.01 & 50 & 200 & 0.85\\ \hline
+Adult testing & 0.01 & 50 & 200 & 0.847\\ \hline
+\end{tabular}}
+\caption{Classification accuracy on the Adult training and test set.}
+\end{table}
+
+Below is a plot of the objective after each epoch of SGD. For this plot, SGD was ran on the Adult training set with a $\gamma$ of 0.01, a $\sigma$ of 50, and a epoch of 200.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=1\linewidth]{objective.png}}
+\end{figure}
 
 \end{document}
