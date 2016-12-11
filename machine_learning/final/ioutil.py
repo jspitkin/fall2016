@@ -1,6 +1,7 @@
 # Jake Pitkin November 5 2016
 import sys
 from random import randint
+import math
 
 
 def get_feature_count(path):
@@ -39,8 +40,15 @@ def read_svm_file(path):
                 examples.append(example)
     return examples
 
+def read_svm_file_log(path):
+    examples = read_svm_file(path)
+    for example in examples:
+        for index in range(len(example['feature_vector'])):
+            if example['feature_vector'][index] != 0:
+                example['feature_vector'][index] = math.log(example['feature_vector'][index])
+    return examples
 
-def read_svm_file_buckets(path):
+def read_svm_file_buckets(path, variant):
     examples = read_svm_file(path)
     averages = [0 for x in range(len(examples[0]['feature_vector']))]
     maxes = [0 for x in range(len(examples[0]['feature_vector']))]
@@ -66,7 +74,7 @@ def read_svm_file_buckets(path):
         for index in range(len(example['feature_vector'])):
             if feature_count[index] == 0:
                 continue
-            if example['feature_vector'][index] <= averages[index]:
+            if example['feature_vector'][index] <= (variant * averages[index]):
                 example['feature_vector'][index] = 0
             else:
                 example['feature_vector'][index] = 1

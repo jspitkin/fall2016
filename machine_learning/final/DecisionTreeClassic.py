@@ -6,7 +6,6 @@ from collections import Counter
 class Edge:
     def __init__(self, feature_value):
         self.feature_value = feature_value
-        self.classifications = []
 
     def set_child(self, child_node):
         self.child_node = child_node
@@ -29,15 +28,14 @@ class Node:
         return self.value
 
 class DecisionTree:
-    def __init__(self, feature_count, relevant_features, m):
+    def __init__(self, feature_count):
         self.feature_count = feature_count
-        self.relevant_features = relevant_features
-        self.m = m
+        self.classifications = []
 
-    def get_feature_columns(self, examples, feature_count):
+    def get_feature_columns(self, examples):
         if len(examples) < 1:
             return []
-        feature_columns = [[] for i in range(feature_count)]
+        feature_columns = [[] for i in range(self.feature_count)]
         labels = []
         for example in examples:
             for index, feature in enumerate(example['feature_vector']):
@@ -115,7 +113,7 @@ class DecisionTree:
                 for index, example in enumerate(examples):
                     if example['feature_vector'][best_attribute_column] == attribute:
                         sub_examples.append(example)
-                sub_columns = self.get_feature_columns(sub_examples, len(self.relevant_features))
+                sub_columns = self.get_feature_columns(sub_examples)
                 new_edge.set_child(self.ID3(sub_examples, sub_columns['feature_columns'], sub_columns['labels_column'], possible_attribute_values, depth+1))
         return root
 
@@ -130,29 +128,15 @@ class DecisionTree:
         return relevant_examples
 
     def construct_tree(self, training_data):
-        possible_attribute_values = [set([0, 1]) for x in range(self.feature_count)]
-        training_data = ioutil.get_m_random_examples(training_data, self.m)
-        training_data = self.get_relevant_features(training_data)
-        feature_columns = self.get_feature_columns(training_data, len(self.relevant_features))
+        possible_attribute_values = [set([1, 0]) for x in range(self.feature_count)]
+        feature_columns = self.get_feature_columns(training_data)
         self.root = self.ID3(training_data, feature_columns['feature_columns'], feature_columns['labels_column'], possible_attribute_values, 0)
 
     def test(self, examples):
-        examples = self.get_relevant_features(examples)
-        feature_columns = self.get_feature_columns(examples, len(self.relevant_features))
+        feature_columns = self.get_feature_columns(examples)
         correct_predictions = 0
-        tp = 0
-        tn = 0
-        f1 = 0
-        positive_examples = 0
-        negative_examples = 0
-        positive_labels = 0
-        negative_labels = 0
         predictions = []
         for example in examples:
-            if example['label'] == 1:
-                positive_examples += 1
-            else:
-                negative_examples += 1
             current_node = self.root
             while len(current_node.edges) > 0:
                 example_attribute_value = example['feature_vector'][current_node.value]
@@ -162,16 +146,8 @@ class DecisionTree:
             predictions.append(current_node.value)
             if current_node.value == example['label']:
                 correct_predictions += 1
-            if current_node.value == 1 and example['label'] == 1:
-                tp += 1
-            elif current_node.value == -1 and example['label'] == -1:
-                tn += 1
             if current_node.value == 1:
-                positive_labels += 1
+                self.classifications.append(1)
             else:
-                negative_labels += 1
-        p = ((tp / (positive_labels + 1)) + (tn / (negative_labels + 1))) / 2
-        r = ((tp / (positive_examples + 1)) + (tn / (negative_examples + 1))) / 2
-        f1 = (2 * p * r) / (p + r)
-        #print('F1:', f1, 'p:', p, 'r:', r, 'tp:', tp, 'tn:', tn, 'total:', len(examples))
-        return {'f1': f1, 'correct_predictions' : correct_predictions, 'example_count' : len(examples), 'accuracy' : round(correct_predictions/len(examples), 3), 'predictions' : predictions}
+                self.classifications.append(0)
+        return {'correct_predictions' : correct_predictions, 'example_count' : len(examples), 'accuracy' : round(correct_predictions/len(examples), 3)}

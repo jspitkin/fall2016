@@ -3,12 +3,12 @@ from random import shuffle
 import DecisionTree as dt
 
 class RandomForest:
-    def __init__(self, m, N, feature_count):
+    def __init__(self, m, N, k, feature_count):
         self.m = m
         self.N = N
         self.feature_count = feature_count
-        self.k = int(math.log(self.feature_count, 2))
-        self.k = 11
+        # self.k = int(math.log(self.feature_count, 2))
+        self.k = k
 
     def set_data_paths(self, train_data, train_labels, test_data, test_labels):
         self.train_data = train_data

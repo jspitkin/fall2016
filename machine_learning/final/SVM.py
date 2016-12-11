@@ -1,6 +1,7 @@
 # Jake Pitkin November 12 2016
 from random import shuffle
 
+
 class SVM:
     def __init__(self, initial_learning_rate, C, epoch, feature_count):
         self.FEATURE_COUNT = feature_count
@@ -53,10 +54,13 @@ class SVM:
         else:
             return -1
 
+
+
     def get_precision(self, true_positives, false_positives):
         if true_positives == 0 and false_positives == 0:
             return 0
         return round(true_positives / (true_positives + false_positives), 3)
+
 
     def get_recall(self, true_positives, false_negatives):
         if true_positives == 0 and false_negatives == 0:
