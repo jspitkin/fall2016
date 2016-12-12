@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 DEC 2016 12:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 DEC 2016 20:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -72,6 +72,13 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \WF@box=\box26
 \WF@everypar=\toks16
 Package: wrapfig 2003/01/31  v 3.6
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count91
+\float@exts=\toks17
+\float@box=\box27
+\@float@everytoks=\toks18
+\@floatcapt=\box28
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/mathpazo.sty
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup4
@@ -113,17 +120,17 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 ) (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count91
+\scratchcounter=\count92
 \scratchdimen=\dimen108
-\scratchbox=\box27
-\nofMPsegments=\count92
-\nofMParguments=\count93
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count94
+\scratchbox=\box29
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count95
 \MPscratchDim=\dimen109
-\MPnumerator=\count95
-\makeMPintoPDFobject=\count96
-\everyMPtoPDFconversion=\toks18
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks20
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
@@ -165,47 +172,51 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 77.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 79.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 79.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 79.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 79.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 79.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 79.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `zplm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ <decision_tree.png, id=1, 346.896pt x 77.088pt>
+File: decision_tree.png Graphic file (type png)
+ <use decision_tree.png>
+Package pdftex.def Info: decision_tree.png used on input line 91.
+(pdftex.def)             Requested size: 288.0011pt x 64.003pt.
+ [1
 
-
-LaTeX Warning: Citation `Smith:2012qr' on page 1 undefined on input line 79.
-
-
-LaTeX Warning: Citation `Smith:2013jd' on page 1 undefined on input line 79.
-
-<fish.png, id=1, 211.79124pt x 158.5925pt>
-File: fish.png Graphic file (type png)
- <use fish.png>
-Package pdftex.def Info: fish.png used on input line 92.
-(pdftex.def)             Requested size: 136.80176pt x 102.4426pt.
-
-Underfull \hbox (badness 5105) in paragraph at lines 89--95
-\T1/ppl/m/n/10.95 (+20) nean non risus eu nunc ac-cum-san condi-men-tum at sed ip-sum.
- []
-
-[1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./fish.png>]
-No file final_report.bbl.
-[3] (/Users/jsp/Documents/fall_2016/machine_learning/.texpadtmp/final_report.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./decision_tree.png>] [3] (/Users/jsp/Documents/fall_2016/machine_learning/.texpadtmp/final_report.aux) ) 
 Here is how much of TeX's memory you used:
- 3323 strings out of 493089
- 51781 string characters out of 6134842
- 138794 words of memory out of 5000000
- 6713 multiletter control sequences out of 15000+600000
- 22115 words of font info for 77 fonts, out of 8000000 for 9000
+ 3506 strings out of 493089
+ 54824 string characters out of 6134842
+ 140171 words of memory out of 5000000
+ 6849 multiletter control sequences out of 15000+600000
+ 31870 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,35p,724b,227s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on /Users/jsp/Documents/fall_2016/machine_learning/.texpadtmp/final_report.pdf (3 pages, 63491 bytes).
+ 38i,8n,35p,657b,225s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on /Users/jsp/Documents/fall_2016/machine_learning/.texpadtmp/final_report.pdf (3 pages, 92375 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
- 18 compressed objects within 1 object stream
+ 42 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18950 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 27142 words of extra memory for PDF output out of 29859 (max. 10000000)
 

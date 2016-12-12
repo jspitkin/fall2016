@@ -21,32 +21,32 @@ def main():
         test_examples = ioutil.read_svm_file_buckets(test_data_path, frequencies[index])
 
         feature_count = len(training_examples[0]['feature_vector'])
-        m = 1000 # Number of random examples
+        m = 10000 # Number of random examples
         n = 101 # Number of trees
         k = 50 # Number of features in trees
 
-        cross_validation(feature_count, training_examples, test_examples)
+        #cross_validation(feature_count, training_examples, test_examples)
 
-        #random_forest = RF.RandomForest(m, n, k, feature_count)
-        #random_forest.set_examples(training_examples, test_examples)
-        #results = random_forest.create_trees()
-        #classifications = tally_votes(results, test_examples)
+        random_forest = RF.RandomForest(m, n, k, feature_count)
+        random_forest.set_examples(training_examples, test_examples)
+        results = random_forest.create_trees()
+        classifications = tally_votes(results, test_examples)
 
-        #print('Accuracy:', classifications['accuracy'], 'Example Count:', classifications['examples'])
-        #final_classifications = []
-        #for index in range(len(classifications['classifications'])):
-        #    if classifications['classifications'][index] == 1:
-        #        final_classifications.append(1)
-        #    else:
-        #        final_classifications.append(0)
-        #ids = ioutil.read_id_file(id_path)
-        #labels = ["example_id", "label"]
-        #ioutil.write_csv_file('kaggle_submission.csv', labels, ids, final_classifications)
+        print('Accuracy:', classifications['accuracy'], 'Example Count:', classifications['examples'])
+        final_classifications = []
+        for index in range(len(classifications['classifications'])):
+            if classifications['classifications'][index] == 1:
+                final_classifications.append(1)
+            else:
+                final_classifications.append(0)
+        ids = ioutil.read_id_file(id_path)
+        labels = ["example_id", "label"]
+        ioutil.write_csv_file('kaggle_submission.csv', labels, ids, final_classifications)
 
 def cross_validation(feature_count, training_examples, test_examples):
-    n_values = [101]
-    k_values = [50, 60]
-    m_values = [10000]
+    n_values = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110]
+    k_values = [50]
+    m_values = [1000]
 
     best_n = 0
     best_k = 0
@@ -69,7 +69,7 @@ def cross_validation(feature_count, training_examples, test_examples):
                     best_k = k
                     best_m = m
     print("BEST")
-    print('n:', n, 'k:', k, 'm:', m)
+    print('n:', best_n, 'k:', best_k, 'm:', best_m)
 
 def tally_votes(results, test_examples):
     votes = [[] for x in range(len(test_examples))]

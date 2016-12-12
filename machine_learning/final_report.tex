@@ -24,7 +24,7 @@
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
 \usepackage{graphicx} % Required for including pictures
 \usepackage{wrapfig} % Allows in-line images
-
+\usepackage{float}
 \usepackage{mathpazo} % Use the Palatino font
 \usepackage[T1]{fontenc} % Required for accented characters
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
@@ -76,48 +76,66 @@ A Walk Through a Random Forest} % Subtitle
 %----------------------------------------------------------------------------------------
 \section*{Introduction}
 
-This statement requires citation \cite{Smith:2012qr}; this one does too \cite{Smith:2013jd}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum lacus sem, ut varius ante dignissim ac. Sed a mi quis lectus feugiat aliquam. Nunc sed vulputate velit. Sed commodo metus vel felis semper, quis rutrum odio vulputate. Donec a elit porttitor, facilisis nisl sit amet, dignissim arcu. Vivamus accumsan pellentesque nulla at euismod. Duis porta rutrum sem, eu facilisis mi varius sed. Suspendisse potenti. Mauris rhoncus neque nisi, ut laoreet augue pretium luctus. Vestibulum sit amet luctus sem, luctus ultrices leo. Aenean vitae sem leo.
+The Android platform is the most popular mobile platform, holding nearly $85\%$ of the global smartphone marketshare. [1] Most of the available software for Android devices comes from public application markets such as Google Play and the Apple App Store. As a result, Android users are a very popular target for malicious software. 
 
-Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus consectetur. Nulla pellentesque tortor et aliquam vehicula. Maecenas imperdiet euismod enim ut pharetra. Suspendisse pulvinar sapien vitae placerat pellentesque. Nulla facilisi. Aenean vitae nunc venenatis, vehicula neque in, congue ligula.
-
-Pellentesque quis neque fringilla, varius ligula quis, malesuada dolor. Aenean malesuada urna porta, condimentum nisl sed, scelerisque nisi. Suspendisse ac orci quis massa porta dignissim. Morbi sollicitudin, felis eget tristique laoreet, ante lacus pretium lacus, nec ornare sem lorem a velit. Pellentesque eu erat congue, ullamcorper ante ut, tristique turpis. Nam sodales mi sed nisl tincidunt vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
+The goal is to classify software as malicious or not as a way to improve the security of the Android platform. This will be accomplished by training a classifier on examples where we observed how often particular system calls were called. The hope is this will expose a patterns of system calls that malicious applications make. Allowing us to prohibit these applications from public markets and protect users.
+ 
 %------------------------------------------------
 
-\section*{Section Name}
+\section*{Approach - Random Forest}
+The approach I used to classify the maliciousness of an Android application is a random forest. A random forest is an ensemble method based on bagging (short for bootstrap aggregating) and a decision tree using the ID3 algorithm. In the classic ID3 algorithm, all features are considered (using the heuristic of information gain to select a feature at each level) and one tree is trained on all the training examples. For bagging, I randomly selected \textit{m} examples with replacement and only consider \textit{k} random features when building the tree. I then built \textit{N} of these trees. 
 
-Cras gravida, est vel interdum euismod, tortor mi lobortis mi, quis adipiscing elit lacus ut orci. Phasellus nec fringilla nisi, ut vestibulum neque. Aenean non risus eu nunc accumsan condimentum at sed ipsum.
-\begin{wrapfigure}{l}{0.4\textwidth} % Inline image example
-\begin{center}
-\includegraphics[width=0.38\textwidth]{fish.png}
-\end{center}
-\caption{Fish}
-\end{wrapfigure}
-Aliquam fringilla non diam sed varius. Suspendisse tellus felis, hendrerit non bibendum ut, adipiscing vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis purus eget nisl scelerisque, commodo rhoncus lacus porta. Vestibulum vitae turpis tincidunt, varius dolor in, dictum lectus. Aenean ac ornare augue, ac facilisis purus. Sed leo lorem, molestie sit amet fermentum id, suscipit ut sem. Vestibulum orci arcu, vehicula sed tortor id, ornare dapibus lorem. Praesent aliquet iaculis lacus nec fermentum. Morbi eleifend blandit dolor, pharetra hendrerit neque ornare vel. Nulla ornare, nisl eget imperdiet ornare, libero enim interdum mi, ut lobortis quam velit bibendum nibh.
+When it came time to predict a label for a new example, all of the trees in the random forest vote on a label. As I was performing binary classification, I chose $N$ to be odd and took the majority vote of the trees.
 
-Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
+\begin{figure} [H]
+  \centerline{\includegraphics[width=0.8\linewidth]{decision_tree.png}}
+  \caption{Taking the majority vote of an ensemble of decision trees.}
+\end{figure}
 
-%------------------------------------------------
+\section*{Feature Exploration}
+Each example is defined by 360 features or system calls. But I discovered only 130 of these features appear in the training examples. Of these 130 features, there are a great deal of them that appear in nearly every training example and four features that appear in every training example. The 65 features with the highest frequency appear in at least half of the training examples.
 
-\section*{Conclusion}
+A feature's value is defined by how many times the system call that feature represents is called. As such, the range of values a feature held varied greatly. Some present system calls occurred only a few times where others were called hundreds of thousands of times.
 
-Fusce in nibh augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In dictum accumsan sapien, ut hendrerit nisi. Phasellus ut nulla mauris. Phasellus sagittis nec odio sed posuere. Vestibulum porttitor dolor quis suscipit bibendum. Mauris risus lectus, cursus vitae hendrerit posuere, congue ac est. Suspendisse commodo eu eros non cursus. Mauris ultrices venenatis dolor, sed aliquet odio tempor pellentesque. Duis ultricies, mauris id lobortis vulputate, tellus turpis eleifend elit, in gravida leo tortor ultricies est. Maecenas vitae ipsum at dui sodales condimentum a quis dui. Nam mi sapien, lobortis ac blandit eget, dignissim quis nunc.
+The decision tree classifier is only feasible with numeric feature values by using thresholds or by making the values discrete. I choose to make them discrete by transforming all features into either a $0$ or a $1$. I calculated the average value a feature held across all the training examples. I considered to be "present" or $1$ if it's value is above the average and $0$ otherwise. I played with this threshold by introducing a hyper-parameter $\lambda$.
 
-\begin{enumerate}
-\item First numbered list item
-\item Second numbered list item
-\end{enumerate}
+$$threshold_j = \lambda * average_j$$
 
-Donec luctus tincidunt mauris, non ultrices ligula aliquam id. Sed varius, magna a faucibus congue, arcu tellus pellentesque nisl, vel laoreet magna eros et magna. Vivamus lobortis elit eu dignissim ultrices. Fusce erat nulla, ornare at dolor quis, rhoncus venenatis velit. Donec sed elit mi. Sed semper tellus a convallis viverra. Maecenas mi lorem, placerat sit amet sem quis, adipiscing tincidunt turpis. Cras a urna et tellus dictum eleifend. Fusce dignissim lectus risus, in bibendum tortor lacinia interdum.
+This allowed me to vary how above-or-below the average a feature $j$ should be to be considered "present".
 
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
+\section*{Cross-validation}
+My random forest contained four different hyper-parameters, all of which were determined by using 6-fold cross validation.
 
-\bibliographystyle{unsrt}
+\begin{table}[H]
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+Hyper-parameter & Description & Best Value\\
+\hline
+$\lambda$ & Decision boundary for discretization. & 0.34\\ \hline
+N & Decision tree count. & 101\\ \hline
+m & Size of training example sample. & 10,000\\ \hline
+k & Number of randomly selected features. & 50\\ \hline
+\end{tabular}}
+\caption{The used hyper-parameters for the random forest classifier.}
+\end{table}
 
-\bibliography{sample}
+If a system call was called at least 0.34 times the average, that feature was considered present an was given a value of $1$ and a value of $0$ otherwise. 
 
-%----------------------------------------------------------------------------------------
+The random forest consisted of $101$ decision trees. Each decision trees was constructed with 50 randomly selected features and was trained on 10,0000 sampled with replacement training examples.
+
+\section*{Performance}
+sadfa
+
+\section*{Improvements}
+
+\section*{Other Classifiers Attempted}
+
+\section*{What I Would Like To Try}
+
+\section*{What I Learned}
+
+\section*{References}
+[1] Dimja\v{s}evi\'{c}, M., Atzeni, S., Ugrina, I. and Rakamaric, Z., 2016, March. Evaluation of Android Malware Detection Based on System Calls. In Proceedings of the 2016 ACM on International Workshop on Security And Privacy Analytics (pp. 1-8). ACM.
 
 \end{document}
