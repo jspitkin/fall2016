@@ -21,7 +21,7 @@ def main():
         test_examples = ioutil.read_svm_file_buckets(test_data_path, frequencies[index])
 
         feature_count = len(training_examples[0]['feature_vector'])
-        m = 10000 # Number of random examples
+        m = 1000 # Number of random examples
         n = 101 # Number of trees
         k = 50 # Number of features in trees
 
@@ -32,7 +32,7 @@ def main():
         results = random_forest.create_trees()
         classifications = tally_votes(results, test_examples)
 
-        print('Accuracy:', classifications['accuracy'], 'Example Count:', classifications['examples'])
+        print('Accuracy:', classifications['accuracy'], 'F1 Score', classifications['f1'])
         final_classifications = []
         for index in range(len(classifications['classifications'])):
             if classifications['classifications'][index] == 1:

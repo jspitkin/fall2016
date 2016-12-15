@@ -51,7 +51,7 @@
 %----------------------------------------------------------------------------------------
 
 \title{\textbf{Detecting Malware in Android Applications}\\ % Title
-A Walk Through a Random Forest} % Subtitle
+} % Subtitle
 
 \author{\textsc{Jake Pitkin} % Author
 \\{\textit{CS 6350 - Machine Learning}}} % Institution
@@ -125,13 +125,47 @@ If a system call was called at least 0.34 times the average, that feature was co
 The random forest consisted of $101$ decision trees. Each decision trees was constructed with 50 randomly selected features and was trained on 10,0000 sampled with replacement training examples.
 
 \section*{Performance}
-sadfa
+To determine the performance of my tuned random forest classifier, I considered its accuracy and F1 score on the training and test sets.
+
+\begin{table}[H]
+{\renewcommand{\arraystretch}{1.2}%
+\begin{tabular}{| c | c | c |}
+\hline
+Data Set & Accuracy & F1 Score\\
+\hline
+Training Set & 0.881 & 0.73\\ \hline
+Test Set & 0.851 & 0.741\\ \hline
+\end{tabular}}
+\end{table}
+
+At the time of this report I am currently $9th$ out of $28th$ on the Kaggle competition board with a score of $0.82819$.
 
 \section*{Improvements}
 
+\textit{Decision boundaries - }An area I would of liked to explore deeper was the discretization of the data. I took a fairly naive approach of using the average value of a feature as the boundary for transforming continuous features values into binary features. Being more analytical by looking at the distribution of labels relative to each feature value could have proven fruitful. Additionally, rather than making all features binary, using multiple decision boundaries to have a handful of possible feature values could of been worthwhile.
+
+\bigbreak
+\noindent
+\textit{SVM on random forest votes - } My random forest classifier used a majority vote between all the trees to decide on a final label. I would of liked to train a SVM classifier using these predictions as features (as we explored in homework 4).
+
 \section*{Other Classifiers Attempted}
 
+I tried many other classifiers before arriving at using a random forest. Other than decision trees, I tried each classifier with transformed features and unmodified features. Here is how they each ranked according to their perform on the Kaggle submission data. 
+
+\begin{enumerate}
+	\item Logistic Regression with binary features
+	\item Logistic Regression
+	\item Decision Tree with binary features
+	\item SVM with binary features
+	\item Perceptron with binary features
+	\item Perceptron
+\end{enumerate}
+
+With my final classifier, Random Forest with binary features, out performing all of the above classifiers. Logistic Regression with binary features was a very close second and is drastically easier to implement than a Random Forest.
+
 \section*{What I Would Like To Try}
+
+Neural network
 
 \section*{What I Learned}
 
