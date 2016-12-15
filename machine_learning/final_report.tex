@@ -76,16 +76,16 @@
 %----------------------------------------------------------------------------------------
 \section*{Introduction}
 
-The Android platform is the most popular mobile platform, holding nearly $85\%$ of the global smartphone marketshare. [1] Most of the available software for Android devices comes from public application markets such as Google Play and the Apple App Store. As a result, Android users are a very popular target for malicious software. 
+The Android platform is the most popular mobile platform, holding nearly $85\%$ of the global smartphone marketshare. [1] Most of the available software for Android devices comes from public application markets such as Google Play or the Apple App Store. As a result, Android users are a popular target for malicious software. 
 
 The goal is to classify software as malicious or not as a way to improve the security of the Android platform. This will be accomplished by training a classifier on examples where we observed how often particular system calls were called. The hope is this will expose a patterns of system calls that malicious applications make. Allowing us to prohibit these applications from public markets and protect users.
  
 %------------------------------------------------
 
 \section*{Approach - Random Forest}
-The approach I used to classify the maliciousness of an Android application is a random forest. A random forest is an ensemble method based on bagging (short for bootstrap aggregating) and a decision tree using the ID3 algorithm. In the classic ID3 algorithm, all features are considered (using the heuristic of information gain to select a feature at each level) and one tree is trained on all the training examples. For bagging, I randomly selected \textit{m} examples with replacement and only consider \textit{k} random features when building the tree. I then built \textit{N} of these trees. 
+The approach I used to classify the maliciousness of an Android application is a random forest. A random forest is an ensemble method based on bagging (short for bootstrap aggregating) and decision trees using the ID3 algorithm. In the classic ID3 algorithm, all features are considered (using the heuristic of information gain to select a feature at each level) and one tree is trained on all the training examples. In a random forest, \textit{N} decision trees are trained. For each tree, I randomly selected \textit{m} examples with replacement and only consider \textit{k} random features when building the tree.
 
-When it came time to predict a label for a new example, all of the trees in the random forest vote on a label. As I was performing binary classification, I chose $N$ to be odd and took the majority vote of the trees.
+When it came time to predict a label for a new example, all of the trees in the random forest vote on the label. As I was performing binary classification, I chose $N$ to be odd and took the majority vote of the trees.
 
 \begin{figure} [H]
   \centerline{\includegraphics[width=0.8\linewidth]{decision_tree.png}}
@@ -93,18 +93,18 @@ When it came time to predict a label for a new example, all of the trees in the 
 \end{figure}
 
 \section*{Feature Exploration}
-Each example is defined by 360 features or system calls. But I discovered only 130 of these features appear in the training examples. Of these 130 features, there are a great deal of them that appear in nearly every training example and four features that appear in every training example. The 65 features with the highest frequency appear in at least half of the training examples.
+Each example is defined by 360 features or system calls. But I discovered only 130 of these features appear in the training examples. Of these 130 features, there are a great deal of them that appear in nearly every training example and four features appear in every training example. The 65 features with the highest frequency appear in at least half of the training examples.
 
 A feature's value is defined by how many times the system call that feature represents is called. As such, the range of values a feature held varied greatly. Some present system calls occurred only a few times where others were called hundreds of thousands of times.
 
-The decision tree classifier is only feasible with numeric feature values by using thresholds or by making the values discrete. I choose to make them discrete by transforming all features into either a $0$ or a $1$. I calculated the average value a feature held across all the training examples. I considered to be "present" or $1$ if it's value is above the average and $0$ otherwise. I played with this threshold by introducing a hyper-parameter $\lambda$.
+A decision tree classifier is only feasible with numeric feature values by using thresholds or by making the values discrete. I choose to make them discrete by transforming all features into either a $0$ or a $1$. I calculated the average value a feature held across all the training examples. I considered a feature to be "present" or $1$ if it's value is above the average and $0$ otherwise. I played with this threshold by introducing a hyper-parameter $\lambda$.
 
 $$threshold_j = \lambda * average_j$$
 
 This allowed me to vary how above-or-below the average a feature $j$ should be to be considered "present".
 
 \section*{Cross-validation}
-My random forest contained four different hyper-parameters, all of which were determined by using 6-fold cross validation.
+My random forest classifier contained four hyper-parameters, all of which were determined by using 6-fold cross validation.
 
 \begin{table}[H]
 {\renewcommand{\arraystretch}{1.2}%
@@ -122,10 +122,10 @@ k & Number of randomly selected features. & 50\\ \hline
 
 If a system call was called at least 0.34 times the average, that feature was considered present an was given a value of $1$ and a value of $0$ otherwise. 
 
-The random forest consisted of $101$ decision trees. Each decision trees was constructed with 50 randomly selected features and was trained on 10,0000 sampled with replacement training examples.
+My random forest classifier consisted of $101$ decision trees. Each decision trees was constructed with 50 randomly selected features and was trained on 10,0000 sampled with replacement training examples.
 
 \section*{Performance}
-To determine the performance of my tuned random forest classifier, I considered its accuracy and F1 score on the training and test sets.
+To determine the performance of my tuned random forest classifier, I considered its accuracy and F1 score on the training and test sets. I was happy with the margin between the classifier's accuracy on the training and test set being small. I found this to be a strength of using an ensemble as it generalized well.
 
 \begin{table}[H]
 {\renewcommand{\arraystretch}{1.2}%
@@ -150,25 +150,39 @@ At the time of this report I am currently $9th$ out of $28th$ on the Kaggle comp
 
 \section*{Other Classifiers Attempted}
 
-I tried many other classifiers before arriving at using a random forest. Other than decision trees, I tried each classifier with transformed features and unmodified features. Here is how they each ranked according to their perform on the Kaggle submission data. 
+I tried many other classifiers before arriving at using a random forest. Other than decision trees, I tried different classifiers with transformed features and unmodified features. Here is how they each ranked according to their performance on the Kaggle submission data. 
 
 \begin{enumerate}
-	\item Logistic Regression with binary features
-	\item Logistic Regression
-	\item Decision Tree with binary features
+	\item Logistic regression with binary features
+	\item Logistic regression
+	\item Decision tree with binary features
 	\item SVM with binary features
-	\item Perceptron with binary features
+	\item Margin perceptron
+	\item Aggressive margin perceptron
 	\item Perceptron
 \end{enumerate}
 
-With my final classifier, Random Forest with binary features, out performing all of the above classifiers. Logistic Regression with binary features was a very close second and is drastically easier to implement than a Random Forest.
+With my final classifier, a random Forest, out performing all of the above classifiers. Logistic Regression with binary features was a very close second with performance within a percent of a random forest.
+
+\section*{Evolution of My Project}
+
+My project began by taking the naive approach of applying a linear classifier on the dataset as is. I discovered there were many irrelevant features and each feature could take a wide range of values. To remedy this, I only used relevant features and discretized the feature values. Ultimately, I moved away from a linear classifier to an ensemble of decision trees. I initially tried a random forest as the winner of the Netflix challenge discussed in class used an ensemble method. When I saw results that were generalizing well I stuck with it and began to tune the hyperparameters.
 
 \section*{What I Would Like To Try}
 
-Neural network
+I wish I would of had time to implement a neural network this semester. They are all the hype right now and from my limited knowledge seem to be creeping into all fields of AI. My intention is to find a fun problem over winter break and try to solve it with a neural network.
+
+Another skill I would like to improve is visualizing and exploring datasets. I would of liked to have better tools and exploring the feature set so I could of made smarter decisions about determining which features were relevant and how to discretize their feature values.
 
 \section*{What I Learned}
 
+I have learned so much in this course and I know I am barely scratching the surface. I entered the course with only a vague understanding of machine learning based on assumptions and news stories I came by. Leaving the course I have a new appreciation for how much creativity is possible while being deeply mathematical at the same time.
+
+I learned that theory is indispensable and helps formulate what is possible. And at the same time that the real world is messy and there is a lot of trial, error, and creativity in creating solid systems. I saw that AI is quite often romanticized by the media and misunderstood as magic by many. I find it really enjoyable exploring the limitations of these technologies and understanding how they work to dispel these myths. 
+
+Your course, along with Prof. Riloff's NLP course, has piqued my interest in furthering my education and I am now considering PhD programs after finishing my MS. Next semester I will be taking Structured Prediction, Theory of Machine Learning, and Information Extraction to dive in deeper. My hope is to find a sub-field of machine learning that  resonates with me.
+
+I want to thank you for a fantastic course and I really look forward to next semester.
 \section*{References}
 [1] Dimja\v{s}evi\'{c}, M., Atzeni, S., Ugrina, I. and Rakamaric, Z., 2016, March. Evaluation of Android Malware Detection Based on System Calls. In Proceedings of the 2016 ACM on International Workshop on Security And Privacy Analytics (pp. 1-8). ACM.
 
