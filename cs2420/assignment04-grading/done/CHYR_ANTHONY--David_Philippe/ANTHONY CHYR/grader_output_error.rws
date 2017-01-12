@@ -1,9 +1,0 @@
-Exception in thread "main" java.nio.file.InvalidPathException: Illegal char <:> at index 2: /A:/Documents/workspace/autograder/extraclasspathfiles/sample_word_list.txt
-	at sun.nio.fs.WindowsPathParser.normalize(Unknown Source)
-	at sun.nio.fs.WindowsPathParser.parse(Unknown Source)
-	at sun.nio.fs.WindowsPathParser.parse(Unknown Source)
-	at sun.nio.fs.WindowsPath.parse(Unknown Source)
-	at sun.nio.fs.WindowsFileSystem.getPath(Unknown Source)
-	at java.nio.file.Paths.get(Unknown Source)
-	at assignment04.AnagramUtil.getLargestAnagramGroup(AnagramUtil.java:217)
-	at assignment04.AnagramUtilGrader.main(AnagramUtilGrader.java:361)

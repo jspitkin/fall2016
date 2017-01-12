@@ -1,6 +1,0 @@
-DoublyLinkedListTiming.java:10: error: package assignment05 does not exist
-import assignment05.SortUtil;
-                   ^
-Note: DoublyLinkedList.java uses unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-1 error

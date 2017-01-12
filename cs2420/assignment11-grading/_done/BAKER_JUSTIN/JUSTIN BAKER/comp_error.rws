@@ -1,7 +1,0 @@
-PriorityQueueTimer.java:9: error: package assignment03 does not exist
-import assignment03.BinarySearchSet;
-                   ^
-PriorityQueueTimer.java:10: error: package assignment07 does not exist
-import assignment07.LinkedListStack;
-                   ^
-2 errors

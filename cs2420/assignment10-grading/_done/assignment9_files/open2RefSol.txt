@@ -1,6 +1,0 @@
-5 6
-XXXXXX
-X    X
-X GS X
-X    X
-XXXXXX

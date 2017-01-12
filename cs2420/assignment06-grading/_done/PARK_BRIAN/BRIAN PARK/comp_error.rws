@@ -1,9 +1,0 @@
-TimingTestsDLL.java:8: error: package assignment05 does not exist
-import assignment05.SortUtil;
-                   ^
-TimingTestsJavaLists.java:9: error: package assignment05 does not exist
-import assignment05.SortUtil;
-                   ^
-Note: DoublyLinkedList.java uses unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-2 errors

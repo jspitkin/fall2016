@@ -1,6 +1,0 @@
-BinarySearchTimer.java:8: error: package assignment07 does not exist
-import assignment07.LinkedListStack;
-                   ^
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-1 error

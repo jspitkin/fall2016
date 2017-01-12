@@ -1,8 +1,0 @@
-A:\Documents\workspace\autograder\graders\TAHashTableGrader.java:49: error: cannot find symbol
-					hf = new BadHashFunctor();
-					         ^
-  symbol:   class BadHashFunctor
-  location: class HashFunctorTester
-Note: ChainingHashTable.java uses unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-1 error
